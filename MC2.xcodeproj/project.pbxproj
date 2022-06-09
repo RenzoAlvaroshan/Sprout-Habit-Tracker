@@ -9,21 +9,39 @@
 /* Begin PBXBuildFile section */
 		0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E266338284EEBAC00958370 /* AppDelegate.swift */; };
 		0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E26633A284EEBAC00958370 /* SceneDelegate.swift */; };
-		0E26633D284EEBAC00958370 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E26633C284EEBAC00958370 /* ViewController.swift */; };
 		0E266340284EEBAC00958370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E26633E284EEBAC00958370 /* Main.storyboard */; };
 		0E266342284EEBAD00958370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E266341284EEBAD00958370 /* Assets.xcassets */; };
 		0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E266343284EEBAD00958370 /* LaunchScreen.storyboard */; };
+		83345E0B2851E4B100A13B53 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0A2851E4B100A13B53 /* MainController.swift */; };
+		83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0E2851E4FA00A13B53 /* LoginController.swift */; };
+		83345E112851E50300A13B53 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E102851E50300A13B53 /* RegistrationController.swift */; };
+		83345E142851E5AE00A13B53 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E132851E5AE00A13B53 /* Extensions.swift */; };
+		83345E1D2851E62700A13B53 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1C2851E62700A13B53 /* Utilities.swift */; };
+		83345E1F2851E6F100A13B53 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1E2851E6F100A13B53 /* CardView.swift */; };
+		83345E232851EB0F00A13B53 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */; };
+		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
+		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
+		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E266335284EEBAC00958370 /* MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E266338284EEBAC00958370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E26633A284EEBAC00958370 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0E26633C284EEBAC00958370 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E26633F284EEBAC00958370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E266341284EEBAD00958370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E266344284EEBAD00958370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E266346284EEBAD00958370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		83345E0A2851E4B100A13B53 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		83345E0E2851E4FA00A13B53 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		83345E102851E50300A13B53 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		83345E132851E5AE00A13B53 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		83345E1C2851E62700A13B53 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		83345E1E2851E6F100A13B53 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +74,80 @@
 		0E266337284EEBAC00958370 /* MC2 */ = {
 			isa = PBXGroup;
 			children = (
+				83345E062851E44000A13B53 /* Model */,
+				83345E072851E44500A13B53 /* View */,
+				83345E082851E44800A13B53 /* ViewModel */,
+				83345E092851E45800A13B53 /* Controller */,
+				83345E122851E58600A13B53 /* Utils */,
 				0E266338284EEBAC00958370 /* AppDelegate.swift */,
 				0E26633A284EEBAC00958370 /* SceneDelegate.swift */,
-				0E26633C284EEBAC00958370 /* ViewController.swift */,
 				0E26633E284EEBAC00958370 /* Main.storyboard */,
 				0E266341284EEBAD00958370 /* Assets.xcassets */,
 				0E266343284EEBAD00958370 /* LaunchScreen.storyboard */,
 				0E266346284EEBAD00958370 /* Info.plist */,
+				83345E152851E5D600A13B53 /* Fonts */,
 			);
 			path = MC2;
+			sourceTree = "<group>";
+		};
+		83345E062851E44000A13B53 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		83345E072851E44500A13B53 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				83345E1E2851E6F100A13B53 /* CardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		83345E082851E44800A13B53 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				83345E262851F57400A13B53 /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		83345E092851E45800A13B53 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				83345E0C2851E4EF00A13B53 /* Authentication */,
+				83345E0A2851E4B100A13B53 /* MainController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		83345E0C2851E4EF00A13B53 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				83345E0E2851E4FA00A13B53 /* LoginController.swift */,
+				83345E102851E50300A13B53 /* RegistrationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		83345E122851E58600A13B53 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				83345E132851E5AE00A13B53 /* Extensions.swift */,
+				83345E1C2851E62700A13B53 /* Utilities.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		83345E152851E5D600A13B53 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */,
+				83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */,
+				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +210,10 @@
 			files = (
 				0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */,
 				0E266342284EEBAD00958370 /* Assets.xcassets in Resources */,
+				83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */,
+				83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */,
 				0E266340284EEBAC00958370 /* Main.storyboard in Resources */,
+				83345E232851EB0F00A13B53 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +224,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E26633D284EEBAC00958370 /* ViewController.swift in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
+				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
+				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
+				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
+				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
+				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
+				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
+				83345E1F2851E6F100A13B53 /* CardView.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
