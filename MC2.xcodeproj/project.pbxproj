@@ -22,6 +22,7 @@
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
+		8ECFFBCD2852F49E0061B117 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECFFBCC2852F49E0061B117 /* ActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		8ECFFBCC2852F49E0061B117 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				83345E1E2851E6F100A13B53 /* CardView.swift */,
+				8ECFFBCC2852F49E0061B117 /* ActivityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
+				8ECFFBCD2852F49E0061B117 /* ActivityView.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
