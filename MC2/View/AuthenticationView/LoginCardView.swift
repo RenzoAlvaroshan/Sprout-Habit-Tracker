@@ -172,7 +172,7 @@ class LoginCardView: UIView {
         stack.axis = .vertical
         stack.spacing = 16
         stack.distribution = .fillEqually
-        stack.setCustomSpacing(50, after: forgotPasswordButton)
+        stack.setCustomSpacing(25, after: forgotPasswordButton)
 
         emailContainerView.setDimensions(height: 54, width: frame.width * 0.8)
         passwordContainerView.setDimensions(height: 54, width: frame.width * 0.8)
@@ -182,7 +182,7 @@ class LoginCardView: UIView {
         stack.anchor(top: loginTitle.bottomAnchor, left: leftAnchor ,paddingTop: 30, paddingLeft: 28)
         
         addSubview(goToRegistrationButton)
-        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingRight: 32)
+        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingBottom: 16, paddingRight: 32)
     }
     
     func configureTextFieldObservers() {
