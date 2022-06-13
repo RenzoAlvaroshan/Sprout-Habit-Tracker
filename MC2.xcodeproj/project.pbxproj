@@ -26,6 +26,8 @@
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
+		834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626C28571AE300F6F3C8 /* AddChildController.swift */; };
+		834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626E2857257800F6F3C8 /* RadioButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		834D626C28571AE300F6F3C8 /* AddChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildController.swift; sourceTree = "<group>"; };
+		834D626E2857257800F6F3C8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +117,7 @@
 				8314505E2852F4F400CAE05E /* ProfileController.swift */,
 				831450602852F72B00CAE05E /* TaskController.swift */,
 				831450652852F74400CAE05E /* RewardController.swift */,
+				834D626C28571AE300F6F3C8 /* AddChildController.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -164,6 +169,7 @@
 			children = (
 				83345E132851E5AE00A13B53 /* Extensions.swift */,
 				83345E1C2851E62700A13B53 /* Utilities.swift */,
+				834D626E2857257800F6F3C8 /* RadioButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -252,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
@@ -263,6 +270,7 @@
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				831450612852F72B00CAE05E /* TaskController.swift in Sources */,
+				834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */,
 				831450662852F74400CAE05E /* RewardController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
