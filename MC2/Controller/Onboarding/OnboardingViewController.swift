@@ -10,11 +10,33 @@ import UIKit
 class OnboardingViewController: UIViewController {
     
     // MARK: - Properties
-    let stackView = UIStackView()
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 16
+        return stackView
+    }()
     
-    let imageView = UIImageView()
-    let titleLabel = UILabel()
-    let subtitleLabel = UILabel()
+    private lazy var imageView: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        return iv
+    }()
+    
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsSemiBold(size: 24)
+        return label
+    }()
+    
+    private lazy var subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 18)
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
     
     init(imageName: String, titleText: String, subtitleText: String) {
         
@@ -31,45 +53,25 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        style()
-        layout()
+        configureUI()
     }
 }
 
 extension OnboardingViewController {
     
-    func style() {
-        
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 20
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.poppinsBold(size: 24)
-        
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.font = UIFont.poppinsRegular(size: 18)
-        subtitleLabel.textAlignment = .center
-        subtitleLabel.numberOfLines = 0
-    }
-    
-    func layout() {
+    func configureUI() {
         
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(subtitleLabel)
         
         view.addSubview(stackView)
+        stackView.anchor(top: view.topAnchor, paddingTop: 100)
         
         NSLayoutConstraint.activate([
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-            imageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 1 : 0.75),
             
             subtitleLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: subtitleLabel.trailingAnchor, multiplier: 2),

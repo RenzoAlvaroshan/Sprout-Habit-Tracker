@@ -5,17 +5,24 @@
 //  Created by Stephen Giovanni Saputra on 13/06/22.
 
 import UIKit
+import SwiftUI
 
 class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     //MARK: - Properties
     var pages = [UIViewController]()
     let initialPage = 0
-    let pageControl = UIPageControl()
     
-    var pageControlBottomAnchor: NSLayoutConstraint?
-    var skipButtonTopAnchor: NSLayoutConstraint?
-    var nextButtonTopAnchor: NSLayoutConstraint?
+    private lazy var pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.currentPageIndicatorTintColor = .arcadiaGreen
+        pageControl.pageIndicatorTintColor = .arcadiaGray
+        pageControl.numberOfPages = pages.count
+        pageControl.currentPage = initialPage
+        pageControl.backgroundStyle = .minimal
+        pageControl.isUserInteractionEnabled = false
+        return pageControl
+    }()
     
     let yourAttributes: [NSAttributedString.Key: Any] = [
         .font: UIFont.poppinsSemiBold(size: 15),
@@ -61,6 +68,10 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        dataSource = self
+        delegate = self
+        
         configureUI()
     }
     
@@ -92,18 +103,23 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         view.addSubview(skipButton)
         skipButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 30, paddingRight: 20)
         
-        dataSource = self
-        delegate = self
+        let page1 = OnboardingViewController(
+            imageName: "Onboarding-1",
+            titleText: "Welcome to Sprout",
+            subtitleText: "We help you to keep on track to build your child’s eco-friendly habit."
+        )
         
-        let page1 = OnboardingViewController(imageName: "logo",
-                                             titleText: "Welcome to Sprout",
-                                             subtitleText: "We help you to keep on track to build your child’s eco-friendly habit.")
-        let page2 = OnboardingViewController(imageName: "swift",
-                                             titleText: "Challenge Your Kids",
-                                             subtitleText: " Build an eco-friendly habits in a fun and rewarding way.")
-        let page3 = OnboardingViewController(imageName: "level-up",
-                                             titleText: "Get Notified!",
-                                             subtitleText: "We’ll send a notification as a reminders so you don’t miss a beat.")
+        let page2 = OnboardingViewController(
+            imageName: "Onboarding-1",
+            titleText: "Challenge Your Kids",
+            subtitleText: " Build an eco-friendly habits in a fun and rewarding way."
+        )
+        
+        let page3 = OnboardingViewController(
+            imageName: "Onboarding-1",
+            titleText: "Get Notified!",
+            subtitleText: "We’ll send a notification as a reminders so you don’t miss a beat."
+        )
         
         pages.append(page1)
         pages.append(page2)
@@ -114,13 +130,6 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         view.addSubview(pageControl)
         pageControl.anchor(top: skipButton.bottomAnchor, paddingTop: view.frame.height / 1.4)
         pageControl.centerX(inView: view)
-        
-        pageControl.currentPageIndicatorTintColor = .arcadiaGreen
-        pageControl.pageIndicatorTintColor = .arcadiaGray
-        pageControl.numberOfPages = pages.count
-        pageControl.currentPage = initialPage
-        pageControl.backgroundStyle = .minimal
-        pageControl.isUserInteractionEnabled = false
         
         view.addSubview(getStartedButton)
         getStartedButton.centerX(inView: view)
@@ -139,8 +148,6 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         if currentIndex == 0 {
             return nil               // wrap last
         } else {
-            getStartedButton.isEnabled = false
-            getStartedButton.backgroundColor = UIColor.systemGray3
             return pages[currentIndex - 1]  // go previous
         }
     }
@@ -164,9 +171,11 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         pageControl.currentPage = currentIndex
         
         if currentIndex > 1 {
-            
             getStartedButton.isEnabled = true
             getStartedButton.backgroundColor = UIColor.arcadiaGreen
+        } else {
+            getStartedButton.isEnabled = false
+            getStartedButton.backgroundColor = UIColor.systemGray3
         }
     }
 }
