@@ -22,6 +22,7 @@
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
+		DB6472C02853016C00996FC9 /* OnboardingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6472BF2853016C00996FC9 /* OnboardingController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		DB6472BF2853016C00996FC9 /* OnboardingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		83345E092851E45800A13B53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				DB6472C12853017900996FC9 /* Onboarding */,
 				83345E0C2851E4EF00A13B53 /* Authentication */,
 				83345E0A2851E4B100A13B53 /* MainController.swift */,
 			);
@@ -148,6 +151,14 @@
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DB6472C12853017900996FC9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				DB6472BF2853016C00996FC9 /* OnboardingController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* CardView.swift in Sources */,
+				DB6472C02853016C00996FC9 /* OnboardingController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
