@@ -13,6 +13,9 @@
 		0E266342284EEBAD00958370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E266341284EEBAD00958370 /* Assets.xcassets */; };
 		0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E266343284EEBAD00958370 /* LaunchScreen.storyboard */; };
 		8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450592852BC7E00CAE05E /* RegisterCardView.swift */; };
+		8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314505E2852F4F400CAE05E /* ProfileController.swift */; };
+		831450612852F72B00CAE05E /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450602852F72B00CAE05E /* TaskController.swift */; };
+		831450662852F74400CAE05E /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450652852F74400CAE05E /* RewardController.swift */; };
 		83345E0B2851E4B100A13B53 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0A2851E4B100A13B53 /* MainController.swift */; };
 		83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0E2851E4FA00A13B53 /* LoginController.swift */; };
 		83345E112851E50300A13B53 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E102851E50300A13B53 /* RegistrationController.swift */; };
@@ -34,6 +37,9 @@
 		0E266344284EEBAD00958370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E266346284EEBAD00958370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831450592852BC7E00CAE05E /* RegisterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardView.swift; sourceTree = "<group>"; };
+		8314505E2852F4F400CAE05E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		831450602852F72B00CAE05E /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		831450652852F74400CAE05E /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 		83345E0A2851E4B100A13B53 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		83345E0E2851E4FA00A13B53 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		83345E102851E50300A13B53 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -101,6 +107,16 @@
 			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
+		831450622852F73000CAE05E /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				8314505E2852F4F400CAE05E /* ProfileController.swift */,
+				831450602852F72B00CAE05E /* TaskController.swift */,
+				831450652852F74400CAE05E /* RewardController.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
 		83345E062851E44000A13B53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +143,7 @@
 		83345E092851E45800A13B53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				831450622852F73000CAE05E /* Tabs */,
 				83345E0C2851E4EF00A13B53 /* Authentication */,
 				83345E0A2851E4B100A13B53 /* MainController.swift */,
 			);
@@ -242,8 +259,11 @@
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
+				8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
+				831450612852F72B00CAE05E /* TaskController.swift in Sources */,
+				831450662852F74400CAE05E /* RewardController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
