@@ -104,19 +104,19 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         skipButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 30, paddingRight: 20)
         
         let page1 = OnboardingViewController(
-            imageName: "Onboarding-1",
+            imageName: "onboarding1",
             titleText: "Welcome to Sprout",
             subtitleText: "We help you to keep on track to build your child’s eco-friendly habit."
         )
         
         let page2 = OnboardingViewController(
-            imageName: "Onboarding-1",
+            imageName: "onboarding2",
             titleText: "Challenge Your Kids",
             subtitleText: " Build an eco-friendly habits in a fun and rewarding way."
         )
         
         let page3 = OnboardingViewController(
-            imageName: "Onboarding-1",
+            imageName: "onboarding3",
             titleText: "Get Notified!",
             subtitleText: "We’ll send a notification as a reminders so you don’t miss a beat."
         )
