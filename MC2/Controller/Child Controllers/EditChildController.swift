@@ -1,22 +1,13 @@
 //
-//  AddChildController.swift
+//  EditChildController.swift
 //  MC2
 //
-//  Created by Renzo Alvaroshan on 13/06/22.
+//  Created by Renzo Alvaroshan on 14/06/22.
 //
 
 import UIKit
 
-enum AvatarStyle: String, CaseIterable {
-    case ava1 = "ava1_f"
-    case ava2 = "ava2_f"
-    case ava3 = "ava3_f"
-    case ava4 = "ava1_m"
-    case ava5 = "ava2_m"
-    case ava6 = "ava3_m"
-}
-
-class AddChildController: UIViewController {
+class EditChildController: UIViewController {
     
     //MARK: - Properties
     
@@ -32,10 +23,10 @@ class AddChildController: UIViewController {
         return rect
     }()
     
-    private lazy var addChildTitle: UILabel = {
+    private lazy var editChildTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.PoppinsMedium(size: 18)
-        label.text = "Add Child"
+        label.text = "Edit Child"
         label.textColor = .white
         return label
     }()
@@ -67,15 +58,29 @@ class AddChildController: UIViewController {
         return tf
     }()
     
-    private lazy var getStartedButton: UIButton = {
+    private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .arcadiaGreen
         button.layer.cornerRadius = 10
         button.setDimensions(height: 50, width: 341)
-        button.setTitle("Let's get started!", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
-        button.addTarget(self, action: #selector(handleGetStarted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var cancelButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .white
+        button.layer.borderColor = UIColor.arcadiaGreen.cgColor
+        button.layer.borderWidth = 2
+        button.layer.cornerRadius = 10
+        button.setDimensions(height: 50, width: 341)
+        button.setTitle("Cancel", for: .normal)
+        button.setTitleColor(UIColor.arcadiaGreen, for: .normal)
+        button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
+        button.addTarget(self, action: #selector(handelCancel), for: .touchUpInside)
         return button
     }()
     
@@ -99,8 +104,12 @@ class AddChildController: UIViewController {
     
     //MARK: - Selectors
     
-    @objc func handleGetStarted() {
-        print("DEBUG: Let's get started..")
+    @objc func handleSave() {
+        print("DEBUG: Button saved..")
+    }
+    
+    @objc func handelCancel() {
+        print("DEBUG: Cancel..")
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
@@ -147,9 +156,9 @@ class AddChildController: UIViewController {
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.bottomAnchor)
         
-        view.addSubview(addChildTitle)
-        addChildTitle.centerX(inView: view)
-        addChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
+        view.addSubview(editChildTitle)
+        editChildTitle.centerX(inView: view)
+        editChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
         
         view.addSubview(circleView)
         circleView.centerX(inView: view)
@@ -181,9 +190,13 @@ class AddChildController: UIViewController {
         stack2.centerX(inView: view)
         stack2.anchor(top: stack1.bottomAnchor, paddingTop: 32)
         
-        view.addSubview(getStartedButton)
-        getStartedButton.centerX(inView: view)
-        getStartedButton.anchor(top: stack2.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 28, paddingRight: 28)
+        let stack3 = UIStackView(arrangedSubviews: [saveButton, cancelButton])
+        stack3.axis = .vertical
+        stack3.spacing = 8
+        
+        view.addSubview(stack3)
+        stack3.centerX(inView: view)
+        stack3.anchor(top: stack2.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 28, paddingRight: 28)
     }
     
     func createAvatar(imageName: String) -> UIImageView {

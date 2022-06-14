@@ -28,6 +28,8 @@
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
 		834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626C28571AE300F6F3C8 /* AddChildController.swift */; };
 		834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626E2857257800F6F3C8 /* RadioButton.swift */; };
+		834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D62712858430E00F6F3C8 /* EditChildController.swift */; };
+		834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834D62742858451900F6F3C8 /* Poppins-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		834D626C28571AE300F6F3C8 /* AddChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildController.swift; sourceTree = "<group>"; };
 		834D626E2857257800F6F3C8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		834D62712858430E00F6F3C8 /* EditChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
+		834D62742858451900F6F3C8 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */,
+				834D62742858451900F6F3C8 /* Poppins-Medium.ttf */,
 				83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */,
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
 			);
@@ -188,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				834D626C28571AE300F6F3C8 /* AddChildController.swift */,
+				834D62712858430E00F6F3C8 /* EditChildController.swift */,
 			);
 			path = "Child Controllers";
 			sourceTree = "<group>";
@@ -251,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */,
+				834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */,
 				0E266342284EEBAD00958370 /* Assets.xcassets in Resources */,
 				83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */,
 				83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */,
@@ -268,6 +275,7 @@
 			files = (
 				834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
+				834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
