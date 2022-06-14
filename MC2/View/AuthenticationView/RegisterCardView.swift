@@ -78,6 +78,8 @@ class RegisterCardView: UIView {
         super.init(frame: frame)
         configureTextFieldObservers()
         configureUI()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -149,3 +151,8 @@ class RegisterCardView: UIView {
     }
 }
 
+extension RegisterCardView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+}

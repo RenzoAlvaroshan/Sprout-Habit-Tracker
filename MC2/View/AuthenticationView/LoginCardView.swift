@@ -114,6 +114,8 @@ class LoginCardView: UIView {
         super.init(frame: frame)
         configureTextFieldObservers()
         configureUI()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -204,5 +206,11 @@ class LoginCardView: UIView {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         self.addGestureRecognizer(tap)
+    }
+}
+
+extension LoginCardView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }

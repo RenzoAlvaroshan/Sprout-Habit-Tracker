@@ -100,6 +100,7 @@ class EditChildController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        nameTextField.delegate = self
     }
     
     //MARK: - Selectors
@@ -204,5 +205,11 @@ class EditChildController: UIViewController {
         iv.image = UIImage(named: imageName)
         iv.setDimensions(height: view.frame.width / 4.24, width: view.frame.width / 4.24)
         return iv
+    }
+}
+
+extension EditChildController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
