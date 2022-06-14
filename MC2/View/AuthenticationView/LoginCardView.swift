@@ -30,6 +30,8 @@ class LoginCardView: UIView {
     
     private let emailTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Email Address")
+        tf.keyboardType = .emailAddress
+        tf.autocapitalizationType = .none
         return tf
     }()
     
@@ -78,7 +80,7 @@ class LoginCardView: UIView {
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
-        button.backgroundColor = .systemGray3
+        button.backgroundColor = .systemGray
         button.isEnabled = false
         return button
     }()
@@ -146,17 +148,27 @@ class LoginCardView: UIView {
         checkFormStatus()
     }
     
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    
+    //MARK: - Helpers
+    
     func checkFormStatus() {
         if viewModel.formIsValid == true {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.arcadiaGreen
+            UIView.animate(withDuration: 0.3) {
+                self.loginButton.backgroundColor = UIColor.arcadiaGreen
+            }
         } else {
             loginButton.isEnabled = false
-            loginButton.backgroundColor = UIColor.systemGray3
+            UIView.animate(withDuration: 0.3) {
+                self.loginButton.backgroundColor = UIColor.systemGray
+            }
         }
     }
-    
-    //MARK: - Helpers
     
     func configureUI() {
         backgroundColor = .arcadiaGray
@@ -182,11 +194,15 @@ class LoginCardView: UIView {
         stack.anchor(top: loginTitle.bottomAnchor, left: leftAnchor ,paddingTop: 30, paddingLeft: 28)
         
         addSubview(goToRegistrationButton)
-        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingBottom: 16, paddingRight: 32)
+        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingBottom: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 20, paddingRight: 32)
     }
     
     func configureTextFieldObservers() {
+        
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        self.addGestureRecognizer(tap)
     }
 }
