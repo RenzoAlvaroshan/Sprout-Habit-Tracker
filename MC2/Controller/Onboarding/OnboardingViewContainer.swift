@@ -51,7 +51,7 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(handleNavigationButton), for: .touchUpInside)
-        button.backgroundColor = .systemGray3
+        button.backgroundColor = .systemGray
         button.isEnabled = false
         return button
     }()
@@ -89,7 +89,9 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         let lastPage = pages.count - 1
         pageControl.currentPage = lastPage
         getStartedButton.isEnabled = true
-        getStartedButton.backgroundColor = UIColor.arcadiaGreen
+        UIView.animate(withDuration: 0.3) {
+            self.getStartedButton.backgroundColor = UIColor.arcadiaGreen
+        }
         
         goToSpecificPage(index: lastPage, ofViewControllers: pages)
     }
@@ -118,7 +120,7 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         let page3 = OnboardingViewController(
             imageName: "onboarding3",
             titleText: "Get Notified!",
-            subtitleText: "We’ll send a notification as a reminders so you don’t miss a beat."
+            subtitleText: "We’ll send a notification as a reminder so you don’t miss a beat."
         )
         
         pages.append(page1)
@@ -172,10 +174,14 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         
         if currentIndex > 1 {
             getStartedButton.isEnabled = true
-            getStartedButton.backgroundColor = UIColor.arcadiaGreen
+            UIView.animate(withDuration: 0.2) {
+                self.getStartedButton.backgroundColor = UIColor.arcadiaGreen
+            }
         } else {
             getStartedButton.isEnabled = false
-            getStartedButton.backgroundColor = UIColor.systemGray3
+            UIView.animate(withDuration: 0.2) {
+                self.getStartedButton.backgroundColor = UIColor.systemGray
+            }
         }
     }
 }

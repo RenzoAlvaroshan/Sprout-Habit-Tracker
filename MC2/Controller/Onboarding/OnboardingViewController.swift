@@ -27,6 +27,7 @@ class OnboardingViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsSemiBold(size: 24)
+        label.textColor = .black
         return label
     }()
     
@@ -35,9 +36,11 @@ class OnboardingViewController: UIViewController {
         label.font = UIFont.poppinsRegular(size: 18)
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.textColor = .black
         return label
     }()
     
+    //MARK: - Lifecycle
     init(imageName: String, titleText: String, subtitleText: String) {
         
         super.init(nibName: nil, bundle: nil)
@@ -55,10 +58,10 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
     }
-}
-
-extension OnboardingViewController {
     
+    //MARK: - Selectors
+    
+    //MARK: - Helpers
     func configureUI() {
         
         stackView.addArrangedSubview(imageView)
