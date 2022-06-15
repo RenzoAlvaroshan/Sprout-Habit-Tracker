@@ -22,7 +22,16 @@
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
-		8ECFFBCD2852F49E0061B117 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ECFFBCC2852F49E0061B117 /* ActivityView.swift */; };
+		8E9B45BE28590FE40080CC33 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45BD28590FE40080CC33 /* MainTabController.swift */; };
+		8E9B45C02859106B0080CC33 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45BF2859106B0080CC33 /* TaskController.swift */; };
+		8E9B45C2285910750080CC33 /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C1285910750080CC33 /* RewardController.swift */; };
+		8E9B45C4285910870080CC33 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C3285910870080CC33 /* ProfileController.swift */; };
+		8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C5285911960080CC33 /* ActivityView.swift */; };
+		8E9B45C82859128E0080CC33 /* ActivityTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C72859128E0080CC33 /* ActivityTableView.swift */; };
+		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
+		8E9B45CC2859132C0080CC33 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CB2859132C0080CC33 /* ActivityModel.swift */; };
+		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
+		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +52,16 @@
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
-		8ECFFBCC2852F49E0061B117 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		8E9B45BD28590FE40080CC33 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		8E9B45BF2859106B0080CC33 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		8E9B45C1285910750080CC33 /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
+		8E9B45C3285910870080CC33 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		8E9B45C5285911960080CC33 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		8E9B45C72859128E0080CC33 /* ActivityTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableView.swift; sourceTree = "<group>"; };
+		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
+		8E9B45CB2859132C0080CC33 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
+		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +94,7 @@
 		0E266337284EEBAC00958370 /* MC2 */ = {
 			isa = PBXGroup;
 			children = (
+				8E9B45B628590EBA0080CC33 /* Habit list */,
 				83345E062851E44000A13B53 /* Model */,
 				83345E072851E44500A13B53 /* View */,
 				83345E082851E44800A13B53 /* ViewModel */,
@@ -103,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				83345E1E2851E6F100A13B53 /* CardView.swift */,
-				8ECFFBCC2852F49E0061B117 /* ActivityView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -151,6 +169,55 @@
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		8E9B45B628590EBA0080CC33 /* Habit list */ = {
+			isa = PBXGroup;
+			children = (
+				8E9B45BC28590EF80080CC33 /* Model */,
+				8E9B45BB28590EF60080CC33 /* View */,
+				8E9B45BA28590EF40080CC33 /* ViewModel */,
+				8E9B45B928590EF20080CC33 /* Controller */,
+			);
+			path = "Habit list";
+			sourceTree = "<group>";
+		};
+		8E9B45B928590EF20080CC33 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8E9B45BD28590FE40080CC33 /* MainTabController.swift */,
+				8E9B45BF2859106B0080CC33 /* TaskController.swift */,
+				8E9B45C1285910750080CC33 /* RewardController.swift */,
+				8E9B45C3285910870080CC33 /* ProfileController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8E9B45BA28590EF40080CC33 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E9B45BB28590EF60080CC33 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8E9B45C5285911960080CC33 /* ActivityView.swift */,
+				8E9B45C72859128E0080CC33 /* ActivityTableView.swift */,
+				8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */,
+				8E9B45CD285913870080CC33 /* ActivityViewCell.swift */,
+				8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8E9B45BC28590EF80080CC33 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8E9B45CB2859132C0080CC33 /* ActivityModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,13 +296,22 @@
 			files = (
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
+				8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
-				8ECFFBCD2852F49E0061B117 /* ActivityView.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
+				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
+				8E9B45C82859128E0080CC33 /* ActivityTableView.swift in Sources */,
+				8E9B45C4285910870080CC33 /* ProfileController.swift in Sources */,
+				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
+				8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */,
+				8E9B45CC2859132C0080CC33 /* ActivityModel.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
+				8E9B45BE28590FE40080CC33 /* MainTabController.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* CardView.swift in Sources */,
+				8E9B45C02859106B0080CC33 /* TaskController.swift in Sources */,
+				8E9B45C2285910750080CC33 /* RewardController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
