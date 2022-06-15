@@ -34,7 +34,7 @@ class AddChildController: UIViewController {
     
     private lazy var addChildTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.PoppinsMedium(size: 18)
+        label.font = UIFont.poppinsMedium(size: 18)
         label.text = "Add Child"
         label.textColor = .white
         return label
@@ -62,7 +62,7 @@ class AddChildController: UIViewController {
         tf.layer.borderWidth = 1
         tf.layer.cornerRadius = 8
         tf.placeholder = "Enter your child name"
-        tf.setDimensions(height: 37, width: 247)
+        tf.setDimensions(height: view.frame.width / 10.54, width: view.frame.width / 1.58)
         tf.textAlignment = .center
         return tf
     }()
