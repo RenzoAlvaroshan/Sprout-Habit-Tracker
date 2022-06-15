@@ -30,7 +30,7 @@ class ProfileController: UIViewController {
     
     private lazy var avatarButton: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "ava1")
+        iv.image = UIImage(named: "ava1_f")
         iv.setDimensions(height: view.frame.width / 2.6, width: view.frame.width / 2.6)
         return iv
     }()

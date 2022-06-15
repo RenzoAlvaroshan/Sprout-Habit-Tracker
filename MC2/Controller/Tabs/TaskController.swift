@@ -2,15 +2,28 @@
 //  TaskController.swift
 //  MC2
 //
-//  Created by Stephen Giovanni Saputra on 15/06/22.
+//  Created by Renzo Alvaroshan on 10/06/22.
 //
 
 import UIKit
 
 class TaskController: UIViewController {
     
+    //MARK: - Properties
+    
+    //MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+        configureGradientLayer()
+        configureUI()
+    }
+    
+    //MARK: - Selectors
+    
+    //MARK: - Helpers
+    
+    func configureUI() {
+        
     }
 }

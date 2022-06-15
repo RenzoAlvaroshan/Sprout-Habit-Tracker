@@ -247,5 +247,12 @@ extension UIFont {
       }
       return customFont
     }
+    
+    static func PoppinsMedium(size: CGFloat) -> UIFont {
+      guard let customFont = UIFont(name: "Poppins-Medium", size: size) else {
+        return UIFont.systemFont(ofSize: size)
+      }
+      return customFont
+    }
 }
 

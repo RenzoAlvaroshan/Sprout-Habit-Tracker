@@ -24,11 +24,11 @@
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
-		DB03EC422856F3B700A0EA46 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03EC412856F3B700A0EA46 /* OnboardingViewContainer.swift */; };
-		DB03EC442856F73500A0EA46 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03EC432856F73500A0EA46 /* OnboardingViewController.swift */; };
-		DB13491C2858438B00E04F58 /* CircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13491B2858438B00E04F58 /* CircularXPView.swift */; };
-		DBD130892859808F00A8D04A /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD130882859808F00A8D04A /* TaskController.swift */; };
-		DBD1308D285980D800A8D04A /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1308C285980D800A8D04A /* RewardController.swift */; };
+		834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626C28571AE300F6F3C8 /* AddChildController.swift */; };
+		834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626E2857257800F6F3C8 /* RadioButton.swift */; };
+		834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D62712858430E00F6F3C8 /* EditChildController.swift */; };
+		834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834D62742858451900F6F3C8 /* Poppins-Medium.ttf */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,11 +51,11 @@
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
-		DB03EC412856F3B700A0EA46 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
-		DB03EC432856F73500A0EA46 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		DB13491B2858438B00E04F58 /* CircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularXPView.swift; sourceTree = "<group>"; };
-		DBD130882859808F00A8D04A /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
-		DBD1308C285980D800A8D04A /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
+		834D626C28571AE300F6F3C8 /* AddChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildController.swift; sourceTree = "<group>"; };
+		834D626E2857257800F6F3C8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		834D62712858430E00F6F3C8 /* EditChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
+		834D62742858451900F6F3C8 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				831450622852F73000CAE05E /* Tabs */,
-				DB13491A2858435B00E04F58 /* Reusable Views */,
-				DB6472C12853017900996FC9 /* Onboarding */,
+				834D62702858274700F6F3C8 /* Child Controllers */,
 				83345E0C2851E4EF00A13B53 /* Authentication */,
 				83345E0A2851E4B100A13B53 /* MainController.swift */,
 			);
@@ -172,6 +171,7 @@
 			children = (
 				83345E132851E5AE00A13B53 /* Extensions.swift */,
 				83345E1C2851E62700A13B53 /* Utilities.swift */,
+				834D626E2857257800F6F3C8 /* RadioButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -180,27 +180,20 @@
 			isa = PBXGroup;
 			children = (
 				83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */,
+				834D62742858451900F6F3C8 /* Poppins-Medium.ttf */,
 				83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */,
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		DB13491A2858435B00E04F58 /* Reusable Views */ = {
+		834D62702858274700F6F3C8 /* Child Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DB13491B2858438B00E04F58 /* CircularXPView.swift */,
+				834D626C28571AE300F6F3C8 /* AddChildController.swift */,
+				834D62712858430E00F6F3C8 /* EditChildController.swift */,
 			);
-			path = "Reusable Views";
-			sourceTree = "<group>";
-		};
-		DB6472C12853017900996FC9 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				DB03EC412856F3B700A0EA46 /* OnboardingViewContainer.swift */,
-				DB03EC432856F73500A0EA46 /* OnboardingViewController.swift */,
-			);
-			path = Onboarding;
+			path = "Child Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */,
+				834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */,
 				0E266342284EEBAD00958370 /* Assets.xcassets in Resources */,
 				83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */,
 				83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */,
@@ -277,8 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DBD130892859808F00A8D04A /* TaskController.swift in Sources */,
+				834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
+				834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
@@ -288,11 +283,9 @@
 				8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
-				DB13491C2858438B00E04F58 /* CircularXPView.swift in Sources */,
-				DB03EC442856F73500A0EA46 /* OnboardingViewController.swift in Sources */,
-				DBD1308D285980D800A8D04A /* RewardController.swift in Sources */,
-				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
-				DB03EC422856F3B700A0EA46 /* OnboardingViewContainer.swift in Sources */,
+				831450612852F72B00CAE05E /* TaskController.swift in Sources */,
+				834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */,
+				831450662852F74400CAE05E /* RewardController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
