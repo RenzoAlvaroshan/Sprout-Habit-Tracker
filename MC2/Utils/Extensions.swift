@@ -14,8 +14,11 @@ public struct AnchoredConstraints {
 extension UIColor {
     static let barDeselectedColor = UIColor(white: 0, alpha: 0.1)
     static let arcadiaGreen = UIColor(red: 0.02, green: 0.27, blue: 0.21, alpha: 1.00)
-    static let arcadiaGreen2 = UIColor(red: 0.02, green: 0.27, blue: 0.21, alpha: 0.50)
+    static let arcadiaGreen2 = UIColor(red: 0.26, green: 0.51, blue: 0.45, alpha: 1.00)
+    static let arcadiaGreen3 = UIColor(red: 0.02, green: 0.27, blue: 0.21, alpha: 0.50)
     static let arcadiaGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
+    static let fontGray = UIColor(red: 0.53, green: 0.53, blue: 0.53, alpha: 1.00)
+    static let arcadiaYellow = UIColor(red: 1, green: 0.8, blue: 0.11, alpha: 1.00)
 }
 
 extension UIViewController {
@@ -241,6 +244,13 @@ extension UIFont {
     
     static func poppinsBold(size: CGFloat) -> UIFont {
       guard let customFont = UIFont(name: "Poppins-Bold", size: size) else {
+        return UIFont.systemFont(ofSize: size)
+      }
+      return customFont
+    }
+    
+    static func poppinsMedium(size: CGFloat) -> UIFont {
+      guard let customFont = UIFont(name: "Poppins-Medium", size: size) else {
         return UIFont.systemFont(ofSize: size)
       }
       return customFont

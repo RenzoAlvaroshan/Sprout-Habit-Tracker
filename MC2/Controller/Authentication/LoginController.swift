@@ -7,11 +7,11 @@
 
 import UIKit
 
-class LoginController: UIViewController {
+class LoginController: UIViewController, LoginCardViewDelegate {
     
     //MARK: - Properties
     
-    private let cardView = CardView()
+    private let cardView = LoginCardView()
     
     private let iconImageView: UIImageView = {
         let iv = UIImageView()
@@ -26,6 +26,9 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cardView.delegate = self
+        
         configureUI()
     }
     
@@ -35,8 +38,18 @@ class LoginController: UIViewController {
     
     //MARK: - Helpers
     
+    func handleLoginButton() {
+        navigationController?.pushViewController(MainController(), animated: true)
+    }
+    
+    func handleShowRegistration() {
+        navigationController?.pushViewController(RegistrationController(), animated: true)
+    }
+    
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.barStyle = .black
         
         view.addSubview(iconImageView)
         iconImageView.centerX(inView: view)

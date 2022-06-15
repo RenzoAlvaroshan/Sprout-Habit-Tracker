@@ -1,15 +1,22 @@
 //
-//  CardView.swift
+//  RegisterCardView.swift
 //  MC2
 //
-//  Created by Renzo Alvaroshan on 09/06/22.
+//  Created by Renzo Alvaroshan on 10/06/22.
 //
 
 import UIKit
 
-class CardView: UIView {
+protocol RegisterCardViewDelegate: AnyObject {
+    func handleShowLogin()
+    func handleRegisterButton()
+}
+
+class RegisterCardView: UIView {
     
     //MARK: - Properties
+    
+    weak var delegate: RegisterCardViewDelegate?
     
     private var viewModel = LoginViewModel()
     
@@ -44,58 +51,24 @@ class CardView: UIView {
         return view
     }()
     
-    let yourAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.poppinsRegular(size: 15),
-        .foregroundColor: UIColor.arcadiaGreen2,
-        .underlineStyle: NSUnderlineStyle.single.rawValue
-    ]
-    
-    private lazy var forgotPasswordButton: UIButton = {
-        
-        let attributeString = NSMutableAttributedString(
-            string: "Forgot Password?",
-            attributes: yourAttributes
-        )
-
-        let button = UIButton(type: .system)
-        button.setAttributedTitle(attributeString, for: .normal)
-        button.setTitleColor(UIColor.arcadiaGreen2, for: .normal)
-        button.addTarget(self, action: #selector(handleForgotPassword), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleRegisterButton), for: .touchUpInside)
         button.backgroundColor = .systemGray3
-        button.isEnabled = false
-        return button
-    }()
-    
-    private lazy var loginAsGuardianButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Log In as a Guardian", for: .normal)
-        button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
-        button.setTitleColor(UIColor.arcadiaGreen, for: .normal)
-        button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(handleLoginAsGuardianButton), for: .touchUpInside)
-        button.backgroundColor = .arcadiaGray
-        button.layer.borderWidth = 1.5
-        button.layer.borderColor = UIColor.arcadiaGreen.cgColor
         button.isEnabled = false
         return button
     }()
     
     private lazy var goToRegistrationButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [.foregroundColor: UIColor.arcadiaGreen, .font: UIFont.poppinsRegular(size: 16)])
-        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [.foregroundColor: UIColor.arcadiaGreen, .font: UIFont.poppinsBold(size: 16)]))
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account? ", attributes: [.foregroundColor: UIColor.fontGray, .font: UIFont.poppinsRegular(size: 16)])
+        attributedTitle.append(NSAttributedString(string: "Log In", attributes: [.foregroundColor: UIColor.arcadiaGreen, .font: UIFont.poppinsBold(size: 16)]))
         button.setAttributedTitle(attributedTitle, for: .normal)
-        button.addTarget(self, action: #selector(handleShowRegistration), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
         return button
     }()
     
@@ -105,6 +78,8 @@ class CardView: UIView {
         super.init(frame: frame)
         configureTextFieldObservers()
         configureUI()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -113,20 +88,12 @@ class CardView: UIView {
     
     //MARK: - Selectors
     
-    @objc func handleLoginButton() {
-        
+    @objc func handleRegisterButton() {
+        delegate?.handleRegisterButton()
     }
     
-    @objc func handleLoginAsGuardianButton() {
-        
-    }
-    
-    @objc func handleForgotPassword() {
-        
-    }
-    
-    @objc func handleShowRegistration() {
-        
+    @objc func handleShowLogin() {
+        delegate?.handleShowLogin()
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -161,10 +128,11 @@ class CardView: UIView {
         loginTitle.centerX(inView: self)
         loginTitle.anchor(top: topAnchor, paddingTop: 30)
         
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, forgotPasswordButton, loginButton, loginAsGuardianButton])
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
         stack.axis = .vertical
         stack.spacing = 16
         stack.distribution = .fillEqually
+        stack.setCustomSpacing(90, after: passwordContainerView)
 
         emailContainerView.setDimensions(height: 54, width: frame.width * 0.8)
         passwordContainerView.setDimensions(height: 54, width: frame.width * 0.8)
@@ -174,11 +142,17 @@ class CardView: UIView {
         stack.anchor(top: loginTitle.bottomAnchor, left: leftAnchor ,paddingTop: 30, paddingLeft: 28)
         
         addSubview(goToRegistrationButton)
-        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingRight: 32)
+        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingBottom: 16 ,paddingRight: 32)
     }
     
     func configureTextFieldObservers() {
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+    }
+}
+
+extension RegisterCardView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
