@@ -14,8 +14,6 @@
 		0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E266343284EEBAD00958370 /* LaunchScreen.storyboard */; };
 		8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450592852BC7E00CAE05E /* RegisterCardView.swift */; };
 		8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314505E2852F4F400CAE05E /* ProfileController.swift */; };
-		831450612852F72B00CAE05E /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450602852F72B00CAE05E /* TaskController.swift */; };
-		831450662852F74400CAE05E /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450652852F74400CAE05E /* RewardController.swift */; };
 		83345E0B2851E4B100A13B53 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0A2851E4B100A13B53 /* MainController.swift */; };
 		83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0E2851E4FA00A13B53 /* LoginController.swift */; };
 		83345E112851E50300A13B53 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E102851E50300A13B53 /* RegistrationController.swift */; };
@@ -30,6 +28,7 @@
 		834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626E2857257800F6F3C8 /* RadioButton.swift */; };
 		834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D62712858430E00F6F3C8 /* EditChildController.swift */; };
 		834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834D62742858451900F6F3C8 /* Poppins-Medium.ttf */; };
+    
 		834D6278285851C800F6F3C8 /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D6277285851C800F6F3C8 /* AddHabitController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +42,6 @@
 		0E266346284EEBAD00958370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831450592852BC7E00CAE05E /* RegisterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardView.swift; sourceTree = "<group>"; };
 		8314505E2852F4F400CAE05E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		831450602852F72B00CAE05E /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
-		831450652852F74400CAE05E /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 		83345E0A2851E4B100A13B53 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		83345E0E2851E4FA00A13B53 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		83345E102851E50300A13B53 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -59,6 +56,7 @@
 		834D626E2857257800F6F3C8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		834D62712858430E00F6F3C8 /* EditChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
 		834D62742858451900F6F3C8 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+
 		834D6277285851C800F6F3C8 /* AddHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,9 +118,9 @@
 		831450622852F73000CAE05E /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				DBD130882859808F00A8D04A /* TaskController.swift */,
+				DBD1308C285980D800A8D04A /* RewardController.swift */,
 				8314505E2852F4F400CAE05E /* ProfileController.swift */,
-				831450602852F72B00CAE05E /* TaskController.swift */,
-				831450652852F74400CAE05E /* RewardController.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -447,12 +445,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -464,7 +464,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -475,12 +475,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -492,7 +494,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
