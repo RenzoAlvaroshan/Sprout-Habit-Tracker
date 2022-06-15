@@ -28,6 +28,25 @@ class Utilities {
         return view
     }
     
+    func buttonContainerView(input1: String, input2: String) -> UIView {
+        let view = UIView()
+        
+        view.backgroundColor = .arcadiaGray
+        view.setDimensions(height: view.frame.height / 10, width: view.frame.width * 0.8)
+        
+        let title = UILabel()
+        title.text = input1
+        title.font = UIFont.poppinsSemiBold(size: 16)
+//        title.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
+        
+        let subtitle = UILabel()
+        subtitle.text = input2
+        subtitle.font = UIFont.poppinsRegular(size: 14)
+//        subtitle.anchor(top: title.bottomAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 12)
+        
+        return view
+    }
+    
     func textField(withPlaceholder placeholder: String) -> UITextField {
         let tf = UITextField()
         tf.textColor = .arcadiaGreen
