@@ -25,7 +25,7 @@ class EditChildController: UIViewController {
     
     private lazy var editChildTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.PoppinsMedium(size: 18)
+        label.font = UIFont.poppinsMedium(size: 18)
         label.text = "Edit Child"
         label.textColor = .white
         return label

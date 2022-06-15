@@ -28,7 +28,8 @@
 		834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626E2857257800F6F3C8 /* RadioButton.swift */; };
 		834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D62712858430E00F6F3C8 /* EditChildController.swift */; };
 		834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834D62742858451900F6F3C8 /* Poppins-Medium.ttf */; };
-
+    
+		834D6278285851C800F6F3C8 /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D6277285851C800F6F3C8 /* AddHabitController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		834D62712858430E00F6F3C8 /* EditChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
 		834D62742858451900F6F3C8 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 
+		834D6277285851C800F6F3C8 /* AddHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		83345E092851E45800A13B53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				834D6276285851BA00F6F3C8 /* Activity UI */,
 				831450622852F73000CAE05E /* Tabs */,
 				834D62702858274700F6F3C8 /* Child Controllers */,
 				83345E0C2851E4EF00A13B53 /* Authentication */,
@@ -194,6 +197,14 @@
 				834D62712858430E00F6F3C8 /* EditChildController.swift */,
 			);
 			path = "Child Controllers";
+			sourceTree = "<group>";
+		};
+		834D6276285851BA00F6F3C8 /* Activity UI */ = {
+			isa = PBXGroup;
+			children = (
+				834D6277285851C800F6F3C8 /* AddHabitController.swift */,
+			);
+			path = "Activity UI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */,
+				834D6278285851C800F6F3C8 /* AddHabitController.swift in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
