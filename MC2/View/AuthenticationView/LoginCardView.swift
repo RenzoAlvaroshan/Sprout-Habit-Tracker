@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  LoginCardView.swift
 //  MC2
 //
 //  Created by Renzo Alvaroshan on 09/06/22.
@@ -7,9 +7,16 @@
 
 import UIKit
 
-class CardView: UIView {
+protocol LoginCardViewDelegate: AnyObject {
+    func handleShowRegistration()
+    func handleLoginButton()
+}
+
+class LoginCardView: UIView {
     
     //MARK: - Properties
+    
+    weak var delegate: LoginCardViewDelegate?
     
     private var viewModel = LoginViewModel()
     
@@ -92,7 +99,7 @@ class CardView: UIView {
     
     private lazy var goToRegistrationButton: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [.foregroundColor: UIColor.arcadiaGreen, .font: UIFont.poppinsRegular(size: 16)])
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [.foregroundColor: UIColor.fontGray, .font: UIFont.poppinsRegular(size: 16)])
         attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [.foregroundColor: UIColor.arcadiaGreen, .font: UIFont.poppinsBold(size: 16)]))
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handleShowRegistration), for: .touchUpInside)
@@ -114,7 +121,7 @@ class CardView: UIView {
     //MARK: - Selectors
     
     @objc func handleLoginButton() {
-        
+        delegate?.handleLoginButton()
     }
     
     @objc func handleLoginAsGuardianButton() {
@@ -126,7 +133,7 @@ class CardView: UIView {
     }
     
     @objc func handleShowRegistration() {
-        
+        delegate?.handleShowRegistration()
     }
     
     @objc func textDidChange(sender: UITextField) {
@@ -165,6 +172,7 @@ class CardView: UIView {
         stack.axis = .vertical
         stack.spacing = 16
         stack.distribution = .fillEqually
+        stack.setCustomSpacing(25, after: forgotPasswordButton)
 
         emailContainerView.setDimensions(height: 54, width: frame.width * 0.8)
         passwordContainerView.setDimensions(height: 54, width: frame.width * 0.8)
@@ -174,7 +182,7 @@ class CardView: UIView {
         stack.anchor(top: loginTitle.bottomAnchor, left: leftAnchor ,paddingTop: 30, paddingLeft: 28)
         
         addSubview(goToRegistrationButton)
-        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingRight: 32)
+        goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingBottom: 16, paddingRight: 32)
     }
     
     func configureTextFieldObservers() {

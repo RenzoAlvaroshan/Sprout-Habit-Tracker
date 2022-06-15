@@ -12,12 +12,13 @@
 		0E266340284EEBAC00958370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E26633E284EEBAC00958370 /* Main.storyboard */; };
 		0E266342284EEBAD00958370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E266341284EEBAD00958370 /* Assets.xcassets */; };
 		0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E266343284EEBAD00958370 /* LaunchScreen.storyboard */; };
+		8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450592852BC7E00CAE05E /* RegisterCardView.swift */; };
 		83345E0B2851E4B100A13B53 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0A2851E4B100A13B53 /* MainController.swift */; };
 		83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0E2851E4FA00A13B53 /* LoginController.swift */; };
 		83345E112851E50300A13B53 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E102851E50300A13B53 /* RegistrationController.swift */; };
 		83345E142851E5AE00A13B53 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E132851E5AE00A13B53 /* Extensions.swift */; };
 		83345E1D2851E62700A13B53 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1C2851E62700A13B53 /* Utilities.swift */; };
-		83345E1F2851E6F100A13B53 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1E2851E6F100A13B53 /* CardView.swift */; };
+		83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1E2851E6F100A13B53 /* LoginCardView.swift */; };
 		83345E232851EB0F00A13B53 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */; };
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
@@ -35,12 +36,13 @@
 		0E266341284EEBAD00958370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E266344284EEBAD00958370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E266346284EEBAD00958370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		831450592852BC7E00CAE05E /* RegisterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardView.swift; sourceTree = "<group>"; };
 		83345E0A2851E4B100A13B53 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		83345E0E2851E4FA00A13B53 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		83345E102851E50300A13B53 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		83345E132851E5AE00A13B53 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		83345E1C2851E62700A13B53 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		83345E1E2851E6F100A13B53 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		83345E1E2851E6F100A13B53 /* LoginCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCardView.swift; sourceTree = "<group>"; };
 		83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -96,6 +98,15 @@
 			path = MC2;
 			sourceTree = "<group>";
 		};
+		8314505B2852BD0200CAE05E /* AuthenticationView */ = {
+			isa = PBXGroup;
+			children = (
+				83345E1E2851E6F100A13B53 /* LoginCardView.swift */,
+				831450592852BC7E00CAE05E /* RegisterCardView.swift */,
+			);
+			path = AuthenticationView;
+			sourceTree = "<group>";
+		};
 		83345E062851E44000A13B53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +117,7 @@
 		83345E072851E44500A13B53 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				83345E1E2851E6F100A13B53 /* CardView.swift */,
+				8314505B2852BD0200CAE05E /* AuthenticationView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,12 +261,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
+				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
+				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				DB13491C2858438B00E04F58 /* CircularXPView.swift in Sources */,
 				DB03EC442856F73500A0EA46 /* OnboardingViewController.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* CardView.swift in Sources */,
