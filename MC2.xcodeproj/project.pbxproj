@@ -14,8 +14,6 @@
 		0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E266343284EEBAD00958370 /* LaunchScreen.storyboard */; };
 		8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450592852BC7E00CAE05E /* RegisterCardView.swift */; };
 		8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314505E2852F4F400CAE05E /* ProfileController.swift */; };
-		831450612852F72B00CAE05E /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450602852F72B00CAE05E /* TaskController.swift */; };
-		831450662852F74400CAE05E /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450652852F74400CAE05E /* RewardController.swift */; };
 		83345E0B2851E4B100A13B53 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0A2851E4B100A13B53 /* MainController.swift */; };
 		83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0E2851E4FA00A13B53 /* LoginController.swift */; };
 		83345E112851E50300A13B53 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E102851E50300A13B53 /* RegistrationController.swift */; };
@@ -29,6 +27,8 @@
 		DB03EC422856F3B700A0EA46 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03EC412856F3B700A0EA46 /* OnboardingViewContainer.swift */; };
 		DB03EC442856F73500A0EA46 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB03EC432856F73500A0EA46 /* OnboardingViewController.swift */; };
 		DB13491C2858438B00E04F58 /* CircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13491B2858438B00E04F58 /* CircularXPView.swift */; };
+		DBD130892859808F00A8D04A /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD130882859808F00A8D04A /* TaskController.swift */; };
+		DBD1308D285980D800A8D04A /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD1308C285980D800A8D04A /* RewardController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +41,6 @@
 		0E266346284EEBAD00958370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831450592852BC7E00CAE05E /* RegisterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardView.swift; sourceTree = "<group>"; };
 		8314505E2852F4F400CAE05E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		831450602852F72B00CAE05E /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
-		831450652852F74400CAE05E /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 		83345E0A2851E4B100A13B53 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		83345E0E2851E4FA00A13B53 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		83345E102851E50300A13B53 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -56,6 +54,8 @@
 		DB03EC412856F3B700A0EA46 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		DB03EC432856F73500A0EA46 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		DB13491B2858438B00E04F58 /* CircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularXPView.swift; sourceTree = "<group>"; };
+		DBD130882859808F00A8D04A /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		DBD1308C285980D800A8D04A /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,9 +116,9 @@
 		831450622852F73000CAE05E /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				DBD130882859808F00A8D04A /* TaskController.swift */,
+				DBD1308C285980D800A8D04A /* RewardController.swift */,
 				8314505E2852F4F400CAE05E /* ProfileController.swift */,
-				831450602852F72B00CAE05E /* TaskController.swift */,
-				831450652852F74400CAE05E /* RewardController.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -277,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD130892859808F00A8D04A /* TaskController.swift in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
@@ -287,11 +288,10 @@
 				8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
-				831450612852F72B00CAE05E /* TaskController.swift in Sources */,
-				831450662852F74400CAE05E /* RewardController.swift in Sources */,
 				DB13491C2858438B00E04F58 /* CircularXPView.swift in Sources */,
 				DB03EC442856F73500A0EA46 /* OnboardingViewController.swift in Sources */,
-				83345E1F2851E6F100A13B53 /* CardView.swift in Sources */,
+				DBD1308D285980D800A8D04A /* RewardController.swift in Sources */,
+				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				DB03EC422856F3B700A0EA46 /* OnboardingViewContainer.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 			);
