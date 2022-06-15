@@ -12,42 +12,37 @@
 		0E266340284EEBAC00958370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E26633E284EEBAC00958370 /* Main.storyboard */; };
 		0E266342284EEBAD00958370 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E266341284EEBAD00958370 /* Assets.xcassets */; };
 		0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E266343284EEBAD00958370 /* LaunchScreen.storyboard */; };
+		0E8745A72859ABE80038B4BB /* AddChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745A32859ABE80038B4BB /* AddChildController.swift */; };
+		0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745A42859ABE80038B4BB /* EditChildController.swift */; };
+		0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745A62859ABE80038B4BB /* AddHabitController.swift */; };
+		0E8745AB2859AC180038B4BB /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745AA2859AC170038B4BB /* ActivityModel.swift */; };
+		0E8745B12859C1060038B4BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B02859C1060038B4BB /* Extensions.swift */; };
+		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
+		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
+		0E8745BD285A10760038B4BB /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745BC285A10760038B4BB /* TaskController.swift */; };
 		0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */; };
-		0EFE8DD62859A63E00C1A4B8 /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCE2859A63E00C1A4B8 /* RewardController.swift */; };
-		0EFE8DD72859A63E00C1A4B8 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskController.swift */; };
+		0EFE8DD72859A63E00C1A4B8 /* TaskControllerRenzo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskControllerRenzo.swift */; };
 		0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */; };
 		0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD22859A63E00C1A4B8 /* OnboardingViewController.swift */; };
 		0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */; };
 		8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831450592852BC7E00CAE05E /* RegisterCardView.swift */; };
-		8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8314505E2852F4F400CAE05E /* ProfileController.swift */; };
 		83345E0B2851E4B100A13B53 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0A2851E4B100A13B53 /* MainController.swift */; };
 		83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E0E2851E4FA00A13B53 /* LoginController.swift */; };
 		83345E112851E50300A13B53 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E102851E50300A13B53 /* RegistrationController.swift */; };
-		83345E142851E5AE00A13B53 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E132851E5AE00A13B53 /* Extensions.swift */; };
 		83345E1D2851E62700A13B53 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1C2851E62700A13B53 /* Utilities.swift */; };
 		83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E1E2851E6F100A13B53 /* LoginCardView.swift */; };
 		83345E232851EB0F00A13B53 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */; };
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
-// Create-Activity-Page-UI
-		8E9B45BE28590FE40080CC33 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45BD28590FE40080CC33 /* MainTabController.swift */; };
-		8E9B45C02859106B0080CC33 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45BF2859106B0080CC33 /* TaskController.swift */; };
-		8E9B45C2285910750080CC33 /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C1285910750080CC33 /* RewardController.swift */; };
-		8E9B45C4285910870080CC33 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C3285910870080CC33 /* ProfileController.swift */; };
+		834D626D28571AE300F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		834D62722858430E00F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
+		834D6278285851C800F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C5285911960080CC33 /* ActivityView.swift */; };
 		8E9B45C82859128E0080CC33 /* ActivityTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C72859128E0080CC33 /* ActivityTableView.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
-		8E9B45CC2859132C0080CC33 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CB2859132C0080CC33 /* ActivityModel.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
-// main
-		834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626C28571AE300F6F3C8 /* AddChildController.swift */; };
-		834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D626E2857257800F6F3C8 /* RadioButton.swift */; };
-		834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D62712858430E00F6F3C8 /* EditChildController.swift */; };
-		834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834D62742858451900F6F3C8 /* Poppins-Medium.ttf */; };
-		834D6278285851C800F6F3C8 /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834D6277285851C800F6F3C8 /* AddHabitController.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,42 +53,34 @@
 		0E266341284EEBAD00958370 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E266344284EEBAD00958370 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E266346284EEBAD00958370 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E8745A32859ABE80038B4BB /* AddChildController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChildController.swift; sourceTree = "<group>"; };
+		0E8745A42859ABE80038B4BB /* EditChildController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
+		0E8745A62859ABE80038B4BB /* AddHabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHabitController.swift; sourceTree = "<group>"; };
+		0E8745AA2859AC170038B4BB /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityModel.swift; path = "MC2/Habit list/Model/ActivityModel.swift"; sourceTree = SOURCE_ROOT; };
+		0E8745B02859C1060038B4BB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
+		0E8745BC285A10760038B4BB /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		0EFE8DCE2859A63E00C1A4B8 /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
-		0EFE8DCF2859A63E00C1A4B8 /* TaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
+		0EFE8DCF2859A63E00C1A4B8 /* TaskControllerRenzo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControllerRenzo.swift; sourceTree = "<group>"; };
 		0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		0EFE8DD22859A63E00C1A4B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularXPView.swift; sourceTree = "<group>"; };
 		831450592852BC7E00CAE05E /* RegisterCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCardView.swift; sourceTree = "<group>"; };
-		8314505E2852F4F400CAE05E /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		83345E0A2851E4B100A13B53 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		83345E0E2851E4FA00A13B53 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		83345E102851E50300A13B53 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
-		83345E132851E5AE00A13B53 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		83345E1C2851E62700A13B53 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		83345E1E2851E6F100A13B53 /* LoginCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCardView.swift; sourceTree = "<group>"; };
 		83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
-// Create-Activity-Page-UI
-		8E9B45BD28590FE40080CC33 /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
-		8E9B45BF2859106B0080CC33 /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
-		8E9B45C1285910750080CC33 /* RewardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
-		8E9B45C3285910870080CC33 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		8E9B45C5285911960080CC33 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		8E9B45C72859128E0080CC33 /* ActivityTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableView.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
-		8E9B45CB2859132C0080CC33 /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
-// main
-		834D626C28571AE300F6F3C8 /* AddChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildController.swift; sourceTree = "<group>"; };
-		834D626E2857257800F6F3C8 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
-		834D62712858430E00F6F3C8 /* EditChildController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
-		834D62742858451900F6F3C8 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
-		834D6277285851C800F6F3C8 /* AddHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHabitController.swift; sourceTree = "<group>"; };
-
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,12 +130,37 @@
 			path = MC2;
 			sourceTree = "<group>";
 		};
+		0E8745A22859ABE80038B4BB /* Child Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0E8745A32859ABE80038B4BB /* AddChildController.swift */,
+				0E8745A42859ABE80038B4BB /* EditChildController.swift */,
+			);
+			path = "Child Controllers";
+			sourceTree = "<group>";
+		};
+		0E8745A52859ABE80038B4BB /* Activity UI */ = {
+			isa = PBXGroup;
+			children = (
+				0E8745A62859ABE80038B4BB /* AddHabitController.swift */,
+			);
+			path = "Activity UI";
+			sourceTree = "<group>";
+		};
+		0E8745AC2859BE550038B4BB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0E8745BC285A10760038B4BB /* TaskController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		0EFE8DCC2859A63E00C1A4B8 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
 				0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */,
-				0EFE8DCE2859A63E00C1A4B8 /* RewardController.swift */,
-				0EFE8DCF2859A63E00C1A4B8 /* TaskController.swift */,
+				0E8745B42859C17A0038B4BB /* RewardController.swift */,
+				0EFE8DCF2859A63E00C1A4B8 /* TaskControllerRenzo.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -179,14 +191,6 @@
 			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
-		831450622852F73000CAE05E /* Tabs */ = {
-			isa = PBXGroup;
-			children = (
-				8314505E2852F4F400CAE05E /* ProfileController.swift */,
-			);
-			path = Tabs;
-			sourceTree = "<group>";
-		};
 		83345E062851E44000A13B53 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,12 +217,11 @@
 		83345E092851E45800A13B53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0E8745A52859ABE80038B4BB /* Activity UI */,
+				0E8745A22859ABE80038B4BB /* Child Controllers */,
 				0EFE8DD02859A63E00C1A4B8 /* Onboarding */,
 				0EFE8DD32859A63E00C1A4B8 /* Reusable Views */,
 				0EFE8DCC2859A63E00C1A4B8 /* Tabs */,
-				834D6276285851BA00F6F3C8 /* Activity UI */,
-				831450622852F73000CAE05E /* Tabs */,
-				834D62702858274700F6F3C8 /* Child Controllers */,
 				83345E0C2851E4EF00A13B53 /* Authentication */,
 				83345E0A2851E4B100A13B53 /* MainController.swift */,
 			);
@@ -237,9 +240,9 @@
 		83345E122851E58600A13B53 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				83345E132851E5AE00A13B53 /* Extensions.swift */,
+				0E8745B22859C15A0038B4BB /* RadioButton.swift */,
+				0E8745B02859C1060038B4BB /* Extensions.swift */,
 				83345E1C2851E62700A13B53 /* Utilities.swift */,
-				834D626E2857257800F6F3C8 /* RadioButton.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -248,34 +251,21 @@
 			isa = PBXGroup;
 			children = (
 				83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */,
-				834D62742858451900F6F3C8 /* Poppins-Medium.ttf */,
 				83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */,
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-// Create-Activity-Page-UI
 		8E9B45B628590EBA0080CC33 /* Habit list */ = {
 			isa = PBXGroup;
 			children = (
 				8E9B45BC28590EF80080CC33 /* Model */,
 				8E9B45BB28590EF60080CC33 /* View */,
 				8E9B45BA28590EF40080CC33 /* ViewModel */,
-				8E9B45B928590EF20080CC33 /* Controller */,
+				0E8745AC2859BE550038B4BB /* Controller */,
 			);
 			path = "Habit list";
-			sourceTree = "<group>";
-		};
-		8E9B45B928590EF20080CC33 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				8E9B45BD28590FE40080CC33 /* MainTabController.swift */,
-				8E9B45BF2859106B0080CC33 /* TaskController.swift */,
-				8E9B45C1285910750080CC33 /* RewardController.swift */,
-				8E9B45C3285910870080CC33 /* ProfileController.swift */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		8E9B45BA28590EF40080CC33 /* ViewModel */ = {
@@ -300,27 +290,10 @@
 		8E9B45BC28590EF80080CC33 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8E9B45CB2859132C0080CC33 /* ActivityModel.swift */,
+				0E8745AA2859AC170038B4BB /* ActivityModel.swift */,
 			);
 			path = Model;
-// main
-		834D62702858274700F6F3C8 /* Child Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				834D626C28571AE300F6F3C8 /* AddChildController.swift */,
-				834D62712858430E00F6F3C8 /* EditChildController.swift */,
-			);
-			path = "Child Controllers";
-			sourceTree = "<group>";
-		};
-		834D6276285851BA00F6F3C8 /* Activity UI */ = {
-			isa = PBXGroup;
-			children = (
-				834D6277285851C800F6F3C8 /* AddHabitController.swift */,
-			);
-			path = "Activity UI";
-      
-			sourceTree = "<group>";
+			sourceTree = "<unknown>";
 		};
 /* End PBXGroup section */
 
@@ -381,7 +354,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E266345284EEBAD00958370 /* LaunchScreen.storyboard in Resources */,
-				834D62752858451900F6F3C8 /* Poppins-Medium.ttf in Resources */,
 				0E266342284EEBAD00958370 /* Assets.xcassets in Resources */,
 				83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */,
 				83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */,
@@ -398,41 +370,35 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */,
-				834D626D28571AE300F6F3C8 /* AddChildController.swift in Sources */,
-				834D6278285851C800F6F3C8 /* AddHabitController.swift in Sources */,
+				834D626D28571AE300F6F3C8 /* (null) in Sources */,
+				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
-				834D62722858430E00F6F3C8 /* EditChildController.swift in Sources */,
-				0EFE8DD72859A63E00C1A4B8 /* TaskController.swift in Sources */,
+				834D62722858430E00F6F3C8 /* (null) in Sources */,
+				0EFE8DD72859A63E00C1A4B8 /* TaskControllerRenzo.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */,
 				0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */,
-				83345E142851E5AE00A13B53 /* Extensions.swift in Sources */,
+				0E8745A72859ABE80038B4BB /* AddChildController.swift in Sources */,
 				8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */,
+				0E8745AB2859AC180038B4BB /* ActivityModel.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
 				0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
+				0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
+				0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
-// Create-Activity-Page-UI
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
+				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
 				8E9B45C82859128E0080CC33 /* ActivityTableView.swift in Sources */,
-				8E9B45C4285910870080CC33 /* ProfileController.swift in Sources */,
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */,
-				8E9B45CC2859132C0080CC33 /* ActivityModel.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
-				8E9B45BE28590FE40080CC33 /* MainTabController.swift in Sources */,
-				83345E1F2851E6F100A13B53 /* CardView.swift in Sources */,
-				8E9B45C02859106B0080CC33 /* TaskController.swift in Sources */,
-				8E9B45C2285910750080CC33 /* RewardController.swift in Sources */,
-// main
-				8314505F2852F4F400CAE05E /* ProfileController.swift in Sources */,
-				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
-				0EFE8DD62859A63E00C1A4B8 /* RewardController.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
-				834D626F2857257800F6F3C8 /* RadioButton.swift in Sources */,
-
+				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
+				0E8745BD285A10760038B4BB /* TaskController.swift in Sources */,
+				0E8745B12859C1060038B4BB /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
