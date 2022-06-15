@@ -16,6 +16,7 @@ extension UIColor {
     static let arcadiaGreen = UIColor(red: 0.02, green: 0.27, blue: 0.21, alpha: 1.00)
     static let arcadiaGreen2 = UIColor(red: 0.02, green: 0.27, blue: 0.21, alpha: 0.50)
     static let arcadiaGray = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.00)
+    static let arcadiaYellow = UIColor(red: 1, green: 0.8, blue: 0.11, alpha: 1.00)
 }
 
 extension UIViewController {
