@@ -14,7 +14,7 @@ class CircularXPView: UIView {
     let backgroundLayer = CAShapeLayer()
     let gradient = CAGradientLayer()
     
-    let size = 300
+    let size = 250
     
     override init(frame: CGRect) {
         

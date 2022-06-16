@@ -19,6 +19,10 @@
 		0E8745B12859C1060038B4BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B02859C1060038B4BB /* Extensions.swift */; };
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
+		0EF31C23285AD14100E82F92 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* Reward.swift */; };
+		0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C24285AD17400E82F92 /* RewardCell.swift */; };
+		0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C26285AD1DE00E82F92 /* ProgressView.swift */; };
+		0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C2A285AD23C00E82F92 /* RewardView.swift */; };
 		0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */; };
 		0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */; };
 		0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */; };
@@ -38,7 +42,6 @@
 		834D62722858430E00F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		834D6278285851C800F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C5285911960080CC33 /* ActivityView.swift */; };
-		8E9B45C82859128E0080CC33 /* ActivityTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C72859128E0080CC33 /* ActivityTableView.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -59,6 +62,10 @@
 		0E8745B02859C1060038B4BB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
+		0EF31C22285AD14100E82F92 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		0EF31C24285AD17400E82F92 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
+		0EF31C26285AD1DE00E82F92 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
+		0EF31C2A285AD23C00E82F92 /* RewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
 		0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControllerSuhe.swift; sourceTree = "<group>"; };
 		0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
@@ -75,7 +82,6 @@
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		8E9B45C5285911960080CC33 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
-		8E9B45C72859128E0080CC33 /* ActivityTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTableView.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -111,7 +117,8 @@
 		0E266337284EEBAC00958370 /* MC2 */ = {
 			isa = PBXGroup;
 			children = (
-				8E9B45B628590EBA0080CC33 /* Habit list */,
+				0EF31C1E285AD0E300E82F92 /* Reward List */,
+				8E9B45B628590EBA0080CC33 /* Habit List */,
 				83345E062851E44000A13B53 /* Model */,
 				83345E072851E44500A13B53 /* View */,
 				83345E082851E44800A13B53 /* ViewModel */,
@@ -143,6 +150,41 @@
 				0E8745A62859ABE80038B4BB /* AddHabitController.swift */,
 			);
 			path = "Activity UI";
+			sourceTree = "<group>";
+		};
+		0EF31C1E285AD0E300E82F92 /* Reward List */ = {
+			isa = PBXGroup;
+			children = (
+				0EF31C1F285AD0FE00E82F92 /* Model */,
+				0EF31C21285AD10700E82F92 /* View */,
+				0EF31C20285AD10500E82F92 /* ViewModel */,
+			);
+			path = "Reward List";
+			sourceTree = "<group>";
+		};
+		0EF31C1F285AD0FE00E82F92 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0EF31C22285AD14100E82F92 /* Reward.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0EF31C20285AD10500E82F92 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0EF31C21285AD10700E82F92 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0EF31C24285AD17400E82F92 /* RewardCell.swift */,
+				0EF31C26285AD1DE00E82F92 /* ProgressView.swift */,
+				0EF31C2A285AD23C00E82F92 /* RewardView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		0EFE8DCC2859A63E00C1A4B8 /* Tabs */ = {
@@ -247,14 +289,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		8E9B45B628590EBA0080CC33 /* Habit list */ = {
+		8E9B45B628590EBA0080CC33 /* Habit List */ = {
 			isa = PBXGroup;
 			children = (
 				8E9B45BC28590EF80080CC33 /* Model */,
 				8E9B45BB28590EF60080CC33 /* View */,
 				8E9B45BA28590EF40080CC33 /* ViewModel */,
 			);
-			path = "Habit list";
+			path = "Habit List";
 			sourceTree = "<group>";
 		};
 		8E9B45BA28590EF40080CC33 /* ViewModel */ = {
@@ -268,7 +310,6 @@
 			isa = PBXGroup;
 			children = (
 				8E9B45C5285911960080CC33 /* ActivityView.swift */,
-				8E9B45C72859128E0080CC33 /* ActivityTableView.swift */,
 				8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */,
 				8E9B45CD285913870080CC33 /* ActivityViewCell.swift */,
 				8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */,
@@ -362,6 +403,8 @@
 				834D626D28571AE300F6F3C8 /* (null) in Sources */,
 				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
+				0EF31C23285AD14100E82F92 /* Reward.swift in Sources */,
+				0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
 				0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
@@ -376,15 +419,16 @@
 				0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */,
+				0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
-				8E9B45C82859128E0080CC33 /* ActivityTableView.swift in Sources */,
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
+				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 				0E8745B12859C1060038B4BB /* Extensions.swift in Sources */,
 			);
