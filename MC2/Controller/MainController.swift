@@ -40,7 +40,8 @@ class MainController: UITabBarController {
         nav3.title = "Profile"
         
         viewControllers = [nav1, nav2, nav3]
-        tabBar.backgroundColor = .arcadiaGray
+        tabBar.backgroundColor = .white
+        tabBar.tintColor = .arcadiaGreen
     }
     
     func templateNavigationController(image: UIImage?, rootViewController: UIViewController) -> UINavigationController {

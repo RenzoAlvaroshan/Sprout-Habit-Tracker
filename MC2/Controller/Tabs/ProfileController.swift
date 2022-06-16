@@ -44,7 +44,7 @@ class ProfileController: UIViewController {
     
     private lazy var penButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "pencil"), for: .normal)
+        button.setImage(UIImage(systemName: "pencil", withConfiguration: UIImage.SymbolConfiguration(pointSize: 24, weight: .bold)), for: .normal)
         button.tintColor = .arcadiaGreen
         button.addTarget(self, action: #selector(handleEditButton), for: .touchUpInside)
         return button
@@ -104,6 +104,10 @@ class ProfileController: UIViewController {
     
     @objc func handleEditButton() {
         print("DEBUG: Edit button..")
+        let newVC = EditChildController()
+        newVC.hidesBottomBarWhenPushed = true
+        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
+        navigationController?.pushViewController(newVC, animated: true)
     }
     
     @objc func handleStack2() {
