@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ActivityController: UIViewController{
+class TaskControllerSuhe: UIViewController{
     
     //MARK: - Properties
     
@@ -32,6 +32,7 @@ class ActivityController: UIViewController{
         configureTableView()
         
         alertOnTap()
+        alertConfirmation()
     }
 
     //MARK: - Selectors
@@ -71,16 +72,17 @@ class ActivityController: UIViewController{
     
     func alertOnTap() {
         alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: { [self]_ in
-            self.alert2.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: nil))
             present(alert2, animated: true, completion: nil)
-            
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-
+    }
+    
+    func alertConfirmation() {
+        self.alert2.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: nil))
     }
 }
 
-extension ActivityController: UITableViewDataSource, UITableViewDelegate {
+extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
     // Banyak row dalam 1 section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -122,7 +124,7 @@ extension ActivityController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension ActivityController {
+extension TaskControllerSuhe {
     func fetchData() -> [Activity] {
         let activity1 = Activity(activityName: "Matiin lampu jam 1", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
         let activity2 = Activity(activityName: "Buang sampah", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)

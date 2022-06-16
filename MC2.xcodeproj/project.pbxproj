@@ -19,9 +19,8 @@
 		0E8745B12859C1060038B4BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B02859C1060038B4BB /* Extensions.swift */; };
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
-		0E8745BD285A10760038B4BB /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745BC285A10760038B4BB /* TaskController.swift */; };
 		0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */; };
-		0EFE8DD72859A63E00C1A4B8 /* TaskControllerRenzo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskControllerRenzo.swift */; };
+		0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */; };
 		0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */; };
 		0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD22859A63E00C1A4B8 /* OnboardingViewController.swift */; };
 		0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */; };
@@ -60,9 +59,8 @@
 		0E8745B02859C1060038B4BB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
-		0E8745BC285A10760038B4BB /* TaskController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		0EFE8DCF2859A63E00C1A4B8 /* TaskControllerRenzo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControllerRenzo.swift; sourceTree = "<group>"; };
+		0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControllerSuhe.swift; sourceTree = "<group>"; };
 		0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		0EFE8DD22859A63E00C1A4B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularXPView.swift; sourceTree = "<group>"; };
@@ -147,20 +145,12 @@
 			path = "Activity UI";
 			sourceTree = "<group>";
 		};
-		0E8745AC2859BE550038B4BB /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				0E8745BC285A10760038B4BB /* TaskController.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		0EFE8DCC2859A63E00C1A4B8 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
 				0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */,
 				0E8745B42859C17A0038B4BB /* RewardController.swift */,
-				0EFE8DCF2859A63E00C1A4B8 /* TaskControllerRenzo.swift */,
+				0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -263,7 +253,6 @@
 				8E9B45BC28590EF80080CC33 /* Model */,
 				8E9B45BB28590EF60080CC33 /* View */,
 				8E9B45BA28590EF40080CC33 /* ViewModel */,
-				0E8745AC2859BE550038B4BB /* Controller */,
 			);
 			path = "Habit list";
 			sourceTree = "<group>";
@@ -374,7 +363,7 @@
 				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
-				0EFE8DD72859A63E00C1A4B8 /* TaskControllerRenzo.swift in Sources */,
+				0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */,
 				0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */,
@@ -397,7 +386,6 @@
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
-				0E8745BD285A10760038B4BB /* TaskController.swift in Sources */,
 				0E8745B12859C1060038B4BB /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,7 +26,7 @@ class MainController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let task = TaskControllerRenzo()
+        let task = TaskControllerSuhe()
 //        let task = ActivityController()
         let nav1 = templateNavigationController(image: UIImage(named: "task.icon.gray"), rootViewController: task)
         nav1.title = "Task"
