@@ -26,7 +26,6 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     
     let yourAttributes: [NSAttributedString.Key: Any] = [
         .font: UIFont.poppinsSemiBold(size: 15),
-        .foregroundColor: UIColor.arcadiaGreen,
         .underlineStyle: NSUnderlineStyle.single.rawValue
     ]
     
@@ -46,12 +45,12 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     
     private lazy var getStartedButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Get Started", for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(handleNavigationButton), for: .touchUpInside)
-        button.backgroundColor = .systemGray
+        button.backgroundColor = .white
         button.isEnabled = false
         return button
     }()
@@ -89,8 +88,10 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         let lastPage = pages.count - 1
         pageControl.currentPage = lastPage
         getStartedButton.isEnabled = true
+        skipButton.isEnabled = false
         UIView.animate(withDuration: 0.3) {
             self.getStartedButton.backgroundColor = UIColor.arcadiaGreen
+            self.skipButton.setTitleColor(.white, for: .normal)
         }
         
         goToSpecificPage(index: lastPage, ofViewControllers: pages)
@@ -174,13 +175,10 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         
         if currentIndex > 1 {
             getStartedButton.isEnabled = true
+            skipButton.isEnabled = false
             UIView.animate(withDuration: 0.2) {
                 self.getStartedButton.backgroundColor = UIColor.arcadiaGreen
-            }
-        } else {
-            getStartedButton.isEnabled = false
-            UIView.animate(withDuration: 0.2) {
-                self.getStartedButton.backgroundColor = UIColor.systemGray
+                self.skipButton.setTitleColor(.white, for: .normal)
             }
         }
     }
