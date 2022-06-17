@@ -20,9 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.rootViewController =  UINavigationController(rootViewController: AddChildController())
 //        window?.rootViewController =  UINavigationController(rootViewController: EditChildController())
         
-//        window?.rootViewController =  UINavigationController(rootViewController: OnboardingViewContainer())
+        window?.rootViewController =  UINavigationController(rootViewController: OnboardingViewContainer())
         // punya suhe
-        window?.rootViewController =  UINavigationController(rootViewController: TaskControllerSuhe())
+//        window?.rootViewController =  UINavigationController(rootViewController: TaskControllerSuhe())
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

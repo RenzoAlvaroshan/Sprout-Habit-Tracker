@@ -20,10 +20,10 @@ class RegisterCardView: UIView {
     
     private var viewModel = LoginViewModel()
     
-    private lazy var loginTitle: UILabel = {
+    private lazy var signUpLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsSemiBold(size: 19)
-        label.text = "Log In to Your Account"
+        label.text = "Sign Up a New Account"
         label.textColor = .arcadiaGreen
         return label
     }()
@@ -124,9 +124,9 @@ class RegisterCardView: UIView {
         layer.cornerRadius = 33
         layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-        addSubview(loginTitle)
-        loginTitle.centerX(inView: self)
-        loginTitle.anchor(top: topAnchor, paddingTop: 30)
+        addSubview(signUpLabel)
+        signUpLabel.centerX(inView: self)
+        signUpLabel.anchor(top: topAnchor, paddingTop: 30)
         
         let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, loginButton])
         stack.axis = .vertical
@@ -139,7 +139,7 @@ class RegisterCardView: UIView {
 
         addSubview(stack)
         stack.centerX(inView: self)
-        stack.anchor(top: loginTitle.bottomAnchor, left: leftAnchor ,paddingTop: 30, paddingLeft: 28)
+        stack.anchor(top: signUpLabel.bottomAnchor, left: leftAnchor ,paddingTop: 30, paddingLeft: 28)
         
         addSubview(goToRegistrationButton)
         goToRegistrationButton.anchor(left: leftAnchor, bottom: safeAreaLayoutGuide.bottomAnchor, right: rightAnchor, paddingLeft: 32, paddingBottom: 16 ,paddingRight: 32)
