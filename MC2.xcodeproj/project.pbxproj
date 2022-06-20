@@ -15,7 +15,6 @@
 		0E8745A72859ABE80038B4BB /* AddChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745A32859ABE80038B4BB /* AddChildController.swift */; };
 		0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745A42859ABE80038B4BB /* EditChildController.swift */; };
 		0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745A62859ABE80038B4BB /* AddHabitController.swift */; };
-		0E8745AB2859AC180038B4BB /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745AA2859AC170038B4BB /* ActivityModel.swift */; };
 		0E8745B12859C1060038B4BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B02859C1060038B4BB /* Extensions.swift */; };
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
@@ -53,6 +52,8 @@
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
+		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
+		DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +67,6 @@
 		0E8745A32859ABE80038B4BB /* AddChildController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddChildController.swift; sourceTree = "<group>"; };
 		0E8745A42859ABE80038B4BB /* EditChildController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditChildController.swift; sourceTree = "<group>"; };
 		0E8745A62859ABE80038B4BB /* AddHabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHabitController.swift; sourceTree = "<group>"; };
-		0E8745AA2859AC170038B4BB /* ActivityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityModel.swift; path = "MC2/Habit list/Model/ActivityModel.swift"; sourceTree = SOURCE_ROOT; };
 		0E8745B02859C1060038B4BB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
+		DBA65BE128602FB2007F80D5 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,7 +137,7 @@
 			children = (
 				0EF31C1E285AD0E300E82F92 /* Reward List */,
 				8E9B45B628590EBA0080CC33 /* Habit List */,
-				83345E062851E44000A13B53 /* Model */,
+				DBA65BE528602FF4007F80D5 /* Model */,
 				83345E072851E44500A13B53 /* View */,
 				83345E082851E44800A13B53 /* ViewModel */,
 				83345E092851E45800A13B53 /* Controller */,
@@ -191,6 +193,7 @@
 		0EF31C20285AD10500E82F92 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -239,13 +242,6 @@
 				831450592852BC7E00CAE05E /* RegisterCardView.swift */,
 			);
 			path = AuthenticationView;
-			sourceTree = "<group>";
-		};
-		83345E062851E44000A13B53 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		83345E072851E44500A13B53 /* View */ = {
@@ -320,7 +316,7 @@
 		8E9B45B628590EBA0080CC33 /* Habit List */ = {
 			isa = PBXGroup;
 			children = (
-				8E9B45BC28590EF80080CC33 /* Model */,
+				DBA65BE028602FB2007F80D5 /* Model */,
 				8E9B45BB28590EF60080CC33 /* View */,
 				8E9B45BA28590EF40080CC33 /* ViewModel */,
 			);
@@ -345,13 +341,21 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8E9B45BC28590EF80080CC33 /* Model */ = {
+		DBA65BE028602FB2007F80D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0E8745AA2859AC170038B4BB /* ActivityModel.swift */,
+				DBA65BE128602FB2007F80D5 /* ActivityModel.swift */,
+			);
+			name = Model;
+			path = "MC2/Habit list/Model";
+			sourceTree = SOURCE_ROOT;
+		};
+		DBA65BE528602FF4007F80D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Model;
-			sourceTree = "<unknown>";
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -443,6 +447,7 @@
 				834D626D28571AE300F6F3C8 /* (null) in Sources */,
 				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
+				DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */,
 				0EF31C23285AD14100E82F92 /* Reward.swift in Sources */,
 				0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
@@ -452,7 +457,6 @@
 				0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */,
 				0E8745A72859ABE80038B4BB /* AddChildController.swift in Sources */,
 				8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */,
-				0E8745AB2859AC180038B4BB /* ActivityModel.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
 				0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
@@ -460,6 +464,7 @@
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */,
 				0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */,
+				DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
