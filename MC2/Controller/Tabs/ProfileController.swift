@@ -123,6 +123,11 @@ class ProfileController: UIViewController {
         do {
             try Auth.auth().signOut()
             print("GOKIL GOKIL")
+            let rootVC = LoginController()
+            let navVC = UINavigationController(rootViewController: rootVC)
+            navVC.modalPresentationStyle = .fullScreen
+            
+            present(navVC, animated: true)
         } catch {
             print("DEBUG: Failed to sign out")
         }

@@ -77,8 +77,11 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     //MARK: - Selectors
     @objc func handleNavigationButton() {
         
-        let newViewController = LoginController()
-        self.navigationController?.pushViewController(newViewController, animated: true)
+        let rootVC = LoginController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        
+        present(navVC, animated: true)
     }
     
     @objc func handleSkipButton() {

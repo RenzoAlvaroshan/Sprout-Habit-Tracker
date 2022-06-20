@@ -40,7 +40,6 @@
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
 		834B6AA42860160E007D05E9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B6AA32860160E007D05E9 /* AuthService.swift */; };
 		834B6AA62860174B007D05E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B6AA52860174B007D05E9 /* Constants.swift */; };
-		834B6AA828601AC9007D05E9 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834B6AA728601AC9007D05E9 /* Poppins-Medium.ttf */; };
 		834D626D28571AE300F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		834D62722858430E00F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		834D6278285851C800F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -53,6 +52,7 @@
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
+		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,12 +91,12 @@
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		834B6AA728601AC9007D05E9 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../Library/Fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E9B45C5285911960080CC33 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
+		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +304,7 @@
 				83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */,
 				83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */,
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
-				834B6AA728601AC9007D05E9 /* Poppins-Medium.ttf */,
+				DB871EB32860205400AA3256 /* Poppins-Medium.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */,
 				83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */,
 				0E266340284EEBAC00958370 /* Main.storyboard in Resources */,
-				834B6AA828601AC9007D05E9 /* Poppins-Medium.ttf in Resources */,
+				DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */,
 				83345E232851EB0F00A13B53 /* Poppins-Regular.ttf in Resources */,
 				834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */,
 			);
@@ -618,7 +618,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 74Z89SGR3Z;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
@@ -648,7 +648,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 74Z89SGR3Z;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;

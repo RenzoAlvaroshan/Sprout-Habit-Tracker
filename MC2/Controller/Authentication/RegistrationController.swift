@@ -47,9 +47,9 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
             if let error = error {
                 print("DEBUG: Error signing user up \(error.localizedDescription)")
                 return
+            } else {
+                self.navigationController?.pushViewController(AddChildController(), animated: true)
             }
-            
-            self.dismiss(animated: true)
         }
     }
     

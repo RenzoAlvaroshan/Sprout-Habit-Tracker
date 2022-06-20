@@ -49,8 +49,6 @@ class LoginController: UIViewController, LoginCardViewDelegate {
             } else {
                 self.navigationController?.pushViewController(AddChildController(), animated: true)
             }
-            
-            self.dismiss(animated: true)
         }
     }
     
