@@ -33,6 +33,8 @@ class TaskControllerSuhe: UIViewController{
         
         alertOnTap()
         alertConfirmation()
+        
+        activityView.delegate = self
     }
 
     //MARK: - Selectors
@@ -134,5 +136,13 @@ extension TaskControllerSuhe {
         let activity6 = Activity(activityName: "Tidur siang", categoryName: "MOLOR",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
         
         return [activity1,activity2,activity3,activity4,activity5,activity6]
+    }
+}
+
+extension TaskControllerSuhe: ActivityViewDelegate {
+    func handleAddActivity() {
+        let controller = AddHabitController()
+        controller.modalPresentationStyle = .popover
+        present(controller, animated: true)
     }
 }
