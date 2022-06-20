@@ -47,12 +47,12 @@
 		834D62A7285C35A500F6F3C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A6285C35A500F6F3C8 /* FirebaseFirestore */; };
 		834D62A9285C35A500F6F3C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A8285C35A500F6F3C8 /* FirebaseStorage */; };
 		834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */; };
-		8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C5285911960080CC33 /* ActivityView.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
 		8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */; };
 		8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */; };
+		DB6DBCB5286041CD00464333 /* ActivityViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
 		DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityModel.swift */; };
@@ -94,12 +94,12 @@
 		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8E9B45C5285911960080CC33 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
 		8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskProgressXPCircle.swift; path = "MC2/Habit list/View/TaskProgressXPCircle.swift"; sourceTree = SOURCE_ROOT; };
 		8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCircularXPView.swift; sourceTree = "<group>"; };
+		DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewNEW.swift; path = "MC2/Habit list/View/ActivityViewNEW.swift"; sourceTree = SOURCE_ROOT; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
 		DBA65BE128602FB2007F80D5 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
@@ -338,11 +338,11 @@
 		8E9B45BB28590EF60080CC33 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8E9B45C5285911960080CC33 /* ActivityView.swift */,
 				8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */,
 				8E9B45CD285913870080CC33 /* ActivityViewCell.swift */,
 				8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */,
 				8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */,
+				DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -476,7 +476,7 @@
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
-				8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */,
+				DB6DBCB5286041CD00464333 /* ActivityViewNEW.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,

@@ -1,16 +1,22 @@
 //
-//  ActivityView.swift
+//  ActivityViewNEW.swift
 //  MC2
 //
-//  Created by Suherda Dwi Santoso on 15/06/22.
+//  Created by Stephen Giovanni Saputra on 20/06/22.
 //
 
-
+import Foundation
 import UIKit
+
+protocol ActivityViewDelegate: AnyObject {
+    func handleAddActivity()
+}
 
 class ActivityView: UIView {
 
     // MARK: - Properties
+    
+    weak var delegate: ActivityViewDelegate?
     
     private lazy var activityListTitle: UILabel = {
         let label = UILabel()
@@ -35,7 +41,7 @@ class ActivityView: UIView {
         let button = UIButton(type: .system)
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(UIColor.arcadiaGreen2, for: .normal)
-//        button.addTarget(self, action: #selector(.none), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleAddActivy), for: .touchUpInside)
         return button
     }()
     
@@ -62,6 +68,9 @@ class ActivityView: UIView {
     
     // MARK: - Selectors
 
+    @objc func handleAddActivy() {
+        delegate?.handleAddActivity()
+    }
 
 
     // MARK: - Helpers
