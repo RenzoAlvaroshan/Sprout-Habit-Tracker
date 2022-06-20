@@ -51,6 +51,8 @@
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
+		8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */; };
+		8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
 		DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityModel.swift */; };
@@ -96,6 +98,8 @@
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
+		8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskProgressXPCircle.swift; path = "MC2/Habit list/View/TaskProgressXPCircle.swift"; sourceTree = SOURCE_ROOT; };
+		8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCircularXPView.swift; sourceTree = "<group>"; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
 		DBA65BE128602FB2007F80D5 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */,
+				8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */,
 				8E9B45CD285913870080CC33 /* ActivityViewCell.swift */,
 				8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */,
+				8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */,
 				0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */,
+				8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */,
 				0E8745A72859ABE80038B4BB /* AddChildController.swift in Sources */,
 				8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */,
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
@@ -473,6 +480,7 @@
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
+				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,

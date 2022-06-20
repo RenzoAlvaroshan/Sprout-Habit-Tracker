@@ -14,6 +14,8 @@ class TaskControllerSuhe: UIViewController{
     private let activityView = ActivityView()
     private let activityProgressView = ActivityProgressView()
     private let greetingsAndDate = GreetingsAndDate()
+    private let taskProgressXPCircle = TaskProgressXPCircle()
+    private let taskCircularXP = TaskCircularXPView()
     
     private var tableView = UITableView()
     var activities: [Activity] = []
@@ -58,6 +60,14 @@ class TaskControllerSuhe: UIViewController{
         activityProgressView.centerX(inView: view)
         activityProgressView.anchor(top: view.topAnchor, paddingTop: 170)
         activityProgressView.setupShadow(opacity: 0.3, radius: 5, offset: CGSize(width: 1, height: 1), color: .black)
+        
+        view.addSubview(taskProgressXPCircle)
+        taskProgressXPCircle.setDimensions(height: view.frame.height / 7, width: view.frame.height / 7)
+        taskProgressXPCircle.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 180, paddingLeft: 50)
+        
+        view.addSubview(taskCircularXP)
+        taskCircularXP.centerX(inView: taskProgressXPCircle)
+        taskCircularXP.centerY(inView: taskProgressXPCircle)
     }
     
     func configureTableView() {
