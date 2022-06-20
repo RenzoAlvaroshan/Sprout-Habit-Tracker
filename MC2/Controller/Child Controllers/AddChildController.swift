@@ -101,7 +101,7 @@ class AddChildController: UIViewController {
     //MARK: - Selectors
     
     @objc func handleGetStarted() {
-        print("DEBUG: Let's get started..")
+        navigationController?.pushViewController(MainController(), animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {

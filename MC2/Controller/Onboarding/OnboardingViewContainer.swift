@@ -25,7 +25,7 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     }()
     
     let yourAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.poppinsSemiBold(size: 15),
+        .font: UIFont.poppinsMedium(size: 15),
         .underlineStyle: NSUnderlineStyle.single.rawValue
     ]
     

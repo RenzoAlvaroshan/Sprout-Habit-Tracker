@@ -28,12 +28,14 @@ class RegisterCardView: UIView {
         return label
     }()
     
-    private let emailTextField: UITextField = {
+    let emailTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Email Address")
+        tf.autocapitalizationType = .none
+        tf.keyboardType = .emailAddress
         return tf
     }()
     
-    private let passwordTextField: UITextField = {
+    let passwordTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Password")
         tf.isSecureTextEntry = true
         return tf

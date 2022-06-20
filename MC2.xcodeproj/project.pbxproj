@@ -38,6 +38,9 @@
 		83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */; };
 		83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */; };
 		83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83345E262851F57400A13B53 /* AuthenticationViewModel.swift */; };
+		834B6AA42860160E007D05E9 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B6AA32860160E007D05E9 /* AuthService.swift */; };
+		834B6AA62860174B007D05E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834B6AA52860174B007D05E9 /* Constants.swift */; };
+		834B6AA828601AC9007D05E9 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 834B6AA728601AC9007D05E9 /* Poppins-Medium.ttf */; };
 		834D626D28571AE300F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		834D62722858430E00F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		834D6278285851C800F6F3C8 /* (null) in Sources */ = {isa = PBXBuildFile; };
@@ -86,6 +89,9 @@
 		83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		83345E262851F57400A13B53 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		834B6AA728601AC9007D05E9 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../../../Library/Fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E9B45C5285911960080CC33 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 				83345E072851E44500A13B53 /* View */,
 				83345E082851E44800A13B53 /* ViewModel */,
 				83345E092851E45800A13B53 /* Controller */,
+				834B6AA2286015FB007D05E9 /* API */,
 				83345E122851E58600A13B53 /* Utils */,
 				0E266338284EEBAC00958370 /* AppDelegate.swift */,
 				0E26633A284EEBAC00958370 /* SceneDelegate.swift */,
@@ -286,6 +293,7 @@
 				0E8745B22859C15A0038B4BB /* RadioButton.swift */,
 				0E8745B02859C1060038B4BB /* Extensions.swift */,
 				83345E1C2851E62700A13B53 /* Utilities.swift */,
+				834B6AA52860174B007D05E9 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -296,8 +304,17 @@
 				83345E212851EB0F00A13B53 /* Poppins-Bold.ttf */,
 				83345E202851EB0F00A13B53 /* Poppins-Regular.ttf */,
 				83345E222851EB0F00A13B53 /* Poppins-SemiBold.ttf */,
+				834B6AA728601AC9007D05E9 /* Poppins-Medium.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		834B6AA2286015FB007D05E9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				834B6AA32860160E007D05E9 /* AuthService.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		8E9B45B628590EBA0080CC33 /* Habit List */ = {
@@ -408,6 +425,7 @@
 				83345E242851EB0F00A13B53 /* Poppins-Bold.ttf in Resources */,
 				83345E252851EB0F00A13B53 /* Poppins-SemiBold.ttf in Resources */,
 				0E266340284EEBAC00958370 /* Main.storyboard in Resources */,
+				834B6AA828601AC9007D05E9 /* Poppins-Medium.ttf in Resources */,
 				83345E232851EB0F00A13B53 /* Poppins-Regular.ttf in Resources */,
 				834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */,
 			);
@@ -421,6 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */,
+				834B6AA62860174B007D05E9 /* Constants.swift in Sources */,
 				834D626D28571AE300F6F3C8 /* (null) in Sources */,
 				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
@@ -447,6 +466,7 @@
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				8E9B45C6285911960080CC33 /* ActivityView.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
+				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,

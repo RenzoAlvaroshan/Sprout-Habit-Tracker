@@ -5,6 +5,7 @@
 //  Created by Renzo Alvaroshan on 10/06/22.
 //
 
+import Firebase
 import UIKit
 
 class ProfileController: UIViewController {
@@ -119,7 +120,12 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack4() {
-        print("DEBUG: Stack 4 tapped..")
+        do {
+            try Auth.auth().signOut()
+            print("GOKIL GOKIL")
+        } catch {
+            print("DEBUG: Failed to sign out")
+        }
     }
     
     //MARK: - Helpers

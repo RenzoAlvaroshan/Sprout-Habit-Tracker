@@ -39,7 +39,19 @@ class LoginController: UIViewController, LoginCardViewDelegate {
     //MARK: - Helpers
     
     func handleLoginButton() {
-        navigationController?.pushViewController(MainController(), animated: true)
+        guard let email = cardView.emailTextField.text else { return }
+        guard let password = cardView.passwordTextField.text else { return }
+        
+        AuthService.logUserIn(withEmail: email, password: password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Error logging user in \(error.localizedDescription)")
+                return
+            } else {
+                self.navigationController?.pushViewController(AddChildController(), animated: true)
+            }
+            
+            self.dismiss(animated: true)
+        }
     }
     
     func handleShowRegistration() {

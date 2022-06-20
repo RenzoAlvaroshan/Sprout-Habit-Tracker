@@ -5,6 +5,7 @@
 //  Created by Renzo Alvaroshan on 09/06/22.
 //  Fix
 
+import Firebase
 import UIKit
 
 class MainController: UITabBarController {
@@ -15,8 +16,8 @@ class MainController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        configureViewControllers()
+        checkIfUserLoggedIn()
+        
     }
     
     //MARK: - Helpers
@@ -44,7 +45,26 @@ class MainController: UITabBarController {
         tabBar.tintColor = .arcadiaGreen
     }
     
-    func templateNavigationController(image: UIImage?, rootViewController: UIViewController) -> UINavigationController {
+    func checkIfUserLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            presentLoginController()
+        } else {
+            configureUI()
+            configureViewControllers()
+        }
+    }
+    
+    func presentLoginController() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
+    }
+    
+    func templateNavigationController(image: UIImage?,
+                                      rootViewController: UIViewController) -> UINavigationController {
         
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.tabBarItem.image = image

@@ -38,7 +38,19 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
     //MARK: - Helpers
     
     func handleRegisterButton() {
-        navigationController?.pushViewController(MainController(), animated: true)
+        guard let email = cardView.emailTextField.text else { return }
+        guard let password = cardView.passwordTextField.text else { return }
+        
+        let credentials = AuthCredentials(email: email, password: password)
+        
+        AuthService.registerUser(withCredentials: credentials) { error in
+            if let error = error {
+                print("DEBUG: Error signing user up \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true)
+        }
     }
     
     func handleShowLogin() {
