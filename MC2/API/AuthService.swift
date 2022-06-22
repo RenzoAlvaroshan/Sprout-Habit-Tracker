@@ -11,6 +11,7 @@ import UIKit
 struct AuthCredentials {
     let email: String
     let password: String
+    
 }
 
 struct AuthService {
@@ -24,7 +25,8 @@ struct AuthService {
                              completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
             if let error = error {
-                print("DEBUG: Error signing user up \(error.localizedDescription)")
+                print("DEBUG: Error signing up")
+                RegistrationController().showPopUp()
                 return
             }
             

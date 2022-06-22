@@ -80,7 +80,7 @@ class LoginCardView: UIView {
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(handleLoginButton), for: .touchUpInside)
-        button.backgroundColor = .systemGray
+        button.backgroundColor = .systemGray3
         button.isEnabled = false
         return button
     }()

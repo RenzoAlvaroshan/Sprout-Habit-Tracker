@@ -52,6 +52,7 @@
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
 		8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */; };
 		8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */; };
+		DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB61BBC92860895D00C99615 /* AuthPopUpView.swift */; };
 		DB6DBCB5286041CD00464333 /* ActivityViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
@@ -99,6 +100,7 @@
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
 		8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskProgressXPCircle.swift; path = "MC2/Habit list/View/TaskProgressXPCircle.swift"; sourceTree = SOURCE_ROOT; };
 		8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCircularXPView.swift; sourceTree = "<group>"; };
+		DB61BBC92860895D00C99615 /* AuthPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPopUpView.swift; sourceTree = "<group>"; };
 		DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewNEW.swift; path = "MC2/Habit list/View/ActivityViewNEW.swift"; sourceTree = SOURCE_ROOT; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			children = (
 				83345E0E2851E4FA00A13B53 /* LoginController.swift */,
 				83345E102851E50300A13B53 /* RegistrationController.swift */,
+				DB61BBC92860895D00C99615 /* AuthPopUpView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
+				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,

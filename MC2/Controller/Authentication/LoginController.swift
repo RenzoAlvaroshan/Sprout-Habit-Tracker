@@ -13,6 +13,8 @@ class LoginController: UIViewController, LoginCardViewDelegate {
     
     private let cardView = LoginCardView()
     
+    private let popUpView = AuthPopUpView()
+    
     private let iconImageView: UIImageView = {
         let iv = UIImageView()
         let image = UIImage(named: "ecobit.icon")?.withRenderingMode(.alwaysTemplate)
@@ -45,6 +47,23 @@ class LoginController: UIViewController, LoginCardViewDelegate {
         AuthService.logUserIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print("DEBUG: Error logging user in \(error.localizedDescription)")
+                self.view.addSubview(self.popUpView)
+                self.popUpView.centerX(inView: self.view)
+                self.popUpView.setDimensions(height: 40, width: self.view.frame.width - 40)
+                self.popUpView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 60).isActive = true
+                self.popUpView.layer.cornerRadius = 10
+                
+                UIView.animate(withDuration: 0.5) {
+                    self.popUpView.transform = CGAffineTransform(translationX: 0, y: -110)
+                    Utilities().vibrate(for: .error)
+                }
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    UIView.animate(withDuration: 0.5) {
+                        self.popUpView.transform = CGAffineTransform(translationX: 0, y: 120)
+                    }
+                }
+                
                 return
             } else {
                 self.navigationController?.pushViewController(AddChildController(), animated: true)

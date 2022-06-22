@@ -37,12 +37,12 @@ class Utilities {
         let title = UILabel()
         title.text = input1
         title.font = UIFont.poppinsSemiBold(size: 16)
-//        title.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
+        //        title.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 12)
         
         let subtitle = UILabel()
         subtitle.text = input2
         subtitle.font = UIFont.poppinsRegular(size: 14)
-//        subtitle.anchor(top: title.bottomAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 12)
+        //        subtitle.anchor(top: title.bottomAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 12)
         
         return view
     }
@@ -66,6 +66,12 @@ class Utilities {
         
         return button
     }
+    
+    func vibrate(for type: UINotificationFeedbackGenerator.FeedbackType){
+        DispatchQueue.main.async {
+            let notificationGenerator = UINotificationFeedbackGenerator()
+            notificationGenerator.prepare()
+            notificationGenerator.notificationOccurred(type)
+        }
+    }
 }
-
-
