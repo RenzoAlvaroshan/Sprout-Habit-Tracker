@@ -29,7 +29,6 @@ class AuthPopUpView: UIView {
         
         addSubview(popUpLabel)
         popUpLabel.centerY(inView: self)
-//        popUpLabel.centerX(inView: self)
         popUpLabel.anchor(left: leftAnchor, paddingLeft: 12)
     }
     

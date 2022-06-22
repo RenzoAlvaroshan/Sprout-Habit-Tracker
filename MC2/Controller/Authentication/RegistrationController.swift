@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController, RegisterCardViewDelegate {
     
@@ -45,13 +46,31 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
         
         let credentials = AuthCredentials(email: email, password: password)
         
-        AuthService.registerUser(withCredentials: credentials) { error in
+//        AuthService.registerUser(withCredentials: credentials) { error in
+//            if let error = error {
+//                return
+//            } else {
+//                self.navigationController?.pushViewController(AddChildController(), animated: true)
+//            }
+//        }
+        
+        Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
             if let error = error {
+                print("DEBUG: Error signing up")
+                self.showPopUp()
                 return
             } else {
                 self.navigationController?.pushViewController(AddChildController(), animated: true)
             }
+            
+            guard let uid = result?.user.uid else { return }
+            
+            let data = ["email": credentials.email,
+                        "uid": uid]
+            
+            COLLECTION_USERS.document(uid).setData(data, completion: nil)
         }
+
     }
     
     func handleShowLogin() {
@@ -77,8 +96,6 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
         popUpView.setDimensions(height: 40, width: view.frame.width - 40)
         popUpView.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: 60).isActive = true
         popUpView.layer.cornerRadius = 10
-        
-        showPopUp()
     }
     
     func showPopUp() {
