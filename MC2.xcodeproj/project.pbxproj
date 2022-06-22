@@ -51,6 +51,8 @@
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
+		8EA834B62863B2940036299F /* CellCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA834B52863B2940036299F /* CellCardView.swift */; };
+		8EA834B82863B9AA0036299F /* RewardCellCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA834B72863B9AA0036299F /* RewardCellCardView.swift */; };
 		8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */; };
 		8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */; };
 		DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB61BBC92860895D00C99615 /* AuthPopUpView.swift */; };
@@ -100,6 +102,8 @@
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
+		8EA834B52863B2940036299F /* CellCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCardView.swift; sourceTree = "<group>"; };
+		8EA834B72863B9AA0036299F /* RewardCellCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCellCardView.swift; sourceTree = "<group>"; };
 		8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskProgressXPCircle.swift; path = "MC2/Habit list/View/TaskProgressXPCircle.swift"; sourceTree = SOURCE_ROOT; };
 		8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCircularXPView.swift; sourceTree = "<group>"; };
 		DB61BBC92860895D00C99615 /* AuthPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPopUpView.swift; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 				0EF31C26285AD1DE00E82F92 /* ProgressView.swift */,
 				0EF31C2A285AD23C00E82F92 /* RewardView.swift */,
 				0E9803FB2862CAC9002D92CA /* CustomAlert.swift */,
+				8EA834B72863B9AA0036299F /* RewardCellCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */,
 				8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */,
 				DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */,
+				8EA834B52863B2940036299F /* CellCardView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -457,6 +463,7 @@
 				0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */,
 				834B6AA62860174B007D05E9 /* Constants.swift in Sources */,
 				834D626D28571AE300F6F3C8 /* (null) in Sources */,
+				8EA834B82863B9AA0036299F /* RewardCellCardView.swift in Sources */,
 				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
 				DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */,
@@ -464,6 +471,7 @@
 				0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
 				0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */,
+				8EA834B62863B2940036299F /* CellCardView.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */,
 				0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */,

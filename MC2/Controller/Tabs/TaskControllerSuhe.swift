@@ -72,10 +72,11 @@ class TaskControllerSuhe: UIViewController{
     
     func configureTableView() {
         view.addSubview(tableView)
+        self.tableView.rowHeight = 105
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width-40)
+        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width - 20)
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -109,7 +110,7 @@ extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityViewCell", for: indexPath) as! ActivityViewCell
         let activity = activities[indexPath.section]
-        cell.set(activity: activity)
+        cell.cellCardView.set(activity: activity)
         cell.backgroundColor = .white
         cell.clipsToBounds = false
         return cell

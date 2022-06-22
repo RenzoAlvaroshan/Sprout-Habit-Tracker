@@ -60,10 +60,11 @@ class RewardController: UIViewController{
     
     func configureTableView() {
         view.addSubview(tableView)
+        self.tableView.rowHeight = 75
         tableView.register(RewardCell.self, forCellReuseIdentifier: "RewardCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: progressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width-40)
+        tableView.anchor(top: progressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width - 20)
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -98,7 +99,7 @@ extension RewardController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RewardCell", for: indexPath) as! RewardCell
         let reward = rewards[indexPath.section]
-        cell.set(reward: reward)
+        cell.cellCardView.set(reward: reward)
         cell.backgroundColor = .white
         cell.clipsToBounds = false
         return cell

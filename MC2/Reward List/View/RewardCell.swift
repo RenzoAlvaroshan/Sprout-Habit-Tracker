@@ -14,18 +14,26 @@ class RewardCell: UITableViewCell {
     var rewardName = UILabel()
     var checkLock = UIImageView()
     
+    let cellCardView = RewardCellCardView()
+    
     // MARK: - Lifecycle
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubview(levelName)
-        addSubview(rewardName)
-        addSubview(checkLock)
+        contentView.addSubview(cellCardView)
+        cellCardView.setDimensions(height: 65, width: UIScreen.main.bounds.width - 40)
+        cellCardView.centerX(inView: contentView)
+        cellCardView.anchor(top: contentView.topAnchor, paddingTop: 5)
+        cellCardView.setupShadow(opacity: 0.3, radius: 5, offset: CGSize(width: 1, height: 1), color: .black)
         
-        configureLevelName()
-        configureTaskName()
-        configureCell()
-        configureImage()
+//        addSubview(levelName)
+//        addSubview(rewardName)
+//        addSubview(checkLock)
+//
+//        configureLevelName()
+//        configureTaskName()
+//        configureCell()
+//        configureImage()
     }
     
     required init?(coder: NSCoder) {
@@ -34,44 +42,44 @@ class RewardCell: UITableViewCell {
     
     // MARK: - Helpers
     
-    func set(reward: Reward) {
-        levelName.text = reward.levelName
-        rewardName.text = reward.rewardName
-        checkLock.image = reward.checkLock
-    }
-    
-    func configureCell() {
-        layer.cornerRadius = frame.height / 2
-        layer.masksToBounds = true
-        layer.borderColor = UIColor.systemGray3.cgColor
-        layer.borderWidth = 0.4
-        
-        layer.shadowRadius = 3
-        layer.shadowOpacity = 0.5
-        layer.shadowColor = UIColor.systemGray2.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 0)
-    }
-    
-    func configureLevelName() {
-        levelName.numberOfLines = 0
-        levelName.font = UIFont.poppinsBold(size: 18)
-        levelName.adjustsFontSizeToFitWidth = true
-        levelName.anchor(top: topAnchor,left: leftAnchor,paddingTop: 10, paddingLeft: 25)
-    }
-    
-    func configureTaskName() {
-        rewardName.numberOfLines = 0
-        rewardName.font = UIFont.poppinsRegular(size: 18)
-        rewardName.adjustsFontSizeToFitWidth = true
-        rewardName.anchor(top: levelName.bottomAnchor,left: leftAnchor,bottom: bottomAnchor, paddingLeft: 25, paddingBottom: 15)
-    }
-    
-    func configureImage() {
-        checkLock.clipsToBounds = true
-        checkLock.tintColor = .arcadiaGreen
-        checkLock.anchor(right: rightAnchor, paddingRight: 20)
-        checkLock.centerY(inView: self)
-        checkLock.anchor( width: 32, height: 32)
-    }
-    
+//    func set(reward: Reward) {
+//        levelName.text = reward.levelName
+//        rewardName.text = reward.rewardName
+//        checkLock.image = reward.checkLock
+//    }
+//
+//    func configureCell() {
+//        layer.cornerRadius = frame.height / 2
+//        layer.masksToBounds = true
+//        layer.borderColor = UIColor.systemGray3.cgColor
+//        layer.borderWidth = 0.4
+//
+//        layer.shadowRadius = 3
+//        layer.shadowOpacity = 0.5
+//        layer.shadowColor = UIColor.systemGray2.cgColor
+//        layer.shadowOffset = CGSize(width: 0, height: 0)
+//    }
+//
+//    func configureLevelName() {
+//        levelName.numberOfLines = 0
+//        levelName.font = UIFont.poppinsBold(size: 18)
+//        levelName.adjustsFontSizeToFitWidth = true
+//        levelName.anchor(top: topAnchor,left: leftAnchor,paddingTop: 10, paddingLeft: 25)
+//    }
+//
+//    func configureTaskName() {
+//        rewardName.numberOfLines = 0
+//        rewardName.font = UIFont.poppinsRegular(size: 18)
+//        rewardName.adjustsFontSizeToFitWidth = true
+//        rewardName.anchor(top: levelName.bottomAnchor,left: leftAnchor,bottom: bottomAnchor, paddingLeft: 25, paddingBottom: 15)
+//    }
+//
+//    func configureImage() {
+//        checkLock.clipsToBounds = true
+//        checkLock.tintColor = .arcadiaGreen
+//        checkLock.anchor(right: rightAnchor, paddingRight: 20)
+//        checkLock.centerY(inView: self)
+//        checkLock.anchor( width: 32, height: 32)
+//    }
+//
 }
