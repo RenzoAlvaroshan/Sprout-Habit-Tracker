@@ -18,6 +18,7 @@
 		0E8745B12859C1060038B4BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B02859C1060038B4BB /* Extensions.swift */; };
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
+		0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9803FB2862CAC9002D92CA /* CustomAlert.swift */; };
 		0EF31C23285AD14100E82F92 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* Reward.swift */; };
 		0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C24285AD17400E82F92 /* RewardCell.swift */; };
 		0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C26285AD1DE00E82F92 /* ProgressView.swift */; };
@@ -73,6 +74,7 @@
 		0E8745B02859C1060038B4BB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
+		0E9803FB2862CAC9002D92CA /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		0EF31C22285AD14100E82F92 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		0EF31C24285AD17400E82F92 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
 		0EF31C26285AD1DE00E82F92 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				0EF31C24285AD17400E82F92 /* RewardCell.swift */,
 				0EF31C26285AD1DE00E82F92 /* ProgressView.swift */,
 				0EF31C2A285AD23C00E82F92 /* RewardView.swift */,
+				0E9803FB2862CAC9002D92CA /* CustomAlert.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
+				0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
 				0E8745B12859C1060038B4BB /* Extensions.swift in Sources */,
 			);

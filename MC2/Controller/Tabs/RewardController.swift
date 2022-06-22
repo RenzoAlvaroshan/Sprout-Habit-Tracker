@@ -21,6 +21,8 @@ class RewardController: UIViewController{
     
     private let alert2 = UIAlertController(title: "Reward Claimed!", message: "", preferredStyle: UIAlertController.Style.alert)
     
+    private let customAlert = CustomAlert()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -103,13 +105,17 @@ extension RewardController: UITableViewDataSource, UITableViewDelegate {
     }
     
     // Fungsi jika user tap
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        print("Hello \(indexPath.section)")
-        
-        self.present(alert, animated: true, completion: nil)
-    }
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            // section yang di tap
+            print("Hello \(indexPath.section)")
+            // command for alert
+            
+            customAlert.showAlert(with: "Hello",
+                                  message: "This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert",
+                                  viewController: self)
+    //        self.present(alert, animated: true, completion: nil)
+        }
     
     //Nambahin footer & bikin jd clear
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
