@@ -108,8 +108,8 @@ extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
     // Isi dari cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityViewCell", for: indexPath) as! ActivityViewCell
-        let reward = activities[indexPath.section]
-        cell.set(reward: reward)
+        let activity = activities[indexPath.section]
+        cell.set(activity: activity)
         cell.backgroundColor = .white
         cell.clipsToBounds = false
         return cell

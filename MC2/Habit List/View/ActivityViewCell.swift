@@ -35,10 +35,10 @@ class ActivityViewCell: UITableViewCell {
     
     // MARK: - Helpers
     
-    func set(reward: Activity) {
-        activityName.text = reward.activityName
-        categoryName.text = reward.categoryName
-        checkImg.image = reward.checkImg
+    func set(activity: Activity) {
+        activityName.text = activity.activityName
+        categoryName.text = activity.categoryName
+        checkImg.image = activity.checkImg
     }
     
     func configureCell() {
