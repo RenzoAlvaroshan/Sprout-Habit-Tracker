@@ -61,12 +61,17 @@ class ActivityViewCell: UITableViewCell {
     }
     
     func configureCategoryName() {
-        categoryName.backgroundColor = .arcadiaGreen2
+        categoryName.layer.borderWidth = 1.5
+        categoryName.layer.borderColor = UIColor.arcadiaGreen.cgColor
+        categoryName.layer.backgroundColor = UIColor.white.cgColor
+        categoryName.layer.cornerRadius = 15
+        categoryName.layer.masksToBounds = true
         categoryName.numberOfLines = 0
         categoryName.font = UIFont.poppinsRegular(size: 18)
         categoryName.adjustsFontSizeToFitWidth = true
-        categoryName.anchor(top: activityName.bottomAnchor,left: leftAnchor,bottom: bottomAnchor, paddingLeft: 25, paddingBottom: 15)
-    }
+        categoryName.anchor(top: activityName.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 5, paddingLeft: 25, paddingBottom: 15)
+        categoryName.setDimensions(height: 30, width: 120)
+        categoryName.textAlignment = NSTextAlignment.center    }
     
     func configureImage() {
         checkImg.clipsToBounds = true
