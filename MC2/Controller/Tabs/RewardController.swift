@@ -10,12 +10,38 @@ class RewardController: UIViewController{
     
     //MARK: - Properties
     
-    private let rewardView = RewardView()
+//    private let rewardView = RewardView()
     private let progressView = ProgressView()
     private let circularXP = CircularXPView()
     
     private var tableView = UITableView()
     var rewards: [Reward] = []
+    
+    private lazy var roundedRectangel: UIView = {
+        let rect = UIView()
+        rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
+        rect.layer.cornerRadius = 33
+        rect.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        rect.backgroundColor = .white
+        return rect
+    }()
+    
+    private lazy var experienceTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 19)
+        label.text = "110 / 200 XP"
+        label.textColor = .black
+        return label
+    }()
+    
+    private lazy var rewardListTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsBold(size: 24)
+        label.text = "Reward List"
+        label.textColor = .black
+        return label
+    }()
+    
     
     private let alert = UIAlertController(title: "Claim the Reward", message: "Your child will experience the reward of a task completed.", preferredStyle: UIAlertController.Style.alert)
     
@@ -44,14 +70,24 @@ class RewardController: UIViewController{
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
         
-        view.addSubview(rewardView)
-        rewardView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
-        rewardView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        view.addSubview(roundedRectangel)
+        roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        view.addSubview(experienceTitle)
+        experienceTitle.centerX(inView: view)
+        experienceTitle.anchor(top: view.topAnchor, paddingTop: view.frame.height / 2.9)
+        
+        view.addSubview(rewardListTitle)
+        rewardListTitle.anchor(top: experienceTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 32, paddingLeft: 25)
+        
+//        view.addSubview(rewardView)
+//        rewardView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
+//        rewardView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
         view.addSubview(progressView)
         progressView.setDimensions(height: view.frame.height / 4.9, width: view.frame.height / 4.9)
         progressView.centerX(inView: view)
-        progressView.anchor(top: view.topAnchor, paddingTop: 90)
+        progressView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 24)
         
         view.addSubview(circularXP)
         circularXP.centerX(inView: view)

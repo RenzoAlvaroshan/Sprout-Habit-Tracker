@@ -7,15 +7,65 @@
 
 import UIKit
 
+protocol ActivityViewDelegate: AnyObject {
+    func handleAddActivity()
+}
+
 class TaskControllerSuhe: UIViewController{
     
     //MARK: - Properties
     
-    private let activityView = ActivityView()
+//    private let activityView = ActivityView()
     private let activityProgressView = ActivityProgressView()
     private let greetingsAndDate = GreetingsAndDate()
     private let taskProgressXPCircle = TaskProgressXPCircle()
     private let taskCircularXP = TaskCircularXPView()
+    
+    private lazy var roundedRectangel: UIView = {
+        let rect = UIView()
+        rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
+        rect.layer.cornerRadius = 33
+        rect.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        rect.backgroundColor = .white
+        return rect
+    }()
+    
+    weak var delegate: ActivityViewDelegate?
+    
+    private lazy var activityListTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsBold(size: 24)
+        label.text = "My Child's Goals"
+        label.textColor = .black
+        return label
+    }()
+    
+    let addAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.poppinsRegular(size: 16),
+        .foregroundColor: UIColor.arcadiaGreen,
+    ]
+    
+    private lazy var addActivity: UIButton = {
+        
+        let attributeString = NSMutableAttributedString(
+            string: "Add",
+            attributes: addAttributes
+        )
+
+        let button = UIButton(type: .system)
+        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitleColor(UIColor.arcadiaGreen2, for: .normal)
+        button.addTarget(self, action: #selector(handleAddActivy), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var rewardListSubTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 14)
+        label.text = "1/4 Task Completed"
+        label.textColor = .systemGray
+        return label
+    }()
     
     private var tableView = UITableView()
     var activities: [Activity] = []
@@ -36,24 +86,40 @@ class TaskControllerSuhe: UIViewController{
         alertOnTap()
         alertConfirmation()
         
-        activityView.delegate = self
+//        activityView.delegate = self
     }
 
     //MARK: - Selectors
     
+    @objc func handleAddActivy() {
+        delegate?.handleAddActivity()
+    }
     
     //MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
         
+        view.addSubview(roundedRectangel)
+        roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        let stack = UIStackView(arrangedSubviews: [activityListTitle, addActivity])
+        stack.axis = .horizontal
+        stack.spacing = 100
+        
+        view.addSubview(stack)
+        stack.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: view.frame.height / 2.49, paddingLeft: 25)
+        
+        view.addSubview(rewardListSubTitle)
+        rewardListSubTitle.anchor(top: activityListTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 5, paddingLeft: 25)
+        
         view.addSubview(greetingsAndDate)
         greetingsAndDate.setDimensions(height: view.frame.height / 8, width: view.frame.width)
         greetingsAndDate.anchor(top: view.topAnchor, paddingTop: 90, paddingLeft: 20)
         
-        view.addSubview(activityView)
-        activityView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
-        activityView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+//        view.addSubview(activityView)
+//        activityView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
+//        activityView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
         view.addSubview(activityProgressView)
         activityProgressView.setDimensions(height: view.frame.height / 6, width: view.frame.height / 2.7)
