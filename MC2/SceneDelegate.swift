@@ -17,16 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = MainController()
-        //        window?.rootViewController =  UINavigationController(rootViewController: AddHabitController())
-        //        window?.rootViewController =  UINavigationController(rootViewController: AddChildController())
-        //        window?.rootViewController =  UINavigationController(rootViewController: EditChildController())
-
-        
-        //        window?.rootViewController =  UINavigationController(rootViewController: OnboardingViewContainer())
-        //        window?.rootViewController =  UINavigationController(rootViewController: MainController())
-        // punya suhe
-        //        window?.rootViewController =  UINavigationController(rootViewController: TaskControllerSuhe())
+        window?.rootViewController = LoadingViewController() //Ganti disini ya VC nya
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

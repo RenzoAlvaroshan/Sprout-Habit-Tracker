@@ -19,6 +19,9 @@
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
 		0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9803FB2862CAC9002D92CA /* CustomAlert.swift */; };
+		0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458928647B17004A7251 /* NavigationManager.swift */; };
+		0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458B28647BE0004A7251 /* LoadingViewController.swift */; };
+		0EDF458F28647D7D004A7251 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458E28647D7D004A7251 /* OnboardingManager.swift */; };
 		0EF31C23285AD14100E82F92 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* Reward.swift */; };
 		0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C24285AD17400E82F92 /* RewardCell.swift */; };
 		0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C26285AD1DE00E82F92 /* ProgressView.swift */; };
@@ -76,6 +79,9 @@
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 		0E9803FB2862CAC9002D92CA /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		0EDF458928647B17004A7251 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		0EDF458B28647BE0004A7251 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		0EDF458E28647D7D004A7251 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		0EF31C22285AD14100E82F92 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		0EF31C24285AD17400E82F92 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
 		0EF31C26285AD1DE00E82F92 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -180,6 +186,15 @@
 				0E8745A62859ABE80038B4BB /* AddHabitController.swift */,
 			);
 			path = "Activity UI";
+			sourceTree = "<group>";
+		};
+		0EDF459128648555004A7251 /* OnboardingAuth */ = {
+			isa = PBXGroup;
+			children = (
+				0EDF458928647B17004A7251 /* NavigationManager.swift */,
+				0EDF458B28647BE0004A7251 /* LoadingViewController.swift */,
+			);
+			path = OnboardingAuth;
 			sourceTree = "<group>";
 		};
 		0EF31C1E285AD0E300E82F92 /* Reward List */ = {
@@ -300,7 +315,9 @@
 		83345E122851E58600A13B53 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0EDF459128648555004A7251 /* OnboardingAuth */,
 				0E8745B22859C15A0038B4BB /* RadioButton.swift */,
+				0EDF458E28647D7D004A7251 /* OnboardingManager.swift */,
 				0E8745B02859C1060038B4BB /* Extensions.swift */,
 				83345E1C2851E62700A13B53 /* Utilities.swift */,
 				834B6AA52860174B007D05E9 /* Constants.swift */,
@@ -484,13 +501,16 @@
 				0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */,
 				DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
+				0EDF458F28647D7D004A7251 /* OnboardingManager.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
+				0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */,
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
+				0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */,
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
