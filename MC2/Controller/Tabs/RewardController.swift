@@ -78,7 +78,7 @@ class RewardController: UIViewController{
         experienceTitle.anchor(top: view.topAnchor, paddingTop: view.frame.height / 2.9)
         
         view.addSubview(rewardListTitle)
-        rewardListTitle.anchor(top: experienceTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 32, paddingLeft: 25)
+        rewardListTitle.anchor(top: experienceTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 25, paddingLeft: 25)
         
 //        view.addSubview(rewardView)
 //        rewardView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
@@ -100,7 +100,7 @@ class RewardController: UIViewController{
         tableView.register(RewardCell.self, forCellReuseIdentifier: "RewardCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: progressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width - 20)
+        tableView.anchor(top: progressView.bottomAnchor, bottom: view.bottomAnchor, paddingTop: 105, width: view.frame.width - 20)
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false

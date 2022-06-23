@@ -125,7 +125,7 @@ class TaskControllerSuhe: UIViewController{
         activityProgressView.setDimensions(height: view.frame.height / 6, width: view.frame.height / 2.7)
         activityProgressView.centerX(inView: view)
         activityProgressView.anchor(top: view.topAnchor, paddingTop: 155)
-        activityProgressView.setupShadow(opacity: 0.3, radius: 5, offset: CGSize(width: 1, height: 1), color: .black)
+        activityProgressView.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
         
         view.addSubview(taskProgressXPCircle)
         taskProgressXPCircle.setDimensions(height: view.frame.height / 7, width: view.frame.height / 7)
