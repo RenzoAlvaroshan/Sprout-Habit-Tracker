@@ -14,30 +14,48 @@ class AuthPopUpView: UIView {
         let label = UILabel()
         label.font = UIFont.poppinsRegular(size: 14)
         label.textColor = .white
-        label.text = "Oops, wrong email or password!"
         label.backgroundColor = UIColor.systemRed
         label.textAlignment = .left
         return label
     }()
     
+    var messageBody: String = "" {
+        didSet {
+            popUpLabel.text = messageBody
+        }
+    }
+    
     //MARK: - Lifecycle
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        
+        commonInit()
+    }
+    
+    override func awakeFromNib() {
+        setupMessageBody()
+    }
+    
+    private func commonInit() {
         backgroundColor = .systemRed
-        
         addSubview(popUpLabel)
         popUpLabel.centerY(inView: self)
         popUpLabel.anchor(left: leftAnchor, paddingLeft: 12)
+        
+        setupMessageBody()
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     //MARK: - Selectors
     
-    //MARK: - Helpers
     
+    //MARK: - Helpers
+    func setupMessageBody() {
+        popUpLabel.text = messageBody
+    }
 }

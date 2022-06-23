@@ -48,6 +48,7 @@ class LoginController: UIViewController, LoginCardViewDelegate {
             if let error = error {
                 print("DEBUG: Error logging user in \(error.localizedDescription)")
                 self.view.addSubview(self.popUpView)
+                self.popUpView.messageBody = "Oops, wrong email or password!"
                 self.popUpView.centerX(inView: self.view)
                 self.popUpView.setDimensions(height: 40, width: self.view.frame.width - 40)
                 self.popUpView.centerYAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 60).isActive = true
