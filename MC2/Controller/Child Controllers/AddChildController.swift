@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum AvatarStyle: String, CaseIterable {
     case ava1 = "ava1_f"
@@ -99,36 +100,35 @@ class AddChildController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        nameTextField.delegate = self
     }
     
     //MARK: - Selectors
     
     @objc func handleGetStarted() {
+        // cara kevin
+        let childName = nameTextField.text!
+        let childID = randomID
+
+        let model = Child(dictionary: ["name" : childName, "childID": childID])
         
+        // update array childId di users
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         
-        guard let model = child else {
-            return
-        }
-        print(model.name)
-        
-        // create auth untuk si child, uid
-        
-        //1-10 , a-z, 10char1string
-        
+        // save child data di collection child
         Service.saveChildData(child: model) { error in
             if let error = error {
-                print("ERROR is \(error)")
+                print("ERROR is \(error.localizedDescription)")
             }
-            self.navigationController?.pushViewController(MainController(), animated: true)
         }
-        
+        self.navigationController?.pushViewController(MainController(), animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
         guard let iv = sender.view as? UIImageView else { return }
         radioButton?.selected = iv
         avatarProfile.image = iv.image
+        print("DEBUG: \(iv)")
     }
     
     //MARK: - Helpers
@@ -218,26 +218,5 @@ class AddChildController: UIViewController {
         iv.image = UIImage(named: imageName)
         iv.setDimensions(height: view.frame.width / 4.24, width: view.frame.width / 4.24)
         return iv
-    }
-}
-
-extension AddChildController: UITextFieldDelegate {
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField == nameTextField {
-            let model = Child(dictionary: ["name" : textField.text!, "childID": randomID])
-            child = model
-            return true
-        }
-        return true
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == nameTextField{
-            child?.name = textField.text!
-            child?.childID = randomID
-            textField.resignFirstResponder()
-        }
-        return true
     }
 }

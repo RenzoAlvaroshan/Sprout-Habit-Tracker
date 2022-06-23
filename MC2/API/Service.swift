@@ -11,12 +11,10 @@ import UIKit
 struct Service {
     
     static func saveChildData(child: Child, completion: @escaping(Error?) -> Void) {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let data = ["uid": uid,
-                    "name": child.name] as [String: Any]
+        let data = ["name": child.name,
+                    "childId": child.childID] as [String : Any]
         
-        COLLECTION_CHILD.document(uid).setData(data, completion: completion)
+        COLLECTION_CHILD.addDocument(data: data)
     }
-    
 }

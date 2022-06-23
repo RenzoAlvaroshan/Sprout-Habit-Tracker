@@ -112,7 +112,11 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack2() {
-        print("DEBUG: Stack 2 tapped..")
+        // harusnya edit child
+        let rootVC = AddChildController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     @objc func handleStack3() {
@@ -122,11 +126,9 @@ class ProfileController: UIViewController {
     @objc func handleStack4() {
         do {
             try Auth.auth().signOut()
-            print("GOKIL GOKIL")
             let rootVC = LoginController()
             let navVC = UINavigationController(rootViewController: rootVC)
             navVC.modalPresentationStyle = .fullScreen
-            
             present(navVC, animated: true)
         } catch {
             print("DEBUG: Failed to sign out")

@@ -21,8 +21,8 @@ struct AuthService {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
-    static func registerUser(withCredentials credentials: AuthCredentials,
-                             completion: @escaping((Error?) -> Void)) {
+    
+    static func registerUser(withCredentials credentials: AuthCredentials,completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
             if let error = error {
                 print("DEBUG: Error signing up \(error.localizedDescription)")
@@ -35,9 +35,8 @@ struct AuthService {
             let data = ["email": credentials.email,
                         "uid": uid,
                         "childId": credentials.childID] as [String : Any]
-            
-//            COLLECTION_USERS.document(uid).setData(data, completion: completion)
-            COLLECTION_USERS.addDocument(data: data, completion: completion)
+            // UID BEDA KARENA DISINI
+            COLLECTION_USERS.document(uid).setData(data, completion: completion)
         }
     }
 }
