@@ -21,7 +21,7 @@
 		0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9803FB2862CAC9002D92CA /* CustomAlert.swift */; };
 		0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458928647B17004A7251 /* NavigationManager.swift */; };
 		0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458B28647BE0004A7251 /* LoadingViewController.swift */; };
-		0EDF458F28647D7D004A7251 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458E28647D7D004A7251 /* OnboardingManager.swift */; };
+		0EDF4593286487E4004A7251 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF4592286487E4004A7251 /* OnboardingManager.swift */; };
 		0EF31C23285AD14100E82F92 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* Reward.swift */; };
 		0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C24285AD17400E82F92 /* RewardCell.swift */; };
 		0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C26285AD1DE00E82F92 /* ProgressView.swift */; };
@@ -81,7 +81,7 @@
 		0E9803FB2862CAC9002D92CA /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		0EDF458928647B17004A7251 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		0EDF458B28647BE0004A7251 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		0EDF458E28647D7D004A7251 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
+		0EDF4592286487E4004A7251 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		0EF31C22285AD14100E82F92 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		0EF31C24285AD17400E82F92 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
 		0EF31C26285AD1DE00E82F92 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
@@ -193,6 +193,7 @@
 			children = (
 				0EDF458928647B17004A7251 /* NavigationManager.swift */,
 				0EDF458B28647BE0004A7251 /* LoadingViewController.swift */,
+				0EDF4592286487E4004A7251 /* OnboardingManager.swift */,
 			);
 			path = OnboardingAuth;
 			sourceTree = "<group>";
@@ -317,7 +318,6 @@
 			children = (
 				0EDF459128648555004A7251 /* OnboardingAuth */,
 				0E8745B22859C15A0038B4BB /* RadioButton.swift */,
-				0EDF458E28647D7D004A7251 /* OnboardingManager.swift */,
 				0E8745B02859C1060038B4BB /* Extensions.swift */,
 				83345E1C2851E62700A13B53 /* Utilities.swift */,
 				834B6AA52860174B007D05E9 /* Constants.swift */,
@@ -495,13 +495,13 @@
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
 				0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
+				0EDF4593286487E4004A7251 /* OnboardingManager.swift in Sources */,
 				0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */,
 				0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */,
 				DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
-				0EDF458F28647D7D004A7251 /* OnboardingManager.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
 				0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */,

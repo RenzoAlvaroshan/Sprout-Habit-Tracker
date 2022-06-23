@@ -1,5 +1,5 @@
 //
-//  onboardingManager.swift
+//  OnboardingManager.swift
 //  MC2
 //
 //  Created by Kevin Harijanto on 23/06/22.
