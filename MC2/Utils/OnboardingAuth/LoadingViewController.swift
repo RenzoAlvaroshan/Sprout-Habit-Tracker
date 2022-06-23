@@ -26,7 +26,7 @@ class LoadingViewController: UIViewController {
     private func showInitialScreen() {
         // If onboarding seen -> Login
         if isOnboardingSeen {
-            let rootVC = LoginController()
+            let rootVC = MainController()
             let navVC = UINavigationController(rootViewController: rootVC)
             navVC.modalPresentationStyle = .fullScreen
             present(navVC, animated: true)
