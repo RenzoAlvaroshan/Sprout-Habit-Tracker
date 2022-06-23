@@ -7,15 +7,14 @@
 
 import UIKit
 
-protocol ActivityViewDelegate: AnyObject {
-    func handleAddActivity()
-}
+//protocol ActivityViewDelegate: AnyObject {
+//    func handleAddActivityPush()
+//}
 
-class TaskControllerSuhe: UIViewController{
+class TaskController: UIViewController{
     
     //MARK: - Properties
     
-//    private let activityView = ActivityView()
     private let activityProgressView = ActivityProgressView()
     private let greetingsAndDate = GreetingsAndDate()
     private let taskProgressXPCircle = TaskProgressXPCircle()
@@ -30,7 +29,7 @@ class TaskControllerSuhe: UIViewController{
         return rect
     }()
     
-    weak var delegate: ActivityViewDelegate?
+//    weak var delegate: ActivityViewDelegate?
     
     private lazy var activityListTitle: UILabel = {
         let label = UILabel()
@@ -55,7 +54,7 @@ class TaskControllerSuhe: UIViewController{
         let button = UIButton(type: .system)
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(UIColor.arcadiaGreen2, for: .normal)
-        button.addTarget(self, action: #selector(handleAddActivy), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleAddActivity), for: .touchUpInside)
         return button
     }()
     
@@ -85,14 +84,15 @@ class TaskControllerSuhe: UIViewController{
         
         alertOnTap()
         alertConfirmation()
-        
-//        activityView.delegate = self
     }
 
     //MARK: - Selectors
     
-    @objc func handleAddActivy() {
-        delegate?.handleAddActivity()
+    @objc func handleAddActivity() {
+//        delegate?.handleAddActivityPush()
+        let controller = AddHabitController()
+        controller.modalPresentationStyle = .popover
+        present(controller, animated: true)
     }
     
     //MARK: - Helpers
@@ -116,10 +116,7 @@ class TaskControllerSuhe: UIViewController{
         view.addSubview(greetingsAndDate)
         greetingsAndDate.setDimensions(height: view.frame.height / 8, width: view.frame.width)
         greetingsAndDate.anchor(top: view.topAnchor, paddingTop: 75, paddingLeft: 20)
-        
-//        view.addSubview(activityView)
-//        activityView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
-//        activityView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+
         
         view.addSubview(activityProgressView)
         activityProgressView.setDimensions(height: view.frame.height / 6, width: view.frame.height / 2.7)
@@ -161,7 +158,7 @@ class TaskControllerSuhe: UIViewController{
     }
 }
 
-extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
+extension TaskController: UITableViewDataSource, UITableViewDelegate {
     // Banyak row dalam 1 section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -203,7 +200,7 @@ extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension TaskControllerSuhe {
+extension TaskController {
     func fetchData() -> [Activity] {
         let activity1 = Activity(activityName: "Matiin lampu jam 1", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
         let activity2 = Activity(activityName: "Buang sampah", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
@@ -216,10 +213,10 @@ extension TaskControllerSuhe {
     }
 }
 
-extension TaskControllerSuhe: ActivityViewDelegate {
-    func handleAddActivity() {
-        let controller = AddHabitController()
-        controller.modalPresentationStyle = .popover
-        present(controller, animated: true)
-    }
-}
+//extension TaskController: ActivityViewDelegate {
+//    func handleAddActivityPush() {
+//        let controller = AddHabitController()
+//        controller.modalPresentationStyle = .popover
+//        present(controller, animated: true)
+//    }
+//}

@@ -24,7 +24,7 @@
 		0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C26285AD1DE00E82F92 /* ProgressView.swift */; };
 		0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C2A285AD23C00E82F92 /* RewardView.swift */; };
 		0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */; };
-		0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */; };
+		0EFE8DD72859A63E00C1A4B8 /* TaskController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DCF2859A63E00C1A4B8 /* TaskController.swift */; };
 		0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */; };
 		0EFE8DD92859A63E00C1A4B8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD22859A63E00C1A4B8 /* OnboardingViewController.swift */; };
 		0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */; };
@@ -56,7 +56,6 @@
 		8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */; };
 		8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */; };
 		DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB61BBC92860895D00C99615 /* AuthPopUpView.swift */; };
-		DB6DBCB5286041CD00464333 /* ActivityViewNEW.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
 		DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityModel.swift */; };
@@ -82,7 +81,7 @@
 		0EF31C26285AD1DE00E82F92 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		0EF31C2A285AD23C00E82F92 /* RewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
 		0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskControllerSuhe.swift; sourceTree = "<group>"; };
+		0EFE8DCF2859A63E00C1A4B8 /* TaskController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskController.swift; sourceTree = "<group>"; };
 		0EFE8DD12859A63E00C1A4B8 /* OnboardingViewContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewContainer.swift; sourceTree = "<group>"; };
 		0EFE8DD22859A63E00C1A4B8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		0EFE8DD42859A63E00C1A4B8 /* CircularXPView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularXPView.swift; sourceTree = "<group>"; };
@@ -107,7 +106,6 @@
 		8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskProgressXPCircle.swift; path = "MC2/Habit list/View/TaskProgressXPCircle.swift"; sourceTree = SOURCE_ROOT; };
 		8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCircularXPView.swift; sourceTree = "<group>"; };
 		DB61BBC92860895D00C99615 /* AuthPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPopUpView.swift; sourceTree = "<group>"; };
-		DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ActivityViewNEW.swift; path = "MC2/Habit list/View/ActivityViewNEW.swift"; sourceTree = SOURCE_ROOT; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
 		DBA65BE128602FB2007F80D5 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
@@ -227,7 +225,7 @@
 			children = (
 				0EFE8DCD2859A63E00C1A4B8 /* ProfileController.swift */,
 				0E8745B42859C17A0038B4BB /* RewardController.swift */,
-				0EFE8DCF2859A63E00C1A4B8 /* TaskControllerSuhe.swift */,
+				0EFE8DCF2859A63E00C1A4B8 /* TaskController.swift */,
 			);
 			path = Tabs;
 			sourceTree = "<group>";
@@ -353,7 +351,6 @@
 				8E9B45CD285913870080CC33 /* ActivityViewCell.swift */,
 				8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */,
 				8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */,
-				DB6DBCB4286041CD00464333 /* ActivityViewNEW.swift */,
 				8EA834B52863B2940036299F /* CellCardView.swift */,
 			);
 			path = View;
@@ -470,7 +467,7 @@
 				0EF31C23285AD14100E82F92 /* Reward.swift in Sources */,
 				0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
-				0EFE8DD72859A63E00C1A4B8 /* TaskControllerSuhe.swift in Sources */,
+				0EFE8DD72859A63E00C1A4B8 /* TaskController.swift in Sources */,
 				8EA834B62863B2940036299F /* CellCardView.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
 				0EFE8DDA2859A63E00C1A4B8 /* CircularXPView.swift in Sources */,
@@ -490,7 +487,6 @@
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
-				DB6DBCB5286041CD00464333 /* ActivityViewNEW.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
