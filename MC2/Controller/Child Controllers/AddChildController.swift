@@ -20,6 +20,10 @@ class AddChildController: UIViewController {
     
     //MARK: - Properties
     
+    var child: Child?
+    
+    lazy var randomID = randomString(length: 10)
+    
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
     
@@ -101,7 +105,24 @@ class AddChildController: UIViewController {
     //MARK: - Selectors
     
     @objc func handleGetStarted() {
-        navigationController?.pushViewController(MainController(), animated: true)
+        
+        
+        guard let model = child else {
+            return
+        }
+        print(model.name)
+        
+        // create auth untuk si child, uid
+        
+        //1-10 , a-z, 10char1string
+        
+        Service.saveChildData(child: model) { error in
+            if let error = error {
+                print("ERROR is \(error)")
+            }
+            self.navigationController?.pushViewController(MainController(), animated: true)
+        }
+        
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
@@ -111,6 +132,11 @@ class AddChildController: UIViewController {
     }
     
     //MARK: - Helpers
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
@@ -196,7 +222,22 @@ class AddChildController: UIViewController {
 }
 
 extension AddChildController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == nameTextField {
+            let model = Child(dictionary: ["name" : textField.text!, "childID": randomID])
+            child = model
+            return true
+        }
+        return true
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField == nameTextField{
+            child?.name = textField.text!
+            child?.childID = randomID
+            textField.resignFirstResponder()
+        }
+        return true
     }
 }

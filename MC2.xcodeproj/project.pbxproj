@@ -51,6 +51,8 @@
 		834D62A7285C35A500F6F3C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A6285C35A500F6F3C8 /* FirebaseFirestore */; };
 		834D62A9285C35A500F6F3C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A8285C35A500F6F3C8 /* FirebaseStorage */; };
 		834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */; };
+		83DCCC9428641EAC00249C9E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9328641EAC00249C9E /* Service.swift */; };
+		83DCCC9628641EE900249C9E /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9528641EE900249C9E /* Child.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -104,6 +106,8 @@
 		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83DCCC9328641EAC00249C9E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		83DCCC9528641EE900249C9E /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				834B6AA32860160E007D05E9 /* AuthService.swift */,
+				83DCCC9328641EAC00249C9E /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 		DBA65BE528602FF4007F80D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				83DCCC9528641EE900249C9E /* Child.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -499,12 +505,17 @@
 				0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */,
+				83DCCC9628641EE900249C9E /* Child.swift in Sources */,
 				0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */,
 				DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */,
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
+// Create-Add-Child-Name-Firebase
+				83DCCC9428641EAC00249C9E /* Service.swift in Sources */,
+// Create-AddFirebase-Kevin
 				0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */,
+
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
