@@ -90,15 +90,16 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
         view.addSubview(cardView)
         cardView.setDimensions(height: view.frame.height * 0.7, width: view.frame.width)
         cardView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    }
+    
+    func showPopUp() {
         
         view.addSubview(popUpView)
+        popUpView.messageBody = "Wrong email or password format!"
         popUpView.centerX(inView: view)
         popUpView.setDimensions(height: 40, width: view.frame.width - 40)
         popUpView.centerYAnchor.constraint(equalTo: view.bottomAnchor, constant: 60).isActive = true
         popUpView.layer.cornerRadius = 10
-    }
-    
-    func showPopUp() {
         
         UIView.animate(withDuration: 0.5) {
             self.popUpView.transform = CGAffineTransform(translationX: 0, y: -110)
