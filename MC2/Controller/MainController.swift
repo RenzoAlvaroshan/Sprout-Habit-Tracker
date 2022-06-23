@@ -47,8 +47,10 @@ class MainController: UITabBarController {
     
     func checkIfUserLoggedIn() {
         if Auth.auth().currentUser == nil {
+           print("DEBUG: No user logged in")
             presentLoginController()
         } else {
+            print("DEBUG: User already logged in")
             configureUI()
             configureViewControllers()
         }
