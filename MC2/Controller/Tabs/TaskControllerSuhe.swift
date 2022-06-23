@@ -72,7 +72,7 @@ class TaskControllerSuhe: UIViewController{
     
     func configureTableView() {
         view.addSubview(tableView)
-        self.tableView.rowHeight = 105
+        self.tableView.rowHeight = 110
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -133,7 +133,7 @@ extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
     }
     //Tinggi footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 5
     }
 }
 

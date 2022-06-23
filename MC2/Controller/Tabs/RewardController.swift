@@ -126,7 +126,7 @@ extension RewardController: UITableViewDataSource, UITableViewDelegate {
     }
     //Tinggi footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 20
+        return 0
     }
 }
 

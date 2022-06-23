@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = OnboardingViewContainer()
+        window?.rootViewController = MainController()
         //        window?.rootViewController =  UINavigationController(rootViewController: AddHabitController())
         //        window?.rootViewController =  UINavigationController(rootViewController: AddChildController())
         //        window?.rootViewController =  UINavigationController(rootViewController: EditChildController())

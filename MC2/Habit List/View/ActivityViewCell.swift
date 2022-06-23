@@ -24,7 +24,7 @@ class ActivityViewCell: UITableViewCell {
         cellCardView.setDimensions(height: 100, width: UIScreen.main.bounds.width - 40)
         cellCardView.centerX(inView: contentView)
         cellCardView.anchor(top: contentView.topAnchor, paddingTop: 5)
-        cellCardView.setupShadow(opacity: 0.3, radius: 5, offset: CGSize(width: 1, height: 1), color: .black)
+        cellCardView.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
 //        addSubview(activityName)
 //        addSubview(categoryName)
 //        addSubview(checkImg)
