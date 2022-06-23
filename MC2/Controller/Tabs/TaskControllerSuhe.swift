@@ -105,17 +105,17 @@ class TaskControllerSuhe: UIViewController{
         
         let stack = UIStackView(arrangedSubviews: [activityListTitle, addActivity])
         stack.axis = .horizontal
-        stack.spacing = 100
+        stack.spacing = 110
         
         view.addSubview(stack)
-        stack.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: view.frame.height / 2.49, paddingLeft: 25)
+        stack.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: view.frame.height / 2.7, paddingLeft: 20)
         
         view.addSubview(rewardListSubTitle)
         rewardListSubTitle.anchor(top: activityListTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 5, paddingLeft: 25)
         
         view.addSubview(greetingsAndDate)
         greetingsAndDate.setDimensions(height: view.frame.height / 8, width: view.frame.width)
-        greetingsAndDate.anchor(top: view.topAnchor, paddingTop: 90, paddingLeft: 20)
+        greetingsAndDate.anchor(top: view.topAnchor, paddingTop: 75, paddingLeft: 20)
         
 //        view.addSubview(activityView)
 //        activityView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
@@ -124,12 +124,12 @@ class TaskControllerSuhe: UIViewController{
         view.addSubview(activityProgressView)
         activityProgressView.setDimensions(height: view.frame.height / 6, width: view.frame.height / 2.7)
         activityProgressView.centerX(inView: view)
-        activityProgressView.anchor(top: view.topAnchor, paddingTop: 170)
+        activityProgressView.anchor(top: view.topAnchor, paddingTop: 155)
         activityProgressView.setupShadow(opacity: 0.3, radius: 5, offset: CGSize(width: 1, height: 1), color: .black)
         
         view.addSubview(taskProgressXPCircle)
         taskProgressXPCircle.setDimensions(height: view.frame.height / 7, width: view.frame.height / 7)
-        taskProgressXPCircle.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 180, paddingLeft: 50)
+        taskProgressXPCircle.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 165, paddingLeft: 50)
         
         view.addSubview(taskCircularXP)
         taskCircularXP.centerX(inView: taskProgressXPCircle)
@@ -142,7 +142,7 @@ class TaskControllerSuhe: UIViewController{
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width - 20)
+        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor, paddingTop: 95, width: view.frame.width - 20)
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
