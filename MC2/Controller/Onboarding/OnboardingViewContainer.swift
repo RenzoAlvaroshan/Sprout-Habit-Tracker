@@ -10,6 +10,8 @@ import SwiftUI
 class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     //MARK: - Properties
+    private let onboardingManager = OnboardingManager()
+    
     var pages = [UIViewController]()
     let initialPage = 0
     
@@ -77,6 +79,8 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     //MARK: - Selectors
     @objc func handleNavigationButton() {
         
+        updateFlag()
+        
         let rootVC = LoginController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen
@@ -101,6 +105,10 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     }
     
     //MARK: - Helpers
+    private func updateFlag() {
+        onboardingManager.setOnboardingSeen()
+    }
+    
     func configureUI() {
         
         view.backgroundColor = .white
