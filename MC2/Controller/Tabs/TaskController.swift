@@ -7,15 +7,64 @@
 
 import UIKit
 
-class TaskControllerSuhe: UIViewController{
+//protocol ActivityViewDelegate: AnyObject {
+//    func handleAddActivityPush()
+//}
+
+class TaskController: UIViewController{
     
     //MARK: - Properties
     
-    private let activityView = ActivityView()
     private let activityProgressView = ActivityProgressView()
     private let greetingsAndDate = GreetingsAndDate()
     private let taskProgressXPCircle = TaskProgressXPCircle()
     private let taskCircularXP = TaskCircularXPView()
+    
+    private lazy var roundedRectangel: UIView = {
+        let rect = UIView()
+        rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
+        rect.layer.cornerRadius = 33
+        rect.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        rect.backgroundColor = .white
+        return rect
+    }()
+    
+//    weak var delegate: ActivityViewDelegate?
+    
+    private lazy var activityListTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsBold(size: 24)
+        label.text = "My Child's Goals"
+        label.textColor = .black
+        return label
+    }()
+    
+    let addAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.poppinsRegular(size: 16),
+        .foregroundColor: UIColor.arcadiaGreen,
+    ]
+    
+    private lazy var addActivity: UIButton = {
+        
+        let attributeString = NSMutableAttributedString(
+            string: "Add",
+            attributes: addAttributes
+        )
+
+        let button = UIButton(type: .system)
+        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitleColor(UIColor.arcadiaGreen2, for: .normal)
+        button.addTarget(self, action: #selector(handleAddActivity), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var rewardListSubTitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 14)
+        label.text = "1/4 Task Completed"
+        label.textColor = .systemGray
+        return label
+    }()
     
     private var tableView = UITableView()
     var activities: [Activity] = []
@@ -35,35 +84,49 @@ class TaskControllerSuhe: UIViewController{
         
         alertOnTap()
         alertConfirmation()
-        
-        activityView.delegate = self
     }
 
     //MARK: - Selectors
     
+    @objc func handleAddActivity() {
+//        delegate?.handleAddActivityPush()
+        let controller = AddHabitController()
+        controller.modalPresentationStyle = .popover
+        present(controller, animated: true)
+    }
     
     //MARK: - Helpers
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
         
+        view.addSubview(roundedRectangel)
+        roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
+        let stack = UIStackView(arrangedSubviews: [activityListTitle, addActivity])
+        stack.axis = .horizontal
+        stack.spacing = 110
+        
+        view.addSubview(stack)
+        stack.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: view.frame.height / 2.7, paddingLeft: 20)
+        
+        view.addSubview(rewardListSubTitle)
+        rewardListSubTitle.anchor(top: activityListTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 5, paddingLeft: 25)
+        
         view.addSubview(greetingsAndDate)
         greetingsAndDate.setDimensions(height: view.frame.height / 8, width: view.frame.width)
-        greetingsAndDate.anchor(top: view.topAnchor, paddingTop: 90, paddingLeft: 20)
-        
-        view.addSubview(activityView)
-        activityView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
-        activityView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        greetingsAndDate.anchor(top: view.topAnchor, paddingTop: 75, paddingLeft: 20)
+
         
         view.addSubview(activityProgressView)
         activityProgressView.setDimensions(height: view.frame.height / 6, width: view.frame.height / 2.7)
         activityProgressView.centerX(inView: view)
-        activityProgressView.anchor(top: view.topAnchor, paddingTop: 170)
-        activityProgressView.setupShadow(opacity: 0.3, radius: 5, offset: CGSize(width: 1, height: 1), color: .black)
+        activityProgressView.anchor(top: view.topAnchor, paddingTop: 155)
+        activityProgressView.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
         
         view.addSubview(taskProgressXPCircle)
         taskProgressXPCircle.setDimensions(height: view.frame.height / 7, width: view.frame.height / 7)
-        taskProgressXPCircle.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 180, paddingLeft: 50)
+        taskProgressXPCircle.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: 165, paddingLeft: 50)
         
         view.addSubview(taskCircularXP)
         taskCircularXP.centerX(inView: taskProgressXPCircle)
@@ -76,7 +139,7 @@ class TaskControllerSuhe: UIViewController{
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 115, width: view.frame.width - 20)
+        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor, paddingTop: 95, width: view.frame.width - 20)
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
@@ -95,7 +158,7 @@ class TaskControllerSuhe: UIViewController{
     }
 }
 
-extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
+extension TaskController: UITableViewDataSource, UITableViewDelegate {
     // Banyak row dalam 1 section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -137,7 +200,7 @@ extension TaskControllerSuhe: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension TaskControllerSuhe {
+extension TaskController {
     func fetchData() -> [Activity] {
         let activity1 = Activity(activityName: "Matiin lampu jam 1", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
         let activity2 = Activity(activityName: "Buang sampah", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
@@ -150,10 +213,10 @@ extension TaskControllerSuhe {
     }
 }
 
-extension TaskControllerSuhe: ActivityViewDelegate {
-    func handleAddActivity() {
-        let controller = AddHabitController()
-        controller.modalPresentationStyle = .popover
-        present(controller, animated: true)
-    }
-}
+//extension TaskController: ActivityViewDelegate {
+//    func handleAddActivityPush() {
+//        let controller = AddHabitController()
+//        controller.modalPresentationStyle = .popover
+//        present(controller, animated: true)
+//    }
+//}

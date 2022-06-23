@@ -16,7 +16,8 @@ class MainController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkIfUserLoggedIn()
+        configureUI()
+        configureViewControllers()
         
     }
     
@@ -27,7 +28,7 @@ class MainController: UITabBarController {
     }
     
     func configureViewControllers() {
-        let task = TaskControllerSuhe()
+        let task = TaskController()
 //        let task = ActivityController()
         let nav1 = templateNavigationController(image: UIImage(named: "task.icon.gray"), rootViewController: task)
         nav1.title = "Task"
@@ -45,23 +46,6 @@ class MainController: UITabBarController {
         tabBar.tintColor = .arcadiaGreen
     }
     
-    func checkIfUserLoggedIn() {
-        if Auth.auth().currentUser == nil {
-            presentLoginController()
-        } else {
-            configureUI()
-            configureViewControllers()
-        }
-    }
-    
-    func presentLoginController() {
-        DispatchQueue.main.async {
-            let controller = LoginController()
-            let nav = UINavigationController(rootViewController: controller)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: true)
-        }
-    }
     
     func templateNavigationController(image: UIImage?,
                                       rootViewController: UIViewController) -> UINavigationController {
