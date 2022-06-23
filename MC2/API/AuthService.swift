@@ -11,7 +11,7 @@ import UIKit
 struct AuthCredentials {
     let email: String
     let password: String
-    
+    var childID: [String]
 }
 
 struct AuthService {
@@ -25,7 +25,7 @@ struct AuthService {
                              completion: @escaping((Error?) -> Void)) {
         Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
             if let error = error {
-                print("DEBUG: Error signing up")
+                print("DEBUG: Error signing up \(error.localizedDescription)")
                 RegistrationController().showPopUp()
                 return
             }
@@ -33,9 +33,11 @@ struct AuthService {
             guard let uid = result?.user.uid else { return }
             
             let data = ["email": credentials.email,
-                        "uid": uid]
+                        "uid": uid,
+                        "childId": credentials.childID] as [String : Any]
             
-            COLLECTION_USERS.document(uid).setData(data, completion: completion)
+//            COLLECTION_USERS.document(uid).setData(data, completion: completion)
+            COLLECTION_USERS.addDocument(data: data, completion: completion)
         }
     }
 }
