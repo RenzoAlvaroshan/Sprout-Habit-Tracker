@@ -11,7 +11,7 @@ import UIKit
 struct AuthCredentials {
     let email: String
     let password: String
-    
+    var childID: [String]
 }
 
 struct AuthService {
