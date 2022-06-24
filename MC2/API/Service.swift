@@ -20,22 +20,24 @@ struct Service {
         COLLECTION_CHILD.addDocument(data: data)
     }
     
-    static func fetchChildrenName (urutan: Int, completion: @escaping([String])->Void) {
-        var children = [String]()
+    static func fetchChildrenData (childRef: String, completion: @escaping([Child])->Void) {
+        var children = [Child]()
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         COLLECTION_USERS.document(uid).getDocument { snapshot, error in
             if snapshot != nil && snapshot!.exists {
-                //get all document data
+                
                 guard let snapshotData = snapshot!.data() else {return}
-                let element = snapshotData["childId"] as? [String]
-                let childRef = element?[urutan]
+//                let element = snapshotData["childId"] as? [String]
                 
                 COLLECTION_CHILD.whereField("childId", isEqualTo: childRef as Any).getDocuments { snapshot, error in
                     for document in snapshot!.documents {
-                        let childName = document["name"] as? String ?? ""
-                        children.append(childName)
+                        let dictionary = document.data()
+//                        let childName = document["name"] as? String ?? ""
+                        let child = Child(dictionary: dictionary)
+                        print("DEBUG: child object \(child)")
+                        children.append(child)
                         print("DEBUG: array of children in service \(children)")
                         completion(children)
                     }

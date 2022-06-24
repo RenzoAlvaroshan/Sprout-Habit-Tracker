@@ -12,12 +12,16 @@ class ProfileController: UIViewController {
     
     //MARK: - Properties
     
-    var child: [Child]?
-    var childName = [String]() {
+    var child: [Child]? {
         didSet {
             configure()
         }
     }
+//    var childName = [String]() {
+//        didSet {
+//            configure()
+//        }
+//    }
     
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
@@ -119,7 +123,7 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchChildrenName()
+        fetchChildrenData()
         configureUI()
     }
     
@@ -163,19 +167,20 @@ class ProfileController: UIViewController {
     
     // MARK: - API
     
-    func fetchChildrenName() {
-        let urutan = 4
+    func fetchChildrenData() {
+        let childId = "CcFHhz681q"
         
-        Service.fetchChildrenName(urutan: urutan, completion: { child in
-            self.childName = child
+        Service.fetchChildrenData(childRef: childId, completion: { child in
+            self.child = child
         })
-        print("DEBUG: array of children in controller \(String(describing: childName))")
+        print("DEBUG: array of children in controller \(String(describing: child))")
     }
     
     //MARK: - Helpers
     
     func configure() {
-        profileName.text = childName.first
+        print("DEBUG: nama anak: \(child?[0].name)")
+        profileName.text = child?[0].name
     }
     
     func configureUI() {
