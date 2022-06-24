@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 enum AvatarStyle: String, CaseIterable {
     case ava1 = "ava1_f"
@@ -19,6 +20,10 @@ enum AvatarStyle: String, CaseIterable {
 class AddChildController: UIViewController {
     
     //MARK: - Properties
+    
+    var child: Child?
+    
+    lazy var randomID = randomString(length: 10)
     
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
@@ -95,22 +100,44 @@ class AddChildController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        nameTextField.delegate = self
     }
     
     //MARK: - Selectors
     
     @objc func handleGetStarted() {
-        navigationController?.pushViewController(MainController(), animated: true)
+        // cara kevin
+        let childName = nameTextField.text!
+        let childID = randomID
+
+        let model = Child(dictionary: ["name" : childName, "childID": childID])
+        
+        // update array childId di users
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
+        
+        // save child data di collection child
+        Service.saveChildData(child: model) { error in
+            if let error = error {
+                print("ERROR is \(error.localizedDescription)")
+            }
+        }
+//        self.navigationController?.popViewController(MainController(), animated: true)
+        dismiss(animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
         guard let iv = sender.view as? UIImageView else { return }
         radioButton?.selected = iv
         avatarProfile.image = iv.image
+        print("DEBUG: \(iv)")
     }
     
     //MARK: - Helpers
+    
+    func randomString(length: Int) -> String {
+      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+      return String((0..<length).map{ _ in letters.randomElement()! })
+    }
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
@@ -192,11 +219,5 @@ class AddChildController: UIViewController {
         iv.image = UIImage(named: imageName)
         iv.setDimensions(height: view.frame.width / 4.24, width: view.frame.width / 4.24)
         return iv
-    }
-}
-
-extension AddChildController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
     }
 }

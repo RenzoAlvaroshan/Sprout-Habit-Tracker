@@ -43,34 +43,18 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
     func handleRegisterButton() {
         guard let email = cardView.emailTextField.text else { return }
         guard let password = cardView.passwordTextField.text else { return }
+        let childID = Array<String>()
         
-        let credentials = AuthCredentials(email: email, password: password)
+        let credentials = AuthCredentials(email: email, password: password, childID: childID)
         
-//        AuthService.registerUser(withCredentials: credentials) { error in
-//            if let error = error {
-//                return
-//            } else {
-//                self.navigationController?.pushViewController(AddChildController(), animated: true)
-//            }
-//        }
-        
-        Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
-            if let error = error {
-                print("DEBUG: Error signing up")
-                self.showPopUp()
+        AuthService.registerUser(withCredentials: credentials) { error in
+            if error != nil {
                 return
             } else {
                 self.navigationController?.pushViewController(AddChildController(), animated: true)
             }
-            
-            guard let uid = result?.user.uid else { return }
-            
-            let data = ["email": credentials.email,
-                        "uid": uid]
-            
-            COLLECTION_USERS.document(uid).setData(data, completion: nil)
         }
-
+        // UID BEDA KARENA DISINI
     }
     
     func handleShowLogin() {
