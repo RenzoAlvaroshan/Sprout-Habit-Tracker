@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = LoadingViewController() //Ganti disini ya VC nya
+        window?.rootViewController = TestingViewController() //Ganti disini ya VC nya
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

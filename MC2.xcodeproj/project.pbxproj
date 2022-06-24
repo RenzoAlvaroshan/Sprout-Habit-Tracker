@@ -51,6 +51,8 @@
 		834D62A7285C35A500F6F3C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A6285C35A500F6F3C8 /* FirebaseFirestore */; };
 		834D62A9285C35A500F6F3C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A8285C35A500F6F3C8 /* FirebaseStorage */; };
 		834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */; };
+		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
+		83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9928656BAA00249C9E /* TestingViewController.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -104,6 +106,8 @@
 		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
+		83DCCC9928656BAA00249C9E /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -176,16 +180,18 @@
 			children = (
 				0E8745A32859ABE80038B4BB /* AddChildController.swift */,
 				0E8745A42859ABE80038B4BB /* EditChildController.swift */,
+				83DCCC97286566A300249C9E /* SelectChildView.swift */,
+				83DCCC9928656BAA00249C9E /* TestingViewController.swift */,
 			);
 			path = "Child Controllers";
 			sourceTree = "<group>";
 		};
-		0E8745A52859ABE80038B4BB /* Activity UI */ = {
+		0E8745A52859ABE80038B4BB /* Habit Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0E8745A62859ABE80038B4BB /* AddHabitController.swift */,
 			);
-			path = "Activity UI";
+			path = "Habit Controllers";
 			sourceTree = "<group>";
 		};
 		0EDF459128648555004A7251 /* OnboardingAuth */ = {
@@ -292,7 +298,7 @@
 		83345E092851E45800A13B53 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				0E8745A52859ABE80038B4BB /* Activity UI */,
+				0E8745A52859ABE80038B4BB /* Habit Controllers */,
 				0E8745A22859ABE80038B4BB /* Child Controllers */,
 				0EFE8DD02859A63E00C1A4B8 /* Onboarding */,
 				0EFE8DD32859A63E00C1A4B8 /* Reusable Views */,
@@ -513,6 +519,8 @@
 				0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */,
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
+				83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */,
+				83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
 				0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
