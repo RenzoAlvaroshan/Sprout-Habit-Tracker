@@ -42,6 +42,8 @@ class LoadingViewController: UIViewController {
             navVC.modalPresentationStyle = .fullScreen
             navVC.setNavigationBarHidden(true, animated: true)
             present(navVC, animated: true)
+        } else {
+            navigationManager.show(screen: .showOnboarding, inController: self)
         }
     }
     
