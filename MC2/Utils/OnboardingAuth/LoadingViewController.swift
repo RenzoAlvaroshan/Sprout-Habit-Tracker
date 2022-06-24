@@ -42,9 +42,15 @@ class LoadingViewController: UIViewController {
             navVC.modalPresentationStyle = .fullScreen
             navVC.setNavigationBarHidden(true, animated: true)
             present(navVC, animated: true)
-        // If onboarding not seed -> Show Onboarding
-        } else {
-            navigationManager.show(screen: .showOnboarding, inController: self)
+        }
+    }
+    
+    func presentLoginController() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
         }
     }
 }

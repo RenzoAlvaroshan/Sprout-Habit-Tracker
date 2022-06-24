@@ -19,6 +19,7 @@ class MainController: UITabBarController {
         navigationController?.setNavigationBarHidden(true, animated: true)
         configureUI()
         configureViewControllers()
+        
     }
     
     //MARK: - Helpers
@@ -53,6 +54,7 @@ class MainController: UITabBarController {
             self.present(nav, animated: true)
         }
     }
+    
     
     func templateNavigationController(image: UIImage?,
                                       rootViewController: UIViewController) -> UINavigationController {
