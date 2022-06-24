@@ -12,6 +12,13 @@ class ProfileController: UIViewController {
     
     //MARK: - Properties
     
+    var child: [Child]?
+    var childName = [String]() {
+        didSet {
+            configure()
+        }
+    }
+    
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
         rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
@@ -59,6 +66,20 @@ class ProfileController: UIViewController {
         return rect
     }()
     
+    private lazy var addKids: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.text = "Add Kids"
+        return label
+    }()
+    
+    private lazy var addYourOtherKids: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 14)
+        label.text = "Add your other kid"
+        return label
+    }()
+    
     private lazy var changeProfile: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsSemiBold(size: 18)
@@ -98,6 +119,7 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchChildrenName()
         configureUI()
     }
     
@@ -111,16 +133,20 @@ class ProfileController: UIViewController {
         navigationController?.pushViewController(newVC, animated: true)
     }
     
-    @objc func handleStack2() {
-        // harusnya edit child
+    @objc func handleStack1() {
         let rootVC = AddChildController()
         let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalPresentationStyle = .popover
         present(navVC, animated: true)
     }
     
+    @objc func handleStack2() {
+        // belum ada designnya
+        print("DEBUG: Change child profile view")
+    }
+    
     @objc func handleStack3() {
-        print("DEBUG: Stack 3 tapped..")
+        print("DEBUG: Add guardian view")
     }
     
     @objc func handleStack4() {
@@ -135,9 +161,25 @@ class ProfileController: UIViewController {
         }
     }
     
+    // MARK: - API
+    
+    func fetchChildrenName() {
+        let urutan = 4
+        
+        Service.fetchChildrenName(urutan: urutan, completion: { child in
+            self.childName = child
+        })
+        print("DEBUG: array of children in controller \(String(describing: childName))")
+    }
+    
     //MARK: - Helpers
     
+    func configure() {
+        profileName.text = childName.first
+    }
+    
     func configureUI() {
+        
         view.backgroundColor = .arcadiaGreen
         
         view.addSubview(roundedRectangel)
@@ -158,6 +200,24 @@ class ProfileController: UIViewController {
         stack.centerX(inView: view)
         stack.anchor(top: circleView.bottomAnchor)
         
+        let stack1 = UIStackView(arrangedSubviews: [addKids, addYourOtherKids])
+        stack1.axis = .vertical
+        stack1.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+        stack1.backgroundColor = .arcadiaGray
+        stack1.layer.cornerRadius = 16
+        
+        view.addSubview(stack1)
+        stack1.centerX(inView: view)
+        stack1.anchor(top: stack.bottomAnchor, paddingTop: 16)
+        stack1.spacing = UIStackView.spacingUseSystem - 1
+        stack1.isLayoutMarginsRelativeArrangement = true
+        stack1.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
+        
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(handleStack1))
+        stack1.addGestureRecognizer(tap1)
+        stack1.isUserInteractionEnabled = true
+        
+        
         let stack2 = UIStackView(arrangedSubviews: [changeProfile, trackYourOtherKids])
         stack2.axis = .vertical
         stack2.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
@@ -166,7 +226,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack2)
         stack2.centerX(inView: view)
-        stack2.anchor(top: stack.bottomAnchor, paddingTop: 16)
+        stack2.anchor(top: stack1.bottomAnchor, paddingTop: 16)
         stack2.spacing = UIStackView.spacingUseSystem - 1
         stack2.isLayoutMarginsRelativeArrangement = true
         stack2.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -174,6 +234,7 @@ class ProfileController: UIViewController {
         let tap2 = UITapGestureRecognizer(target: self, action: #selector(handleStack2))
         stack2.addGestureRecognizer(tap2)
         stack2.isUserInteractionEnabled = true
+        
         
         let stack3 = UIStackView(arrangedSubviews: [addGuardian, trackYourWhenAway])
         stack3.axis = .vertical
@@ -191,6 +252,7 @@ class ProfileController: UIViewController {
         let tap3 = UITapGestureRecognizer(target: self, action: #selector(handleStack3))
         stack3.addGestureRecognizer(tap3)
         stack3.isUserInteractionEnabled = true
+        
         
         let stack4 = UIStackView(arrangedSubviews: [logOut])
         stack4.axis = .vertical

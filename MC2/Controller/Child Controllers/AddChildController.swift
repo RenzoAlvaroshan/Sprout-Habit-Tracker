@@ -121,7 +121,8 @@ class AddChildController: UIViewController {
                 print("ERROR is \(error.localizedDescription)")
             }
         }
-        self.navigationController?.pushViewController(MainController(), animated: true)
+//        self.navigationController?.popViewController(MainController(), animated: true)
+        dismiss(animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
