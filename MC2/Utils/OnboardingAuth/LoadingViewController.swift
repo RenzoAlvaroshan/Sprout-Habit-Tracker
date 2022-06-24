@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import Firebase
 
 class LoadingViewController: UIViewController {
     
     private var isOnboardingSeen: Bool!
     private let navigationManager = NavigationManager()
     private let onboardingManager = OnboardingManager()
+    
+    var rootVC = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +29,18 @@ class LoadingViewController: UIViewController {
     private func showInitialScreen() {
         // If onboarding seen -> Login
         if isOnboardingSeen {
-            let rootVC = MainController()
+            
+            if Auth.auth().currentUser == nil {
+               print("DEBUG: No user logged in")
+               rootVC = LoginController()
+            } else {
+                print("DEBUG: User already logged in")
+                rootVC = MainController()
+            }
+            
             let navVC = UINavigationController(rootViewController: rootVC)
             navVC.modalPresentationStyle = .fullScreen
+            navVC.setNavigationBarHidden(true, animated: true)
             present(navVC, animated: true)
         // If onboarding not seed -> Show Onboarding
         } else {

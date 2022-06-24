@@ -128,7 +128,7 @@ class AddHabitController: UIViewController {
         return label
     }()
     
-    private lazy var matiinKeranAirButton: UIButton = {
+    private lazy var habitButton01: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
@@ -143,7 +143,7 @@ class AddHabitController: UIViewController {
         return button
     }()
     
-    private lazy var matiinKeranAirButton2: UIButton = {
+    private lazy var habitButton02: UIButton = {
         let button = UIButton()
         button.backgroundColor = .white
         button.layer.cornerRadius = 10
@@ -193,7 +193,7 @@ class AddHabitController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-//        configureTapButton()
+        //        configureTapButton()
         addCustomTextField.delegate = self
     }
     
@@ -203,42 +203,80 @@ class AddHabitController: UIViewController {
         print("DEBUG: Water tapped")
         waterTapped = !waterTapped
         if waterTapped {
+            
             waterButton.backgroundColor = .arcadiaGreen2
             waterButton.setTitleColor(UIColor.white, for: .normal)
-
-        } else {
-            waterButton.backgroundColor = .white
-            waterButton.setTitleColor(UIColor.black, for: .normal)
+            habitIcon.image = UIImage(named: "water")
+            
+            electricityButton.backgroundColor = .white
+            electricityButton.setTitleColor(UIColor.black, for: .normal)
+            
+            plantingButton.backgroundColor = .white
+            plantingButton.setTitleColor(UIColor.black, for: .normal)
+            
+            garbageButton.backgroundColor = .white
+            garbageButton.setTitleColor(UIColor.black, for: .normal)
+            
+            electrictyTapped = false
+            plantingTapped = false
+            garbageTapped = false
+            
+            habitButton01.setTitle("Test 1", for: .normal)
+            habitButton02.setTitle("Test 2", for: .normal)
         }
-        
-        electrictyTapped = false
     }
     
     @objc func handleElectricity() {
         print("DEBUG: Electricity tapped")
         electrictyTapped = !electrictyTapped
         if electrictyTapped {
+            
             electricityButton.backgroundColor = .arcadiaGreen2
             electricityButton.setTitleColor(UIColor.white, for: .normal)
-
-        } else {
-            electricityButton.backgroundColor = .white
-            electricityButton.setTitleColor(UIColor.black, for: .normal)
+            habitIcon.image = UIImage(named: "electric")
+            
+            waterButton.backgroundColor = .white
+            waterButton.setTitleColor(UIColor.black, for: .normal)
+            
+            plantingButton.backgroundColor = .white
+            plantingButton.setTitleColor(UIColor.black, for: .normal)
+            
+            garbageButton.backgroundColor = .white
+            garbageButton.setTitleColor(UIColor.black, for: .normal)
+            
+            waterTapped = false
+            plantingTapped = false
+            garbageTapped = false
+            
+            habitButton01.setTitle("Test 3", for: .normal)
+            habitButton02.setTitle("Test 4", for: .normal)
         }
-        
-        waterTapped = false
     }
     
     @objc func handlePlanting() {
         print("DEBUG: Planting tapped..")
         plantingTapped = !plantingTapped
         if plantingTapped {
+            
             plantingButton.backgroundColor = .arcadiaGreen2
             plantingButton.setTitleColor(UIColor.white, for: .normal)
-
-        } else {
-            plantingButton.backgroundColor = .white
-            plantingButton.setTitleColor(UIColor.black, for: .normal)
+            habitIcon.image = UIImage(named: "plant")
+            
+            waterButton.backgroundColor = .white
+            waterButton.setTitleColor(UIColor.black, for: .normal)
+            
+            electricityButton.backgroundColor = .white
+            electricityButton.setTitleColor(UIColor.black, for: .normal)
+            
+            garbageButton.backgroundColor = .white
+            garbageButton.setTitleColor(UIColor.black, for: .normal)
+            
+            electrictyTapped = false
+            plantingTapped = false
+            garbageTapped = false
+            
+            habitButton01.setTitle("Test 5", for: .normal)
+            habitButton02.setTitle("Test 6", for: .normal)
         }
     }
     
@@ -246,12 +284,26 @@ class AddHabitController: UIViewController {
         print("DEBUG: Garbage tapped..")
         garbageTapped = !garbageTapped
         if garbageTapped {
+            
             garbageButton.backgroundColor = .arcadiaGreen2
             garbageButton.setTitleColor(UIColor.white, for: .normal)
-
-        } else {
-            garbageButton.backgroundColor = .white
-            garbageButton.setTitleColor(UIColor.black, for: .normal)
+            habitIcon.image = UIImage(named: "garbage")
+            
+            waterButton.backgroundColor = .white
+            waterButton.setTitleColor(UIColor.black, for: .normal)
+            
+            electricityButton.backgroundColor = .white
+            electricityButton.setTitleColor(UIColor.black, for: .normal)
+            
+            plantingButton.backgroundColor = .white
+            plantingButton.setTitleColor(UIColor.black, for: .normal)
+            
+            electrictyTapped = false
+            plantingTapped = false
+            waterTapped = false
+            
+            habitButton01.setTitle("Test 7", for: .normal)
+            habitButton02.setTitle("Test 8", for: .normal)
         }
     }
     
@@ -259,12 +311,12 @@ class AddHabitController: UIViewController {
         print("DEBUG: Matiin keran air..")
         matiinKeranAirTapped = !matiinKeranAirTapped
         if matiinKeranAirTapped {
-            matiinKeranAirButton.backgroundColor = .arcadiaGreen2
-            matiinKeranAirButton.setTitleColor(UIColor.white, for: .normal)
-
+            habitButton01.backgroundColor = .arcadiaGreen2
+            habitButton01.setTitleColor(UIColor.white, for: .normal)
+            
         } else {
-            matiinKeranAirButton.backgroundColor = .white
-            matiinKeranAirButton.setTitleColor(UIColor.black, for: .normal)
+            habitButton01.backgroundColor = .white
+            habitButton01.setTitleColor(UIColor.black, for: .normal)
         }
     }
     
@@ -272,17 +324,18 @@ class AddHabitController: UIViewController {
         print("DEBUG: Matiin keran air..")
         matiinKeranAirTapped2 = !matiinKeranAirTapped2
         if matiinKeranAirTapped2 {
-            matiinKeranAirButton2.backgroundColor = .arcadiaGreen2
-            matiinKeranAirButton2.setTitleColor(UIColor.white, for: .normal)
-
+            habitButton02.backgroundColor = .arcadiaGreen2
+            habitButton02.setTitleColor(UIColor.white, for: .normal)
+            
         } else {
-            matiinKeranAirButton2.backgroundColor = .white
-            matiinKeranAirButton2.setTitleColor(UIColor.black, for: .normal)
+            habitButton02.backgroundColor = .white
+            habitButton02.setTitleColor(UIColor.black, for: .normal)
         }
     }
     
     @objc func handleAddGoal() {
-        print("Add goal tapped..")
+        print(habitButton01.titleLabel?.text)
+        
     }
     
     //MARK: - Helpers
@@ -323,14 +376,14 @@ class AddHabitController: UIViewController {
         view.addSubview(taskTitle)
         taskTitle.anchor(top: plantingButton.bottomAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 20)
         
-        view.addSubview(matiinKeranAirButton)
-        matiinKeranAirButton.anchor(top: taskTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 20)
+        view.addSubview(habitButton01)
+        habitButton01.anchor(top: taskTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 20)
         
-        view.addSubview(matiinKeranAirButton2)
-        matiinKeranAirButton2.anchor(top: matiinKeranAirButton.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 20)
+        view.addSubview(habitButton02)
+        habitButton02.anchor(top: habitButton01.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 20)
         
         view.addSubview(addCustomTextField)
-        addCustomTextField.anchor(top: matiinKeranAirButton2.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 20)
+        addCustomTextField.anchor(top: habitButton02.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 20)
         
         view.addSubview(addGoalButton)
         addGoalButton.anchor(top: addCustomTextField.bottomAnchor, left: view.leftAnchor, paddingTop: view.frame.width / 4.875, paddingLeft: 20)

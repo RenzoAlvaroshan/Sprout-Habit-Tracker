@@ -16,8 +16,9 @@ class MainController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkIfUserLoggedIn()
-        
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        configureUI()
+        configureViewControllers()
     }
     
     //MARK: - Helpers
@@ -28,7 +29,6 @@ class MainController: UITabBarController {
     
     func configureViewControllers() {
         let task = TaskController()
-//        let task = ActivityController()
         let nav1 = templateNavigationController(image: UIImage(named: "task.icon.gray"), rootViewController: task)
         nav1.title = "Task"
         
@@ -43,17 +43,6 @@ class MainController: UITabBarController {
         viewControllers = [nav1, nav2, nav3]
         tabBar.backgroundColor = .white
         tabBar.tintColor = .arcadiaGreen
-    }
-    
-    func checkIfUserLoggedIn() {
-        if Auth.auth().currentUser == nil {
-           print("DEBUG: No user logged in")
-            presentLoginController()
-        } else {
-            print("DEBUG: User already logged in")
-            configureUI()
-            configureViewControllers()
-        }
     }
     
     func presentLoginController() {
