@@ -168,9 +168,10 @@ class ProfileController: UIViewController {
     // MARK: - API
     
     func fetchChildrenData() {
-        let childId = "CcFHhz681q"
+        // masukin pilihan anak (0 = pertama, 1 = kedua, etc.) yang dapet dari pilih child
+        let childRef = 1
         
-        Service.fetchChildrenData(childRef: childId, completion: { child in
+        Service.fetchChildrenData(childRef: childRef, completion: { child in
             self.child = child
         })
         print("DEBUG: array of children in controller \(String(describing: child))")

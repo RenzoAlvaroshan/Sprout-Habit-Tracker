@@ -23,8 +23,6 @@ class AddChildController: UIViewController {
     
     var child: Child?
     
-    lazy var randomID = randomString(length: 10)
-    
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
     
@@ -107,21 +105,20 @@ class AddChildController: UIViewController {
     @objc func handleGetStarted() {
         // cara kevin
         let childName = nameTextField.text!
-        let childID = randomID
 
-        let model = Child(dictionary: ["name" : childName, "childID": childID])
-        
-        // update array childId di users
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
+        let model = Child(dictionary: ["name" : childName])
         
         // save child data di collection child
-        Service.saveChildData(child: model) { error in
+        Service.saveChildData(child: model) { error, childId  in
             if let error = error {
                 print("ERROR is \(error.localizedDescription)")
             }
+            // get uid user dan uid child dari completion block savechild
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let childID = childId
+            // masukin UID Child ke dalam users collection
+            COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
-//        self.navigationController?.popViewController(MainController(), animated: true)
         dismiss(animated: true)
     }
     
@@ -133,11 +130,6 @@ class AddChildController: UIViewController {
     }
     
     //MARK: - Helpers
-    
-    func randomString(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
-    }
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen

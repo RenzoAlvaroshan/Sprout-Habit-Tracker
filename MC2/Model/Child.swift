@@ -9,10 +9,8 @@ import Foundation
 
 struct Child {
     var name: String
-    var childID: String
     
     init(dictionary: [String: Any]) {
         self.name = dictionary["name"] as? String ?? ""
-        self.childID = dictionary["childID"] as? String ?? ""
     }
 }
