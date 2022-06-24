@@ -14,7 +14,8 @@ struct Service {
     
     static func saveChildData(child: Child, completion: @escaping(Error?, String) -> Void) {
         
-        let data = ["name": child.name] as [String : Any]
+        let data = ["name": child.name,
+                    "profile": child.profileImage] as [String : Any]
         
         var ref : DocumentReference? = nil
         ref = COLLECTION_CHILD.addDocument(data: data)
@@ -33,9 +34,9 @@ struct Service {
             if snapshot != nil && snapshot!.exists {
                 
                 guard let snapshotData = snapshot!.data() else {return}
-                let element = snapshotData["childId"] as? [String]
+                let childID = snapshotData["childId"] as? [String]
                 
-                let childCollection = COLLECTION_CHILD.document(element![childRef])
+                let childCollection = COLLECTION_CHILD.document(childID![childRef])
                 childCollection.getDocument { snapshot, error in
                     let dictionary = snapshot!.data()
                     let child = Child(dictionary: dictionary!)

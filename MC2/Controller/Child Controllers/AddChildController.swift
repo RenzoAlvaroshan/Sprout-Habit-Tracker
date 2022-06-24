@@ -22,6 +22,7 @@ class AddChildController: UIViewController {
     //MARK: - Properties
     
     var child: Child?
+    var selected = 0
     
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
@@ -105,8 +106,8 @@ class AddChildController: UIViewController {
     @objc func handleGetStarted() {
         // cara kevin
         let childName = nameTextField.text!
-
-        let model = Child(dictionary: ["name" : childName])
+        
+        let model = Child(dictionary: ["name" : childName, "profile": selected])
         
         // save child data di collection child
         Service.saveChildData(child: model) { error, childId  in
@@ -126,7 +127,10 @@ class AddChildController: UIViewController {
         guard let iv = sender.view as? UIImageView else { return }
         radioButton?.selected = iv
         avatarProfile.image = iv.image
-        print("DEBUG: \(iv)")
+        
+        guard let getTag = sender.view?.tag else { return }
+        selected = getTag
+        print("DEBUG: \(getTag)")
     }
     
     //MARK: - Helpers
@@ -134,12 +138,10 @@ class AddChildController: UIViewController {
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
         
-        let avatars: [UIImageView] = AvatarStyle.allCases.map {
-            let assetName = $0.rawValue
-            return createAvatar(imageName: assetName)
-        }
+        let avatars: [UIImageView] = assignTagToImageView()
+        
         self.avatars = avatars
-
+        
         radioButton = RadioButtonManager(
             avatars,
             onSelected: { [unowned self] avatar in
@@ -154,12 +156,15 @@ class AddChildController: UIViewController {
                 borderView.centerY(inView: avatar)
                 
                 selectedBorderView = borderView
+                
         }, onDeselect: { [unowned self] avatar in
             selectedBorderView?.removeFromSuperview()
         })
 
         avatars.forEach { avatar in
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapAvatar(_:)))
+            // setiap image view harus di tag, baru bisa ambil tag nya
+            tap.view?.tag =  avatar.tag
             avatar.isUserInteractionEnabled = true
             avatar.addGestureRecognizer(tap)
         }
@@ -210,6 +215,21 @@ class AddChildController: UIViewController {
         let iv = UIImageView()
         iv.image = UIImage(named: imageName)
         iv.setDimensions(height: view.frame.width / 4.24, width: view.frame.width / 4.24)
+        
         return iv
+    }
+    
+    func assignTagToImageView() -> [UIImageView] {
+        var currentTag = 0
+        let avatars: [UIImageView] = AvatarStyle.allCases.map {
+            let assetName = $0.rawValue
+            return createAvatar(imageName: assetName)
+        }
+        
+        for avatar in avatars {
+            avatar.tag = currentTag
+            currentTag += 1
+        }
+        return avatars
     }
 }

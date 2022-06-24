@@ -17,11 +17,6 @@ class ProfileController: UIViewController {
             configure()
         }
     }
-//    var childName = [String]() {
-//        didSet {
-//            configure()
-//        }
-//    }
     
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
@@ -123,7 +118,10 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchChildrenData()
+        DispatchQueue.main.async {
+            self.fetchChildrenData()
+        }
+        
         configureUI()
     }
     
@@ -169,19 +167,42 @@ class ProfileController: UIViewController {
     
     func fetchChildrenData() {
         // masukin pilihan anak (0 = pertama, 1 = kedua, etc.) yang dapet dari pilih child
-        let childRef = 1
+        let childRef = 5
         
         Service.fetchChildrenData(childRef: childRef, completion: { child in
             self.child = child
         })
-        print("DEBUG: array of children in controller \(String(describing: child))")
     }
     
     //MARK: - Helpers
     
     func configure() {
-        print("DEBUG: nama anak: \(child?[0].name)")
+//        print("DEBUG: nama anak: \(child?[0].profileImage)")
         profileName.text = child?[0].name
+        
+        let profileImage = child?[0].profileImage
+        var profileImageChild = "ava1_f"
+        
+        switch profileImage {
+        case 0:
+            profileImageChild = "ava1_f"
+        case 1:
+            profileImageChild = "ava2_f"
+        case 2:
+            profileImageChild = "ava3_f"
+        case 3:
+            profileImageChild = "ava1_m"
+        case 4:
+            profileImageChild = "ava2_m"
+        case 5:
+            profileImageChild = "ava2_m"
+        case .none:
+            return
+        case .some(_):
+            return
+        }
+        
+        avatarButton.image = UIImage(named: profileImageChild)
     }
     
     func configureUI() {
