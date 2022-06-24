@@ -334,7 +334,7 @@ class AddHabitController: UIViewController {
     }
     
     @objc func handleAddGoal() {
-        print(habitButton01.titleLabel?.text)
+        print("COK")
         
     }
     
