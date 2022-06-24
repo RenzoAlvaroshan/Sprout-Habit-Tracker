@@ -14,6 +14,8 @@ class LoadingViewController: UIViewController {
     private let navigationManager = NavigationManager()
     private let onboardingManager = OnboardingManager()
     
+    var rootVC = UIViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         isOnboardingSeen = onboardingManager.isOnboardingSeen()
@@ -27,22 +29,18 @@ class LoadingViewController: UIViewController {
     private func showInitialScreen() {
         // If onboarding seen -> Login
         if isOnboardingSeen {
-            checkIfUserLoggedIn()
-        // If onboarding not seed -> Show Onboarding
-        } else {
-            navigationManager.show(screen: .showOnboarding, inController: self)
-        }
-    }
-    
-    func checkIfUserLoggedIn() {
-        if Auth.auth().currentUser == nil {
-           print("DEBUG: No user logged in")
-            presentLoginController()
-        } else {
-            print("DEBUG: User already logged in")
-            let rootVC = MainController()
+            
+            if Auth.auth().currentUser == nil {
+               print("DEBUG: No user logged in")
+               rootVC = LoginController()
+            } else {
+                print("DEBUG: User already logged in")
+                rootVC = MainController()
+            }
+            
             let navVC = UINavigationController(rootViewController: rootVC)
             navVC.modalPresentationStyle = .fullScreen
+            navVC.setNavigationBarHidden(true, animated: true)
             present(navVC, animated: true)
         }
     }
