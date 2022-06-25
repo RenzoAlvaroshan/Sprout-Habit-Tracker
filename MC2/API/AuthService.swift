@@ -20,23 +20,5 @@ struct AuthService {
                           completion: ((AuthDataResult?, Error?) -> Void)?) {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
-    
-    
-    static func registerUser(withCredentials credentials: AuthCredentials,completion: @escaping((Error?) -> Void)) {
-        Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
-            if let error = error {
-                print("DEBUG: Error signing up \(error.localizedDescription)")
-                RegistrationController().showPopUp()
-                return
-            }
-            
-            guard let uid = result?.user.uid else { return }
-            
-            let data = ["email": credentials.email,
-                        "uid": uid,
-                        "childId": credentials.childID] as [String : Any]
-            // UID BEDA KARENA DISINI
-            COLLECTION_USERS.document(uid).setData(data, completion: completion)
-        }
-    }
+
 }

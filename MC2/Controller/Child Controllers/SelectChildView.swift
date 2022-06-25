@@ -112,7 +112,7 @@ class SelectChildView {
         targetView.addSubview(alertView)
         alertView.centerX(inView: targetView)
         alertView.centerY(inView: targetView)
-        alertView.anchor(width: targetView.frame.size.width-80, height: 300)
+        alertView.anchor(width: targetView.frame.size.width-80, height: 400)
 //        alertView.frame = CGRect(x: 40,y: 300,width: targetView.frame.size.width-80,height: 300)
         
         targetView.addSubview(selectChildTitle)
