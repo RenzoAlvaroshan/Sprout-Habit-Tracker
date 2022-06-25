@@ -32,12 +32,14 @@ class LoginCardView: UIView {
         let tf = Utilities().textField(withPlaceholder: "Email Address")
         tf.autocapitalizationType = .none
         tf.keyboardType = .emailAddress
+        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Password")
         tf.isSecureTextEntry = true
+        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         return tf
     }()
     
@@ -155,6 +157,9 @@ class LoginCardView: UIView {
         passwordTextField.resignFirstResponder()
     }
     
+    @objc func tapDone(sender: Any) {
+        self.endEditing(true)
+    }
     
     //MARK: - Helpers
     
@@ -167,7 +172,7 @@ class LoginCardView: UIView {
         } else {
             loginButton.isEnabled = false
             UIView.animate(withDuration: 0.3) {
-                self.loginButton.backgroundColor = UIColor.systemGray
+                self.loginButton.backgroundColor = UIColor.systemGray3
             }
         }
     }

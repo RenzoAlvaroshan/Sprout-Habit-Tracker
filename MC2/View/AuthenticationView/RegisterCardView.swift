@@ -32,12 +32,14 @@ class RegisterCardView: UIView {
         let tf = Utilities().textField(withPlaceholder: "Email Address")
         tf.autocapitalizationType = .none
         tf.keyboardType = .emailAddress
+        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         return tf
     }()
     
     let passwordTextField: UITextField = {
         let tf = Utilities().textField(withPlaceholder: "Password")
         tf.isSecureTextEntry = true
+        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         return tf
     }()
     
@@ -108,6 +110,15 @@ class RegisterCardView: UIView {
         checkFormStatus()
     }
     
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        emailTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+    }
+    
+    @objc func tapDone(sender: Any) {
+        self.endEditing(true)
+    }
+    
     func checkFormStatus() {
         if viewModel.formIsValid == true {
             loginButton.isEnabled = true
@@ -150,6 +161,9 @@ class RegisterCardView: UIView {
     func configureTextFieldObservers() {
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        self.addGestureRecognizer(tap)
     }
 }
 

@@ -84,7 +84,7 @@ class LoginController: UIViewController, LoginCardViewDelegate {
         view.addSubview(iconImageView)
         iconImageView.centerX(inView: view)
         iconImageView.setDimensions(height: 60, width: 60)
-        iconImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        iconImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 60)
         
         view.addSubview(cardView)
         cardView.setDimensions(height: view.frame.height * 0.7, width: view.frame.width)
