@@ -39,11 +39,9 @@ struct Service {
         }
     }
     
-    static func fetchChildrenData (childRef: Int, completion: @escaping([Child])->Void) {
+    static func fetchChildrenData (uid: String, childRef: Int, completion: @escaping([Child])->Void) {
         var children = [Child]()
         // ambil uid user
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        // cek document pada uid user
         
         fetchChildUID(uid: uid) { childID in
             let childCollection = COLLECTION_CHILD.document(childID[childRef])
@@ -65,8 +63,25 @@ struct Service {
         var ref : DocumentReference? = nil
         ref = COLLECTION_CHILD.document(childId).collection("Activity").addDocument(data: data)
         // ambil document ID yang baru dibuat
-        let childId = ref!.documentID
+        let activityId = ref!.documentID
         // return 2 data, error dan UID child yang baru dibuat
-        completion(Error.self as? Error, childId)
+        completion(Error.self as? Error, activityId)
+    }
+    
+    static func fetchActivity (uid: String, childRef: Int, completion: @escaping([Activity])->Void) {
+        var activityArray = [Activity]()
+        
+        fetchChildUID(uid: uid) { childID in
+            let activityCollection = COLLECTION_CHILD.document(childID[childRef]).collection("Activity").getDocuments(completion: { query, error in
+                let queryDoc = query?.documents
+                for i in 0..<queryDoc!.count {
+                    let snapshot = queryDoc![i]
+                    let activitySnapshot = snapshot.data()
+                    let activity = Activity(dictionary: activitySnapshot)
+                    activityArray.append(activity)
+                }
+                completion(activityArray)
+            })
+        }
     }
 }

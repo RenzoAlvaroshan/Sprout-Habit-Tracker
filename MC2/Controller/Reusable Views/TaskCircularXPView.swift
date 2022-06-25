@@ -43,25 +43,16 @@ class TaskCircularXPView: UIView {
         foregroundLayer.strokeColor = UIColor.arcadiaYellow.cgColor
         foregroundLayer.lineCap = CAShapeLayerLineCap.round
         foregroundLayer.fillColor = UIColor.clear.cgColor
-        foregroundLayer.strokeEnd = 0
+        
+        let experience = 160
+        let experienceLabel = Double(experience%100) / 100.0
+        
+        foregroundLayer.strokeEnd = experienceLabel // ganti disini
         
         layer.addSublayer(foregroundLayer)
-        
-        playAnimation()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func playAnimation() {
-        
-        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        basicAnimation.fromValue = 0
-        basicAnimation.toValue = 1
-        basicAnimation.duration = Double(60) + 0.9
-        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
-        basicAnimation.isRemovedOnCompletion = false
-        foregroundLayer.add(basicAnimation, forKey: "basicAnimation")
     }
 }

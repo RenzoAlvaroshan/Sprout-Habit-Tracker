@@ -122,7 +122,7 @@ class AddChildController: UIViewController, UITextFieldDelegate {
             // masukin UID Child ke dalam users collection
             COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
-        dismiss(animated: true)
+        self.navigationController?.pushViewController(MainController(), animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {

@@ -120,7 +120,6 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchChildrenData()
         configureUI()
     }
     
@@ -165,29 +164,16 @@ class ProfileController: UIViewController {
         }
     }
     
-    // MARK: - API
-    
-    func fetchChildrenData() {
-        // masukin pilihan anak (0 = pertama, 1 = kedua, etc.) yang dapet dari pilih child
-        let childRef = 7
-        
-        Service.fetchChildrenData(childRef: childRef, completion: { child in
-            self.child = child
-        })
-    }
-    
-    //MARK: - Helpers
+    //MARK: - Helper
     
     func configure() {
-//        print("DEBUG: nama anak: \(child?[0].profileImage)")
         profileName.text = child?[0].name
-        
-        let viewmodel = ChildViewModel(child: child)
-        
-        avatarButton.image = UIImage(named: viewmodel.profileImageChild)
     }
     
     func configureUI() {
+        let viewmodel = ChildViewModel(child: child)
+        avatarButton.image = UIImage(named: viewmodel.profileImageChild)
+        print("DEBUG: foto ke load \(viewmodel.profileImageChild)")
         
         view.backgroundColor = .arcadiaGreen
         

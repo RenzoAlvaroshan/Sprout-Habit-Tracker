@@ -8,9 +8,16 @@
 import UIKit
 import Firebase
 
+protocol AddHabitControllerDelegate: AnyObject {
+    func handleReloadData()
+}
+
 class AddHabitController: UIViewController {
     
     //MARK: - Properties
+    
+    weak var delegate: AddHabitControllerDelegate?
+    
     var activity = [Activity]()
     var tapButton: String = ""
     var activities = [String]()
@@ -259,7 +266,7 @@ class AddHabitController: UIViewController {
             plantingTapped = false
             garbageTapped = false
             
-            habitButton01.setTitle("Test 3", for: .normal)
+            habitButton01.setTitle("Template untuk electricity 1", for: .normal)
             habitButton02.setTitle("Test 4", for: .normal)
         }
     }
@@ -352,18 +359,19 @@ class AddHabitController: UIViewController {
         else {
             activities.append(addCustomTextField.text!)
         }
-        print("DEBUG: button ter tap \(tapButton)") //category
-        print("DEBUG: \(activities)") // activity name
         
         let model = Activity(dictionary: ["activityName" : activities.last, "category": tapButton, "isFinished": false])
         
-        let childId = childUID[0]
+        let childRef = 0 // ganti ini
+        let childId = childUID[childRef]
         
-        Service.saveActivity(activity: model, childId: childId) { error, childId  in
+        Service.saveActivity(activity: model, childId: childId) { error, activityId  in
             if let error = error {
                 print("ERROR is \(error.localizedDescription)")
             }
         }
+        
+        delegate?.handleReloadData()
         
         dismiss(animated: true)
     }

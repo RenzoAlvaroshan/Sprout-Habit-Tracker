@@ -13,7 +13,6 @@ struct ChildViewModel {
     
     var profileImageChild: String {
         let profileImage = child?[0].profileImage
-        
         switch profileImage {
         case 0:
             return "ava1_f"

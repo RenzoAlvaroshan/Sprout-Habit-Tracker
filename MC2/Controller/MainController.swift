@@ -12,17 +12,57 @@ class MainController: UITabBarController {
     
     //MARK: - Properties
     
+    let uid = Auth.auth().currentUser?.uid
+    var childRef = 0 // ganti disini
+    
+    var child: [Child]? {
+        didSet {
+            guard let nav = viewControllers?[0] as? UINavigationController else { return }
+            guard let task = nav.viewControllers.last as? TaskController else { return }
+            
+            task.child = child
+            
+            guard let nav = viewControllers?[2] as? UINavigationController else { return }
+            guard let profile = nav.viewControllers.last as? ProfileController else { return }
+            
+            profile.child = child
+        }
+    }
+    
+    var childUID = [String]()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
-        configureUI()
-        configureViewControllers()
+        AuthenticateAndPresentLoginController()
         
     }
     
     //MARK: - Helpers
+    
+    func AuthenticateAndPresentLoginController() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
+        } else {
+            configureUI()
+            fetchChildrenData()
+            configureViewControllers()
+        }
+       
+    }
+    
+    func fetchChildrenData() {
+        
+        Service.fetchChildrenData(uid: uid!, childRef: childRef, completion: { child in
+            self.child = child
+        })
+    }
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
