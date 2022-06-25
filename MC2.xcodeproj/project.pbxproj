@@ -19,6 +19,7 @@
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
 		0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9803FB2862CAC9002D92CA /* CustomAlert.swift */; };
+		0EC677C628669B0900137483 /* ChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C528669B0900137483 /* ChildViewModel.swift */; };
 		0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458928647B17004A7251 /* NavigationManager.swift */; };
 		0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458B28647BE0004A7251 /* LoadingViewController.swift */; };
 		0EDF4593286487E4004A7251 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF4592286487E4004A7251 /* OnboardingManager.swift */; };
@@ -51,13 +52,10 @@
 		834D62A7285C35A500F6F3C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A6285C35A500F6F3C8 /* FirebaseFirestore */; };
 		834D62A9285C35A500F6F3C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A8285C35A500F6F3C8 /* FirebaseStorage */; };
 		834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */; };
-// main
-		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
-		83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9928656BAA00249C9E /* TestingViewController.swift */; };
-// Create-AddFirebase-Kevin
 		83DCCC9428641EAC00249C9E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9328641EAC00249C9E /* Service.swift */; };
 		83DCCC9628641EE900249C9E /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9528641EE900249C9E /* Child.swift */; };
-
+		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
+		83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9928656BAA00249C9E /* TestingViewController.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -86,6 +84,7 @@
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 		0E9803FB2862CAC9002D92CA /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		0EC677C528669B0900137483 /* ChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewModel.swift; sourceTree = "<group>"; };
 		0EDF458928647B17004A7251 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		0EDF458B28647BE0004A7251 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		0EDF4592286487E4004A7251 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
@@ -111,13 +110,10 @@
 		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-// main
-		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
-		83DCCC9928656BAA00249C9E /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
-// Create-AddFirebase-Kevin
 		83DCCC9328641EAC00249C9E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		83DCCC9528641EE900249C9E /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
-
+		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
+		83DCCC9928656BAA00249C9E /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -301,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				83345E262851F57400A13B53 /* AuthenticationViewModel.swift */,
+				0EC677C528669B0900137483 /* ChildViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -523,11 +520,9 @@
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
-// Create-Add-Child-Name-Firebase
+				0EC677C628669B0900137483 /* ChildViewModel.swift in Sources */,
 				83DCCC9428641EAC00249C9E /* Service.swift in Sources */,
-// Create-AddFirebase-Kevin
 				0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */,
-
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
@@ -688,7 +683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L7SMRXB5WV;
+				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
@@ -718,7 +713,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L7SMRXB5WV;
+				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;

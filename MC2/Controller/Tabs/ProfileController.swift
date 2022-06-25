@@ -18,6 +18,8 @@ class ProfileController: UIViewController {
         }
     }
     
+    var selectChildView = SelectChildView()
+    
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
         rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
@@ -145,6 +147,9 @@ class ProfileController: UIViewController {
     @objc func handleStack2() {
         // belum ada designnya
         print("DEBUG: Change child profile view")
+        view.addSubview(selectChildView)
+        selectChildView.setDimensions(height: view.frame.width / 1.175, width: view.frame.width / 1.147)
+        selectChildView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     }
     
     @objc func handleStack3() {
@@ -180,29 +185,9 @@ class ProfileController: UIViewController {
 //        print("DEBUG: nama anak: \(child?[0].profileImage)")
         profileName.text = child?[0].name
         
-        let profileImage = child?[0].profileImage
-        var profileImageChild = "ava1_f"
+        let viewmodel = ChildViewModel(child: child)
         
-        switch profileImage {
-        case 0:
-            profileImageChild = "ava1_f"
-        case 1:
-            profileImageChild = "ava2_f"
-        case 2:
-            profileImageChild = "ava3_f"
-        case 3:
-            profileImageChild = "ava1_m"
-        case 4:
-            profileImageChild = "ava2_m"
-        case 5:
-            profileImageChild = "ava2_m"
-        case .none:
-            return
-        case .some(_):
-            return
-        }
-        
-        avatarButton.image = UIImage(named: profileImageChild)
+        avatarButton.image = UIImage(named: viewmodel.profileImageChild)
     }
     
     func configureUI() {
