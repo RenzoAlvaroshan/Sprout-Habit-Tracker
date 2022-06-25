@@ -134,15 +134,16 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack1() {
-        self.navigationController?.pushViewController(AddChildController(), animated: true)
-//        let rootVC = AddChildController()
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        navVC.modalPresentationStyle = .popover
-//        present(navVC, animated: true)
+        let newVC = AddChildController()
+        newVC.hidesBottomBarWhenPushed = true
+        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
+        navigationController?.pushViewController(newVC, animated: true)
     }
     
     @objc func handleStack2() {
-        childPicker.showChildPicker(viewController: self)
+//        childPicker.showChildPicker(viewController: self)
+        
+        showAlert()
     }
     
     @objc func handleStack3() {
@@ -162,6 +163,30 @@ class ProfileController: UIViewController {
         } catch {
             print("DEBUG: Failed to sign out")
         }
+    }
+    
+    func showAlert() {
+        
+        let alert = UIAlertController(title: "Choose Child", message: "Which child do you want to focus on?", preferredStyle: .actionSheet)
+        
+        let cameraButton = UIAlertAction(title: "Kuning", style: .default) { action in
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(0, forKey: "childRef")
+        }
+        
+        let galleryButton = UIAlertAction(title: "Asu", style: .default) { action in
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(1, forKey: "childRef")
+        }
+        
+        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.view.tintColor = UIColor.arcadiaGreen
+        alert.addAction(cameraButton)
+        alert.addAction(galleryButton)
+        alert.addAction(cancelButton)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Helper
