@@ -47,10 +47,20 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
         
         let credentials = AuthCredentials(email: email, password: password, childID: childID)
         
-        AuthService.registerUser(withCredentials: credentials) { error in
-            if error != nil {
+        Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
+            if let error = error {
+                print("DEBUG: Error signing up \(error.localizedDescription)")
+                self.showPopUp()
                 return
             } else {
+                guard let uid = result?.user.uid else { return }
+
+                let data = ["email": credentials.email,
+                            "uid": uid,
+                            "childId": credentials.childID] as [String : Any]
+                // add child uid to users childId array
+                COLLECTION_USERS.document(uid).setData(data, completion: nil)
+                
                 self.navigationController?.pushViewController(AddChildControllerInitial(), animated: true)
             }
         }
