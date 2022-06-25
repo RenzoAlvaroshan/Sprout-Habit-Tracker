@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 //protocol ActivityViewDelegate: AnyObject {
 //    func handleAddActivityPush()
@@ -14,6 +15,22 @@ import UIKit
 class TaskController: UIViewController{
     
     //MARK: - Properties
+    let controller = AddHabitController()
+    
+    let uid = Auth.auth().currentUser?.uid
+    var childRef = 0 // ganti disini
+    
+    var child: [Child]? {
+        didSet {
+            configure()
+        }
+    }
+    
+    var activity: [Activity]? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     private let activityProgressView = ActivityProgressView()
     private let greetingsAndDate = GreetingsAndDate()
@@ -67,7 +84,6 @@ class TaskController: UIViewController{
     }()
     
     private var tableView = UITableView()
-    var activities: [Activity] = []
     
     private let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly!", preferredStyle: UIAlertController.Style.alert)
     
@@ -77,25 +93,35 @@ class TaskController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        controller.delegate = self
+        
+        fetchActivityData()
         
         configureUI()
-        activities = fetchData()
         configureTableView()
-        
+            
         alertOnTap()
         alertConfirmation()
     }
+    
 
     //MARK: - Selectors
     
     @objc func handleAddActivity() {
-//        delegate?.handleAddActivityPush()
-        let controller = AddHabitController()
         controller.modalPresentationStyle = .popover
         present(controller, animated: true)
     }
     
     //MARK: - Helpers
+    func fetchActivityData() {
+        
+        Service.fetchActivity(uid: uid!, childRef: childRef,completion: { activity in
+            self.activity = activity
+        })
+    }
+    
+    func configure() {
+    }
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
@@ -166,14 +192,14 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     
     // Banyak section
     func numberOfSections(in tableView: UITableView) -> Int {
-        return activities.count
+        return activity?.count ?? 0
     }
     
     // Isi dari cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityViewCell", for: indexPath) as! ActivityViewCell
-        let activity = activities[indexPath.section]
-        cell.cellCardView.set(activity: activity)
+//        print("DEBUG: activity: \(activity)")
+        cell.cellCardView.set(activity: activity![indexPath.section])
         cell.backgroundColor = .white
         cell.clipsToBounds = false
         return cell
@@ -200,23 +226,9 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension TaskController {
-    func fetchData() -> [Activity] {
-        let activity1 = Activity(activityName: "Matiin lampu jam 1", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity2 = Activity(activityName: "Buang sampah", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity3 = Activity(activityName: "Siram tanaman", categoryName: "Planting",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity4 = Activity(activityName: "Memisahkan sampah plastik", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity5 = Activity(activityName: "Mengurangi pengunaan AC", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity6 = Activity(activityName: "Tidur siang", categoryName: "MOLOR",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        
-        return [activity1,activity2,activity3,activity4,activity5,activity6]
+extension TaskController: AddHabitControllerDelegate {
+    func handleReloadData() {
+        fetchActivityData()
+        tableView.reloadData()
     }
 }
-
-//extension TaskController: ActivityViewDelegate {
-//    func handleAddActivityPush() {
-//        let controller = AddHabitController()
-//        controller.modalPresentationStyle = .popover
-//        present(controller, animated: true)
-//    }
-//}

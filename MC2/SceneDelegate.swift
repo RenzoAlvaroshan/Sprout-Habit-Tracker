@@ -12,12 +12,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        var isOnboardingSeen: Bool!
+        let onboardingManager = OnboardingManager()
+        isOnboardingSeen = onboardingManager.isOnboardingSeen()
         
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
+        
+        if isOnboardingSeen {
+            window?.rootViewController = MainController()
+        } else {
+            window?.rootViewController = OnboardingViewContainer()
+        }
+        
         window?.makeKeyAndVisible()
         
-        window?.rootViewController = LoadingViewController() //Ganti disini ya VC nya
+//        window?.rootViewController = MainController()
+        //Ganti disini ya VC nya
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

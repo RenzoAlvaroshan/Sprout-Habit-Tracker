@@ -17,11 +17,8 @@ class ProfileController: UIViewController {
             configure()
         }
     }
-//    var childName = [String]() {
-//        didSet {
-//            configure()
-//        }
-//    }
+    
+    var selectChildView = SelectChildView()
     
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
@@ -123,7 +120,6 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchChildrenData()
         configureUI()
     }
     
@@ -147,6 +143,9 @@ class ProfileController: UIViewController {
     @objc func handleStack2() {
         // belum ada designnya
         print("DEBUG: Change child profile view")
+        view.addSubview(selectChildView)
+        selectChildView.setDimensions(height: view.frame.width / 1.175, width: view.frame.width / 1.147)
+        selectChildView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     }
     
     @objc func handleStack3() {
@@ -165,25 +164,16 @@ class ProfileController: UIViewController {
         }
     }
     
-    // MARK: - API
-    
-    func fetchChildrenData() {
-        let childId = "CcFHhz681q"
-        
-        Service.fetchChildrenData(childRef: childId, completion: { child in
-            self.child = child
-        })
-        print("DEBUG: array of children in controller \(String(describing: child))")
-    }
-    
-    //MARK: - Helpers
+    //MARK: - Helper
     
     func configure() {
-        print("DEBUG: nama anak: \(child?[0].name)")
         profileName.text = child?[0].name
     }
     
     func configureUI() {
+        let viewmodel = ChildViewModel(child: child)
+        avatarButton.image = UIImage(named: viewmodel.profileImageChild)
+        print("DEBUG: foto ke load \(viewmodel.profileImageChild)")
         
         view.backgroundColor = .arcadiaGreen
         

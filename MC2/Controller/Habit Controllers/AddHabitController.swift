@@ -6,10 +6,22 @@
 //
 
 import UIKit
+import Firebase
+
+protocol AddHabitControllerDelegate: AnyObject {
+    func handleReloadData()
+}
 
 class AddHabitController: UIViewController {
     
     //MARK: - Properties
+    
+    weak var delegate: AddHabitControllerDelegate?
+    
+    var activity = [Activity]()
+    var tapButton: String = ""
+    var activities = [String]()
+    var childUID = [String]()
     
     var waterTapped = false
     var electrictyTapped = false
@@ -192,17 +204,23 @@ class AddHabitController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
-        //        configureTapButton()
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Service.fetchChildUID(uid: uid) { childData in
+            self.childUID = childData
+        }
         addCustomTextField.delegate = self
+        configureUI()
+        
     }
     
     //MARK: - Selectors
     
     @objc func handleWater() {
-        print("DEBUG: Water tapped")
         waterTapped = !waterTapped
         if waterTapped {
+            tapButton = "Water"
             
             waterButton.backgroundColor = .arcadiaGreen2
             waterButton.setTitleColor(UIColor.white, for: .normal)
@@ -227,9 +245,9 @@ class AddHabitController: UIViewController {
     }
     
     @objc func handleElectricity() {
-        print("DEBUG: Electricity tapped")
         electrictyTapped = !electrictyTapped
         if electrictyTapped {
+            tapButton = "Electricity"
             
             electricityButton.backgroundColor = .arcadiaGreen2
             electricityButton.setTitleColor(UIColor.white, for: .normal)
@@ -248,15 +266,15 @@ class AddHabitController: UIViewController {
             plantingTapped = false
             garbageTapped = false
             
-            habitButton01.setTitle("Test 3", for: .normal)
+            habitButton01.setTitle("Template untuk electricity 1", for: .normal)
             habitButton02.setTitle("Test 4", for: .normal)
         }
     }
     
     @objc func handlePlanting() {
-        print("DEBUG: Planting tapped..")
         plantingTapped = !plantingTapped
         if plantingTapped {
+            tapButton = "Planting"
             
             plantingButton.backgroundColor = .arcadiaGreen2
             plantingButton.setTitleColor(UIColor.white, for: .normal)
@@ -281,9 +299,9 @@ class AddHabitController: UIViewController {
     }
     
     @objc func handleGarbage() {
-        print("DEBUG: Garbage tapped..")
         garbageTapped = !garbageTapped
         if garbageTapped {
+            tapButton = "Garbage"
             
             garbageButton.backgroundColor = .arcadiaGreen2
             garbageButton.setTitleColor(UIColor.white, for: .normal)
@@ -308,7 +326,6 @@ class AddHabitController: UIViewController {
     }
     
     @objc func matiinKeranAir() {
-        print("DEBUG: Matiin keran air..")
         matiinKeranAirTapped = !matiinKeranAirTapped
         if matiinKeranAirTapped {
             habitButton01.backgroundColor = .arcadiaGreen2
@@ -321,7 +338,6 @@ class AddHabitController: UIViewController {
     }
     
     @objc func matiinKeranAir2() {
-        print("DEBUG: Matiin keran air..")
         matiinKeranAirTapped2 = !matiinKeranAirTapped2
         if matiinKeranAirTapped2 {
             habitButton02.backgroundColor = .arcadiaGreen2
@@ -334,8 +350,30 @@ class AddHabitController: UIViewController {
     }
     
     @objc func handleAddGoal() {
-        print("COK")
+        if matiinKeranAirTapped == true {
+            activities.append((habitButton01.titleLabel?.text)!)
+        }
+        else if matiinKeranAirTapped2 == true {
+            activities.append((habitButton02.titleLabel?.text)!)
+        }
+        else {
+            activities.append(addCustomTextField.text!)
+        }
         
+        let model = Activity(dictionary: ["activityName" : activities.last, "category": tapButton, "isFinished": false])
+        
+        let childRef = 0 // ganti ini
+        let childId = childUID[childRef]
+        
+        Service.saveActivity(activity: model, childId: childId) { error, activityId  in
+            if let error = error {
+                print("ERROR is \(error.localizedDescription)")
+            }
+        }
+        
+        delegate?.handleReloadData()
+        
+        dismiss(animated: true)
     }
     
     //MARK: - Helpers

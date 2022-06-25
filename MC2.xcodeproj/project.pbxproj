@@ -19,10 +19,11 @@
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
 		0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9803FB2862CAC9002D92CA /* CustomAlert.swift */; };
-		0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458928647B17004A7251 /* NavigationManager.swift */; };
-		0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF458B28647BE0004A7251 /* LoadingViewController.swift */; };
+		0EC677C628669B0900137483 /* ChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C528669B0900137483 /* ChildViewModel.swift */; };
+		0EC677C82866ADF400137483 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C72866ADF400137483 /* Activity.swift */; };
+		0EC677CA2866AE5400137483 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C92866AE5400137483 /* Reward.swift */; };
 		0EDF4593286487E4004A7251 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF4592286487E4004A7251 /* OnboardingManager.swift */; };
-		0EF31C23285AD14100E82F92 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* Reward.swift */; };
+		0EF31C23285AD14100E82F92 /* RewardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* RewardList.swift */; };
 		0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C24285AD17400E82F92 /* RewardCell.swift */; };
 		0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C26285AD1DE00E82F92 /* ProgressView.swift */; };
 		0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C2A285AD23C00E82F92 /* RewardView.swift */; };
@@ -51,13 +52,10 @@
 		834D62A7285C35A500F6F3C8 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A6285C35A500F6F3C8 /* FirebaseFirestore */; };
 		834D62A9285C35A500F6F3C8 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 834D62A8285C35A500F6F3C8 /* FirebaseStorage */; };
 		834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */; };
-// main
-		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
-		83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9928656BAA00249C9E /* TestingViewController.swift */; };
-// Create-AddFirebase-Kevin
 		83DCCC9428641EAC00249C9E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9328641EAC00249C9E /* Service.swift */; };
 		83DCCC9628641EE900249C9E /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9528641EE900249C9E /* Child.swift */; };
-
+		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
+		83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9928656BAA00249C9E /* TestingViewController.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -68,7 +66,7 @@
 		DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB61BBC92860895D00C99615 /* AuthPopUpView.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
-		DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityModel.swift */; };
+		DBA65BE228602FB2007F80D5 /* ActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,10 +84,11 @@
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
 		0E9803FB2862CAC9002D92CA /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
-		0EDF458928647B17004A7251 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
-		0EDF458B28647BE0004A7251 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		0EC677C528669B0900137483 /* ChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewModel.swift; sourceTree = "<group>"; };
+		0EC677C72866ADF400137483 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		0EC677C92866AE5400137483 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		0EDF4592286487E4004A7251 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
-		0EF31C22285AD14100E82F92 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		0EF31C22285AD14100E82F92 /* RewardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardList.swift; sourceTree = "<group>"; };
 		0EF31C24285AD17400E82F92 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
 		0EF31C26285AD1DE00E82F92 /* ProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressView.swift; sourceTree = "<group>"; };
 		0EF31C2A285AD23C00E82F92 /* RewardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
@@ -111,13 +110,10 @@
 		834B6AA32860160E007D05E9 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		834B6AA52860174B007D05E9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-// main
-		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
-		83DCCC9928656BAA00249C9E /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
-// Create-AddFirebase-Kevin
 		83DCCC9328641EAC00249C9E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		83DCCC9528641EE900249C9E /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
-
+		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
+		83DCCC9928656BAA00249C9E /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -128,7 +124,7 @@
 		DB61BBC92860895D00C99615 /* AuthPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPopUpView.swift; sourceTree = "<group>"; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
-		DBA65BE128602FB2007F80D5 /* ActivityModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityModel.swift; sourceTree = "<group>"; };
+		DBA65BE128602FB2007F80D5 /* ActivityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,8 +203,6 @@
 		0EDF459128648555004A7251 /* OnboardingAuth */ = {
 			isa = PBXGroup;
 			children = (
-				0EDF458928647B17004A7251 /* NavigationManager.swift */,
-				0EDF458B28647BE0004A7251 /* LoadingViewController.swift */,
 				0EDF4592286487E4004A7251 /* OnboardingManager.swift */,
 			);
 			path = OnboardingAuth;
@@ -227,7 +221,7 @@
 		0EF31C1F285AD0FE00E82F92 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0EF31C22285AD14100E82F92 /* Reward.swift */,
+				0EF31C22285AD14100E82F92 /* RewardList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				83345E262851F57400A13B53 /* AuthenticationViewModel.swift */,
+				0EC677C528669B0900137483 /* ChildViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -393,7 +388,7 @@
 		DBA65BE028602FB2007F80D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DBA65BE128602FB2007F80D5 /* ActivityModel.swift */,
+				DBA65BE128602FB2007F80D5 /* ActivityList.swift */,
 			);
 			name = Model;
 			path = "MC2/Habit list/Model";
@@ -403,6 +398,8 @@
 			isa = PBXGroup;
 			children = (
 				83DCCC9528641EE900249C9E /* Child.swift */,
+				0EC677C72866ADF400137483 /* Activity.swift */,
+				0EC677C92866AE5400137483 /* Reward.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -498,8 +495,8 @@
 				8EA834B82863B9AA0036299F /* RewardCellCardView.swift in Sources */,
 				834D6278285851C800F6F3C8 /* (null) in Sources */,
 				0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */,
-				DBA65BE228602FB2007F80D5 /* ActivityModel.swift in Sources */,
-				0EF31C23285AD14100E82F92 /* Reward.swift in Sources */,
+				DBA65BE228602FB2007F80D5 /* ActivityList.swift in Sources */,
+				0EF31C23285AD14100E82F92 /* RewardList.swift in Sources */,
 				0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
 				0EFE8DD72859A63E00C1A4B8 /* TaskController.swift in Sources */,
@@ -523,21 +520,19 @@
 				83345E112851E50300A13B53 /* RegistrationController.swift in Sources */,
 				8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */,
 				0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */,
-// Create-Add-Child-Name-Firebase
+				0EC677C628669B0900137483 /* ChildViewModel.swift in Sources */,
 				83DCCC9428641EAC00249C9E /* Service.swift in Sources */,
-// Create-AddFirebase-Kevin
-				0EDF458A28647B17004A7251 /* NavigationManager.swift in Sources */,
-
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
-				0EDF458C28647BE0004A7251 /* LoadingViewController.swift in Sources */,
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */,
 				83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */,
+				0EC677CA2866AE5400137483 /* Reward.swift in Sources */,
+				0EC677C82866ADF400137483 /* Activity.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,
 				0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */,
 				0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */,
@@ -688,7 +683,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L7SMRXB5WV;
+				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
@@ -718,7 +713,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = L7SMRXB5WV;
+				DEVELOPMENT_TEAM = 625ZX732CB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;

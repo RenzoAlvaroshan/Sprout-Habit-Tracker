@@ -17,13 +17,12 @@ enum AvatarStyle: String, CaseIterable {
     case ava6 = "ava3_m"
 }
 
-class AddChildController: UIViewController {
+class AddChildController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
     var child: Child?
-    
-    lazy var randomID = randomString(length: 10)
+    var selected = 0
     
     private var radioButton: RadioButtonManager<UIView>?
     private var selectedBorderView: UIView?
@@ -69,6 +68,7 @@ class AddChildController: UIViewController {
         tf.placeholder = "Enter your child name"
         tf.setDimensions(height: view.frame.width / 10.54, width: view.frame.width / 1.58)
         tf.textAlignment = .center
+        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         return tf
     }()
     
@@ -100,6 +100,7 @@ class AddChildController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        nameTextField.delegate = self
     }
     
     //MARK: - Selectors
@@ -107,47 +108,45 @@ class AddChildController: UIViewController {
     @objc func handleGetStarted() {
         // cara kevin
         let childName = nameTextField.text!
-        let childID = randomID
-
-        let model = Child(dictionary: ["name" : childName, "childID": childID])
         
-        // update array childId di users
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
+        let model = Child(dictionary: ["name" : childName, "profile": selected])
         
         // save child data di collection child
-        Service.saveChildData(child: model) { error in
+        Service.saveChildData(child: model) { error, childId  in
             if let error = error {
                 print("ERROR is \(error.localizedDescription)")
             }
+            // get uid user dan uid child dari completion block savechild
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let childID = childId
+            // masukin UID Child ke dalam users collection
+            COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
-//        self.navigationController?.popViewController(MainController(), animated: true)
-        dismiss(animated: true)
+        self.navigationController?.pushViewController(MainController(), animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
         guard let iv = sender.view as? UIImageView else { return }
         radioButton?.selected = iv
         avatarProfile.image = iv.image
-        print("DEBUG: \(iv)")
+        
+        guard let getTag = sender.view?.tag else { return }
+        selected = getTag
+    }
+    
+    @objc func tapDone(sender: Any) {
+        nameTextField.endEditing(true)
     }
     
     //MARK: - Helpers
     
-    func randomString(length: Int) -> String {
-      let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
-    }
-    
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
         
-        let avatars: [UIImageView] = AvatarStyle.allCases.map {
-            let assetName = $0.rawValue
-            return createAvatar(imageName: assetName)
-        }
+        let avatars: [UIImageView] = assignTagToImageView()
+        
         self.avatars = avatars
-
+        
         radioButton = RadioButtonManager(
             avatars,
             onSelected: { [unowned self] avatar in
@@ -162,12 +161,15 @@ class AddChildController: UIViewController {
                 borderView.centerY(inView: avatar)
                 
                 selectedBorderView = borderView
+                
         }, onDeselect: { [unowned self] avatar in
             selectedBorderView?.removeFromSuperview()
         })
 
         avatars.forEach { avatar in
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapAvatar(_:)))
+            // setiap image view harus di tag, baru bisa ambil tag nya
+            tap.view?.tag =  avatar.tag
             avatar.isUserInteractionEnabled = true
             avatar.addGestureRecognizer(tap)
         }
@@ -218,6 +220,21 @@ class AddChildController: UIViewController {
         let iv = UIImageView()
         iv.image = UIImage(named: imageName)
         iv.setDimensions(height: view.frame.width / 4.24, width: view.frame.width / 4.24)
+        
         return iv
+    }
+    
+    func assignTagToImageView() -> [UIImageView] {
+        var currentTag = 0
+        let avatars: [UIImageView] = AvatarStyle.allCases.map {
+            let assetName = $0.rawValue
+            return createAvatar(imageName: assetName)
+        }
+        
+        for avatar in avatars {
+            avatar.tag = currentTag
+            currentTag += 1
+        }
+        return avatars
     }
 }
