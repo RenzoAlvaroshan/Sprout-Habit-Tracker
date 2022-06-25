@@ -1,23 +1,14 @@
 //
-//  AddChildController.swift
+//  AddChildControllerInitial.swift
 //  MC2
 //
-//  Created by Renzo Alvaroshan on 13/06/22.
+//  Created by Kevin Harijanto on 25/06/22.
 //
 
 import UIKit
 import Firebase
 
-enum AvatarStyle: String, CaseIterable {
-    case ava1 = "ava1_f"
-    case ava2 = "ava2_f"
-    case ava3 = "ava3_f"
-    case ava4 = "ava1_m"
-    case ava5 = "ava2_m"
-    case ava6 = "ava3_m"
-}
-
-class AddChildController: UIViewController, UITextFieldDelegate {
+class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
@@ -72,15 +63,15 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         return tf
     }()
     
-    private lazy var addChildButton: UIButton = {
+    private lazy var getStartedButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .arcadiaGreen
         button.layer.cornerRadius = 10
         button.setDimensions(height: 50, width: 341)
-        button.setTitle("Add Child", for: .normal)
+        button.setTitle("Let's get started!", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
-        button.addTarget(self, action: #selector(handleAddChild), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleGetStarted), for: .touchUpInside)
         return button
     }()
     
@@ -105,8 +96,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Selectors
     
-    @objc func handleAddChild() {
-        // cara kevin
+    @objc func handleGetStarted() {
+        
         let childName = nameTextField.text!
         
         let model = Child(dictionary: ["name" : childName, "profile": selected])
@@ -122,14 +113,14 @@ class AddChildController: UIViewController, UITextFieldDelegate {
             // masukin UID Child ke dalam users collection
             COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
-        // change userdefault for childID + reload view
-//        dismiss(animated: true)
-        // reload all view
+        
+        // save userdefault for childRef
         let userDefaults = UserDefaults.standard
-        userDefaults.set(1, forKey: "childRef")
-        self.navigationController?.popViewController(animated: true)
-//        self.navigationController?.pushViewController(MainController(), animated: true)
-       
+        userDefaults.set(0, forKey: "childRef")
+        // save userdefault for child name
+        userDefaults.set(childName, forKey: "childName")
+        
+        self.navigationController?.pushViewController(MainController(), animated: true)
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
@@ -148,6 +139,7 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     //MARK: - Helpers
     
     func configureUI() {
+        
         view.backgroundColor = .arcadiaGreen
         
         let avatars: [UIImageView] = assignTagToImageView()
@@ -218,9 +210,9 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         stack2.centerX(inView: view)
         stack2.anchor(top: stack1.bottomAnchor, paddingTop: 32)
         
-        view.addSubview(addChildButton)
-        addChildButton.centerX(inView: view)
-        addChildButton.anchor(top: stack2.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 28, paddingRight: 28)
+        view.addSubview(getStartedButton)
+        getStartedButton.centerX(inView: view)
+        getStartedButton.anchor(top: stack2.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 28, paddingRight: 28)
     }
     
     func createAvatar(imageName: String) -> UIImageView {
@@ -245,3 +237,4 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         return avatars
     }
 }
+

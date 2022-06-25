@@ -362,7 +362,7 @@ class AddHabitController: UIViewController {
         
         let model = Activity(dictionary: ["activityName" : activities.last, "category": tapButton, "isFinished": false])
         
-        let childRef = 0 // ganti ini
+        let childRef = UserDefaults.standard.object(forKey: "childRef") as! Int
         let childId = childUID[childRef]
         
         Service.saveActivity(activity: model, childId: childId) { error, activityId  in

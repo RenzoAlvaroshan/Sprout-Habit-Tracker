@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController, LoginCardViewDelegate {
     
     //MARK: - Properties
+    var childUID = [String]()
     
     private let cardView = LoginCardView()
     
@@ -64,10 +66,29 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                         self.popUpView.transform = CGAffineTransform(translationX: 0, y: 120)
                     }
                 }
-                
                 return
             } else {
-                self.navigationController?.pushViewController(AddChildController(), animated: true)
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                Service.fetchChildUID(uid: uid) { childUID in
+                    self.childUID = childUID
+                }
+                
+                if self.childUID.count == 1{
+                    print("DEBUG: \(self.childUID.count)")
+                   
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(0, forKey: "childRef")
+                    self.navigationController?.pushViewController(MainController(), animated: true)
+                }
+                else {
+                    // akan dihapus nanti kalo ada picker
+                    let userDefaults = UserDefaults.standard
+                    userDefaults.set(0, forKey: "childRef")
+                    
+                    print("DEBUG: \(self.childUID.count)")
+                    // show child picker
+                    self.navigationController?.pushViewController(MainController(), animated: true)
+                }
             }
         }
     }

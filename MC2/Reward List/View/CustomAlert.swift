@@ -8,6 +8,8 @@ import UIKit
 
 class CustomAlert {
     
+    // MARK: - Properties
+    
     struct Constants {
         static let backgroundAlphaTo: CGFloat = 0.6
     }
@@ -28,6 +30,8 @@ class CustomAlert {
     }()
     
     private var myTargetView: UIView?
+    
+    // MARK: - Functions
     
     func showAlert(with title:String,
                    message: String,
@@ -85,6 +89,8 @@ class CustomAlert {
             }
         })
     }
+    
+    // MARK: - Selectors
     
     @objc func dismissAlert() {
         

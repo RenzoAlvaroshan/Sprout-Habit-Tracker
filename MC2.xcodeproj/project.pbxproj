@@ -22,6 +22,7 @@
 		0EC677C628669B0900137483 /* ChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C528669B0900137483 /* ChildViewModel.swift */; };
 		0EC677C82866ADF400137483 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C72866ADF400137483 /* Activity.swift */; };
 		0EC677CA2866AE5400137483 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C92866AE5400137483 /* Reward.swift */; };
+		0EC677CD28673AFC00137483 /* AddChildControllerInitial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677CC28673AFC00137483 /* AddChildControllerInitial.swift */; };
 		0EDF4593286487E4004A7251 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDF4592286487E4004A7251 /* OnboardingManager.swift */; };
 		0EF31C23285AD14100E82F92 /* RewardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C22285AD14100E82F92 /* RewardList.swift */; };
 		0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EF31C24285AD17400E82F92 /* RewardCell.swift */; };
@@ -55,7 +56,6 @@
 		83DCCC9428641EAC00249C9E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9328641EAC00249C9E /* Service.swift */; };
 		83DCCC9628641EE900249C9E /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9528641EE900249C9E /* Child.swift */; };
 		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
-		83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9928656BAA00249C9E /* TestingViewController.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -87,6 +87,7 @@
 		0EC677C528669B0900137483 /* ChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewModel.swift; sourceTree = "<group>"; };
 		0EC677C72866ADF400137483 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		0EC677C92866AE5400137483 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		0EC677CC28673AFC00137483 /* AddChildControllerInitial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChildControllerInitial.swift; sourceTree = "<group>"; };
 		0EDF4592286487E4004A7251 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		0EF31C22285AD14100E82F92 /* RewardList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardList.swift; sourceTree = "<group>"; };
 		0EF31C24285AD17400E82F92 /* RewardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardCell.swift; sourceTree = "<group>"; };
@@ -113,7 +114,6 @@
 		83DCCC9328641EAC00249C9E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		83DCCC9528641EE900249C9E /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
 		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
-		83DCCC9928656BAA00249C9E /* TestingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 				0E8745A32859ABE80038B4BB /* AddChildController.swift */,
 				0E8745A42859ABE80038B4BB /* EditChildController.swift */,
 				83DCCC97286566A300249C9E /* SelectChildView.swift */,
-				83DCCC9928656BAA00249C9E /* TestingViewController.swift */,
+				0EC677CC28673AFC00137483 /* AddChildControllerInitial.swift */,
 			);
 			path = "Child Controllers";
 			sourceTree = "<group>";
@@ -499,6 +499,7 @@
 				0EF31C23285AD14100E82F92 /* RewardList.swift in Sources */,
 				0EF31C25285AD17400E82F92 /* RewardCell.swift in Sources */,
 				834D62722858430E00F6F3C8 /* (null) in Sources */,
+				0EC677CD28673AFC00137483 /* AddChildControllerInitial.swift in Sources */,
 				0EFE8DD72859A63E00C1A4B8 /* TaskController.swift in Sources */,
 				8EA834B62863B2940036299F /* CellCardView.swift in Sources */,
 				8314505A2852BC7E00CAE05E /* RegisterCardView.swift in Sources */,
@@ -529,7 +530,6 @@
 				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
-				83DCCC9A28656BAA00249C9E /* TestingViewController.swift in Sources */,
 				83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */,
 				0EC677CA2866AE5400137483 /* Reward.swift in Sources */,
 				0EC677C82866ADF400137483 /* Activity.swift in Sources */,

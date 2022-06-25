@@ -51,10 +51,9 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
             if error != nil {
                 return
             } else {
-                self.navigationController?.pushViewController(AddChildController(), animated: true)
+                self.navigationController?.pushViewController(AddChildControllerInitial(), animated: true)
             }
         }
-        // UID BEDA KARENA DISINI
     }
     
     func handleShowLogin() {

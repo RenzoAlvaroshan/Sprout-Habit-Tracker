@@ -18,7 +18,7 @@ class TaskController: UIViewController{
     let controller = AddHabitController()
     
     let uid = Auth.auth().currentUser?.uid
-    var childRef = 0 // ganti disini
+    var childRef = UserDefaults.standard.object(forKey: "childRef")
     
     var child: [Child]? {
         didSet {
@@ -115,7 +115,7 @@ class TaskController: UIViewController{
     //MARK: - Helpers
     func fetchActivityData() {
         
-        Service.fetchActivity(uid: uid!, childRef: childRef,completion: { activity in
+        Service.fetchActivity(uid: uid!, childRef: childRef as! Int,completion: { activity in
             self.activity = activity
         })
     }
@@ -198,7 +198,6 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     // Isi dari cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityViewCell", for: indexPath) as! ActivityViewCell
-//        print("DEBUG: activity: \(activity)")
         cell.cellCardView.set(activity: activity![indexPath.section])
         cell.backgroundColor = .white
         cell.clipsToBounds = false
@@ -208,9 +207,6 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     // Fungsi jika user tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        print("Hello \(indexPath.section)")
-        
         self.present(alert, animated: true, completion: nil)
     }
     
