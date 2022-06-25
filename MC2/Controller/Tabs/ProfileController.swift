@@ -120,10 +120,7 @@ class ProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        DispatchQueue.main.async {
-            self.fetchChildrenData()
-        }
-        
+        fetchChildrenData()
         configureUI()
     }
     
@@ -172,7 +169,7 @@ class ProfileController: UIViewController {
     
     func fetchChildrenData() {
         // masukin pilihan anak (0 = pertama, 1 = kedua, etc.) yang dapet dari pilih child
-        let childRef = 5
+        let childRef = 7
         
         Service.fetchChildrenData(childRef: childRef, completion: { child in
             self.child = child

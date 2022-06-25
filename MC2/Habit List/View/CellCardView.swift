@@ -78,7 +78,7 @@ class ActivityCellCardView: UIView {
         
     }
     
-    func set(activity: Activity) {
+    func set(activity: ActivityList) {
         activityName.text = activity.activityName
         categoryName.text = activity.categoryName
         checkImg.image = activity.checkImg

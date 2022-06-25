@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Activity {
+struct ActivityList {
     var activityName: String
     var categoryName: String
     var checkImg: UIImage

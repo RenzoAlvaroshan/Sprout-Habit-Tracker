@@ -17,7 +17,7 @@ enum AvatarStyle: String, CaseIterable {
     case ava6 = "ava3_m"
 }
 
-class AddChildController: UIViewController {
+class AddChildController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
@@ -68,6 +68,7 @@ class AddChildController: UIViewController {
         tf.placeholder = "Enter your child name"
         tf.setDimensions(height: view.frame.width / 10.54, width: view.frame.width / 1.58)
         tf.textAlignment = .center
+        tf.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         return tf
     }()
     
@@ -99,6 +100,7 @@ class AddChildController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        nameTextField.delegate = self
     }
     
     //MARK: - Selectors
@@ -130,7 +132,10 @@ class AddChildController: UIViewController {
         
         guard let getTag = sender.view?.tag else { return }
         selected = getTag
-        print("DEBUG: \(getTag)")
+    }
+    
+    @objc func tapDone(sender: Any) {
+        nameTextField.endEditing(true)
     }
     
     //MARK: - Helpers

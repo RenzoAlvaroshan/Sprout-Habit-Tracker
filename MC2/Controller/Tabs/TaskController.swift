@@ -67,7 +67,7 @@ class TaskController: UIViewController{
     }()
     
     private var tableView = UITableView()
-    var activities: [Activity] = []
+    var activities: [ActivityList] = []
     
     private let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly!", preferredStyle: UIAlertController.Style.alert)
     
@@ -201,13 +201,13 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension TaskController {
-    func fetchData() -> [Activity] {
-        let activity1 = Activity(activityName: "Matiin lampu jam 1", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity2 = Activity(activityName: "Buang sampah", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity3 = Activity(activityName: "Siram tanaman", categoryName: "Planting",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity4 = Activity(activityName: "Memisahkan sampah plastik", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity5 = Activity(activityName: "Mengurangi pengunaan AC", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
-        let activity6 = Activity(activityName: "Tidur siang", categoryName: "MOLOR",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
+    func fetchData() -> [ActivityList] {
+        let activity1 = ActivityList(activityName: "Matiin lampu jam 1", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
+        let activity2 = ActivityList(activityName: "Buang sampah", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
+        let activity3 = ActivityList(activityName: "Siram tanaman", categoryName: "Planting",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
+        let activity4 = ActivityList(activityName: "Memisahkan sampah plastik", categoryName: "Garbage",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
+        let activity5 = ActivityList(activityName: "Mengurangi pengunaan AC", categoryName: "Electricity",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
+        let activity6 = ActivityList(activityName: "Tidur siang", categoryName: "MOLOR",checkImg: UIImage(systemName: "checkmark.circle.fill")!)
         
         return [activity1,activity2,activity3,activity4,activity5,activity6]
     }

@@ -6,7 +6,7 @@
 //
 import UIKit
 
-struct Reward {
+struct RewardList {
     var levelName: String
     var rewardName: String
     var checkLock: UIImage

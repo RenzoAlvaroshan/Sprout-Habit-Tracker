@@ -70,7 +70,7 @@ class RewardCellCardView: UIView {
         
     }
     
-    func set(reward: Reward) {
+    func set(reward: RewardList) {
         levelName.text = reward.levelName
         rewardName.text = reward.rewardName
         checkLock.image = reward.checkLock
