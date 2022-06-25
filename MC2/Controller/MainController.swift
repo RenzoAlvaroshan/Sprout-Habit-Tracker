@@ -13,7 +13,7 @@ class MainController: UITabBarController {
     //MARK: - Properties
     
     let uid = Auth.auth().currentUser?.uid
-    var childRef = 0 // ganti disini
+    var childRef = UserDefaults.standard.object(forKey: "childRef")
     
     var child: [Child]? {
         didSet {
@@ -37,7 +37,6 @@ class MainController: UITabBarController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: true)
         AuthenticateAndPresentLoginController()
-        
     }
     
     //MARK: - Helpers
@@ -59,7 +58,7 @@ class MainController: UITabBarController {
     
     func fetchChildrenData() {
         
-        Service.fetchChildrenData(uid: uid!, childRef: childRef, completion: { child in
+        Service.fetchChildrenData(uid: uid!, childRef: childRef as! Int, completion: { child in
             self.child = child
         })
     }

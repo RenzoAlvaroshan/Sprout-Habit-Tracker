@@ -18,8 +18,6 @@ class ProfileController: UIViewController {
         }
     }
     
-    var selectChildView = SelectChildView()
-    
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
         rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
@@ -47,7 +45,6 @@ class ProfileController: UIViewController {
     private lazy var profileName: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsSemiBold(size: 24)
-        label.text = "Karen" // need to take from textField.text (atau firebase)
         return label
     }()
     
@@ -116,6 +113,9 @@ class ProfileController: UIViewController {
         return label
     }()
     
+    private let childPicker = SelectChildView()
+//    private let childPicker = SelectChildView()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -134,18 +134,15 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack1() {
-        let rootVC = AddChildController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .popover
-        present(navVC, animated: true)
+        self.navigationController?.pushViewController(AddChildController(), animated: true)
+//        let rootVC = AddChildController()
+//        let navVC = UINavigationController(rootViewController: rootVC)
+//        navVC.modalPresentationStyle = .popover
+//        present(navVC, animated: true)
     }
     
     @objc func handleStack2() {
-        // belum ada designnya
-        print("DEBUG: Change child profile view")
-        view.addSubview(selectChildView)
-        selectChildView.setDimensions(height: view.frame.width / 1.175, width: view.frame.width / 1.147)
-        selectChildView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+        childPicker.showChildPicker(viewController: self)
     }
     
     @objc func handleStack3() {
@@ -154,6 +151,9 @@ class ProfileController: UIViewController {
     
     @objc func handleStack4() {
         do {
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(0, forKey: "childRef")
+            
             try Auth.auth().signOut()
             let rootVC = LoginController()
             let navVC = UINavigationController(rootViewController: rootVC)
@@ -168,12 +168,12 @@ class ProfileController: UIViewController {
     
     func configure() {
         profileName.text = child?[0].name
+//        profileName.text = UserDefaults.standard.object(forKey: "childName") as! String
     }
     
     func configureUI() {
         let viewmodel = ChildViewModel(child: child)
         avatarButton.image = UIImage(named: viewmodel.profileImageChild)
-        print("DEBUG: foto ke load \(viewmodel.profileImageChild)")
         
         view.backgroundColor = .arcadiaGreen
         

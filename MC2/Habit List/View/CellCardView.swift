@@ -82,6 +82,5 @@ class ActivityCellCardView: UIView {
     func set(activity: Activity) {
         activityName.text = activity.activityName
         categoryName.text = activity.category
-        
     }
 }

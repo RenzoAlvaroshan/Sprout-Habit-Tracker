@@ -7,9 +7,28 @@
 
 import UIKit
 
-class SelectChildView: UIView {
+class SelectChildView {
+    
+    struct BGConstants {
+        static let backgroundAlphaTo: CGFloat = 0.6
+    }
     
     //MARK: - Properties
+    
+    private let backgroundView: UIView = {
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = .black
+        backgroundView.alpha = 0
+        return backgroundView
+    }()
+    
+    private let alertView: UIView = {
+        let alert = UIView()
+        alert.backgroundColor = .white
+        alert.layer.masksToBounds = true
+        alert.layer.cornerRadius = 12
+        return alert
+    }()
     
     private lazy var selectChildTitle: UILabel = {
         let label = UILabel()
@@ -24,7 +43,7 @@ class SelectChildView: UIView {
         let iv = UIImageView()
         iv.image = UIImage(named: "ava1_f")
         iv.setDimensions(height: 93, width: 93)
-        iv.layer.cornerRadius = frame.width / 5.2
+//        iv.layer.cornerRadius = frame.width / 5.2
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -33,7 +52,7 @@ class SelectChildView: UIView {
         let iv = UIImageView()
         iv.image = UIImage(named: "circle.plus.custom")
         iv.setDimensions(height: 93, width: 93)
-        iv.layer.cornerRadius = frame.width / 5.2
+//        iv.layer.cornerRadius = frame.width / 5.2
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -70,16 +89,7 @@ class SelectChildView: UIView {
         return button
     }()
     
-    //MARK: - Lifecycle
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var myTargetView: UIView?
     
     //MARK: - Selectors
     
@@ -89,37 +99,103 @@ class SelectChildView: UIView {
     
     //MARK: - Helpers
     
-    func configureUI() {
-//        frame.size = CGSize(width: frame.width / 1.147, height: frame.width / 1.175)
-        backgroundColor = .white
+    func showChildPicker(viewController: UIViewController) {
+        guard let targetView = viewController.view else {
+            return
+        }
         
-        addSubview(selectChildTitle)
-        selectChildTitle.centerX(inView: self)
-        selectChildTitle.anchor(top: topAnchor, paddingTop: 12)
+        myTargetView = targetView
+        
+        backgroundView.frame = targetView.bounds
+        targetView.addSubview(backgroundView)
+        
+        targetView.addSubview(alertView)
+        alertView.centerX(inView: targetView)
+        alertView.centerY(inView: targetView)
+        alertView.anchor(width: targetView.frame.size.width-80, height: 300)
+//        alertView.frame = CGRect(x: 40,y: 300,width: targetView.frame.size.width-80,height: 300)
+        
+        targetView.addSubview(selectChildTitle)
+        selectChildTitle.centerX(inView: targetView)
+        selectChildTitle.anchor(top: alertView.topAnchor, paddingTop: 12)
+        
+        // MARK: - child stack / collection view
         
         let childStack01 = UIStackView(arrangedSubviews: [childProfile01 ,childName01])
         childStack01.axis = .vertical
         
-        addSubview(childStack01)
-        childStack01.anchor(top: selectChildTitle.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 12)
-        
+        targetView.addSubview(childStack01)
+        childStack01.anchor(top: selectChildTitle.bottomAnchor, left: alertView.leftAnchor, paddingLeft: 12)
+
         let childStack02 = UIStackView(arrangedSubviews: [childProfile02 ,childName02])
         childStack02.axis = .vertical
-        
-        addSubview(childStack02)
-        childStack02.anchor(top: selectChildTitle.bottomAnchor, left: childStack01.rightAnchor, paddingTop: 8, paddingLeft: 18)
-        
+
+        targetView.addSubview(childStack02)
+        childStack02.anchor(top: selectChildTitle.bottomAnchor, left: alertView.rightAnchor, paddingTop: 8, paddingLeft: 18)
+
         let stack = UIStackView(arrangedSubviews: [childStack01, childStack02])
         stack.axis = .horizontal
         stack.spacing = 24
         
-        addSubview(stack)
-        stack.centerX(inView: self)
+        targetView.addSubview(stack)
+        stack.centerX(inView: alertView)
         stack.anchor(top: selectChildTitle.bottomAnchor, paddingTop: 16)
         
-        addSubview(addChildButton)
-        addChildButton.centerX(inView: self)
+        // MARK: - Done button
+        
+        targetView.addSubview(addChildButton)
+        addChildButton.centerX(inView: targetView)
         addChildButton.anchor(top: stack.bottomAnchor, paddingTop: 16)
+        addChildButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
+        
+        // MARK: - Animate
+        UIView.animate(withDuration: 0.5, animations: {
+            self.backgroundView.alpha = BGConstants.backgroundAlphaTo
+        }, completion: {done in
+            if done {
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.alertView.layer.opacity = 1
+                    self.backgroundView.layer.opacity = 1
+                    self.selectChildTitle.layer.opacity = 1
+                    self.childName01.layer.opacity = 1
+                    self.childName02.layer.opacity = 1
+                    self.childProfile01.layer.opacity = 1
+                    self.childProfile02.layer.opacity = 1
+                    self.addChildButton.layer.opacity = 1
+                })
+            }
+        })
     }
     
+    @objc func dismissAlert() {
+        
+        guard let targetView = myTargetView else {
+            return
+        }
+        UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.backgroundView.alpha = 0
+                
+                self.alertView.layer.opacity = 0
+                self.backgroundView.layer.opacity = 0
+                self.selectChildTitle.layer.opacity = 0
+                self.childName01.layer.opacity = 0
+                self.childName02.layer.opacity = 0
+                self.childProfile01.layer.opacity = 0
+                self.childProfile02.layer.opacity = 0
+                self.addChildButton.layer.opacity = 0
+            }, completion: {done in
+                if done {
+                    self.alertView.removeFromSuperview()
+                    self.backgroundView.removeFromSuperview()
+                    self.selectChildTitle.removeFromSuperview()
+                    self.childName01.removeFromSuperview()
+                    self.childName02.removeFromSuperview()
+                    self.childProfile01.removeFromSuperview()
+                    self.childProfile02.removeFromSuperview()
+                    self.addChildButton.removeFromSuperview()
+                }
+            })
+        })
+    }
 }

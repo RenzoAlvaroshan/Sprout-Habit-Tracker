@@ -10,6 +10,8 @@ import UIKit
 class TaskCircularXPView: UIView {
 
     //MARK: - Properties
+    
+    
     let foregroundLayer = CAShapeLayer()
     let backgroundLayer = CAShapeLayer()
     let gradient = CAGradientLayer()
@@ -19,7 +21,6 @@ class TaskCircularXPView: UIView {
     override init(frame: CGRect) {
         
         super.init(frame: frame)
-        
         backgroundColor = .white
         
         let circularPath = UIBezierPath(
@@ -43,16 +44,19 @@ class TaskCircularXPView: UIView {
         foregroundLayer.strokeColor = UIColor.arcadiaYellow.cgColor
         foregroundLayer.lineCap = CAShapeLayerLineCap.round
         foregroundLayer.fillColor = UIColor.clear.cgColor
-        
-        let experience = 160
+
+        let experience = 20 // ganti disini
         let experienceLabel = Double(experience%100) / 100.0
         
-        foregroundLayer.strokeEnd = experienceLabel // ganti disini
+        foregroundLayer.strokeEnd = experienceLabel
         
         layer.addSublayer(foregroundLayer)
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    // MARK: - Helpers
+    
 }
