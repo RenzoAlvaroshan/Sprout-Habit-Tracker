@@ -11,7 +11,12 @@ class TaskProgressXPCircle: UIView {
     
 
     // MARK: - Properties
-    
+    private lazy var level: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsBold(size: 29)
+        label.textColor = .arcadiaGreen
+        return label
+    }()
 
     // MARK: - Lifecycle
     
@@ -31,6 +36,14 @@ class TaskProgressXPCircle: UIView {
     func configureUI() {
         backgroundColor = .white
         layer.cornerRadius = UIScreen.main.bounds.height / 14
+        
+        addSubview(level)
+        level.centerX(inView: self)
+        level.centerY(inView: self)
+        let xp = UserDefaults.standard.integer(forKey: "childDataExperience")
+        let levelnow = xp / 100 + 1
+        let currentLevel = String(levelnow)
+        level.text = currentLevel
     }
 }
 

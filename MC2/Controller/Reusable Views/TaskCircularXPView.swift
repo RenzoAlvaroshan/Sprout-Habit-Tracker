@@ -50,6 +50,7 @@ class TaskCircularXPView: UIView {
         foregroundLayer.strokeEnd = experienceLabel
         
         layer.addSublayer(foregroundLayer)
+        
 
     }
     

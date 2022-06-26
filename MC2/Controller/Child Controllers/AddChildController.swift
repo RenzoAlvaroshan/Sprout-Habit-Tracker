@@ -125,10 +125,9 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         // change userdefault for childID + reload view
 //        dismiss(animated: true)
         // reload all view
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(1, forKey: "childRef")
-        self.navigationController?.popViewController(animated: true)
-//        self.navigationController?.pushViewController(MainController(), animated: true)
+        UserDefaults.standard.set(1, forKey: "childRef")
+//        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.pushViewController(MainController(), animated: true)
        
     }
     

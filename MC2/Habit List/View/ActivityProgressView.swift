@@ -29,6 +29,7 @@ class ActivityProgressView: UIView {
         label.textColor = .black
         return label
     }()
+
     
 
     // MARK: - Lifecycle
