@@ -155,13 +155,6 @@ class SelectChildView {
             if done {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.alertView.layer.opacity = 1
-                    self.backgroundView.layer.opacity = 1
-                    self.selectChildTitle.layer.opacity = 1
-                    self.childName01.layer.opacity = 1
-                    self.childName02.layer.opacity = 1
-                    self.childProfile01.layer.opacity = 1
-                    self.childProfile02.layer.opacity = 1
-                    self.addChildButton.layer.opacity = 1
                 })
             }
         })
@@ -172,30 +165,20 @@ class SelectChildView {
         guard let targetView = myTargetView else {
             return
         }
+        
         UIView.animate(withDuration: 0.5, animations: {
-            UIView.animate(withDuration: 0.5, animations: {
-                self.backgroundView.alpha = 0
-                
-                self.alertView.layer.opacity = 0
-                self.backgroundView.layer.opacity = 0
-                self.selectChildTitle.layer.opacity = 0
-                self.childName01.layer.opacity = 0
-                self.childName02.layer.opacity = 0
-                self.childProfile01.layer.opacity = 0
-                self.childProfile02.layer.opacity = 0
-                self.addChildButton.layer.opacity = 0
-            }, completion: {done in
-                if done {
-                    self.alertView.removeFromSuperview()
-                    self.backgroundView.removeFromSuperview()
-                    self.selectChildTitle.removeFromSuperview()
-                    self.childName01.removeFromSuperview()
-                    self.childName02.removeFromSuperview()
-                    self.childProfile01.removeFromSuperview()
-                    self.childProfile02.removeFromSuperview()
-                    self.addChildButton.removeFromSuperview()
-                }
-            })
+            self.backgroundView.alpha = 0
+        }, completion: {done in
+            if done {
+                self.alertView.removeFromSuperview()
+                self.backgroundView.removeFromSuperview()
+                self.selectChildTitle.removeFromSuperview()
+                self.childName01.removeFromSuperview()
+                self.childName02.removeFromSuperview()
+                self.childProfile01.removeFromSuperview()
+                self.childProfile02.removeFromSuperview()
+                self.addChildButton.removeFromSuperview()
+            }
         })
     }
 }

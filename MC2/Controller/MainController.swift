@@ -12,23 +12,6 @@ class MainController: UITabBarController {
     
     //MARK: - Properties
     
-    let uid = Auth.auth().currentUser?.uid
-    var childRef = UserDefaults.standard.object(forKey: "childRef")
-    
-    var child: [Child]? {
-        didSet {
-            guard let nav = viewControllers?[0] as? UINavigationController else { return }
-            guard let task = nav.viewControllers.last as? TaskController else { return }
-            
-            task.child = child
-            
-            guard let nav = viewControllers?[2] as? UINavigationController else { return }
-            guard let profile = nav.viewControllers.last as? ProfileController else { return }
-            
-            profile.child = child
-        }
-    }
-    
     var childUID = [String]()
     
     //MARK: - Lifecycle
@@ -49,18 +32,26 @@ class MainController: UITabBarController {
                 self.present(nav, animated: true)
             }
         } else {
-            configureUI()
-            fetchChildrenData()
-            configureViewControllers()
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            // jalanin loading animation
+            view.backgroundColor = .arcadiaGreen
+            // baru fetch data
+            Task.init(operation: {
+                let childUID = try await Service.fetchChildUID(uid:uid)
+                let currentChildUid = childUID[UserDefaults.standard.integer(forKey: "childRef")]
+                let childData = try await Service.fetchChildData(childUid: currentChildUid)
+                
+                UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+                UserDefaults.standard.set(childData.name, forKey: "childDataName")
+                UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+                UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+                
+                configureUI()
+                configureViewControllers()
+            })
+            
         }
        
-    }
-    
-    func fetchChildrenData() {
-        
-        Service.fetchChildrenData(uid: uid!, childRef: childRef as! Int, completion: { child in
-            self.child = child
-        })
     }
     
     func configureUI() {
@@ -100,8 +91,6 @@ class MainController: UITabBarController {
         
         let nav = UINavigationController(rootViewController: rootViewController)
         nav.tabBarItem.image = image
-//        nav.navigationBar.barTintColor = .white
-        
         return nav
     }
 }

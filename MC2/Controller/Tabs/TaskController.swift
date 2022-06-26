@@ -17,15 +17,6 @@ class TaskController: UIViewController{
     //MARK: - Properties
     let controller = AddHabitController()
     
-    let uid = Auth.auth().currentUser?.uid
-    var childRef = UserDefaults.standard.object(forKey: "childRef")
-    
-    var child: [Child]? {
-        didSet {
-            configure()
-        }
-    }
-    
     var activity: [Activity]? {
         didSet {
             tableView.reloadData()
@@ -95,13 +86,18 @@ class TaskController: UIViewController{
         super.viewDidLoad()
         controller.delegate = self
         
-        fetchActivityData()
-        
-        configureUI()
-        configureTableView()
-            
-        alertOnTap()
-        alertConfirmation()
+        Task.init {
+            let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
+            let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
+            self.activity = activityArray
+            let numberOfTask = activity!.count as Int
+            rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
+            configureUI()
+            configureTableView()
+                
+            alertOnTap()
+            alertConfirmation()
+        }
     }
     
 
@@ -113,16 +109,7 @@ class TaskController: UIViewController{
     }
     
     //MARK: - Helpers
-    func fetchActivityData() {
-        
-        Service.fetchActivity(uid: uid!, childRef: childRef as! Int,completion: { activity in
-            self.activity = activity
-        })
-    }
-    
-    func configure() {
-    }
-    
+
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
         
@@ -224,7 +211,15 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
 
 extension TaskController: AddHabitControllerDelegate {
     func handleReloadData() {
-        fetchActivityData()
-        tableView.reloadData()
+        Task.init {
+            let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
+            let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
+            self.activity = activityArray
+            let numberOfTask = activity!.count as Int
+            rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
+            tableView.reloadData()
+        }
+        
+        
     }
 }

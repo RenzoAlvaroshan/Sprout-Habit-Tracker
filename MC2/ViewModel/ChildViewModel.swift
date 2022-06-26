@@ -8,11 +8,12 @@
 import Foundation
 
 struct ChildViewModel {
-    
-    let child: [Child]?
+    let imageData: Int
     
     var profileImageChild: String {
-        let profileImage = child?[0].profileImage
+        
+        let profileImage = imageData
+        
         switch profileImage {
         case 0:
             return "ava1_f"
@@ -26,10 +27,7 @@ struct ChildViewModel {
             return "ava2_m"
         case 5:
             return "ava2_m"
-            
-        case .none:
-            return "ava1_f"
-        case .some(_):
+        default:
             return "ava1_f"
         }
     }
