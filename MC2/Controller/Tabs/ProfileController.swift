@@ -140,11 +140,6 @@ class ProfileController: UIViewController {
         navVC.isNavigationBarHidden = true
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true)
-        
-//        let newVC = AddChildController()
-//        newVC.hidesBottomBarWhenPushed = true
-//        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
-//        navigationController?.pushViewController(newVC, animated: true)
     }
     
     @objc func handleStack2() {
@@ -188,13 +183,35 @@ class ProfileController: UIViewController {
         let alert = UIAlertController(title: "Choose Child", message: "Which child do you want to focus on?", preferredStyle: .actionSheet)
         
         let child1 = UIAlertAction(title: child![0].name, style: .default) { action in
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(0, forKey: "childRef")
+            Task.init {
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                let childUID = try await Service.fetchChildUID(uid:uid)
+                UserDefaults.standard.set(0, forKey: "childRef")
+                let currentChildUid = childUID[UserDefaults.standard.integer(forKey: "childRef")]
+                let childData = try await Service.fetchChildData(childUid: currentChildUid)
+                
+                UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+                UserDefaults.standard.set(childData.name, forKey: "childDataName")
+                UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+                UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+            }
         }
         
         let child2 = UIAlertAction(title: child![1].name, style: .default) { action in
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(1, forKey: "childRef")
+            
+            Task.init {
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                let childUID = try await Service.fetchChildUID(uid:uid)
+                UserDefaults.standard.set(1, forKey: "childRef")
+                let currentChildUid = childUID[UserDefaults.standard.integer(forKey: "childRef")]
+                let childData = try await Service.fetchChildData(childUid: currentChildUid)
+                
+                UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+                UserDefaults.standard.set(childData.name, forKey: "childDataName")
+                UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+                UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+            }
+            
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)

@@ -69,12 +69,12 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                 return
             } else {
                 Task.init(operation: {
+                    self.showLoader(true)
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     let childUID = try await Service.fetchChildUID(uid:uid)
                     
                     if childUID.count == 1{
                         print("DEBUG: jumlah anak ada: \(childUID.count)")
-                       
                         let currentChildUid = childUID[0]
                         let childData = try await Service.fetchChildData(childUid: currentChildUid)
                         
@@ -85,10 +85,10 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                         UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
                         
                         self.navigationController?.pushViewController(MainController(), animated: true)
+                        self.showLoader(false)
                     }
                     else { // go to picker
                         print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
-                        self.showLoader(true)
                         let currentChildUid = childUID[0]
                         let childData = try await Service.fetchChildData(childUid: currentChildUid)
                         

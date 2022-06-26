@@ -38,9 +38,10 @@ class ActivityCellCardView: UIView {
     
     var checkImg: UIImageView = {
         var checkImg = UIImageView()
-        checkImg.image = UIImage(named: "checkmark.circle.fill")
         checkImg.clipsToBounds = true
         checkImg.tintColor = .systemGray4
+        let image = UIImage(systemName: "checkmark.circle.fill")
+        checkImg.image = image
         return checkImg
     }()
     
@@ -75,8 +76,7 @@ class ActivityCellCardView: UIView {
         addSubview(checkImg)
         checkImg.anchor(right: rightAnchor, paddingRight: 20)
         checkImg.centerY(inView: self)
-        checkImg.anchor( width: 32, height: 32)
-        
+        checkImg.anchor(width: 32, height: 32)
     }
     
     func set(activity: Activity) {

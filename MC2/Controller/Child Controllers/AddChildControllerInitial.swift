@@ -114,13 +114,22 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
             COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
         
-        // save userdefault for childRef
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(0, forKey: "childRef")
-        // save userdefault for child name
-        userDefaults.set(childName, forKey: "childName")
-        
-        self.navigationController?.pushViewController(MainController(), animated: true)
+        Task.init(operation: {
+            self.showLoader(true)
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let childUID = try await Service.fetchChildUID(uid:uid)
+            let currentChildUid = childUID[0]
+            let childData = try await Service.fetchChildData(childUid: currentChildUid)
+            
+            UserDefaults.standard.set(0, forKey: "childRef")
+            UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+            UserDefaults.standard.set(childData.name, forKey: "childDataName")
+            UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+            UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+            
+            self.navigationController?.pushViewController(MainController(), animated: true)
+            self.showLoader(false)
+        })
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
