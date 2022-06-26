@@ -75,15 +75,13 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                     if childUID.count == 1{
                         print("DEBUG: jumlah anak ada: \(childUID.count)")
                        
-                        let userDefaults = UserDefaults.standard
-                        userDefaults.set(0, forKey: "childRef")
+                        UserDefaults.standard.set(0, forKey: "childRef")
                         self.navigationController?.pushViewController(MainController(), animated: true)
                     }
                     else { // go to picker
                         print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
                         // akan dihapus nanti kalo ada picker
-                        let userDefaults = UserDefaults.standard
-                        userDefaults.set(0, forKey: "childRef")
+                        UserDefaults.standard.set(0, forKey: "childRef")
                         // show child picker
                         self.navigationController?.pushViewController(MainController(), animated: true)
                     }

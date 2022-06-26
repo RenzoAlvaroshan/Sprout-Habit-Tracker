@@ -12,6 +12,36 @@ public struct AnchoredConstraints {
     public var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
 
+extension UIImage {
+    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
+        // Determine the scale factor that preserves aspect ratio
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        let scaleFactor = min(widthRatio, heightRatio)
+        
+        // Compute the new image size that preserves aspect ratio
+        let scaledImageSize = CGSize(
+            width: size.width * scaleFactor,
+            height: size.height * scaleFactor
+        )
+
+        // Draw and return the resized UIImage
+        let renderer = UIGraphicsImageRenderer(
+            size: scaledImageSize
+        )
+
+        let scaledImage = renderer.image { _ in
+            self.draw(in: CGRect(
+                origin: .zero,
+                size: scaledImageSize
+            ))
+        }
+        
+        return scaledImage
+    }
+}
+
 extension UIColor {
     static let barDeselectedColor = UIColor(white: 0, alpha: 0.1)
     static let arcadiaGreen = UIColor(red: 0.02, green: 0.27, blue: 0.21, alpha: 1.00)

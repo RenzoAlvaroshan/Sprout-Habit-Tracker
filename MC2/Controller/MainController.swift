@@ -62,6 +62,8 @@ class MainController: UITabBarController {
     }
     
     func configureViewControllers() {
+        let viewmodel = ChildViewModel(imageData: UserDefaults.standard.integer(forKey: "childDataImage"))
+        
         let task = TaskController()
         let nav1 = templateNavigationController(image: UIImage(named: "task.icon.gray"), rootViewController: task)
         nav1.title = "Task"
@@ -71,7 +73,15 @@ class MainController: UITabBarController {
         nav2.title = "Reward"
         
         let profile = ProfileController()
-        let nav3 = templateNavigationController(image: UIImage(named: "profile.icon.gray"), rootViewController: profile)
+        // tarik image
+        let profileImage = UIImage(named: viewmodel.profileImageChild)
+        let targetSize = CGSize(width: 27, height: 27)
+
+        let scaledImage = profileImage!.scalePreservingAspectRatio(
+            targetSize: targetSize
+        )
+        let nav3 = templateNavigationController(image: scaledImage, rootViewController: profile)
+//        let nav3 = templateNavigationController(image: UIImage(named: "profile.icon.gray"), rootViewController: profile)
         nav3.title = "Profile"
         
         viewControllers = [nav1, nav2, nav3]
@@ -93,7 +103,7 @@ class MainController: UITabBarController {
                                       rootViewController: UIViewController) -> UINavigationController {
         
         let nav = UINavigationController(rootViewController: rootViewController)
-        nav.tabBarItem.image = image
+        nav.tabBarItem.image = image!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         return nav
     }
 }

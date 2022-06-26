@@ -135,10 +135,16 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack1() {
-        let newVC = AddChildController()
-        newVC.hidesBottomBarWhenPushed = true
-        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
-        navigationController?.pushViewController(newVC, animated: true)
+        let rootVC = AddChildController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
+        
+//        let newVC = AddChildController()
+//        newVC.hidesBottomBarWhenPushed = true
+//        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
+//        navigationController?.pushViewController(newVC, animated: true)
     }
     
     @objc func handleStack2() {
