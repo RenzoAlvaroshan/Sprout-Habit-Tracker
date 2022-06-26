@@ -25,6 +25,7 @@ class GreetingsAndDate: UIView {
         label.textColor = .white
         return label
     }()
+    
 
 
     // MARK: - Lifecycle

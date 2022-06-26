@@ -36,6 +36,8 @@ class MainController: UITabBarController {
             // jalanin loading animation
             view.backgroundColor = .arcadiaGreen
             // baru fetch data
+            showLoader(true)
+            
             Task.init(operation: {
                 let childUID = try await Service.fetchChildUID(uid:uid)
                 let currentChildUid = childUID[UserDefaults.standard.integer(forKey: "childRef")]
@@ -48,6 +50,7 @@ class MainController: UITabBarController {
                 
                 configureUI()
                 configureViewControllers()
+                showLoader(false)
             })
             
         }

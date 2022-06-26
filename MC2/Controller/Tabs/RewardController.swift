@@ -44,6 +44,12 @@ class RewardController: UIViewController{
         return label
     }()
     
+    private lazy var level: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsBold(size: 45)
+        label.textColor = .arcadiaGreen
+        return label
+    }()
     
     private let alert = UIAlertController(title: "Claim the Reward", message: "Your child will experience the reward of a task completed.", preferredStyle: UIAlertController.Style.alert)
     
@@ -94,6 +100,14 @@ class RewardController: UIViewController{
         view.addSubview(circularXP)
         circularXP.centerX(inView: view)
         circularXP.centerY(inView: progressView)
+        
+        view.addSubview(level)
+        level.centerX(inView: view)
+        level.centerY(inView: progressView)
+        let xp = UserDefaults.standard.integer(forKey: "childDataExperience")
+        let levelnow = xp / 100 + 1
+        let currentLevel = String(levelnow)
+        level.text = currentLevel
     }
     
     func configureTableView() {
