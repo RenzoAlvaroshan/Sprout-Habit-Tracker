@@ -150,9 +150,13 @@ class ProfileController: UIViewController {
     @objc func handleStack2() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         Task.init(operation: {
+            showLoader(true)
+            
             let childData = try await Service.fetchAllChild(uid: uid)
             self.child = childData
             print("DEBUG: child di profile \(child)")
+            
+            showLoader(false)
             showAlert()
         })
 //        childPicker.showChildPicker(viewController: self)

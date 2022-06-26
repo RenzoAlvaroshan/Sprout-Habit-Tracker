@@ -34,54 +34,36 @@ class MainController: UITabBarController {
         } else {
             guard let uid = Auth.auth().currentUser?.uid else { return }
             // jalanin loading animation
-            view.backgroundColor = .arcadiaGreen
-            // baru fetch data
-            showLoader(true)
-            
-            Task.init(operation: {
-                let childUID = try await Service.fetchChildUID(uid:uid)
-                let currentChildUid = childUID[UserDefaults.standard.integer(forKey: "childRef")]
-                let childData = try await Service.fetchChildData(childUid: currentChildUid)
-                
-                UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
-                UserDefaults.standard.set(childData.name, forKey: "childDataName")
-                UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
-                UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
-                
-                configureUI()
-                configureViewControllers()
-                showLoader(false)
-            })
-            
+            view.backgroundColor = .white
+            configureViewControllers()
         }
-       
-    }
-    
-    func configureUI() {
-        view.backgroundColor = .arcadiaGreen
     }
     
     func configureViewControllers() {
         let viewmodel = ChildViewModel(imageData: UserDefaults.standard.integer(forKey: "childDataImage"))
         
         let task = TaskController()
-        let nav1 = templateNavigationController(image: UIImage(named: "task.icon.gray"), rootViewController: task)
+        let imageTask = UIImage(named: "task.icon.gray")
+        let imageTask2 = UIImage(named: "task.icon.green")
+        let nav1 = templateNavigationController(deselectImage: imageTask, selectImage: imageTask2, rootViewController: task)
         nav1.title = "Task"
         
         let reward = RewardController()
-        let nav2 = templateNavigationController(image: UIImage(named: "reward.icon.gray"), rootViewController: reward)
+        let imageReward =  UIImage(named: "reward.icon.gray")
+        let imageReward2 = UIImage(named: "reward.icon.green")
+        let nav2 = templateNavigationController(deselectImage: imageReward, selectImage: imageReward2, rootViewController: reward)
         nav2.title = "Reward"
         
         let profile = ProfileController()
         // tarik image
         let profileImage = UIImage(named: viewmodel.profileImageChild)
-        let targetSize = CGSize(width: 27, height: 27)
+        let targetSize = CGSize(width: 30, height: 30)
 
         let scaledImage = profileImage!.scalePreservingAspectRatio(
             targetSize: targetSize
         )
-        let nav3 = templateNavigationController(image: scaledImage, rootViewController: profile)
-//        let nav3 = templateNavigationController(image: UIImage(named: "profile.icon.gray"), rootViewController: profile)
+        
+        let nav3 = templateNavigationController(deselectImage: scaledImage, selectImage: scaledImage, rootViewController: profile)
         nav3.title = "Profile"
         
         viewControllers = [nav1, nav2, nav3]
@@ -99,11 +81,12 @@ class MainController: UITabBarController {
     }
     
     
-    func templateNavigationController(image: UIImage?,
+    func templateNavigationController(deselectImage: UIImage?, selectImage: UIImage?,
                                       rootViewController: UIViewController) -> UINavigationController {
         
         let nav = UINavigationController(rootViewController: rootViewController)
-        nav.tabBarItem.image = image!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        nav.tabBarItem.image = deselectImage!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        nav.tabBarItem.selectedImage = selectImage!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         return nav
     }
 }

@@ -64,7 +64,7 @@ extension UIViewController {
         gradientLayer.frame = view.frame
     }
     
-    static let hud = JGProgressHUD(style: .extraLight)
+    static let hud = JGProgressHUD(style: .dark)
     
     func showLoader(_ show: Bool, withText text: String? = "Loading") {
         view.endEditing(true)

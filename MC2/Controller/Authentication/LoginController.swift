@@ -75,15 +75,31 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                     if childUID.count == 1{
                         print("DEBUG: jumlah anak ada: \(childUID.count)")
                        
+                        let currentChildUid = childUID[0]
+                        let childData = try await Service.fetchChildData(childUid: currentChildUid)
+                        
                         UserDefaults.standard.set(0, forKey: "childRef")
+                        UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+                        UserDefaults.standard.set(childData.name, forKey: "childDataName")
+                        UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+                        UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+                        
                         self.navigationController?.pushViewController(MainController(), animated: true)
                     }
                     else { // go to picker
                         print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
-                        // akan dihapus nanti kalo ada picker
+                        self.showLoader(true)
+                        let currentChildUid = childUID[0]
+                        let childData = try await Service.fetchChildData(childUid: currentChildUid)
+                        
                         UserDefaults.standard.set(0, forKey: "childRef")
-                        // show child picker
+                        UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+                        UserDefaults.standard.set(childData.name, forKey: "childDataName")
+                        UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+                        UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+                        
                         self.navigationController?.pushViewController(MainController(), animated: true)
+                        self.showLoader(false)
                     }
                 })
             }
