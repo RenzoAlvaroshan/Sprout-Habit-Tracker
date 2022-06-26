@@ -11,7 +11,6 @@ class TaskCircularXPView: UIView {
 
     //MARK: - Properties
     
-    
     let foregroundLayer = CAShapeLayer()
     let backgroundLayer = CAShapeLayer()
     let gradient = CAGradientLayer()
@@ -44,14 +43,14 @@ class TaskCircularXPView: UIView {
         foregroundLayer.strokeColor = UIColor.arcadiaYellow.cgColor
         foregroundLayer.lineCap = CAShapeLayerLineCap.round
         foregroundLayer.fillColor = UIColor.clear.cgColor
-
-        let experience = 20 // ganti disini
-        let experienceLabel = Double(experience%100) / 100.0
+        foregroundLayer.strokeEnd = 0
         
+        let experience = UserDefaults.standard.integer(forKey: "childDataExperience") // ganti disini
+        let experienceLabel = Double(experience%100) / 100.0 // ganti pembagi per level
         foregroundLayer.strokeEnd = experienceLabel
         
         layer.addSublayer(foregroundLayer)
-        
+
     }
     
     required init?(coder: NSCoder) {

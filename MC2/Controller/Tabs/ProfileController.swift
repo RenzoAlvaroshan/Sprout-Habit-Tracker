@@ -122,6 +122,7 @@ class ProfileController: UIViewController {
         super.viewDidLoad()
         configureUI()
     }
+        
     
     //MARK: - Selectors
     
@@ -141,9 +142,16 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack2() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Task.init(operation: {
+            let childData = try await Service.fetchAllChild(uid: uid)
+            self.child = childData
+            print("DEBUG: child di profile \(child)")
+            showAlert()
+        })
 //        childPicker.showChildPicker(viewController: self)
+
         
-        showAlert()
     }
     
     @objc func handleStack3() {
@@ -169,12 +177,12 @@ class ProfileController: UIViewController {
         
         let alert = UIAlertController(title: "Choose Child", message: "Which child do you want to focus on?", preferredStyle: .actionSheet)
         
-        let cameraButton = UIAlertAction(title: "Kuning", style: .default) { action in
+        let child1 = UIAlertAction(title: child![0].name, style: .default) { action in
             let userDefaults = UserDefaults.standard
             userDefaults.set(0, forKey: "childRef")
         }
         
-        let galleryButton = UIAlertAction(title: "Asu", style: .default) { action in
+        let child2 = UIAlertAction(title: child![1].name, style: .default) { action in
             let userDefaults = UserDefaults.standard
             userDefaults.set(1, forKey: "childRef")
         }
@@ -182,8 +190,8 @@ class ProfileController: UIViewController {
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
         
         alert.view.tintColor = UIColor.arcadiaGreen
-        alert.addAction(cameraButton)
-        alert.addAction(galleryButton)
+        alert.addAction(child1)
+        alert.addAction(child2)
         alert.addAction(cancelButton)
         
         self.present(alert, animated: true, completion: nil)
@@ -192,14 +200,15 @@ class ProfileController: UIViewController {
     //MARK: - Helper
     
     func configure() {
-        profileName.text = child?[0].name
-//        profileName.text = UserDefaults.standard.object(forKey: "childName") as! String
+        
     }
     
     func configureUI() {
-        let viewmodel = ChildViewModel(child: child)
-        avatarButton.image = UIImage(named: viewmodel.profileImageChild)
         
+        profileName.text = UserDefaults.standard.string(forKey: "childDataName")
+        let viewmodel = ChildViewModel(imageData: UserDefaults.standard.integer(forKey: "childDataImage"))
+        avatarButton.image = UIImage(named: viewmodel.profileImageChild)
+
         view.backgroundColor = .arcadiaGreen
         
         view.addSubview(roundedRectangel)
@@ -292,3 +301,27 @@ class ProfileController: UIViewController {
         stack4.isUserInteractionEnabled = true
     }
 }
+
+#if DEBUG
+import SwiftUI
+
+struct InfoVCRepresentable: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // leave this empty
+    }
+    
+    @available(iOS 13.0.0, *)
+    func makeUIViewController(context: Context) -> UIViewController {
+        MainController()
+    }
+}
+
+@available(iOS 13.0, *)
+struct InfoVCPreview: PreviewProvider {
+    static var previews: some View {
+        InfoVCRepresentable()
+    }
+}
+#endif
+
+

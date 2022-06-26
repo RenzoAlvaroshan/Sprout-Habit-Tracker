@@ -9,12 +9,6 @@ import UIKit
 import Firebase
 
 class GreetingsAndDate: UIView {
-    
-    var child: [Child]? {
-        didSet {
-            configure()
-        }
-    }
 
     // MARK: - Properties
     
@@ -37,7 +31,7 @@ class GreetingsAndDate: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        fetchChildrenData()
+
         configureUI()
     }
     
@@ -51,20 +45,10 @@ class GreetingsAndDate: UIView {
 
 
     // MARK: - Helpers
-    
-    func fetchChildrenData() {
-        let uid = Auth.auth().currentUser?.uid
-        var childRef = UserDefaults.standard.object(forKey: "childRef")
+
+    func configureUI() {
         
-        Service.fetchChildrenData(uid: uid!, childRef: childRef as! Int, completion: { child in
-            self.child = child
-        })
-    }
-    
-    func configure() {
-//        let childname = UserDefaults.standard.object(forKey: "childName") as! String
-//        greetings.text = "Hello, " + childname
-        greetings.text = "Hello, " + child![0].name
+        greetings.text = "Hello, " + UserDefaults.standard.string(forKey: "childDataName")!
         
         let mytime = Date()
         let format = DateFormatter()
@@ -76,9 +60,6 @@ class GreetingsAndDate: UIView {
         let dayInWeek = format.string(from: mytime)
 
         dayAndDate.text = "\(dayInWeek), \(currentDate)"
-    }
-
-    func configureUI() {
   
         addSubview(greetings)
         greetings.anchor(top: topAnchor, left: leftAnchor, paddingTop: 0, paddingLeft: 25)

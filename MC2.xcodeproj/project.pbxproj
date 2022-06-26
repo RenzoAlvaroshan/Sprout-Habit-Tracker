@@ -18,6 +18,8 @@
 		0E8745B12859C1060038B4BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B02859C1060038B4BB /* Extensions.swift */; };
 		0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B22859C15A0038B4BB /* RadioButton.swift */; };
 		0E8745B52859C17A0038B4BB /* RewardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8745B42859C17A0038B4BB /* RewardController.swift */; };
+		0E8E5ADE286811E1004D72FF /* SelectChildCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E5ADD286811E1004D72FF /* SelectChildCollectionView.swift */; };
+		0E8E5AE1286812BA004D72FF /* SelectChildCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8E5AE0286812BA004D72FF /* SelectChildCVCell.swift */; };
 		0E9803FC2862CAC9002D92CA /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9803FB2862CAC9002D92CA /* CustomAlert.swift */; };
 		0EC677C628669B0900137483 /* ChildViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C528669B0900137483 /* ChildViewModel.swift */; };
 		0EC677C82866ADF400137483 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC677C72866ADF400137483 /* Activity.swift */; };
@@ -83,6 +85,8 @@
 		0E8745B02859C1060038B4BB /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0E8745B22859C15A0038B4BB /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		0E8745B42859C17A0038B4BB /* RewardController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardController.swift; sourceTree = "<group>"; };
+		0E8E5ADD286811E1004D72FF /* SelectChildCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildCollectionView.swift; sourceTree = "<group>"; };
+		0E8E5AE0286812BA004D72FF /* SelectChildCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildCVCell.swift; sourceTree = "<group>"; };
 		0E9803FB2862CAC9002D92CA /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		0EC677C528669B0900137483 /* ChildViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildViewModel.swift; sourceTree = "<group>"; };
 		0EC677C72866ADF400137483 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				0E8745A42859ABE80038B4BB /* EditChildController.swift */,
 				83DCCC97286566A300249C9E /* SelectChildView.swift */,
 				0EC677CC28673AFC00137483 /* AddChildControllerInitial.swift */,
+				0E8E5ADD286811E1004D72FF /* SelectChildCollectionView.swift */,
+				0E8E5AE0286812BA004D72FF /* SelectChildCVCell.swift */,
 			);
 			path = "Child Controllers";
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EFE8DD82859A63E00C1A4B8 /* OnboardingViewContainer.swift in Sources */,
+				0E8E5ADE286811E1004D72FF /* SelectChildCollectionView.swift in Sources */,
 				834B6AA62860174B007D05E9 /* Constants.swift in Sources */,
 				834D626D28571AE300F6F3C8 /* (null) in Sources */,
 				8EA834B82863B9AA0036299F /* RewardCellCardView.swift in Sources */,
@@ -511,6 +518,7 @@
 				83345E1D2851E62700A13B53 /* Utilities.swift in Sources */,
 				0EFE8DD52859A63E00C1A4B8 /* ProfileController.swift in Sources */,
 				83345E0F2851E4FA00A13B53 /* LoginController.swift in Sources */,
+				0E8E5AE1286812BA004D72FF /* SelectChildCVCell.swift in Sources */,
 				0EDF4593286487E4004A7251 /* OnboardingManager.swift in Sources */,
 				0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,

@@ -68,27 +68,26 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                 }
                 return
             } else {
-                guard let uid = Auth.auth().currentUser?.uid else { return }
-                Service.fetchChildUID(uid: uid) { childUID in
-                    self.childUID = childUID
-                }
-                
-                if self.childUID.count == 1{
-                    print("DEBUG: \(self.childUID.count)")
-                   
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.set(0, forKey: "childRef")
-                    self.navigationController?.pushViewController(MainController(), animated: true)
-                }
-                else {
-                    // akan dihapus nanti kalo ada picker
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.set(0, forKey: "childRef")
+                Task.init(operation: {
+                    guard let uid = Auth.auth().currentUser?.uid else { return }
+                    let childUID = try await Service.fetchChildUID(uid:uid)
                     
-                    print("DEBUG: \(self.childUID.count)")
-                    // show child picker
-                    self.navigationController?.pushViewController(MainController(), animated: true)
-                }
+                    if childUID.count == 1{
+                        print("DEBUG: jumlah anak ada: \(childUID.count)")
+                       
+                        let userDefaults = UserDefaults.standard
+                        userDefaults.set(0, forKey: "childRef")
+                        self.navigationController?.pushViewController(MainController(), animated: true)
+                    }
+                    else { // go to picker
+                        print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
+                        // akan dihapus nanti kalo ada picker
+                        let userDefaults = UserDefaults.standard
+                        userDefaults.set(0, forKey: "childRef")
+                        // show child picker
+                        self.navigationController?.pushViewController(MainController(), animated: true)
+                    }
+                })
             }
         }
     }

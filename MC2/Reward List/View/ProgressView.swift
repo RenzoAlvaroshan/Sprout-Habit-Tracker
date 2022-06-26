@@ -32,3 +32,5 @@ class ProgressView: UIView {
         layer.cornerRadius = 86
     }
 }
+
+

@@ -23,7 +23,9 @@ class ActivityProgressView: UIView {
     private lazy var experienceTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsRegular(size: 15)
-        label.text = "110 / 200 XP"
+        let xp = UserDefaults.standard.integer(forKey: "childDataExperience")
+        let xpDisplayed = xp%100 // ganti pembagi disini
+        label.text = "\(xpDisplayed) / 100 XP"
         label.textColor = .black
         return label
     }()

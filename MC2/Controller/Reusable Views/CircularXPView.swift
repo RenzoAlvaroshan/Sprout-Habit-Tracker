@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Firebase
 
 class CircularXPView: UIView {
 
@@ -48,10 +47,9 @@ class CircularXPView: UIView {
         foregroundLayer.lineCap = CAShapeLayerLineCap.round
         foregroundLayer.fillColor = UIColor.clear.cgColor
         
-        let experience = 160
-        let experienceLabel = Double(experience%100) / 100.0
-        
-        foregroundLayer.strokeEnd = experienceLabel // ganti disini
+        let experience = UserDefaults.standard.integer(forKey: "childDataExperience") // ganti disini
+        let experienceLabel = Double(experience%100) / 100.0 //ganti pembagi per level
+        foregroundLayer.strokeEnd = experienceLabel
         
         layer.addSublayer(foregroundLayer)
     }

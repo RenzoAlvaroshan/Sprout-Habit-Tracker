@@ -207,9 +207,9 @@ class AddHabitController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        Service.fetchChildUID(uid: uid) { childData in
-            self.childUID = childData
-        }
+//        Service.fetchChildUID(uid: uid) { childData in
+//            self.childUID = childData
+//        }
         addCustomTextField.delegate = self
         configureUI()
         
@@ -362,10 +362,9 @@ class AddHabitController: UIViewController {
         
         let model = Activity(dictionary: ["activityName" : activities.last, "category": tapButton, "isFinished": false])
         
-        let childRef = UserDefaults.standard.object(forKey: "childRef") as! Int
-        let childId = childUID[childRef]
+        let currentChildUid = UserDefaults.standard.object(forKey: "childCurrentUid")
         
-        Service.saveActivity(activity: model, childId: childId) { error, activityId  in
+        Service.saveActivity(activity: model, childId: currentChildUid as! String) { error, activityId  in
             if let error = error {
                 print("ERROR is \(error.localizedDescription)")
             }
