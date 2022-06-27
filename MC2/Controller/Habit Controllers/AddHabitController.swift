@@ -212,7 +212,8 @@ class AddHabitController: UIViewController {
 //        }
         addCustomTextField.delegate = self
         configureUI()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //MARK: - Selectors
@@ -373,6 +374,25 @@ class AddHabitController: UIViewController {
         delegate?.handleReloadData()
         
         dismiss(animated: true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            let bottomSpacing = self.view.frame.height - (addGoalButton.frame.origin.y + addGoalButton.frame.height)
+            self.view.frame.origin.y -= keyboardHeight - bottomSpacing + 70
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        self.view.frame.origin.y = 0
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //MARK: - Helpers

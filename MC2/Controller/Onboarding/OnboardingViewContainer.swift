@@ -115,7 +115,7 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         navigationController?.navigationBar.isHidden = true
         
         view.addSubview(skipButton)
-        skipButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 30, paddingRight: 20)
+        skipButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 80 : 60, paddingRight: 20)
         
         let page1 = OnboardingViewController(
             imageName: "onboarding1",
@@ -147,7 +147,7 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         
         view.addSubview(getStartedButton)
         getStartedButton.centerX(inView: view)
-        getStartedButton.anchor(bottom: view.bottomAnchor, paddingBottom: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 20)
+        getStartedButton.anchor(bottom: view.bottomAnchor, paddingBottom: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 80 : 50)
         getStartedButton.setDimensions(height: 50, width: view.frame.width - 48)
     }
     
