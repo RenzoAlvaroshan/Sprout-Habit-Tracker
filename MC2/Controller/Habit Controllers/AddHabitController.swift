@@ -80,7 +80,7 @@ class AddHabitController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 2.33)
+        button.setDimensions(height: view.frame.width / 8.6, width: (view.frame.width / 2) - 24)
         button.setTitle("Water", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
@@ -95,7 +95,7 @@ class AddHabitController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 2.33)
+        button.setDimensions(height: view.frame.width / 8.6, width: (view.frame.width / 2) - 24)
         button.setTitle("Electricity", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
@@ -110,7 +110,7 @@ class AddHabitController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 2.33)
+        button.setDimensions(height: view.frame.width / 8.6, width: (view.frame.width / 2) - 24)
         button.setTitle("Planting", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
@@ -125,7 +125,7 @@ class AddHabitController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 2.33)
+        button.setDimensions(height: view.frame.width / 8.6, width: (view.frame.width / 2) - 24)
         button.setTitle("Garbage", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
@@ -148,7 +148,7 @@ class AddHabitController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
+        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width - 40)
         button.setTitle("Test 1", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
@@ -163,7 +163,7 @@ class AddHabitController: UIViewController {
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
+        button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width - 40)
         button.setTitle("Test 2", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
@@ -181,7 +181,7 @@ class AddHabitController: UIViewController {
         tf.layer.shadowOpacity = 0.14
         tf.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         tf.placeholder = "Add custom habit.."
-        tf.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
+        tf.setDimensions(height: view.frame.width / 8.6, width: view.frame.width - 40)
         tf.textAlignment = .center
         return tf
     }()
@@ -431,17 +431,15 @@ class AddHabitController: UIViewController {
         let alert = UIAlertController(title: "Sucessfully Added!", message: "Your new task has been successfully added!", preferredStyle: UIAlertController.Style.alert)
         alert.view.tintColor = UIColor.arcadiaGreen
         
-        alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: { [self] _ in
+        let action = UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel) { _ in
             
-//            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
-//            {
-//                scene.setToMain()
-//            }
-            delegate?.handleReloadData()
-            dismiss(animated: true)
-        }))
+            self.delegate?.handleReloadData()
+            self.dismiss(animated: true)
+        }
         
-        present(alert, animated: true)
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
     }
     
     func checkForm() {
@@ -486,11 +484,11 @@ class AddHabitController: UIViewController {
         
         view.addSubview(addHabitTitle)
         addHabitTitle.centerX(inView: view)
-        addHabitTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: -23)
+        addHabitTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 25)
         
         view.addSubview(circleView)
         circleView.centerX(inView: view)
-        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20)
+        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 63)
         
         circleView.addSubview(habitIcon)
         habitIcon.centerX(inView: circleView)
@@ -503,28 +501,32 @@ class AddHabitController: UIViewController {
         waterButton.anchor(top: categoryTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 20)
         
         view.addSubview(electricityButton)
-        electricityButton.anchor(top: categoryTitle.bottomAnchor, left: waterButton.rightAnchor, paddingTop: 8, paddingLeft: 10)
+        electricityButton.anchor(top: categoryTitle.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingRight: 20)
         
         view.addSubview(plantingButton)
         plantingButton.anchor(top: waterButton.bottomAnchor, left: view.leftAnchor, paddingTop: 8, paddingLeft: 20)
         
         view.addSubview(garbageButton)
-        garbageButton.anchor(top: electricityButton.bottomAnchor, left: plantingButton.rightAnchor, paddingTop: 8, paddingLeft: 10)
+        garbageButton.anchor(top: electricityButton.bottomAnchor, right: view.rightAnchor, paddingTop: 8, paddingRight: 20)
         
         view.addSubview(taskTitle)
         taskTitle.anchor(top: plantingButton.bottomAnchor, left: view.leftAnchor, paddingTop: 20, paddingLeft: 20)
         
         view.addSubview(habitButton01)
         habitButton01.anchor(top: taskTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 16, paddingLeft: 20)
+        habitButton01.centerX(inView: view)
         
         view.addSubview(habitButton02)
         habitButton02.anchor(top: habitButton01.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 20)
+        habitButton02.centerX(inView: view)
         
         view.addSubview(addCustomTextField)
         addCustomTextField.anchor(top: habitButton02.bottomAnchor, left: view.leftAnchor, paddingTop: 12, paddingLeft: 20)
+        addCustomTextField.centerX(inView: view)
         
         view.addSubview(addGoalButton)
         addGoalButton.anchor(top: addCustomTextField.bottomAnchor, left: view.leftAnchor, paddingTop: view.frame.width / 4.875, paddingLeft: 20)
+        addGoalButton.centerX(inView: view)
     }
 }
 

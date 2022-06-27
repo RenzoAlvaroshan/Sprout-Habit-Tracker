@@ -104,20 +104,9 @@ class TaskController: UIViewController{
     //MARK: - Selectors
     
     @objc func handleAddActivity() {
-        let rootVC = AddHabitController()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        present(navVC, animated: true)
-    }
-    
-    func reloadData() {
-        Task.init {
-            let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
-            let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
-            self.activity = activityArray
-            let numberOfTask = activity!.count as Int
-            rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
-            tableView.reloadData()
-        }
+        
+        controller.modalPresentationStyle = .popover
+        present(controller, animated: true)
     }
     
     //MARK: - Helpers
@@ -169,7 +158,6 @@ class TaskController: UIViewController{
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-//        tableView.backgroundColor = .systemPink
     }
     
     func alertOnTap() {
