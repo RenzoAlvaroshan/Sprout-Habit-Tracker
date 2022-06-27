@@ -21,6 +21,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
+    let sceneDelegate = UIApplication.shared.connectedScenes.first
+    
     var child: Child?
     var selected = 0
     
@@ -140,9 +142,25 @@ class AddChildController: UIViewController, UITextFieldDelegate {
             COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
         // change userdefault for childID + reload view
-        let childRefNext = UserDefaults.standard.integer(forKey: "childRef") + 1
-        UserDefaults.standard.set(childRefNext, forKey: "childRef")
-        self.navigationController?.pushViewController(MainController(), animated: true)
+        Task.init {
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let childUID = try await Service.fetchChildUID(uid:uid)
+            UserDefaults.standard.set(childUID.endIndex, forKey: "childRef")
+            let currentChildUid = childUID.last
+            let childData = try await Service.fetchChildData(childUid: currentChildUid!)
+            
+            UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+            UserDefaults.standard.set(childData.name, forKey: "childDataName")
+            UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+            UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+            
+            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+            {
+                scene.setToMain()
+            }
+        }
+        
+        
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {

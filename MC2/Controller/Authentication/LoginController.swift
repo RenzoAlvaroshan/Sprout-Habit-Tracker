@@ -73,33 +73,29 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                     guard let uid = Auth.auth().currentUser?.uid else { return }
                     let childUID = try await Service.fetchChildUID(uid:uid)
                     
-                    if childUID.count == 1{
-                        print("DEBUG: jumlah anak ada: \(childUID.count)")
-                        let currentChildUid = childUID[0]
-                        let childData = try await Service.fetchChildData(childUid: currentChildUid)
-                        
-                        UserDefaults.standard.set(0, forKey: "childRef")
-                        UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
-                        UserDefaults.standard.set(childData.name, forKey: "childDataName")
-                        UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
-                        UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
-                        
-                        self.navigationController?.pushViewController(MainController(), animated: true)
-                        self.showLoader(false)
-                    }
-                    else { // go to picker
-                        print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
-                        let currentChildUid = childUID[0]
-                        let childData = try await Service.fetchChildData(childUid: currentChildUid)
-                        
-                        UserDefaults.standard.set(0, forKey: "childRef")
-                        UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
-                        UserDefaults.standard.set(childData.name, forKey: "childDataName")
-                        UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
-                        UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
-                        
-                        self.navigationController?.pushViewController(MainController(), animated: true)
-                        self.showLoader(false)
+                    if childUID.isEmpty {
+                        print("DEBUG: gaada anak nihhh")
+                        self.navigationController?.pushViewController(AddChildControllerInitial(), animated: true)
+                    } else {
+                        if childUID.count == 1{
+                            print("DEBUG: jumlah anak ada: \(childUID.count)")
+                            let currentChildUid = childUID[0]
+                            let childData = try await Service.fetchChildData(childUid: currentChildUid)
+                            
+                            UserDefaults.standard.set(0, forKey: "childRef")
+                            UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+                            UserDefaults.standard.set(childData.name, forKey: "childDataName")
+                            UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+                            UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+                            
+                            self.navigationController?.pushViewController(MainController(), animated: true)
+                            self.showLoader(false)
+                        }
+                        else { // go to picker
+                            print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
+                            
+                            self.navigationController?.pushViewController(SelectChildCollectionView(), animated: true)
+                        }
                     }
                 })
             }

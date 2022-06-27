@@ -32,12 +32,30 @@ class MainController: UITabBarController {
                 self.present(nav, animated: true)
             }
         } else {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            // jalanin loading animation
             view.backgroundColor = .white
-            configureViewControllers()
+            
+            Task.init(operation: {
+                self.showLoader(true)
+                guard let uid = Auth.auth().currentUser?.uid else { return }
+                let childUID = try await Service.fetchChildUID(uid:uid)
+                
+                if childUID.isEmpty {
+                    print("DEBUG: gaada anak nihhh")
+                    DispatchQueue.main.async {
+                        let nav = UINavigationController(rootViewController: AddChildControllerInitial())
+                        nav.modalPresentationStyle = .fullScreen
+                        nav.isNavigationBarHidden = true
+                        self.present(nav, animated: true)
+                    }
+                    self.showLoader(false)
+                } else {
+                    self.showLoader(false)
+                    configureViewControllers()
+                }
+            })
         }
     }
+    
     
     func configureViewControllers() {
         let viewmodel = ChildViewModel(imageData: UserDefaults.standard.integer(forKey: "childDataImage"))
@@ -58,7 +76,7 @@ class MainController: UITabBarController {
         // tarik image
         let profileImage = UIImage(named: viewmodel.profileImageChild)
         let targetSize = CGSize(width: 30, height: 30)
-
+        
         let scaledImage = profileImage!.scalePreservingAspectRatio(
             targetSize: targetSize
         )
