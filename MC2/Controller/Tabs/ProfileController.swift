@@ -18,6 +18,9 @@ class ProfileController: UIViewController {
         }
     }
     
+    let sceneDelegate = UIApplication.shared.connectedScenes.first
+    
+    
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
         rect.setDimensions(height: view.frame.height / 1.51, width: view.frame.width)
@@ -113,9 +116,6 @@ class ProfileController: UIViewController {
         return label
     }()
     
-    private let childPicker = SelectChildView()
-//    private let childPicker = SelectChildView()
-    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -135,22 +135,19 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack1() {
-        let newVC = AddChildController()
-        newVC.hidesBottomBarWhenPushed = true
-        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
-        navigationController?.pushViewController(newVC, animated: true)
+        let rootVC = AddChildController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     @objc func handleStack2() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        Task.init(operation: {
-            let childData = try await Service.fetchAllChild(uid: uid)
-            self.child = childData
-            print("DEBUG: child di profile \(child)")
-            showAlert()
-        })
-//        childPicker.showChildPicker(viewController: self)
 
+        let rootVC = SelectChildCollectionView()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .pageSheet
+        present(navVC, animated: true)
         
     }
     
@@ -164,37 +161,13 @@ class ProfileController: UIViewController {
             userDefaults.set(0, forKey: "childRef")
             
             try Auth.auth().signOut()
-            let rootVC = LoginController()
-            let navVC = UINavigationController(rootViewController: rootVC)
-            navVC.modalPresentationStyle = .fullScreen
-            present(navVC, animated: true)
+            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+            {
+                scene.setToMain()
+            }
         } catch {
             print("DEBUG: Failed to sign out")
         }
-    }
-    
-    func showAlert() {
-        
-        let alert = UIAlertController(title: "Choose Child", message: "Which child do you want to focus on?", preferredStyle: .actionSheet)
-        
-        let child1 = UIAlertAction(title: child![0].name, style: .default) { action in
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(0, forKey: "childRef")
-        }
-        
-        let child2 = UIAlertAction(title: child![1].name, style: .default) { action in
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(1, forKey: "childRef")
-        }
-        
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        alert.view.tintColor = UIColor.arcadiaGreen
-        alert.addAction(child1)
-        alert.addAction(child2)
-        alert.addAction(cancelButton)
-        
-        self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Helper
@@ -301,27 +274,5 @@ class ProfileController: UIViewController {
         stack4.isUserInteractionEnabled = true
     }
 }
-
-#if DEBUG
-import SwiftUI
-
-struct InfoVCRepresentable: UIViewControllerRepresentable {
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // leave this empty
-    }
-    
-    @available(iOS 13.0.0, *)
-    func makeUIViewController(context: Context) -> UIViewController {
-        MainController()
-    }
-}
-
-@available(iOS 13.0, *)
-struct InfoVCPreview: PreviewProvider {
-    static var previews: some View {
-        InfoVCRepresentable()
-    }
-}
-#endif
 
 

@@ -21,6 +21,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     
     //MARK: - Properties
     
+    let sceneDelegate = UIApplication.shared.connectedScenes.first
+    
     var child: Child?
     var selected = 0
     
@@ -95,6 +97,25 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     
     private var avatars: [UIImageView]?
     
+    let yourAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.poppinsMedium(size: 15),
+        .underlineStyle: NSUnderlineStyle.single.rawValue
+    ]
+    
+    private lazy var cancelButton: UIButton = {
+        
+        let attributeString = NSMutableAttributedString(
+            string: "Cancel",
+            attributes: yourAttributes
+        )
+        
+        let button = UIButton(type: .system)
+        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -116,9 +137,7 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     //MARK: - Selectors
     
     @objc func handleAddChild() {
-        // cara kevin
         let childName = nameTextField.text!
-        
         let model = Child(dictionary: ["name" : childName, "profile": selected])
         
         // save child data di collection child
@@ -133,12 +152,25 @@ class AddChildController: UIViewController, UITextFieldDelegate {
             COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
         // change userdefault for childID + reload view
-//        dismiss(animated: true)
-        // reload all view
-        UserDefaults.standard.set(1, forKey: "childRef")
-//        self.navigationController?.popViewController(animated: true)
-        self.navigationController?.pushViewController(MainController(), animated: true)
-       
+        Task.init {
+            guard let uid = Auth.auth().currentUser?.uid else { return }
+            let childUID = try await Service.fetchChildUID(uid:uid)
+            UserDefaults.standard.set(childUID.endIndex, forKey: "childRef")
+            let currentChildUid = childUID.last
+            let childData = try await Service.fetchChildData(childUid: currentChildUid!)
+            
+            UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
+            UserDefaults.standard.set(childData.name, forKey: "childDataName")
+            UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
+            UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
+            
+            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+            {
+                scene.setToMain()
+            }
+        }
+        
+        
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
@@ -153,7 +185,10 @@ class AddChildController: UIViewController, UITextFieldDelegate {
     @objc func tapDone(sender: Any) {
         nameTextField.endEditing(true)
     }
-    
+
+    @objc func handleCancelButton() {
+        self.dismiss(animated: true)
+
     @objc func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -209,11 +244,11 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         
         view.addSubview(addChildTitle)
         addChildTitle.centerX(inView: view)
-        addChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
+        addChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 28)
         
         view.addSubview(circleView)
         circleView.centerX(inView: view)
-        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 48)
+        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 68)
         
         circleView.addSubview(avatarProfile)
         avatarProfile.centerX(inView: circleView)
@@ -222,6 +257,10 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         view.addSubview(nameTextField)
         nameTextField.centerX(inView: view)
         nameTextField.anchor(top: circleView.bottomAnchor)
+        
+        view.addSubview(cancelButton)
+        cancelButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 30, paddingRight: 20)
+        
         
 //        let totalStack = avatars.count % 3
         

@@ -19,18 +19,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
 
-        
         if isOnboardingSeen {
             window?.rootViewController = MainController()
-//            window?.rootViewController = ProfileController()
         } else {
             window?.rootViewController = OnboardingViewContainer()
         }
         
         window?.makeKeyAndVisible()
+    }
+    
+    // Reset root to main controller
+    func setToMain() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate else { return }
         
-//        window?.rootViewController = MainController()
-        //Ganti disini ya VC nya
+        sceneDelegate.window?.rootViewController = MainController()
+        
+        sceneDelegate.window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {

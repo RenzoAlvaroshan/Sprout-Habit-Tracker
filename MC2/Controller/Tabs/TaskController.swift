@@ -149,6 +149,7 @@ class TaskController: UIViewController{
     func configureTableView() {
         view.addSubview(tableView)
         self.tableView.rowHeight = 110
+
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -187,6 +188,7 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityViewCell", for: indexPath) as! ActivityViewCell
         cell.cellCardView.set(activity: activity![indexPath.section])
         cell.backgroundColor = .white
+        cell.selectionStyle = .none
         cell.clipsToBounds = false
         return cell
     }

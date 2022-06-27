@@ -46,11 +46,12 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
         let childID = Array<String>()
         
         let credentials = AuthCredentials(email: email, password: password, childID: childID)
-        
+        showLoader(true)
         Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
             if let error = error {
                 print("DEBUG: Error signing up \(error.localizedDescription)")
                 self.showPopUp()
+                self.showLoader(false)
                 return
             } else {
                 guard let uid = result?.user.uid else { return }
@@ -62,6 +63,7 @@ class RegistrationController: UIViewController, RegisterCardViewDelegate {
                 COLLECTION_USERS.document(uid).setData(data, completion: nil)
                 
                 self.navigationController?.pushViewController(AddChildControllerInitial(), animated: true)
+                self.showLoader(false)
             }
         }
     }

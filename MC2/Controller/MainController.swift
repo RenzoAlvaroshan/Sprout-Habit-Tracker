@@ -32,46 +32,56 @@ class MainController: UITabBarController {
                 self.present(nav, animated: true)
             }
         } else {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            // jalanin loading animation
-            view.backgroundColor = .arcadiaGreen
-            // baru fetch data
-            showLoader(true)
+            view.backgroundColor = .white
             
             Task.init(operation: {
+                self.showLoader(true)
+                guard let uid = Auth.auth().currentUser?.uid else { return }
                 let childUID = try await Service.fetchChildUID(uid:uid)
-                let currentChildUid = childUID[UserDefaults.standard.integer(forKey: "childRef")]
-                let childData = try await Service.fetchChildData(childUid: currentChildUid)
                 
-                UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
-                UserDefaults.standard.set(childData.name, forKey: "childDataName")
-                UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
-                UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
-                
-                configureUI()
-                configureViewControllers()
-                showLoader(false)
+                if childUID.isEmpty {
+                    print("DEBUG: gaada anak nihhh")
+                    DispatchQueue.main.async {
+                        let nav = UINavigationController(rootViewController: AddChildControllerInitial())
+                        nav.modalPresentationStyle = .fullScreen
+                        nav.isNavigationBarHidden = true
+                        self.present(nav, animated: true)
+                    }
+                    self.showLoader(false)
+                } else {
+                    self.showLoader(false)
+                    configureViewControllers()
+                }
             })
-            
         }
-       
     }
     
-    func configureUI() {
-        view.backgroundColor = .arcadiaGreen
-    }
     
     func configureViewControllers() {
+        let viewmodel = ChildViewModel(imageData: UserDefaults.standard.integer(forKey: "childDataImage"))
+        
         let task = TaskController()
-        let nav1 = templateNavigationController(image: UIImage(named: "task.icon.gray"), rootViewController: task)
+        let imageTask = UIImage(named: "task.icon.gray")
+        let imageTask2 = UIImage(named: "task.icon.green")
+        let nav1 = templateNavigationController(deselectImage: imageTask, selectImage: imageTask2, rootViewController: task)
         nav1.title = "Task"
         
         let reward = RewardController()
-        let nav2 = templateNavigationController(image: UIImage(named: "reward.icon.gray"), rootViewController: reward)
+        let imageReward =  UIImage(named: "reward.icon.gray")
+        let imageReward2 = UIImage(named: "reward.icon.green")
+        let nav2 = templateNavigationController(deselectImage: imageReward, selectImage: imageReward2, rootViewController: reward)
         nav2.title = "Reward"
         
         let profile = ProfileController()
-        let nav3 = templateNavigationController(image: UIImage(named: "profile.icon.gray"), rootViewController: profile)
+        // tarik image
+        let profileImage = UIImage(named: viewmodel.profileImageChild)
+        let targetSize = CGSize(width: 30, height: 30)
+        
+        let scaledImage = profileImage!.scalePreservingAspectRatio(
+            targetSize: targetSize
+        )
+        
+        let nav3 = templateNavigationController(deselectImage: scaledImage, selectImage: scaledImage, rootViewController: profile)
         nav3.title = "Profile"
         
         viewControllers = [nav1, nav2, nav3]
@@ -89,11 +99,12 @@ class MainController: UITabBarController {
     }
     
     
-    func templateNavigationController(image: UIImage?,
+    func templateNavigationController(deselectImage: UIImage?, selectImage: UIImage?,
                                       rootViewController: UIViewController) -> UINavigationController {
         
         let nav = UINavigationController(rootViewController: rootViewController)
-        nav.tabBarItem.image = image
+        nav.tabBarItem.image = deselectImage!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
+        nav.tabBarItem.selectedImage = selectImage!.withRenderingMode(UIImage.RenderingMode.alwaysOriginal)
         return nav
     }
 }

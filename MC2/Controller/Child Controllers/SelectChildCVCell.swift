@@ -11,7 +11,7 @@ import UIKit
 //    func handleProfileImageTapped(_ cell: TweetCell)
 //}
 
-class childCell: UICollectionViewCell {
+class SelectChildCVCell: UICollectionViewCell {
     
     // MARK: - Properties
 //    var tweet: Tweet? {
@@ -27,8 +27,8 @@ class childCell: UICollectionViewCell {
         let childImg = UIImageView()
         childImg.contentMode = .scaleAspectFit
         childImg.clipsToBounds = true
-        childImg.setDimensions(height: 90 , width: 90)
-        childImg.layer.cornerRadius = 90 / 2
+//        childImg.setDimensions(height: 90 , width: 90)
+//        childImg.layer.cornerRadius = 90 / 2
         childImg.backgroundColor = .arcadiaGreen
         
 //        let tap = UITapGestureRecognizer(target: childImg.self, action: #selector(handleProfileImageTapped))
@@ -37,19 +37,6 @@ class childCell: UICollectionViewCell {
         
         return childImg
     }()
-    
-//    var childName: UILabel = {
-//        let childName = UILabel()
-//        childName.font = UIFont.poppinsRegular(size: 14)
-//        childName.numberOfLines = 1
-//        childName.textAlignment = NSTextAlignment.center
-//        childName.clipsToBounds = true
-//        childName.setDimensions(height: 30, width: 100)
-//        childName.layer.borderColor = UIColor.arcadiaGreen.cgColor
-//        childName.layer.borderWidth = 2
-//        childName.layer.cornerRadius = 10
-//        return childName
-//    }()
     
     private lazy var childName: UIButton = {
         let childName = UIButton()
@@ -62,7 +49,7 @@ class childCell: UICollectionViewCell {
         childName.setDimensions(height: 30 , width: 100)
         childName.setTitle("Water", for: .normal)
         childName.setTitleColor(UIColor.black, for: .normal)
-        childName.titleLabel?.font = UIFont.poppinsMedium(size: 14)
+        childName.titleLabel?.font = UIFont.poppinsMedium(size: 18)
         childName.titleLabel?.textAlignment = .center
         childName.addTarget(self, action: #selector(handleName), for: .touchUpInside)
         return childName
@@ -106,20 +93,17 @@ class childCell: UICollectionViewCell {
     // MARK: - Selectors
     
     @objc func handleName() {
+        print("DEBUG: name tapped")
         nameTapped = !nameTapped
         if nameTapped && nameTapped == true {
             tapChild = childName.currentTitle!
             
             childName.backgroundColor = .arcadiaGreen
             childName.setTitleColor(UIColor.white, for: .normal)
-            
-    
         }
         else {
-            
             childName.backgroundColor = .white
             childName.setTitleColor(UIColor.black, for: .normal)
-            
         }
     }
     
@@ -136,27 +120,12 @@ class childCell: UICollectionViewCell {
         
     }
     
-    @objc func handleCommentTapped() {
-        print("DEBUG: Comment tapped")
-    }
-    
-    @objc func handleRetweetTapped() {
-        print("DEBUG: RT tapped")
-    }
-    
-    @objc func handleLikeTapped() {
-        print("DEBUG: Like tapped")
-    }
-    
-    @objc func handleShareTapped() {
-        print("DEBUG: Share tapped")
-    }
-    
     
     // MARK: - Helpers
     
-    func set(childSelect: childSelection) {
-        childImg.image = childSelect.childImg
-        childName.setTitle(childSelect.childName, for: .normal)
+    func set(childSelect: Child) {
+        let viewmodel = ChildViewModel(imageData: childSelect.profileImage)
+        childImg.image = UIImage(named: viewmodel.profileImageChild)
+        childName.setTitle(childSelect.name, for: .normal)
     }
 }
