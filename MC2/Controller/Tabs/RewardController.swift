@@ -87,11 +87,7 @@ class RewardController: UIViewController{
         
         view.addSubview(rewardListTitle)
         rewardListTitle.anchor(top: experienceTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 25, paddingLeft: 25)
-        
-//        view.addSubview(rewardView)
-//        rewardView.setDimensions(height: view.frame.height * 0.75, width: view.frame.width)
-//        rewardView.anchor(left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        
+    
         view.addSubview(progressView)
         progressView.setDimensions(height: view.frame.height / 4.9, width: view.frame.height / 4.9)
         progressView.centerX(inView: view)
@@ -153,6 +149,7 @@ extension RewardController: UITableViewDataSource, UITableViewDelegate {
         let reward = rewards[indexPath.section]
         cell.cellCardView.set(reward: reward)
         cell.backgroundColor = .white
+        cell.selectionStyle = .none
         cell.clipsToBounds = false
         return cell
     }
@@ -164,10 +161,10 @@ extension RewardController: UITableViewDataSource, UITableViewDelegate {
             print("Hello \(indexPath.section)")
             // command for alert
             
-            customAlert.showAlert(with: "Hello",
-                                  message: "This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert",
-                                  viewController: self)
-    //        self.present(alert, animated: true, completion: nil)
+//            customAlert.showAlert(with: "Hello",
+//                                  message: "This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert This is my custom Alert",
+//                                  viewController: self)
+            self.present(alert, animated: true, completion: nil)
         }
     
     //Nambahin footer & bikin jd clear
