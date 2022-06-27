@@ -19,17 +19,19 @@ class AddHabitController: UIViewController {
     weak var delegate: AddHabitControllerDelegate?
     
     var activity = [Activity]()
-    var tapButton: String = ""
+    var tapButton: String = "Water"
     var activities = [String]()
     var childUID = [String]()
     
-    var waterTapped = false
+    var waterTapped = true
     var electrictyTapped = false
     var plantingTapped = false
     var garbageTapped = false
     
     var matiinKeranAirTapped = false
     var matiinKeranAirTapped2 = false
+    
+    let sceneDelegate = UIApplication.shared.connectedScenes.first
     
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
@@ -59,7 +61,7 @@ class AddHabitController: UIViewController {
     private lazy var habitIcon: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: " ") // will add more icon
+        iv.image = UIImage(named: "water") // will add more icon
         iv.setDimensions(height: view.frame.width / 4.5, width: view.frame.width / 4.5)
         return iv
     }()
@@ -74,13 +76,13 @@ class AddHabitController: UIViewController {
     
     private lazy var waterButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .white
+        button.backgroundColor = .arcadiaGreen2
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 2.33)
         button.setTitle("Water", for: .normal)
-        button.setTitleColor(UIColor.black, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .center
         button.addTarget(self, action: #selector(handleWater), for: .touchUpInside)
@@ -147,7 +149,7 @@ class AddHabitController: UIViewController {
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
-        button.setTitle(" ", for: .normal)
+        button.setTitle("Test 1", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
@@ -162,7 +164,7 @@ class AddHabitController: UIViewController {
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
-        button.setTitle(" ", for: .normal)
+        button.setTitle("Test 2", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
@@ -186,7 +188,7 @@ class AddHabitController: UIViewController {
     
     private lazy var addGoalButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .arcadiaGreen
+        button.backgroundColor = .systemGray3
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -196,6 +198,7 @@ class AddHabitController: UIViewController {
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
         button.addTarget(self, action: #selector(handleAddGoal), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -204,13 +207,8 @@ class AddHabitController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = " "
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        //        Service.fetchChildUID(uid: uid) { childData in
-        //            self.childUID = childData
-        //        }
+        title = ""
+
         addCustomTextField.delegate = self
         configureUI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -243,6 +241,8 @@ class AddHabitController: UIViewController {
             
             habitButton01.setTitle("Test 1", for: .normal)
             habitButton02.setTitle("Test 2", for: .normal)
+            
+            deselectHabit()
         }
     }
     
@@ -270,6 +270,8 @@ class AddHabitController: UIViewController {
             
             habitButton01.setTitle("Template untuk electricity 1", for: .normal)
             habitButton02.setTitle("Test 4", for: .normal)
+            
+            deselectHabit()
         }
     }
     
@@ -297,6 +299,8 @@ class AddHabitController: UIViewController {
             
             habitButton01.setTitle("Test 5", for: .normal)
             habitButton02.setTitle("Test 6", for: .normal)
+            
+            deselectHabit()
         }
     }
     
@@ -324,6 +328,8 @@ class AddHabitController: UIViewController {
             
             habitButton01.setTitle("Test 7", for: .normal)
             habitButton02.setTitle("Test 8", for: .normal)
+            
+            deselectHabit()
         }
     }
     
@@ -333,13 +339,25 @@ class AddHabitController: UIViewController {
             habitButton01.backgroundColor = .arcadiaGreen2
             habitButton01.setTitleColor(UIColor.white, for: .normal)
             
+            activities.removeAll()
+            activities.append((habitButton01.titleLabel?.text)!)
+            
             matiinKeranAirTapped2 = false
             
             habitButton02.backgroundColor = .white
             habitButton02.setTitleColor(UIColor.black, for: .normal)
+            
+            addCustomTextField.text = ""
+            
+            checkForm()
         } else {
+            
+            activities.removeAll()
+            
             habitButton01.backgroundColor = .white
             habitButton01.setTitleColor(UIColor.black, for: .normal)
+            
+            checkForm()
         }
     }
     
@@ -349,37 +367,43 @@ class AddHabitController: UIViewController {
             habitButton02.backgroundColor = .arcadiaGreen2
             habitButton02.setTitleColor(UIColor.white, for: .normal)
             
+            activities.removeAll()
+            activities.append((habitButton02.titleLabel?.text)!)
+            
             matiinKeranAirTapped = false
             
             habitButton01.backgroundColor = .white
             habitButton01.setTitleColor(UIColor.black, for: .normal)
+            
+            addCustomTextField.text = ""
+            
+            checkForm()
         } else {
+            
+            activities.removeAll()
+            
             habitButton02.backgroundColor = .white
             habitButton02.setTitleColor(UIColor.black, for: .normal)
+            
+            checkForm()
         }
     }
     
     @objc func handleAddGoal() {
-        if matiinKeranAirTapped == true {
-            activities.append((habitButton01.titleLabel?.text)!)
-        }
-        else if matiinKeranAirTapped2 == true {
-            activities.append((habitButton02.titleLabel?.text)!)
-        }
-        else {
-            activities.append(addCustomTextField.text!)
-        }
+        
+        print(activities)
+        print(tapButton)
         
         let model = Activity(dictionary: ["activityName" : activities.last, "category": tapButton, "isFinished": false])
-        
+
         let currentChildUid = UserDefaults.standard.object(forKey: "childCurrentUid")
-        
+
         Service.saveActivity(activity: model, childId: currentChildUid as! String) { error, activityId  in
             if let error = error {
                 print("ERROR is \(error.localizedDescription)")
             }
         }
-        
+
         showAlert()
     }
     
@@ -407,13 +431,49 @@ class AddHabitController: UIViewController {
         let alert = UIAlertController(title: "Sucessfully Added!", message: "Your new task has been successfully added!", preferredStyle: UIAlertController.Style.alert)
         alert.view.tintColor = UIColor.arcadiaGreen
         
-        alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: { action in
+        alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: { [self] _ in
             
-            self.delegate?.handleReloadData()
-            self.dismiss(animated: true)
+//            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+//            {
+//                scene.setToMain()
+//            }
+            delegate?.handleReloadData()
+            dismiss(animated: true)
         }))
         
         present(alert, animated: true)
+    }
+    
+    func checkForm() {
+        
+        if activities.count == 0 && addCustomTextField.text == "" {
+            addGoalButton.isEnabled = false
+            UIView.animate(withDuration: 0.3) {
+                self.addGoalButton.backgroundColor = UIColor.systemGray3
+            }
+        } else {
+            addGoalButton.isEnabled = true
+            UIView.animate(withDuration: 0.3) {
+                self.addGoalButton.backgroundColor = UIColor.arcadiaGreen
+            }
+        }
+    }
+    
+    func deselectHabit() {
+        
+        activities.removeAll()
+        
+        habitButton01.backgroundColor = .white
+        habitButton01.setTitleColor(UIColor.black, for: .normal)
+        matiinKeranAirTapped = false
+        
+        habitButton02.backgroundColor = .white
+        habitButton02.setTitleColor(UIColor.black, for: .normal)
+        matiinKeranAirTapped2 = false
+        
+        addCustomTextField.text = ""
+        
+        checkForm()
     }
     
     //MARK: - Helpers
@@ -470,6 +530,23 @@ class AddHabitController: UIViewController {
 
 extension AddHabitController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        
+        habitButton01.backgroundColor = .white
+        habitButton01.setTitleColor(UIColor.black, for: .normal)
+        matiinKeranAirTapped = false
+
+        habitButton02.backgroundColor = .white
+        habitButton02.setTitleColor(UIColor.black, for: .normal)
+        matiinKeranAirTapped2 = false
+
+        activities.removeAll()
+        
+        if addCustomTextField.text != "" {
+            activities.append(addCustomTextField.text!)
+        }
+        
+        checkForm()
+        
+        return textField.resignFirstResponder()
     }
 }

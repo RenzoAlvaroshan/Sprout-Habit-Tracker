@@ -109,6 +109,17 @@ class TaskController: UIViewController{
         present(navVC, animated: true)
     }
     
+    func reloadData() {
+        Task.init {
+            let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
+            let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
+            self.activity = activityArray
+            let numberOfTask = activity!.count as Int
+            rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
+            tableView.reloadData()
+        }
+    }
+    
     //MARK: - Helpers
 
     func configureUI() {
@@ -225,7 +236,5 @@ extension TaskController: AddHabitControllerDelegate {
             rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
             tableView.reloadData()
         }
-        
-        
     }
 }
