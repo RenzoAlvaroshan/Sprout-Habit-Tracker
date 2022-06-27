@@ -59,7 +59,7 @@ class AddHabitController: UIViewController {
     private lazy var habitIcon: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
-        iv.image = UIImage(named: "water") // will add more icon
+        iv.image = UIImage(named: " ") // will add more icon
         iv.setDimensions(height: view.frame.width / 4.5, width: view.frame.width / 4.5)
         return iv
     }()
@@ -147,7 +147,7 @@ class AddHabitController: UIViewController {
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
-        button.setTitle("Matiin keran air", for: .normal)
+        button.setTitle(" ", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
@@ -162,7 +162,7 @@ class AddHabitController: UIViewController {
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width / 1.16)
-        button.setTitle("Matiin keran air", for: .normal)
+        button.setTitle(" ", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
@@ -199,17 +199,18 @@ class AddHabitController: UIViewController {
         return button
     }()
     
-    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = " "
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-//        Service.fetchChildUID(uid: uid) { childData in
-//            self.childUID = childData
-//        }
+        //        Service.fetchChildUID(uid: uid) { childData in
+        //            self.childUID = childData
+        //        }
         addCustomTextField.delegate = self
         configureUI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -332,6 +333,10 @@ class AddHabitController: UIViewController {
             habitButton01.backgroundColor = .arcadiaGreen2
             habitButton01.setTitleColor(UIColor.white, for: .normal)
             
+            matiinKeranAirTapped2 = false
+            
+            habitButton02.backgroundColor = .white
+            habitButton02.setTitleColor(UIColor.black, for: .normal)
         } else {
             habitButton01.backgroundColor = .white
             habitButton01.setTitleColor(UIColor.black, for: .normal)
@@ -344,6 +349,10 @@ class AddHabitController: UIViewController {
             habitButton02.backgroundColor = .arcadiaGreen2
             habitButton02.setTitleColor(UIColor.white, for: .normal)
             
+            matiinKeranAirTapped = false
+            
+            habitButton01.backgroundColor = .white
+            habitButton01.setTitleColor(UIColor.black, for: .normal)
         } else {
             habitButton02.backgroundColor = .white
             habitButton02.setTitleColor(UIColor.black, for: .normal)
@@ -371,9 +380,7 @@ class AddHabitController: UIViewController {
             }
         }
         
-        delegate?.handleReloadData()
-        
-        dismiss(animated: true)
+        showAlert()
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -395,6 +402,20 @@ class AddHabitController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    func showAlert() {
+        
+        let alert = UIAlertController(title: "Sucessfully Added!", message: "Your new task has been successfully added!", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.cancel, handler: { action in
+            
+            self.delegate?.handleReloadData()
+            self.dismiss(animated: true)
+        }))
+        
+        present(alert, animated: true)
+    }
+    
     //MARK: - Helpers
     
     func configureUI() {
@@ -405,11 +426,11 @@ class AddHabitController: UIViewController {
         
         view.addSubview(addHabitTitle)
         addHabitTitle.centerX(inView: view)
-        addHabitTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
+        addHabitTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: -23)
         
         view.addSubview(circleView)
         circleView.centerX(inView: view)
-        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 48)
+        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20)
         
         circleView.addSubview(habitIcon)
         habitIcon.centerX(inView: circleView)

@@ -77,7 +77,7 @@ class ProfileController: UIViewController {
     private lazy var addYourOtherKids: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsRegular(size: 14)
-        label.text = "Add your other kid"
+        label.text = "Add your other kids"
         return label
     }()
     

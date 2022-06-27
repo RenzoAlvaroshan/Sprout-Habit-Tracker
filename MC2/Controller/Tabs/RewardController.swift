@@ -125,10 +125,12 @@ class RewardController: UIViewController{
             
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        self.alert.view.tintColor = UIColor.arcadiaGreen
     }
     
     func alertConfirmation() {
         self.alert2.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: nil))
+        self.alert2.view.tintColor = UIColor.arcadiaGreen
     }
 }
 
