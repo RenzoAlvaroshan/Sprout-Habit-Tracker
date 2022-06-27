@@ -1,157 +1,162 @@
-////
-////  SelectChildCVCell.swift
-////  MC2
-////
-////  Created by Kevin Harijanto on 26/06/22.
-////
 //
-//import UIKit
+//  SelectChildCVCell.swift
+//  MC2
 //
+//  Created by Kevin Harijanto on 26/06/22.
+//
+
+import UIKit
+
 //protocol TweetCellDelegate: AnyObject {
 //    func handleProfileImageTapped(_ cell: TweetCell)
 //}
-//
-//class TweetCell: UICollectionViewCell {
-//    
-//    // MARK: - Properties
+
+class childCell: UICollectionViewCell {
+    
+    // MARK: - Properties
 //    var tweet: Tweet? {
 //        didSet{ configure() }
 //    }
-//    
+    var nameTapped = false
+    var tapChild: String = ""
+
+
 //    weak var delegate: TweetCellDelegate?
-//    
-//    private lazy var profileImageView: UIImageView = {
-//        let iv = UIImageView()
-//        iv.contentMode = .scaleAspectFit
-//        iv.clipsToBounds = true
-//        iv.setDimensions(width: 48, height: 48)
-//        iv.layer.cornerRadius = 48 / 2
-//        iv.backgroundColor = .twitterBlue
-//        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImageTapped))
-//        iv.addGestureRecognizer(tap)
-//        iv.isUserInteractionEnabled = true
-//        
-//        return iv
+    
+    var childImg: UIImageView = {
+        let childImg = UIImageView()
+        childImg.contentMode = .scaleAspectFit
+        childImg.clipsToBounds = true
+        childImg.setDimensions(height: 90 , width: 90)
+        childImg.layer.cornerRadius = 90 / 2
+        childImg.backgroundColor = .arcadiaGreen
+        
+//        let tap = UITapGestureRecognizer(target: childImg.self, action: #selector(handleProfileImageTapped))
+//        childImg.addGestureRecognizer(tap)
+//        childImg.isUserInteractionEnabled = true
+        
+        return childImg
+    }()
+    
+//    var childName: UILabel = {
+//        let childName = UILabel()
+//        childName.font = UIFont.poppinsRegular(size: 14)
+//        childName.numberOfLines = 1
+//        childName.textAlignment = NSTextAlignment.center
+//        childName.clipsToBounds = true
+//        childName.setDimensions(height: 30, width: 100)
+//        childName.layer.borderColor = UIColor.arcadiaGreen.cgColor
+//        childName.layer.borderWidth = 2
+//        childName.layer.cornerRadius = 10
+//        return childName
 //    }()
-//    
-//    private let captionLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = UIFont.systemFont(ofSize: 14)
-//        label.numberOfLines = 0
-//        label.text = "Some test caption"
-//        return label
-//    }()
-//    
-//    private lazy var commentButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(named: "comment"), for: .normal)
-//        button.tintColor = .darkGray
-//        button.setDimensions(width: 20, height: 20)
-//        button.addTarget(self, action: #selector(handleCommentTapped), for: .touchUpInside)
-//        return button
-//    }()
-//    
-//    private lazy var retweetButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(named: "retweet"), for: .normal)
-//        button.tintColor = .darkGray
-//        button.setDimensions(width: 20, height: 20)
-//        button.addTarget(self, action: #selector(handleRetweetTapped), for: .touchUpInside)
-//        return button
-//    }()
-//    
-//    private lazy var likeButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(named: "like"), for: .normal)
-//        button.tintColor = .darkGray
-//        button.setDimensions(width: 20, height: 20)
-//        button.addTarget(self, action: #selector(handleLikeTapped), for: .touchUpInside)
-//        return button
-//    }()
-//    
-//    private lazy var shareButton: UIButton = {
-//        let button = UIButton(type: .system)
-//        button.setImage(UIImage(named: "share"), for: .normal)
-//        button.tintColor = .darkGray
-//        button.setDimensions(width: 20, height: 20)
-//        button.addTarget(self, action: #selector(handleShareTapped), for: .touchUpInside)
-//        return button
-//    }()
-//    
-//    private let infoLabel = UILabel()
-//    
-//    // MARK: - Lifecycle
-//    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        
-//        backgroundColor = .white
-//        
-//        addSubview(profileImageView)
-//        profileImageView.anchor(top: topAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
-//        
-//        let stack = UIStackView(arrangedSubviews: [infoLabel, captionLabel])
-//        stack.axis = .vertical
-//        stack.distribution = .fillProportionally
-//        stack.spacing = 4
-//        
-//        addSubview(stack)
-//        stack.anchor(top:profileImageView.topAnchor, left: profileImageView.rightAnchor, right: rightAnchor, paddingLeft: 12, paddingRight: 12)
-//        
-//        infoLabel.font = UIFont.systemFont(ofSize: 14)
-//        infoLabel.text = "Hanni Thenadiputto @nahneth"
-//        
-//        let actionStack = UIStackView(arrangedSubviews: [commentButton,retweetButton,likeButton,shareButton])
-//        actionStack.axis = .horizontal
-//        actionStack.spacing = 72
-//        
-//        addSubview(actionStack)
-////        actionStack.centerX(inView: self)
-//        actionStack.anchor(left: stack.leftAnchor,bottom: bottomAnchor, paddingBottom: 8)
-//        
-//        let underlineView = UIView()
-//        underlineView.backgroundColor = .systemGroupedBackground
-//        addSubview(underlineView)
-//        underlineView.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, height: 1)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-//    
-//    // MARK: - Selectors
-//    
-//    @objc func handleProfileImageTapped() {
-//        delegate?.handleProfileImageTapped(self)
-//    }
-//    
-//    @objc func handleCommentTapped() {
-//        print("DEBUG: Comment tapped")
-//    }
-//    
-//    @objc func handleRetweetTapped() {
-//        print("DEBUG: RT tapped")
-//    }
-//    
-//    @objc func handleLikeTapped() {
-//        print("DEBUG: Like tapped")
-//    }
-//    
-//    @objc func handleShareTapped() {
-//        print("DEBUG: Share tapped")
-//    }
-//    
-//    
-//    // MARK: - Helpers
-//    
-//    func configure() {
-//        guard let tweet = tweet else {return}
-//        let viewModel = TweetViewModel(tweet: tweet)
-//        
-//        profileImageView.sd_setImage(with: viewModel.profileImageUrl)
-//        infoLabel.attributedText = viewModel.userInfoText
-//        captionLabel.text = tweet.caption
-//    }
-//}
-//
+    
+    private lazy var childName: UIButton = {
+        let childName = UIButton()
+        childName.backgroundColor = .white
+        childName.layer.borderWidth = 1
+        childName.layer.borderColor = UIColor.arcadiaGreen.cgColor
+        childName.layer.cornerRadius = 10
+        childName.layer.shadowOpacity = 0.14
+        childName.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        childName.setDimensions(height: 30 , width: 100)
+        childName.setTitle("Water", for: .normal)
+        childName.setTitleColor(UIColor.black, for: .normal)
+        childName.titleLabel?.font = UIFont.poppinsMedium(size: 14)
+        childName.titleLabel?.textAlignment = .center
+        childName.addTarget(self, action: #selector(handleName), for: .touchUpInside)
+        return childName
+    }()
+    
+    func configureColletionItems() {
+        
+        layer.backgroundColor = UIColor.white.cgColor
+        layer.cornerRadius = frame.width / 4
+//        layer.borderWidth = 2
+//        layer.borderColor = UIColor.arcadiaGreen.cgColor
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = frame.width / 4
+//        contentView.layer.borderWidth = 2
+//        contentView.layer.borderColor = UIColor.arcadiaGreen.cgColor
+        
+    }
+
+    // MARK: - Lifecycle
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        let stack = UIStackView(arrangedSubviews: [childImg, childName])
+        stack.axis = .vertical
+        stack.distribution = .fillProportionally
+        stack.spacing = 12
+        
+        contentView.addSubview(stack)
+        stack.centerX(inView: contentView)
+        stack.centerY(inView: contentView)
+        
+        configureColletionItems()
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Selectors
+    
+    @objc func handleName() {
+        nameTapped = !nameTapped
+        if nameTapped && nameTapped == true {
+            tapChild = childName.currentTitle!
+            
+            childName.backgroundColor = .arcadiaGreen
+            childName.setTitleColor(UIColor.white, for: .normal)
+            
+    
+        }
+        else {
+            
+            childName.backgroundColor = .white
+            childName.setTitleColor(UIColor.black, for: .normal)
+            
+        }
+    }
+    
+    @objc func handleProfileImageTapped() {
+        print("BUTTON DEBUG")
+        nameTapped = !nameTapped
+        if nameTapped {
+//            tapChild = childName.text!
+            
+            childName.backgroundColor = .arcadiaGreen2
+            childName.layer.borderColor = UIColor.arcadiaGreen.cgColor
+            childName.layer.borderWidth = 2
+        }
+        
+    }
+    
+    @objc func handleCommentTapped() {
+        print("DEBUG: Comment tapped")
+    }
+    
+    @objc func handleRetweetTapped() {
+        print("DEBUG: RT tapped")
+    }
+    
+    @objc func handleLikeTapped() {
+        print("DEBUG: Like tapped")
+    }
+    
+    @objc func handleShareTapped() {
+        print("DEBUG: Share tapped")
+    }
+    
+    
+    // MARK: - Helpers
+    
+    func set(childSelect: childSelection) {
+        childImg.image = childSelect.childImg
+        childName.setTitle(childSelect.childName, for: .normal)
+    }
+}

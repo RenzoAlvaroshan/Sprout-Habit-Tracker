@@ -59,6 +59,7 @@
 		83DCCC9428641EAC00249C9E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9328641EAC00249C9E /* Service.swift */; };
 		83DCCC9628641EE900249C9E /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9528641EE900249C9E /* Child.swift */; };
 		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
+		8E647975286949460069B490 /* ChildSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E647974286949460069B490 /* ChildSelection.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
 		8E9B45D028592CB90080CC33 /* GreetingsAndDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */; };
@@ -119,6 +120,7 @@
 		83DCCC9328641EAC00249C9E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		83DCCC9528641EE900249C9E /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
 		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
+		8E647974286949460069B490 /* ChildSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSelection.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
 		8E9B45CF28592CB90080CC33 /* GreetingsAndDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingsAndDate.swift; sourceTree = "<group>"; };
@@ -408,6 +410,7 @@
 				83DCCC9528641EE900249C9E /* Child.swift */,
 				0EC677C72866ADF400137483 /* Activity.swift */,
 				0EC677C92866AE5400137483 /* Reward.swift */,
+				8E647974286949460069B490 /* ChildSelection.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				83DCCC9428641EAC00249C9E /* Service.swift in Sources */,
 				8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */,
 				83345E272851F57400A13B53 /* AuthenticationViewModel.swift in Sources */,
+				8E647975286949460069B490 /* ChildSelection.swift in Sources */,
 				834B6AA42860160E007D05E9 /* AuthService.swift in Sources */,
 				83345E1F2851E6F100A13B53 /* LoginCardView.swift in Sources */,
 				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
