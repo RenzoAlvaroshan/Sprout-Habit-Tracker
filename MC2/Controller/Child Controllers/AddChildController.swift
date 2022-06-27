@@ -169,8 +169,6 @@ class AddChildController: UIViewController, UITextFieldDelegate {
                 scene.setToMain()
             }
         }
-        
-        
     }
     
     @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
@@ -188,7 +186,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
 
     @objc func handleCancelButton() {
         self.dismiss(animated: true)
-
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
