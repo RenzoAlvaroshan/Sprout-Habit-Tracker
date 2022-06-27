@@ -26,7 +26,7 @@ struct ChildViewModel {
         case 4:
             return "ava2_m"
         case 5:
-            return "ava2_m"
+            return "ava3_m"
         default:
             return "ava1_f"
         }
