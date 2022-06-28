@@ -45,35 +45,27 @@ class SelectChildCollectionView: UIViewController {
 //    weak var delegate: ActivityViewDelegate?
     
     private lazy var chooseChildButton: UIButton = {
-        
-        let attributeString = NSMutableAttributedString(
-            string: "Choose Child",
-            attributes: addAttributes
-        )
-
         let button = UIButton(type: .system)
-        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitle("Choose Child", for: .normal)
         button.backgroundColor = .arcadiaGreen
-        button.layer.cornerRadius = 8
-        button.setDimensions(height: 40, width: view.frame.width - 40)
+        button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
+        button.layer.cornerRadius = 10
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.setDimensions(height: 48, width: view.frame.width - 40)
         button.addTarget(self, action: #selector(handleChooseChild), for: .touchUpInside)
         return button
     }()
     
     private lazy var cancelChildButton: UIButton = {
-        
-        let attributeString = NSMutableAttributedString(
-            string: "Cancel",
-            attributes: addAttributes1
-        )
-
         let button = UIButton(type: .system)
-        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitle("Cancel", for: .normal)
+        button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.layer.borderWidth = 1.5
+        button.setTitleColor(UIColor.arcadiaGreen, for: .normal)
         button.layer.borderColor = UIColor.arcadiaGreen.cgColor
         button.backgroundColor = .white
-        button.layer.cornerRadius = 8
-        button.setDimensions(height: 40, width: view.frame.width - 40)
+        button.layer.cornerRadius = 10
+        button.setDimensions(height: 48, width: view.frame.width - 40)
         button.addTarget(self, action: #selector(cancelButton), for: .touchUpInside)
         return button
     }()
