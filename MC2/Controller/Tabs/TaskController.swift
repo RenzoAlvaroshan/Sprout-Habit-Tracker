@@ -17,6 +17,8 @@ class TaskController: UIViewController{
     //MARK: - Properties
     let controller = AddHabitController()
     
+    let sceneDelegate = UIApplication.shared.connectedScenes.first
+    
     var activity: [Activity]? {
         didSet {
             tableView.reloadData()
@@ -87,6 +89,10 @@ class TaskController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         controller.delegate = self
+        view.backgroundColor = .arcadiaGreen
+        
+        view.addSubview(roundedRectangel)
+        roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
         Task.init {
             let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
@@ -95,11 +101,13 @@ class TaskController: UIViewController{
             let numberOfTask = activity!.count as Int
             let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
             rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
+            
             configureUI()
             configureTableView()
                 
             alertOnTap()
             alertConfirmation()
+            
         }
     }
     
@@ -111,7 +119,7 @@ class TaskController: UIViewController{
         if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
             (activity!.count as Int) != 0 {
             
-            let alert = UIAlertController(title: "COK", message: "GOBLOK", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Daily Mission Complete!", message: "Come Back Tomorrow", preferredStyle: .alert)
             alert.view.tintColor = .arcadiaGreen
             
             let action = UIAlertAction(title: "OK", style: .cancel)
@@ -127,10 +135,7 @@ class TaskController: UIViewController{
     //MARK: - Helpers
 
     func configureUI() {
-        view.backgroundColor = .arcadiaGreen
         
-        view.addSubview(roundedRectangel)
-        roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
         let stack = UIStackView(arrangedSubviews: [activityListTitle, addActivity])
         stack.axis = .horizontal
@@ -189,7 +194,20 @@ class TaskController: UIViewController{
     }
     
     func alertConfirmation() {
-        self.alert2.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: nil))
+        self.alert2.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: { [self]_ in
+            if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
+                (activity!.count as Int) != 0 {
+                let experience = UserDefaults.standard.integer(forKey: "childDataExperience") + 30
+                Service.updateExperience(experience: experience) { error in
+                    print("DEBUG: error is \(String(describing: error))")
+                }
+                UserDefaults.standard.set(experience, forKey: "childDataExperience")
+                if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+                {
+                    scene.setToMain()
+                }
+            }
+        }))
         self.alert2.view.tintColor = UIColor.arcadiaGreen
     }
 }

@@ -8,7 +8,7 @@
 import Firebase
 import UIKit
 
-class MainController: UITabBarController {
+class MainController: UITabBarController, UIGestureRecognizerDelegate {
     
     //MARK: - Properties
     
@@ -22,6 +22,16 @@ class MainController: UITabBarController {
         AuthenticateAndPresentLoginController()
     }
     
+    // MARK: - Selectors
+    
+    @objc func profileLongPressed(gestureRecognizer: UILongPressGestureRecognizer) {
+        Utilities().vibrate(for: .warning)
+        
+        let navVC = SelectChildCollectionView()
+        navVC.modalPresentationStyle = .pageSheet
+        present(navVC, animated: true)
+    }
+    
     //MARK: - Helpers
     
     func AuthenticateAndPresentLoginController() {
@@ -33,14 +43,13 @@ class MainController: UITabBarController {
             }
         } else {
             view.backgroundColor = .white
-            
             Task.init(operation: {
                 self.showLoader(true)
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 let childUID = try await Service.fetchChildUID(uid:uid)
                 
                 if childUID.isEmpty {
-                    print("DEBUG: gaada anak nihhh")
+                    print("DEBUG: gaada anak nihhh main")
                     DispatchQueue.main.async {
                         let nav = UINavigationController(rootViewController: AddChildControllerInitial())
                         nav.modalPresentationStyle = .fullScreen
@@ -87,6 +96,14 @@ class MainController: UITabBarController {
         viewControllers = [nav1, nav2, nav3]
         tabBar.backgroundColor = .white
         tabBar.tintColor = .arcadiaGreen
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(profileLongPressed))
+        longPressRecognizer.delegate = self
+        tabBar.addGestureRecognizer(longPressRecognizer)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.view?.isDescendant(of: tabBar.subviews[3]) == true {return true}
+        return false
     }
     
     func presentLoginController() {

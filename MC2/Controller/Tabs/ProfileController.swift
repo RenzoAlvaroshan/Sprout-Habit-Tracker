@@ -135,7 +135,7 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack1() {
-        let rootVC = AddChildController()
+        let rootVC = AddChildControllerInitial()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.isNavigationBarHidden = true
         navVC.modalPresentationStyle = .fullScreen

@@ -116,4 +116,11 @@ struct Service {
         let updateReference = COLLECTION_CHILD.document(childUID)
         updateReference.updateData(["name": name, "profile": profile])
     }
+    
+    static func updateExperience (experience: Int, completion: @escaping(Error?)->Void) {
+        guard let childUID = UserDefaults.standard.string(forKey: "childCurrentUid") else { return }
+        
+        let updateReference = COLLECTION_CHILD.document(childUID)
+        updateReference.updateData(["experience": experience])
+    }
 }

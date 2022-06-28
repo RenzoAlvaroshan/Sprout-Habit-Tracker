@@ -183,12 +183,12 @@ extension RewardController: UITableViewDataSource, UITableViewDelegate {
 
 extension RewardController {
     func fetchData() -> [RewardList] {
-        let reward1 = RewardList(levelName: "Level 1", rewardName: "Petik buah 1",checkLock: UIImage(systemName: "lock.fill")!)
-        let reward2 = RewardList(levelName: "Level 2", rewardName: "Petik buah 2",checkLock: UIImage(systemName: "lock.fill")!)
-        let reward3 = RewardList(levelName: "Level 3", rewardName: "Petik buah 3",checkLock: UIImage(systemName: "lock.fill")!)
-        let reward4 = RewardList(levelName: "Level 4", rewardName: "Petik buah 4",checkLock: UIImage(systemName: "lock.fill")!)
-        let reward5 = RewardList(levelName: "Level 5", rewardName: "Petik buah 5",checkLock: UIImage(systemName: "lock.fill")!)
-        let reward6 = RewardList(levelName: "Level 6", rewardName: "Petik buah 6",checkLock: UIImage(systemName: "lock.fill")!)
+        let reward1 = RewardList(levelName: "Level 1", rewardName: "Make your own juice",checkLock: UIImage(systemName: "lock.fill")!)
+        let reward2 = RewardList(levelName: "Level 2", rewardName: "Choose your own meal",checkLock: UIImage(systemName: "lock.fill")!)
+        let reward3 = RewardList(levelName: "Level 3", rewardName: "Playdate with friends",checkLock: UIImage(systemName: "lock.fill")!)
+        let reward4 = RewardList(levelName: "Level 4", rewardName: "Exchange an old toy",checkLock: UIImage(systemName: "lock.fill")!)
+        let reward5 = RewardList(levelName: "Level 5", rewardName: "Playdate with Mom & Dad",checkLock: UIImage(systemName: "lock.fill")!)
+        let reward6 = RewardList(levelName: "Level 6", rewardName: "Tidak mencuci piring 1 minggu",checkLock: UIImage(systemName: "lock.fill")!)
         
         return [reward1,reward2,reward3,reward4,reward5,reward6]
     }

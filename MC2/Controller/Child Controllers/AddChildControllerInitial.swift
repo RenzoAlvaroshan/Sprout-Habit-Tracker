@@ -8,9 +8,11 @@
 import UIKit
 import Firebase
 
-class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
-    
+class AddChildControllerInitial: UIViewController
+{
     //MARK: - Properties
+    
+    let sceneDelegate = UIApplication.shared.connectedScenes.first
     
     var child: Child?
     var selected = 0
@@ -63,15 +65,16 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
         return tf
     }()
     
-    private lazy var getStartedButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .arcadiaGreen
+    private lazy var addChildButton: AppButton = {
+        let button = AppButton(type: .system)
+        button.backgroundColor = .systemGray3
+        button.isEnabled = false
         button.layer.cornerRadius = 10
         button.setDimensions(height: 50, width: 341)
-        button.setTitle("Let's get started!", for: .normal)
+        button.setTitle("Add Child", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
-        button.addTarget(self, action: #selector(handleGetStarted), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleAddChild), for: .touchUpInside)
         return button
     }()
     
@@ -86,20 +89,48 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
     
     private var avatars: [UIImageView]?
     
+    let yourAttributes: [NSAttributedString.Key: Any] = [
+        .font: UIFont.poppinsMedium(size: 15),
+        .underlineStyle: NSUnderlineStyle.single.rawValue
+    ]
+    
+    private lazy var cancelButton: AppButton = {
+        
+        let attributeString = NSMutableAttributedString(
+            string: "Cancel",
+            attributes: yourAttributes
+        )
+        
+        let button = AppButton(type: .system)
+        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
+        return button
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
         configureUI()
         nameTextField.delegate = self
+        nameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //MARK: - Selectors
     
-    @objc func handleGetStarted() {
-        
+    @objc func handleAddChild() {
         let childName = nameTextField.text!
-        
         let model = Child(dictionary: ["name" : childName, "profile": selected])
         
         // save child data di collection child
@@ -113,26 +144,28 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
             // masukin UID Child ke dalam users collection
             COLLECTION_USERS.document(uid).updateData(["childId": FieldValue.arrayUnion([childID])])
         }
-        
-        Task.init(operation: {
-            self.showLoader(true)
+        // change userdefault for childID + reload view
+        Task.init {
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let childUID = try await Service.fetchChildUID(uid:uid)
-            let currentChildUid = childUID[0]
-            let childData = try await Service.fetchChildData(childUid: currentChildUid)
+            UserDefaults.standard.set(childUID.endIndex, forKey: "childRef")
+            let currentChildUid = childUID.last
+            let childData = try await Service.fetchChildData(childUid: currentChildUid!)
             
-            UserDefaults.standard.set(0, forKey: "childRef")
             UserDefaults.standard.set(currentChildUid, forKey: "childCurrentUid")
             UserDefaults.standard.set(childData.name, forKey: "childDataName")
             UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
             UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
             
-            self.navigationController?.pushViewController(MainController(), animated: true)
-            self.showLoader(false)
-        })
+            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+            {
+                scene.setToMain()
+            }
+        }
     }
     
-    @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
+    @objc func handleTapAvatar(_ sender: UIGestureRecognizer)
+    {
         guard let iv = sender.view as? UIImageView else { return }
         radioButton?.selected = iv
         avatarProfile.image = iv.image
@@ -141,14 +174,32 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
         selected = getTag
     }
     
-    @objc func tapDone(sender: Any) {
+    @objc func tapDone(sender: Any)
+    {
         nameTextField.endEditing(true)
+    }
+
+    @objc func handleCancelButton() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            
+            let keyboardHeight = keyboardFrame.cgRectValue.height
+            let bottomSpacing = self.view.frame.height - (addChildButton.frame.origin.y + addChildButton.frame.height)
+            self.view.frame.origin.y -= keyboardHeight - bottomSpacing + 20
+        }
+    }
+    
+    @objc func keyboardWillHide() {
+        self.view.frame.origin.y = 0
     }
     
     //MARK: - Helpers
     
     func configureUI() {
-        
         view.backgroundColor = .arcadiaGreen
         
         let avatars: [UIImageView] = assignTagToImageView()
@@ -173,6 +224,8 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
         }, onDeselect: { [unowned self] avatar in
             selectedBorderView?.removeFromSuperview()
         })
+        // set default selected index to be 0
+        radioButton?.selectedIndex = 0
 
         avatars.forEach { avatar in
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapAvatar(_:)))
@@ -187,11 +240,11 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
         
         view.addSubview(addChildTitle)
         addChildTitle.centerX(inView: view)
-        addChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 8)
+        addChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 28)
         
         view.addSubview(circleView)
         circleView.centerX(inView: view)
-        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 48)
+        circleView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 68)
         
         circleView.addSubview(avatarProfile)
         avatarProfile.centerX(inView: circleView)
@@ -200,6 +253,10 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
         view.addSubview(nameTextField)
         nameTextField.centerX(inView: view)
         nameTextField.anchor(top: circleView.bottomAnchor)
+        
+        view.addSubview(cancelButton)
+        cancelButton.anchor(top: view.topAnchor, right: view.rightAnchor, paddingTop: UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0 > 20 ? 50 : 30, paddingRight: 20)
+        
         
 //        let totalStack = avatars.count % 3
         
@@ -219,9 +276,9 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
         stack2.centerX(inView: view)
         stack2.anchor(top: stack1.bottomAnchor, paddingTop: 32)
         
-        view.addSubview(getStartedButton)
-        getStartedButton.centerX(inView: view)
-        getStartedButton.anchor(top: stack2.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 28, paddingRight: 28)
+        view.addSubview(addChildButton)
+        addChildButton.centerX(inView: view)
+        addChildButton.anchor(top: stack2.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 28, paddingRight: 28)
     }
     
     func createAvatar(imageName: String) -> UIImageView {
@@ -247,3 +304,16 @@ class AddChildControllerInitial: UIViewController, UITextFieldDelegate {
     }
 }
 
+// MARK: TextFieldDelegate
+extension AddChildControllerInitial: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+    }
+    
+    @objc func textFieldEditingChanged(_ textField: UITextField)
+    {
+        addChildButton.isEnabled = textField.text != nil && textField.text!.isEmpty == false
+    }
+}

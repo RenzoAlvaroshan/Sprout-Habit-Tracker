@@ -149,7 +149,7 @@ class AddHabitController: UIViewController {
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width - 40)
-        button.setTitle("Test 1", for: .normal)
+        button.setTitle("Turn off tap while brushing teeth", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
@@ -164,7 +164,7 @@ class AddHabitController: UIViewController {
         button.layer.shadowOpacity = 0.14
         button.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         button.setDimensions(height: view.frame.width / 8.6, width: view.frame.width - 40)
-        button.setTitle("Test 2", for: .normal)
+        button.setTitle("Take quick showers", for: .normal)
         button.setTitleColor(UIColor.black, for: .normal)
         button.titleLabel?.font = UIFont.poppinsMedium(size: 14)
         button.titleLabel?.textAlignment = .left
@@ -240,8 +240,8 @@ class AddHabitController: UIViewController {
             plantingTapped = false
             garbageTapped = false
             
-            habitButton01.setTitle("Test 1", for: .normal)
-            habitButton02.setTitle("Test 2", for: .normal)
+            habitButton01.setTitle("Turn off tap while brushing teeth", for: .normal)
+            habitButton02.setTitle("Take quick showers", for: .normal)
             
             deselectHabit()
         }
@@ -269,8 +269,8 @@ class AddHabitController: UIViewController {
             plantingTapped = false
             garbageTapped = false
             
-            habitButton01.setTitle("Template untuk electricity 1", for: .normal)
-            habitButton02.setTitle("Test 4", for: .normal)
+            habitButton01.setTitle("Turn the lights off during the day", for: .normal)
+            habitButton02.setTitle("Turn the AC off when not using", for: .normal)
             
             deselectHabit()
         }
@@ -298,8 +298,8 @@ class AddHabitController: UIViewController {
             plantingTapped = false
             garbageTapped = false
             
-            habitButton01.setTitle("Test 5", for: .normal)
-            habitButton02.setTitle("Test 6", for: .normal)
+            habitButton01.setTitle("Cleaning the plant leaves", for: .normal)
+            habitButton02.setTitle("Water the plans using watering can", for: .normal)
             
             deselectHabit()
         }
@@ -327,8 +327,8 @@ class AddHabitController: UIViewController {
             plantingTapped = false
             waterTapped = false
             
-            habitButton01.setTitle("Test 7", for: .normal)
-            habitButton02.setTitle("Test 8", for: .normal)
+            habitButton01.setTitle("Sort the garbage", for: .normal)
+            habitButton02.setTitle("Refilling reusable water bottles", for: .normal)
             
             deselectHabit()
         }

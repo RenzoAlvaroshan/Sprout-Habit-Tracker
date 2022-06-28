@@ -177,7 +177,6 @@ extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewD
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        print("DEBUG: \(indexPath.item)")
         
         guard let currentSelectedCell = collectionView.cellForItem(at: indexPath) as? SelectChildCVCell
         else { return }
@@ -198,7 +197,6 @@ extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewD
             UserDefaults.standard.set(childData.name, forKey: "childDataName")
             UserDefaults.standard.set(childData.profileImage, forKey: "childDataImage")
             UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
-            
         }
         
         
