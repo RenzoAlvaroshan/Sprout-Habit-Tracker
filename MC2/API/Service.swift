@@ -109,6 +109,23 @@ struct Service {
             }
         }
     }
+    // Reset all activity to False
+    static func resetActivityState (completion: @escaping(Error?) -> Void) {
+        
+        let childUID = UserDefaults.standard.string(forKey: "childCurrentUid")
+        
+        COLLECTION_CHILD.document(childUID!).collection("Activity").addSnapshotListener { snapshot, error in
+            if snapshot != nil {
+                for i in 0..<snapshot!.count {
+                    guard let documentID = snapshot?.documents[i].documentID else { return }
+                    
+                    let updateReference = COLLECTION_CHILD.document(childUID!).collection("Activity").document(documentID)
+                    
+                    updateReference.updateData(["isFinished": false])
+                }
+            }
+        }
+    }
     
     static func updateProfileData (name: String, profile: Int, completion: @escaping(Error?)->Void) {
         guard let childUID = UserDefaults.standard.string(forKey: "childCurrentUid") else { return }
