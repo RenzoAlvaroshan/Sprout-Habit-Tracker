@@ -1,8 +1,8 @@
 //
-//  ChildColledtionSelectionView.swift
-//  ChildCollection
+//  SelectChildAfterLoginVC.swift
+//  MC2
 //
-//  Created by Suherda Dwi Santoso on 27/06/22.
+//  Created by Stephen Giovanni Saputra on 28/06/22.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import Firebase
 
 private let reuseIdentifier = "SelectChildCVCell"
 
-class SelectChildCollectionView: UIViewController {
+class SelectChildAfterLoginVC: UIViewController {
     
     //MARK: - Properties
 
@@ -22,7 +22,7 @@ class SelectChildCollectionView: UIViewController {
     
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
-        rect.setDimensions(height: UIScreen.main.bounds.height / 1.7, width: UIScreen.main.bounds.width)
+        rect.setDimensions(height: UIScreen.main.bounds.height / 2, width: UIScreen.main.bounds.width)
         rect.layer.cornerRadius = 33
         rect.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         rect.backgroundColor = .white
@@ -107,7 +107,7 @@ class SelectChildCollectionView: UIViewController {
     //MARK: - Helpers
     
     func configureWhiteBG() {
-        view.backgroundColor = .clear
+        view.backgroundColor = .black
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.bottomAnchor)
@@ -121,7 +121,7 @@ class SelectChildCollectionView: UIViewController {
         
         configureCollectionView()
         
-        let stack1 = UIStackView(arrangedSubviews: [chooseChildButton, cancelChildButton])
+        let stack1 = UIStackView(arrangedSubviews: [chooseChildButton])
         stack1.axis = .vertical
         stack1.distribution = .fillProportionally
         stack1.spacing = 10
@@ -129,7 +129,7 @@ class SelectChildCollectionView: UIViewController {
         view.addSubview(stack1)
 //        chooseChildButton.anchor(top: view.bottomAnchor, paddingTop: 100)
         stack1.centerX(inView: roundedRectangel)
-        stack1.anchor(top: collectionView.bottomAnchor, paddingTop: 20)
+        stack1.anchor(top: collectionView.bottomAnchor, paddingTop: 40)
     }
     
     func configureCollectionView() {
@@ -151,7 +151,7 @@ class SelectChildCollectionView: UIViewController {
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = .white
-        collectionView.anchor(top: chooseChildTitle.bottomAnchor, bottom: view.bottomAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 175, width: view.frame.width)
+        collectionView.anchor(top: chooseChildTitle.bottomAnchor, bottom: view.bottomAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 155, width: view.frame.width)
         collectionView.centerX(inView: roundedRectangel)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -159,7 +159,7 @@ class SelectChildCollectionView: UIViewController {
     
 }
 
-extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
+extension SelectChildAfterLoginVC: UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {

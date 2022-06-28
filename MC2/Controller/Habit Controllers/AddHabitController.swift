@@ -186,8 +186,8 @@ class AddHabitController: UIViewController {
         return tf
     }()
     
-    private lazy var addGoalButton: UIButton = {
-        let button = UIButton()
+    private lazy var addGoalButton: AppButton = {
+        let button = AppButton(type: .system)
         button.backgroundColor = .systemGray3
         button.layer.cornerRadius = 10
         button.layer.shadowOpacity = 0.14
@@ -213,6 +213,7 @@ class AddHabitController: UIViewController {
         configureUI()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        addCustomTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
     }
     
     //MARK: - Selectors
@@ -531,6 +532,7 @@ class AddHabitController: UIViewController {
 }
 
 extension AddHabitController: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         habitButton01.backgroundColor = .white
@@ -551,4 +553,10 @@ extension AddHabitController: UITextFieldDelegate {
         
         return textField.resignFirstResponder()
     }
+    
+    @objc func textFieldEditingChanged(_ textField: UITextField)
+    {
+        addGoalButton.isEnabled = textField.text != nil && textField.text!.isEmpty == false
+    }
 }
+

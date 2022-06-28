@@ -68,6 +68,7 @@
 		8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */; };
 		8EE0DD3628603A16009A374A /* TaskCircularXPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */; };
 		DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB61BBC92860895D00C99615 /* AuthPopUpView.swift */; };
+		DB7D04A2286AF88F0002E7A8 /* SelectChildAfterLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7D04A1286AF88F0002E7A8 /* SelectChildAfterLoginVC.swift */; };
 		DB871EB42860205500AA3256 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB871EB32860205400AA3256 /* Poppins-Medium.ttf */; };
 		DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */; };
 		DBA65BE228602FB2007F80D5 /* ActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA65BE128602FB2007F80D5 /* ActivityList.swift */; };
@@ -129,6 +130,7 @@
 		8EE0DD33286039CB009A374A /* TaskProgressXPCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TaskProgressXPCircle.swift; path = "MC2/Habit list/View/TaskProgressXPCircle.swift"; sourceTree = SOURCE_ROOT; };
 		8EE0DD3528603A16009A374A /* TaskCircularXPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCircularXPView.swift; sourceTree = "<group>"; };
 		DB61BBC92860895D00C99615 /* AuthPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPopUpView.swift; sourceTree = "<group>"; };
+		DB7D04A1286AF88F0002E7A8 /* SelectChildAfterLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildAfterLoginVC.swift; sourceTree = "<group>"; };
 		DB871EB32860205400AA3256 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		DBA65BDC28602F6C007F80D5 /* RewardListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardListViewModel.swift; sourceTree = "<group>"; };
 		DBA65BE128602FB2007F80D5 /* ActivityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityList.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				0EC677CC28673AFC00137483 /* AddChildControllerInitial.swift */,
 				0E8E5ADD286811E1004D72FF /* SelectChildCollectionView.swift */,
 				0E8E5AE0286812BA004D72FF /* SelectChildCVCell.swift */,
+				DB7D04A1286AF88F0002E7A8 /* SelectChildAfterLoginVC.swift */,
 			);
 			path = "Child Controllers";
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				0E8745B32859C15A0038B4BB /* RadioButton.swift in Sources */,
 				83345E0B2851E4B100A13B53 /* MainController.swift in Sources */,
 				0E8745A82859ABE80038B4BB /* EditChildController.swift in Sources */,
+				DB7D04A2286AF88F0002E7A8 /* SelectChildAfterLoginVC.swift in Sources */,
 				83DCCC9628641EE900249C9E /* Child.swift in Sources */,
 				0EF31C2B285AD23C00E82F92 /* RewardView.swift in Sources */,
 				DBA65BDD28602F6C007F80D5 /* RewardListViewModel.swift in Sources */,
