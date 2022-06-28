@@ -127,11 +127,11 @@ class ProfileController: UIViewController {
     //MARK: - Selectors
     
     @objc func handleEditButton() {
-        print("DEBUG: Edit button..")
-        let newVC = EditChildController()
-        newVC.hidesBottomBarWhenPushed = true
-        newVC.navigationController?.navigationBar.barTintColor = .arcadiaGreen
-        navigationController?.pushViewController(newVC, animated: true)
+        let rootVC = EditChildController()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     @objc func handleStack1() {

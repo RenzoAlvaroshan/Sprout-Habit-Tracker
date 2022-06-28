@@ -100,7 +100,7 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                             let navVC = UINavigationController(rootViewController: rootVC)
                             navVC.modalPresentationStyle = .overFullScreen
                             self.present(navVC, animated: true) {
-                                navVC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
+                            navVC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
                             }
                         }
                     }

@@ -108,6 +108,12 @@ struct Service {
                 updateReference.updateData(["isFinished": true])
             }
         }
+    }
+    
+    static func updateProfileData (name: String, profile: Int, completion: @escaping(Error?)->Void) {
+        guard let childUID = UserDefaults.standard.string(forKey: "childCurrentUid") else { return }
         
+        let updateReference = COLLECTION_CHILD.document(childUID)
+        updateReference.updateData(["name": name, "profile": profile])
     }
 }

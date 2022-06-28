@@ -81,9 +81,8 @@ class SelectChildCollectionView: UIViewController {
         super.viewDidLoad()
         
         configureWhiteBG()
-        
+        showLoader(true)
         Task.init(operation: {
-            showLoader(true)
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let childData = try await Service.fetchAllChild(uid: uid)
             self.child = childData
