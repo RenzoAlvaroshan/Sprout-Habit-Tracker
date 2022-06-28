@@ -59,7 +59,6 @@
 		834D62AB285C362500F6F3C8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */; };
 		83DCCC9428641EAC00249C9E /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9328641EAC00249C9E /* Service.swift */; };
 		83DCCC9628641EE900249C9E /* Child.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC9528641EE900249C9E /* Child.swift */; };
-		83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DCCC97286566A300249C9E /* SelectChildView.swift */; };
 		8E647975286949460069B490 /* ChildSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E647974286949460069B490 /* ChildSelection.swift */; };
 		8E9B45CA285912CC0080CC33 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */; };
 		8E9B45CE285913870080CC33 /* ActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B45CD285913870080CC33 /* ActivityViewCell.swift */; };
@@ -121,7 +120,6 @@
 		834D62AA285C362500F6F3C8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		83DCCC9328641EAC00249C9E /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		83DCCC9528641EE900249C9E /* Child.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Child.swift; sourceTree = "<group>"; };
-		83DCCC97286566A300249C9E /* SelectChildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChildView.swift; sourceTree = "<group>"; };
 		8E647974286949460069B490 /* ChildSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildSelection.swift; sourceTree = "<group>"; };
 		8E9B45C9285912CC0080CC33 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
 		8E9B45CD285913870080CC33 /* ActivityViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewCell.swift; sourceTree = "<group>"; };
@@ -196,7 +194,6 @@
 			children = (
 				0E8745A32859ABE80038B4BB /* AddChildController.swift */,
 				0E8745A42859ABE80038B4BB /* EditChildController.swift */,
-				83DCCC97286566A300249C9E /* SelectChildView.swift */,
 				0EC677CC28673AFC00137483 /* AddChildControllerInitial.swift */,
 				0E8E5ADD286811E1004D72FF /* SelectChildCollectionView.swift */,
 				0E8E5AE0286812BA004D72FF /* SelectChildCVCell.swift */,
@@ -549,7 +546,6 @@
 				8EE0DD34286039CB009A374A /* TaskProgressXPCircle.swift in Sources */,
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
-				83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */,
 				0E0BC0772869F98B00632AD7 /* TaskViewModel.swift in Sources */,
 				0EC677CA2866AE5400137483 /* Reward.swift in Sources */,
 				0EC677C82866ADF400137483 /* Activity.swift in Sources */,

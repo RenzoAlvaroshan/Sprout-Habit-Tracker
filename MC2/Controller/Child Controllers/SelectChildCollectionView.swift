@@ -82,9 +82,11 @@ class SelectChildCollectionView: UIViewController {
         let label = UILabel()
         label.font = UIFont.poppinsBold(size: 18)
         label.text = "Choose Child"
-        label.textColor = .white
+        label.textColor = .arcadiaGreen
         return label
     }()
+    
+    private var previousSelectedCell: SelectChildCVCell?
     
     //MARK: - Lifecycle
     
@@ -118,14 +120,14 @@ class SelectChildCollectionView: UIViewController {
     //MARK: - Helpers
     
     func configureWhiteBG() {
-        view.backgroundColor = .arcadiaGreen
-        
-        view.addSubview(chooseChildTitle)
-        chooseChildTitle.centerX(inView: view)
-        chooseChildTitle.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 88)
+        view.backgroundColor = .clear
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.bottomAnchor)
+        
+        view.addSubview(chooseChildTitle)
+        chooseChildTitle.centerX(inView: view)
+        chooseChildTitle.anchor(top: roundedRectangel.topAnchor, paddingTop: 30)
     }
 
     func configureUI() {
@@ -149,7 +151,7 @@ class SelectChildCollectionView: UIViewController {
         // constrain
         layout.sectionInset = UIEdgeInsets(top: 7.5, left: 7.5, bottom: 7.5, right: 7.5)
         // collection item size
-        layout.itemSize = CGSize(width: 100, height: 240)
+        layout.itemSize = CGSize(width: 165, height: 240)
         // scroll direction
         layout.scrollDirection = .horizontal
         
@@ -162,7 +164,7 @@ class SelectChildCollectionView: UIViewController {
         collectionView.delegate = self
         collectionView.alwaysBounceVertical = false
         collectionView.backgroundColor = .white
-        collectionView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, paddingTop: 310, paddingLeft: 0, paddingBottom: 230, width: view.frame.width - 40)
+        collectionView.anchor(top: view.topAnchor, bottom: view.bottomAnchor, paddingTop: 310, paddingLeft: 0, paddingBottom: 230, width: view.frame.width)
         collectionView.centerX(inView: roundedRectangel)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.showsHorizontalScrollIndicator = false
@@ -170,12 +172,15 @@ class SelectChildCollectionView: UIViewController {
     
 }
 
-extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return child!.count
+extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
+{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return child?.count ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! SelectChildCVCell
         let items = child![indexPath.item]
         item.set(childSelect: items)
@@ -184,9 +189,18 @@ extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewD
         return item
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
         print("DEBUG: \(indexPath.item)")
-
+        
+        guard let currentSelectedCell = collectionView.cellForItem(at: indexPath) as? SelectChildCVCell
+        else { return }
+        
+        previousSelectedCell?.onStateChanged(.normal)
+        currentSelectedCell.onStateChanged(.selected)
+        
+        previousSelectedCell = currentSelectedCell
+        
         Task.init {
             guard let uid = Auth.auth().currentUser?.uid else { return }
             let childUID = try await Service.fetchChildUID(uid:uid)

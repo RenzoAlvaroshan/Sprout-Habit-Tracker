@@ -17,8 +17,8 @@ enum AvatarStyle: String, CaseIterable {
     case ava6 = "ava3_m"
 }
 
-class AddChildController: UIViewController, UITextFieldDelegate {
-    
+class AddChildController: UIViewController
+{
     //MARK: - Properties
     
     let sceneDelegate = UIApplication.shared.connectedScenes.first
@@ -74,9 +74,10 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         return tf
     }()
     
-    private lazy var addChildButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = .arcadiaGreen
+    private lazy var addChildButton: AppButton = {
+        let button = AppButton(type: .system)
+        button.backgroundColor = .systemGray3
+        button.isEnabled = false
         button.layer.cornerRadius = 10
         button.setDimensions(height: 50, width: 341)
         button.setTitle("Add Child", for: .normal)
@@ -102,14 +103,14 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         .underlineStyle: NSUnderlineStyle.single.rawValue
     ]
     
-    private lazy var cancelButton: UIButton = {
+    private lazy var cancelButton: AppButton = {
         
         let attributeString = NSMutableAttributedString(
             string: "Cancel",
             attributes: yourAttributes
         )
         
-        let button = UIButton(type: .system)
+        let button = AppButton(type: .system)
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.addTarget(self, action: #selector(handleCancelButton), for: .touchUpInside)
@@ -127,6 +128,7 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         
         configureUI()
         nameTextField.delegate = self
+        nameTextField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
     }
     
     deinit {
@@ -171,7 +173,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @objc func handleTapAvatar(_ sender: UIGestureRecognizer) {
+    @objc func handleTapAvatar(_ sender: UIGestureRecognizer)
+    {
         guard let iv = sender.view as? UIImageView else { return }
         radioButton?.selected = iv
         avatarProfile.image = iv.image
@@ -180,7 +183,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         selected = getTag
     }
     
-    @objc func tapDone(sender: Any) {
+    @objc func tapDone(sender: Any)
+    {
         nameTextField.endEditing(true)
     }
 
@@ -229,6 +233,8 @@ class AddChildController: UIViewController, UITextFieldDelegate {
         }, onDeselect: { [unowned self] avatar in
             selectedBorderView?.removeFromSuperview()
         })
+        // set default selected index to be 0
+        radioButton?.selectedIndex = 0
 
         avatars.forEach { avatar in
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapAvatar(_:)))
@@ -304,5 +310,45 @@ class AddChildController: UIViewController, UITextFieldDelegate {
             currentTag += 1
         }
         return avatars
+    }
+}
+
+// MARK: TextFieldDelegate
+extension AddChildController: UITextFieldDelegate
+{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        textField.resignFirstResponder()
+    }
+    
+    @objc func textFieldEditingChanged(_ textField: UITextField)
+    {
+        addChildButton.isEnabled = textField.text != nil && textField.text!.isEmpty == false
+    }
+}
+
+@objc enum ColoringCommonState: Int
+{
+    case normal, disabled, selected
+}
+
+@objc protocol ColoringDelegate: AnyObject
+{
+    @objc optional func onStateChanged(_ state: ColoringCommonState)
+}
+
+class AppButton: UIButton, ColoringDelegate
+{
+    override var isEnabled: Bool { didSet {
+        super.isEnabled = isEnabled
+        self.onStateChanged(isEnabled ? .normal : .disabled)
+    }}
+    
+    func onStateChanged(_ state: ColoringCommonState)
+    {
+        UIView.animate(withDuration: 0.3)
+        {
+            self.backgroundColor = state == .disabled ? .systemGray3 : .arcadiaGreen
+        }
     }
 }
