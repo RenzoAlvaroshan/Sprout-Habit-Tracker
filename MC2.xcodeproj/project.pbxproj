@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E0BC0772869F98B00632AD7 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0BC0762869F98B00632AD7 /* TaskViewModel.swift */; };
 		0E266339284EEBAC00958370 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E266338284EEBAC00958370 /* AppDelegate.swift */; };
 		0E26633B284EEBAC00958370 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E26633A284EEBAC00958370 /* SceneDelegate.swift */; };
 		0E266340284EEBAC00958370 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E26633E284EEBAC00958370 /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E0BC0762869F98B00632AD7 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		0E266335284EEBAC00958370 /* MC2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E266338284EEBAC00958370 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E26633A284EEBAC00958370 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				83345E262851F57400A13B53 /* AuthenticationViewModel.swift */,
 				0EC677C528669B0900137483 /* ChildViewModel.swift */,
+				0E0BC0762869F98B00632AD7 /* TaskViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				DB61BBCA2860895D00C99615 /* AuthPopUpView.swift in Sources */,
 				0E8745A92859ABE80038B4BB /* AddHabitController.swift in Sources */,
 				83DCCC98286566A300249C9E /* SelectChildView.swift in Sources */,
+				0E0BC0772869F98B00632AD7 /* TaskViewModel.swift in Sources */,
 				0EC677CA2866AE5400137483 /* Reward.swift in Sources */,
 				0EC677C82866ADF400137483 /* Activity.swift in Sources */,
 				0EF31C27285AD1DE00E82F92 /* ProgressView.swift in Sources */,

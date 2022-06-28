@@ -93,4 +93,21 @@ struct Service {
             return activityArray
         }
     }
+    
+    static func updateActivityState (ref: Int, completion: @escaping(Error?) -> Void) {
+        
+        let childUID = UserDefaults.standard.string(forKey: "childCurrentUid")
+        
+        COLLECTION_CHILD.document(childUID!).collection("Activity").addSnapshotListener { snapshot, error in
+            if snapshot != nil {
+
+                guard let documentID = snapshot?.documents[ref].documentID else { return }
+                
+                let updateReference = COLLECTION_CHILD.document(childUID!).collection("Activity").document(documentID)
+                
+                updateReference.updateData(["isFinished": true])
+            }
+        }
+        
+    }
 }
