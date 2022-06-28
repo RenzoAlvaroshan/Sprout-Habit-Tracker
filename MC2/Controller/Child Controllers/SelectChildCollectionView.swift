@@ -42,7 +42,8 @@ class SelectChildCollectionView: UIViewController {
     private lazy var chooseChildButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Choose Child", for: .normal)
-        button.backgroundColor = .arcadiaGreen
+        button.isEnabled = false
+        button.backgroundColor = .systemGray3
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.white, for: .normal)
@@ -199,7 +200,10 @@ extension SelectChildCollectionView: UICollectionViewDelegate, UICollectionViewD
             UserDefaults.standard.set(childData.experience, forKey: "childDataExperience")
         }
         
-        
+        self.chooseChildButton.isEnabled = true
+        UIView.animate(withDuration: 0.3) {
+            self.chooseChildButton.backgroundColor = .arcadiaGreen
+        }
         collectionView.deselectItem(at: indexPath, animated: true)
     }
 }

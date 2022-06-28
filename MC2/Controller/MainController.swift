@@ -27,9 +27,12 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
     @objc func profileLongPressed(gestureRecognizer: UILongPressGestureRecognizer) {
         Utilities().vibrate(for: .warning)
         
-        let navVC = SelectChildCollectionView()
+        let rootVC = SelectChildCollectionView()
+        let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .pageSheet
-        present(navVC, animated: true)
+        present(navVC, animated: true) {
+            navVC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
+        }
     }
     
     //MARK: - Helpers
