@@ -23,6 +23,8 @@ class TaskController: UIViewController{
         }
     }
     
+    var ref: Int = 0
+    
     private let activityProgressView = ActivityProgressView()
     private let greetingsAndDate = GreetingsAndDate()
     private let taskProgressXPCircle = TaskProgressXPCircle()
@@ -91,7 +93,8 @@ class TaskController: UIViewController{
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
             self.activity = activityArray
             let numberOfTask = activity!.count as Int
-            rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
+            let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
+            rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
             configureUI()
             configureTableView()
                 
@@ -104,7 +107,6 @@ class TaskController: UIViewController{
     //MARK: - Selectors
     
     @objc func handleAddActivity() {
-        
         controller.modalPresentationStyle = .popover
         present(controller, animated: true)
     }
@@ -162,6 +164,10 @@ class TaskController: UIViewController{
     
     func alertOnTap() {
         alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: { [self]_ in
+            Service.updateActivityState(ref: self.ref) { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
+            handleReloadData()
             present(alert2, animated: true, completion: nil)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
@@ -198,8 +204,9 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     
     // Fungsi jika user tap
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        ref = indexPath.section
         tableView.deselectRow(at: indexPath, animated: true)
-        self.present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true)
     }
     
     //Nambahin footer & bikin jd clear
@@ -221,7 +228,8 @@ extension TaskController: AddHabitControllerDelegate {
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
             self.activity = activityArray
             let numberOfTask = activity!.count as Int
-            rewardListSubTitle.text = "0/\(numberOfTask) Task Completed"
+            let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
+            rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
             tableView.reloadData()
         }
     }

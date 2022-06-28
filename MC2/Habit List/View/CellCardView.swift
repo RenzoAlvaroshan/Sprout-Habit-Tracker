@@ -11,7 +11,6 @@ class ActivityCellCardView: UIView {
     
 
     // MARK: - Properties
-    
     var activityName: UILabel = {
         var activityName = UILabel()
         activityName.numberOfLines = 0
@@ -82,5 +81,8 @@ class ActivityCellCardView: UIView {
     func set(activity: Activity) {
         activityName.text = activity.activityName
         categoryName.text = activity.category
+        let isFinished = activity.isFinished
+        let viewmodel = TaskViewModel(imageData: isFinished)
+        checkImg.tintColor = viewmodel.taskComplete
     }
 }
