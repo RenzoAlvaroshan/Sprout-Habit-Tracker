@@ -160,7 +160,6 @@ class TaskController: UIViewController{
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-//        tableView.backgroundColor = .systemPink
     }
     
     func alertOnTap() {
