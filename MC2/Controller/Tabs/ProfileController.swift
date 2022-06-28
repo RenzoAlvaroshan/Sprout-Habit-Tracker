@@ -154,7 +154,14 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleStack3() {
-        print("DEBUG: Add guardian view")
+        
+        let alert = UIAlertController(title: "Oops, not so fast!", message: "Unfortunately, this feature is not available right now. Look forward to an update later in the future!", preferredStyle: .alert)
+        alert.view.tintColor = .arcadiaGreen
+        
+        let action = UIAlertAction(title: "OK", style: .cancel)
+        
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
     
     @objc func handleStack4() {

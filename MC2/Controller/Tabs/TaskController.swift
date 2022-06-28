@@ -107,8 +107,21 @@ class TaskController: UIViewController{
     //MARK: - Selectors
     
     @objc func handleAddActivity() {
-        controller.modalPresentationStyle = .popover
-        present(controller, animated: true)
+        
+        if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
+            (activity!.count as Int) != 0 {
+            
+            let alert = UIAlertController(title: "COK", message: "GOBLOK", preferredStyle: .alert)
+            alert.view.tintColor = .arcadiaGreen
+            
+            let action = UIAlertAction(title: "OK", style: .cancel)
+            alert.addAction(action)
+            
+            self.present(alert, animated: true)
+        } else {
+            controller.modalPresentationStyle = .popover
+            present(controller, animated: true)
+        }
     }
     
     //MARK: - Helpers
@@ -127,7 +140,7 @@ class TaskController: UIViewController{
         stack.anchor(top: view.topAnchor, left: view.leftAnchor, paddingTop: view.frame.height / 2.7, paddingLeft: 20)
         
         view.addSubview(rewardListSubTitle)
-        rewardListSubTitle.anchor(top: activityListTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 5, paddingLeft: 25)
+        rewardListSubTitle.anchor(top: activityListTitle.bottomAnchor, left: view.leftAnchor, paddingTop: 5, paddingLeft: 20)
         
         view.addSubview(greetingsAndDate)
         greetingsAndDate.setDimensions(height: view.frame.height / 8, width: view.frame.width)
@@ -206,7 +219,10 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ref = indexPath.section
         tableView.deselectRow(at: indexPath, animated: true)
-        self.present(alert, animated: true)
+        
+        if activity?[ref].isFinished == false {
+            self.present(alert, animated: true)
+        }
     }
     
     //Nambahin footer & bikin jd clear
