@@ -24,9 +24,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * Renzo Adriano Alvaroshan
 * Stephen Giovanni Saputra
 * Vica Valencia Hermawan
-* Eufrasia Anggraini Ratri
+* Eufrasia Ratri Anggraini
 * Kevin Harijanto
-* Suherda Santoso
+* Suherda Dwi Santoso
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
