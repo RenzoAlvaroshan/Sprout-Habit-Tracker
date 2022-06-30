@@ -18,8 +18,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [Swift](https://swift.org/)
 * [Firebase](https://firebase.com/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- Contributors -->
 ## Contributors
 
@@ -29,10 +27,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * Eufrasia Anggraini Ratri
 * Kevin Harijanto
 * Suherda Santoso
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
