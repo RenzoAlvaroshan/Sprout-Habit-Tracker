@@ -187,7 +187,8 @@ class LoginCardView: UIView {
         loginTitle.centerX(inView: self)
         loginTitle.anchor(top: topAnchor, paddingTop: 30)
         
-        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, forgotPasswordButton, loginButton, loginAsGuardianButton])
+        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, forgotPasswordButton, loginButton])
+//        let stack = UIStackView(arrangedSubviews: [emailContainerView, passwordContainerView, forgotPasswordButton, loginButton, loginAsGuardianButton])
         stack.axis = .vertical
         stack.spacing = 16
         stack.distribution = .fillEqually

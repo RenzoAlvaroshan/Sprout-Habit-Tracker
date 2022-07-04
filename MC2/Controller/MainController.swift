@@ -7,12 +7,14 @@
 
 import Firebase
 import UIKit
+import UserNotifications
 
 class MainController: UITabBarController, UIGestureRecognizerDelegate {
     
     //MARK: - Properties
     
     var childUID = [String]()
+    let notification = UNUserNotificationCenter.current()
     
     //MARK: - Lifecycle
     
@@ -25,12 +27,13 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
     // MARK: - Selectors
     
     @objc func profileLongPressed(gestureRecognizer: UILongPressGestureRecognizer) {
-        Utilities().vibrate(for: .warning)
+       
         
         let rootVC = SelectChildCollectionView()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .pageSheet
         present(navVC, animated: true) {
+            Utilities().vibrate(for: .warning)
             navVC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
         }
     }
@@ -62,9 +65,36 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
                     self.showLoader(false)
                 } else {
                     self.showLoader(false)
+                    notification.requestAuthorization(options: [.alert, .sound, .badge]) { permissionGranted, error in
+                        self.addNotification()
+                    }
                     configureViewControllers()
                 }
             })
+        }
+    }
+    
+    func addNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Hey, you remember right?"
+        content.body = "Don't forget to remind your kids and track their progress everyday!"
+        
+        var dateComponents = DateComponents()
+        dateComponents.calendar = Calendar.current
+        
+        dateComponents.hour = 20
+        // Create the trigger as a repeating event.
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents, repeats: true)
+        
+        let uuidString = UUID().uuidString
+        let request = UNNotificationRequest(identifier: uuidString,
+                                            content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if error != nil {
+                // Handle any errors.
+            }
         }
     }
     
