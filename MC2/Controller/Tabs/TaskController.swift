@@ -78,6 +78,15 @@ class TaskController: UIViewController{
         return label
     }()
     
+    private lazy var emptyStateImage: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFit
+        iv.image = UIImage(named: "emptyState")?.withRenderingMode(.alwaysTemplate)
+        iv.tintColor = .systemGray3 // will add more icon
+        iv.setDimensions(height: view.frame.width / 1.35, width: view.frame.width / 1.35)
+        return iv
+    }()
+    
     private var tableView = UITableView()
     
     private let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly!", preferredStyle: UIAlertController.Style.alert)
@@ -93,7 +102,9 @@ class TaskController: UIViewController{
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
-        
+        configureUI()
+        alertOnTap()
+        alertConfirmation()
         Task.init {
             let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
@@ -102,12 +113,13 @@ class TaskController: UIViewController{
             let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
             rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
             
-            configureUI()
-            configureTableView()
-                
-            alertOnTap()
-            alertConfirmation()
-            
+            if numberOfTask == 0 {
+                view.addSubview(emptyStateImage)
+                emptyStateImage.centerX(inView: view)
+                emptyStateImage.centerY(inView: roundedRectangel)
+            } else {
+                configureTableView()
+            }
         }
     }
     
@@ -257,6 +269,7 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
 
 extension TaskController: AddHabitControllerDelegate {
     func handleReloadData() {
+        emptyStateImage.removeFromSuperview()
         Task.init {
             let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
@@ -264,6 +277,7 @@ extension TaskController: AddHabitControllerDelegate {
             let numberOfTask = activity!.count as Int
             let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
             rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
+            configureTableView()
             tableView.reloadData()
         }
     }

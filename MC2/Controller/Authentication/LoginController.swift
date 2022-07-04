@@ -93,9 +93,6 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                         }
                         else { // go to picker
                             print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
-                            
-//                            self.navigationController?.pushViewController(SelectChildCollectionView(), animated: true)
-                            
                             let rootVC = SelectChildAfterLoginVC()
                             let navVC = UINavigationController(rootViewController: rootVC)
                             navVC.modalPresentationStyle = .overFullScreen

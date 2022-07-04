@@ -6,7 +6,6 @@
 
 import UIKit
 import SwiftUI
-import UserNotifications
 
 class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
@@ -15,8 +14,6 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     
     var pages = [UIViewController]()
     let initialPage = 0
-    
-    let notification = UNUserNotificationCenter.current()
     
     private lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl()
@@ -84,9 +81,7 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         
         updateFlag()
         
-        notification.requestAuthorization(options: [.alert, .sound, .badge]) { permissionGranted, error in
-            self.addNotification()
-        }
+        
         
         let rootVC = LoginController()
         let navVC = UINavigationController(rootViewController: rootVC)
@@ -95,29 +90,6 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
         present(navVC, animated: true)
     }
     
-    func addNotification() {
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Hey, you remember right?"
-        content.body = "Don't forget to remind your kids and track their progress everyday!"
-        
-        var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-        
-        dateComponents.hour = 20
-        // Create the trigger as a repeating event.
-        let trigger = UNCalendarNotificationTrigger(
-            dateMatching: dateComponents, repeats: true)
-        
-        let uuidString = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuidString,
-                                            content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if error != nil {
-                // Handle any errors.
-            }
-        }
-    }
     
     @objc func handleSkipButton() {
         
