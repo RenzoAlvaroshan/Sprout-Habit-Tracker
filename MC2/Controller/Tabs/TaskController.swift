@@ -269,6 +269,7 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
 
 extension TaskController: AddHabitControllerDelegate {
     func handleReloadData() {
+        //remove image
         emptyStateImage.removeFromSuperview()
         Task.init {
             let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
