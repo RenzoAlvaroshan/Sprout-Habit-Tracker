@@ -59,6 +59,13 @@ class RewardController: UIViewController{
         return label
     }()
     
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     private let alert = UIAlertController(title: "Claim the Reward", message: "Your child will experience the reward of a task completed.", preferredStyle: UIAlertController.Style.alert)
     
     private let alert2 = UIAlertController(title: "Reward Claimed!", message: "", preferredStyle: UIAlertController.Style.alert)
@@ -85,6 +92,10 @@ class RewardController: UIViewController{
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
@@ -121,15 +132,20 @@ class RewardController: UIViewController{
     
     func configureTableView() {
         view.addSubview(tableView)
-        self.tableView.rowHeight = 75
+        self.tableView.rowHeight = 87.5
         tableView.register(RewardCell.self, forCellReuseIdentifier: "RewardCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: progressView.bottomAnchor, bottom: view.bottomAnchor, paddingTop: 105, width: view.frame.width - 20)
+        tableView.anchor(
+            top: progressView.bottomAnchor,
+            bottom: view.bottomAnchor,
+            paddingTop: 105,
+            paddingBottom: 100,
+            width: view.frame.width - 20
+        )
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-//        tableView.backgroundColor = .systemPink
     }
     
     func alertOnTap() {

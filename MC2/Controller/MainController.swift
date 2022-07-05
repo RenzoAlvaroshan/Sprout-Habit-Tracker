@@ -41,13 +41,7 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
     //MARK: - Helpers
     
     func AuthenticateAndPresentLoginController() {
-        if Auth.auth().currentUser == nil {
-            DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: LoginController())
-                nav.modalPresentationStyle = .fullScreen
-                self.present(nav, animated: true)
-            }
-        } else {
+        if Auth.auth().currentUser != nil {
             view.backgroundColor = .white
             Task.init(operation: {
                 self.showLoader(true)
@@ -64,6 +58,8 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
                     }
                     self.showLoader(false)
                 } else {
+                    print("DEBUG: \(Auth.auth().currentUser)")
+                    print("DEBUG: ada anak dan sudah login")
                     self.showLoader(false)
                     notification.requestAuthorization(options: [.alert, .sound, .badge]) { permissionGranted, error in
                         self.addNotification()
@@ -71,6 +67,13 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
                     configureViewControllers()
                 }
             })
+            
+        } else {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: LoginController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true)
+            }
         }
     }
     

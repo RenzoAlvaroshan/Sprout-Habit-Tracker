@@ -107,6 +107,13 @@ class EditChildController: UIViewController
         return button
     }()
     
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "BG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     var previousImage: Int?
     
     //MARK: - Lifecycle
@@ -191,6 +198,11 @@ class EditChildController: UIViewController
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
+        
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.bottomAnchor)

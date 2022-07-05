@@ -202,10 +202,22 @@ class AddHabitController: UIViewController {
         return button
     }()
     
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "BG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         title = ""
 

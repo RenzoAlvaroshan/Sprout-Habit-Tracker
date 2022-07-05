@@ -26,6 +26,13 @@ class LoginController: UIViewController, LoginCardViewDelegate {
         return iv
     }()
     
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "loginBG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -114,6 +121,11 @@ class LoginController: UIViewController, LoginCardViewDelegate {
         view.backgroundColor = .arcadiaGreen
         navigationController?.navigationBar.isHidden = true
         navigationController?.navigationBar.barStyle = .black
+        
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         view.addSubview(iconImageView)
         iconImageView.centerX(inView: view)

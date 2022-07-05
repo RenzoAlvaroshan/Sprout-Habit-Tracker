@@ -21,7 +21,7 @@ class RewardCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(cellCardView)
-        cellCardView.setDimensions(height: 65, width: UIScreen.main.bounds.width - 40)
+        cellCardView.setDimensions(height: 75, width: UIScreen.main.bounds.width - 40)
         cellCardView.centerX(inView: contentView)
         cellCardView.anchor(top: contentView.topAnchor, paddingTop: 5)
         cellCardView.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)

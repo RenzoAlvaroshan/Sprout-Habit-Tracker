@@ -58,15 +58,15 @@ class RewardCellCardView: UIView {
         layer.cornerRadius = 15
         
         addSubview(levelName)
-        levelName.anchor(top: topAnchor,left: leftAnchor,paddingTop: 10, paddingLeft: 25)
+        levelName.anchor(top: topAnchor,left: leftAnchor,paddingTop: 15, paddingLeft: 20)
 
         addSubview(rewardName)
-        rewardName.anchor(top: levelName.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 5, paddingLeft: 25, paddingBottom: 15)
+        rewardName.anchor(top: levelName.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 5, paddingLeft: 20, paddingBottom: 15)
         
         addSubview(checkLock)
         checkLock.anchor(right: rightAnchor, paddingRight: 20)
         checkLock.centerY(inView: self)
-        checkLock.anchor( width: 32, height: 32)
+        checkLock.anchor(width: 25, height: 25)
         
     }
     
