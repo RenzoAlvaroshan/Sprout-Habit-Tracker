@@ -130,7 +130,7 @@ class SelectChildAfterLoginVC: UIViewController {
         view.addSubview(stack1)
 //        chooseChildButton.anchor(top: view.bottomAnchor, paddingTop: 100)
         stack1.centerX(inView: roundedRectangel)
-        stack1.anchor(top: collectionView.bottomAnchor, paddingTop: 40)
+        stack1.anchor(top: collectionView.bottomAnchor, paddingTop: 100)
     }
     
     func configureCollectionView() {

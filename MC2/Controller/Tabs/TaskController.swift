@@ -46,7 +46,7 @@ class TaskController: UIViewController{
     private lazy var activityListTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsBold(size: 24)
-        label.text = "My Child's Goals"
+        label.text = "Child’s To Do List"
         label.textColor = .black
         return label
     }()
@@ -116,7 +116,10 @@ class TaskController: UIViewController{
             if numberOfTask == 0 {
                 view.addSubview(emptyStateImage)
                 emptyStateImage.centerX(inView: view)
-                emptyStateImage.centerY(inView: roundedRectangel)
+                emptyStateImage.anchor(
+                    top: rewardListSubTitle.bottomAnchor,
+                    paddingTop: 0
+                )
             } else {
                 configureTableView()
             }

@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // To change NavController tint color in the whole application
         UINavigationBar.appearance().tintColor = .white
         
+        Thread.sleep(forTimeInterval: 2)
+        
         return true
     }
 

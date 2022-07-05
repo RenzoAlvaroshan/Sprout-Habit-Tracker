@@ -44,10 +44,18 @@ class RewardController: UIViewController{
         return label
     }()
     
+    private lazy var levelTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.textColor = .black
+        label.text = "Level"
+        return label
+    }()
+    
     private lazy var level: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsBold(size: 45)
-        label.textColor = .arcadiaGreen
+        label.font = UIFont.poppinsBold(size: 40)
+        label.textColor = .black
         return label
     }()
     
@@ -97,9 +105,14 @@ class RewardController: UIViewController{
         circularXP.centerX(inView: view)
         circularXP.centerY(inView: progressView)
         
-        view.addSubview(level)
-        level.centerX(inView: view)
-        level.centerY(inView: progressView)
+        let stack = UIStackView(arrangedSubviews: [levelTitleLabel, level])
+        stack.alignment = .center
+        stack.spacing = -6
+        stack.axis = .vertical
+        
+        view.addSubview(stack)
+        stack.centerX(inView: view)
+        stack.centerY(inView: progressView)
         let xp = UserDefaults.standard.integer(forKey: "childDataExperience")
         let levelnow = xp / 100 + 1
         let currentLevel = String(levelnow)

@@ -157,6 +157,7 @@
 			children = (
 				0E266337284EEBAC00958370 /* MC2 */,
 				0E266336284EEBAC00958370 /* Products */,
+				DB7720AC2873D882008C7D48 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -396,6 +397,13 @@
 				8EA834B52863B2940036299F /* CellCardView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		DB7720AC2873D882008C7D48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		DBA65BE028602FB2007F80D5 /* Model */ = {
@@ -703,7 +711,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
@@ -733,7 +741,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 625ZX732CB;
+				DEVELOPMENT_TEAM = L7SMRXB5WV;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MC2/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Sprout;
