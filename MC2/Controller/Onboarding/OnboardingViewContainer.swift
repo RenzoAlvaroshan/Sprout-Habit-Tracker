@@ -6,6 +6,7 @@
 
 import UIKit
 import SwiftUI
+import Firebase
 
 class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
@@ -80,9 +81,12 @@ class OnboardingViewContainer: UIPageViewController, UIPageViewControllerDelegat
     @objc func handleNavigationButton() {
         
         updateFlag()
-        
-        
-        
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print(error)
+        }
+
         let rootVC = LoginController()
         let navVC = UINavigationController(rootViewController: rootVC)
         navVC.modalPresentationStyle = .fullScreen

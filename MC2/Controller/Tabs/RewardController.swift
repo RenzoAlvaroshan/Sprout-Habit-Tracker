@@ -44,11 +44,26 @@ class RewardController: UIViewController{
         return label
     }()
     
+    private lazy var levelTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.textColor = .black
+        label.text = "Level"
+        return label
+    }()
+    
     private lazy var level: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsBold(size: 45)
-        label.textColor = .arcadiaGreen
+        label.font = UIFont.poppinsBold(size: 40)
+        label.textColor = .black
         return label
+    }()
+    
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
     }()
     
     private let alert = UIAlertController(title: "Claim the Reward", message: "Your child will experience the reward of a task completed.", preferredStyle: UIAlertController.Style.alert)
@@ -77,6 +92,10 @@ class RewardController: UIViewController{
     
     func configureUI() {
         view.backgroundColor = .arcadiaGreen
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
@@ -97,9 +116,14 @@ class RewardController: UIViewController{
         circularXP.centerX(inView: view)
         circularXP.centerY(inView: progressView)
         
-        view.addSubview(level)
-        level.centerX(inView: view)
-        level.centerY(inView: progressView)
+        let stack = UIStackView(arrangedSubviews: [levelTitleLabel, level])
+        stack.alignment = .center
+        stack.spacing = -6
+        stack.axis = .vertical
+        
+        view.addSubview(stack)
+        stack.centerX(inView: view)
+        stack.centerY(inView: progressView)
         let xp = UserDefaults.standard.integer(forKey: "childDataExperience")
         let levelnow = xp / 100 + 1
         let currentLevel = String(levelnow)
@@ -108,15 +132,20 @@ class RewardController: UIViewController{
     
     func configureTableView() {
         view.addSubview(tableView)
-        self.tableView.rowHeight = 75
+        self.tableView.rowHeight = 87.5
         tableView.register(RewardCell.self, forCellReuseIdentifier: "RewardCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: progressView.bottomAnchor, bottom: view.bottomAnchor, paddingTop: 105, width: view.frame.width - 20)
+        tableView.anchor(
+            top: progressView.bottomAnchor,
+            bottom: view.bottomAnchor,
+            paddingTop: 105,
+            paddingBottom: 100,
+            width: view.frame.width - 20
+        )
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
-//        tableView.backgroundColor = .systemPink
     }
     
     func alertOnTap() {

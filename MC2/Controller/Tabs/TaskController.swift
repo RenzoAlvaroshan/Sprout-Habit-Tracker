@@ -46,7 +46,7 @@ class TaskController: UIViewController{
     private lazy var activityListTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont.poppinsBold(size: 24)
-        label.text = "My Child's Goals"
+        label.text = "Child’s To Do List"
         label.textColor = .black
         return label
     }()
@@ -87,7 +87,14 @@ class TaskController: UIViewController{
         return iv
     }()
     
-    private var tableView = UITableView()
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
+    private var tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     private let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly!", preferredStyle: UIAlertController.Style.alert)
     
@@ -99,6 +106,11 @@ class TaskController: UIViewController{
         super.viewDidLoad()
         controller.delegate = self
         view.backgroundColor = .arcadiaGreen
+        
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
@@ -116,7 +128,10 @@ class TaskController: UIViewController{
             if numberOfTask == 0 {
                 view.addSubview(emptyStateImage)
                 emptyStateImage.centerX(inView: view)
-                emptyStateImage.centerY(inView: roundedRectangel)
+                emptyStateImage.anchor(
+                    top: rewardListSubTitle.bottomAnchor,
+                    paddingTop: 0
+                )
             } else {
                 configureTableView()
             }
@@ -147,7 +162,6 @@ class TaskController: UIViewController{
     //MARK: - Helpers
 
     func configureUI() {
-        
         
         let stack = UIStackView(arrangedSubviews: [activityListTitle, addActivity])
         stack.axis = .horizontal
@@ -182,6 +196,7 @@ class TaskController: UIViewController{
     func configureTableView() {
         view.addSubview(tableView)
         self.tableView.rowHeight = 110
+        tableView.backgroundColor = .clear
 
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
@@ -264,6 +279,10 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     //Tinggi footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 5
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        print("Renzo")
     }
 }
 

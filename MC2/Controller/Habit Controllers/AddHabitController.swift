@@ -202,10 +202,22 @@ class AddHabitController: UIViewController {
         return button
     }()
     
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "BG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
         
         title = ""
 
@@ -554,9 +566,24 @@ extension AddHabitController: UITextFieldDelegate {
         return textField.resignFirstResponder()
     }
     
-    @objc func textFieldEditingChanged(_ textField: UITextField)
-    {
+    @objc func textFieldEditingChanged(_ textField: UITextField) {
         addGoalButton.isEnabled = textField.text != nil && textField.text!.isEmpty == false
+        
+        habitButton01.backgroundColor = .white
+        habitButton01.setTitleColor(UIColor.black, for: .normal)
+        matiinKeranAirTapped = false
+
+        habitButton02.backgroundColor = .white
+        habitButton02.setTitleColor(UIColor.black, for: .normal)
+        matiinKeranAirTapped2 = false
+
+        activities.removeAll()
+        
+        if addCustomTextField.text != "" {
+            activities.append(addCustomTextField.text!)
+        }
+        
+        checkForm()
     }
 }
 

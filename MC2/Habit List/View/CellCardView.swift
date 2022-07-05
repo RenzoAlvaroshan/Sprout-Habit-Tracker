@@ -13,9 +13,9 @@ class ActivityCellCardView: UIView {
     // MARK: - Properties
     var activityName: UILabel = {
         var activityName = UILabel()
-        activityName.numberOfLines = 0
+//        activityName.numberOfLines = 0
         activityName.font = UIFont.poppinsBold(size: 17)
-        activityName.adjustsFontSizeToFitWidth = true
+//        activityName.adjustsFontSizeToFitWidth = true
         return activityName
     }()
     
@@ -67,10 +67,16 @@ class ActivityCellCardView: UIView {
         layer.cornerRadius = 20
         
         addSubview(activityName)
-        activityName.anchor(top: topAnchor,left: leftAnchor,paddingTop: 10, paddingLeft: 25)
+        activityName.anchor(
+            top: topAnchor,
+            left: leftAnchor,
+            paddingTop: 15,
+            paddingLeft: 25,
+            width: UIScreen.main.bounds.width * 0.65
+        )
 
         addSubview(categoryName)
-        categoryName.anchor(top: activityName.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 5, paddingLeft: 25, paddingBottom: 15)
+        categoryName.anchor(top: activityName.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 0, paddingLeft: 25, paddingBottom: 20)
         
         addSubview(checkImg)
         checkImg.anchor(right: rightAnchor, paddingRight: 20)

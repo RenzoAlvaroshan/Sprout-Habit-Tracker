@@ -116,6 +116,13 @@ class ProfileController: UIViewController {
         return label
     }()
     
+    private let background: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -193,6 +200,11 @@ class ProfileController: UIViewController {
 
         view.backgroundColor = .arcadiaGreen
         
+        view.addSubview(background)
+        background.centerX(inView: view)
+        background.centerY(inView: view)
+        background.setDimensions(height: view.frame.height, width: view.frame.width)
+        
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         
@@ -247,22 +259,22 @@ class ProfileController: UIViewController {
         stack2.isUserInteractionEnabled = true
         
         
-        let stack3 = UIStackView(arrangedSubviews: [addGuardian, trackYourWhenAway])
-        stack3.axis = .vertical
-        stack3.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
-        stack3.backgroundColor = .arcadiaGray
-        stack3.layer.cornerRadius = 16
-        
-        view.addSubview(stack3)
-        stack3.centerX(inView: view)
-        stack3.anchor(top: stack2.bottomAnchor, paddingTop: 16)
-        stack3.spacing = UIStackView.spacingUseSystem - 1
-        stack3.isLayoutMarginsRelativeArrangement = true
-        stack3.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
-        
-        let tap3 = UITapGestureRecognizer(target: self, action: #selector(handleStack3))
-        stack3.addGestureRecognizer(tap3)
-        stack3.isUserInteractionEnabled = true
+//        let stack3 = UIStackView(arrangedSubviews: [addGuardian, trackYourWhenAway])
+//        stack3.axis = .vertical
+//        stack3.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+//        stack3.backgroundColor = .arcadiaGray
+//        stack3.layer.cornerRadius = 16
+//
+//        view.addSubview(stack3)
+//        stack3.centerX(inView: view)
+//        stack3.anchor(top: stack2.bottomAnchor, paddingTop: 16)
+//        stack3.spacing = UIStackView.spacingUseSystem - 1
+//        stack3.isLayoutMarginsRelativeArrangement = true
+//        stack3.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
+//
+//        let tap3 = UITapGestureRecognizer(target: self, action: #selector(handleStack3))
+//        stack3.addGestureRecognizer(tap3)
+//        stack3.isUserInteractionEnabled = true
         
         
         let stack4 = UIStackView(arrangedSubviews: [logOut])
@@ -273,7 +285,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack4)
         stack4.centerX(inView: view)
-        stack4.anchor(top: stack3.bottomAnchor, paddingTop: 16)
+        stack4.anchor(top: stack2.bottomAnchor, paddingTop: 16)
         stack4.spacing = UIStackView.spacingUseSystem - 1
         stack4.isLayoutMarginsRelativeArrangement = true
         stack4.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
