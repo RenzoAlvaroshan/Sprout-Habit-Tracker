@@ -8,14 +8,11 @@
 import UIKit
 import Firebase
 
-//protocol ActivityViewDelegate: AnyObject {
-//    func handleAddActivityPush()
-//}
-
 class TaskController: UIViewController{
     
     //MARK: - Properties
-    let controller = AddHabitController()
+    var controller = AddHabitController()
+    let controllerModal = DoneDeleteModal()
     
     let sceneDelegate = UIApplication.shared.connectedScenes.first
     
@@ -97,15 +94,12 @@ class TaskController: UIViewController{
     
     private var tableView = UITableView(frame: .zero, style: .insetGrouped)
     
-    private let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly!", preferredStyle: UIAlertController.Style.alert)
-    
-    private let alert2 = UIAlertController(title: "Task Completed!", message: "", preferredStyle: UIAlertController.Style.alert)
-    
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         controller.delegate = self
+        controllerModal.delegate = self
         view.backgroundColor = .arcadiaGreen
         
         view.addSubview(background)
@@ -116,8 +110,8 @@ class TaskController: UIViewController{
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         configureUI()
-        alertOnTap()
-        alertConfirmation()
+//        alertOnTap()
+//        alertConfirmation()
         Task.init {
             let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
@@ -213,37 +207,6 @@ class TaskController: UIViewController{
         tableView.layer.shadowRadius = 5
         tableView.layer.shadowOffset = .init(width: 1, height: 1)
     }
-    
-    func alertOnTap() {
-        alert.addAction(UIAlertAction(title: "Done", style: UIAlertAction.Style.default, handler: { [self]_ in
-            Service.updateActivityState(ref: self.ref) { error in
-                print("DEBUG: error is \(String(describing: error))")
-            }
-            handleReloadData()
-            present(alert2, animated: true, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        
-        self.alert.view.tintColor = UIColor.arcadiaGreen
-    }
-    
-    func alertConfirmation() {
-        self.alert2.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: { [self]_ in
-            if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
-                (activity!.count as Int) != 0 {
-                let experience = UserDefaults.standard.integer(forKey: "childDataExperience") + 30
-                Service.updateExperience(experience: experience) { error in
-                    print("DEBUG: error is \(String(describing: error))")
-                }
-                UserDefaults.standard.set(experience, forKey: "childDataExperience")
-                if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
-                {
-                    scene.setToMain()
-                }
-            }
-        }))
-        self.alert2.view.tintColor = UIColor.arcadiaGreen
-    }
 }
 
 extension TaskController: UITableViewDataSource, UITableViewDelegate {
@@ -274,11 +237,15 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         
         doneDeleteModal.activityName.text = activity![ref].activityName
         doneDeleteModal.categoryName.text = activity![ref].category
+        print("DEBUG: \(self.ref)")
+        doneDeleteModal.ref = self.ref
         
-        self.present(doneDeleteModal, animated: true)
-//        if activity?[ref].isFinished == false {
-//            self.present(alert, animated: true)
-//        }
+        // nama & category salah, tapi bisa reload data
+        controllerModal.modalPresentationStyle = .popover
+        present(controllerModal, animated: true)
+        
+        // Nama & Category bener bisa di passing
+//        self.present(doneDeleteModal, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -321,6 +288,36 @@ extension TaskController: AddHabitControllerDelegate {
             rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
             configureTableView()
             tableView.reloadData()
+        }
+    }
+}
+
+extension TaskController: DoneDeleteModalDelegate {
+    func handleReloadDataModal() {
+        print("DEBUG: jalan nih delegatenya")
+        let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
+        
+        Task.init {
+            let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
+            self.activity = activityArray
+            let numberOfTask = activity!.count as Int
+            let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
+            rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
+            configureTableView()
+            tableView.reloadData()
+        }
+        
+        if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
+            (activity!.count as Int) != 0 {
+            let experience = UserDefaults.standard.integer(forKey: "childDataExperience") + 30
+            Service.updateExperience(experience: experience) { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
+            UserDefaults.standard.set(experience, forKey: "childDataExperience")
+            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+            {
+                scene.setToMain()
+            }
         }
     }
 }

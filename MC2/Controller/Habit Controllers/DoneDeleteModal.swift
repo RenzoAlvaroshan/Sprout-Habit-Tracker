@@ -7,11 +7,17 @@
 
 import UIKit
 import Firebase
-import SwiftUI
+
+protocol DoneDeleteModalDelegate: AnyObject {
+    func handleReloadDataModal()
+}
 
 class DoneDeleteModal: UIViewController {
     
     //MARK: - Properties
+    weak var delegate: DoneDeleteModalDelegate?
+    
+    var ref: Int = 0
 
     let sceneDelegate = UIApplication.shared.connectedScenes.first
         
@@ -26,7 +32,6 @@ class DoneDeleteModal: UIViewController {
     
     var activityName: UILabel = {
         var activityName = UILabel()
-        activityName.text = "Turn of the sink while brushing your teeth"
         activityName.numberOfLines = 2
         activityName.lineBreakMode = NSLineBreakMode.byWordWrapping
         activityName.contentMode = .scaleToFill
@@ -46,7 +51,6 @@ class DoneDeleteModal: UIViewController {
        categoryName.numberOfLines = 0
        categoryName.font = UIFont.poppinsRegular(size: 14)
        categoryName.adjustsFontSizeToFitWidth = true
-       categoryName.text = "Water"
 
        categoryName.setDimensions(height: 30, width: 120)
        categoryName.textAlignment = NSTextAlignment.center
@@ -56,7 +60,6 @@ class DoneDeleteModal: UIViewController {
     private lazy var markAsDoneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Mark as done", for: .normal)
-        button.isEnabled = false
         button.backgroundColor = .arcadiaGreen
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.layer.cornerRadius = 10
@@ -102,10 +105,8 @@ class DoneDeleteModal: UIViewController {
 
     //MARK: - Selectors
     @objc func handleMarkAsDone() {
-        if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
-        {
-            scene.setToMain()
-        }
+        print("DEBUG: Tapped")
+        alertOnTap()
     }
     
     @objc func deleteTask() {
@@ -138,9 +139,40 @@ class DoneDeleteModal: UIViewController {
         stack1.spacing = 10
         
         view.addSubview(stack1)
-//        chooseChildButton.anchor(top: view.bottomAnchor, paddingTop: 100)
         stack1.centerX(inView: roundedRectangel)
         stack1.anchor(top: categoryName.bottomAnchor, paddingTop: 60)
+    }
+    
+    
+    func alertOnTap() {
+        let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        let action = UIAlertAction(title: "Done", style: UIAlertAction.Style.default) { [self] _ in
+            print("DEBUG: \(ref)")
+            Service.updateActivityState(ref: self.ref)
+            { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
+            alertConfirmation()
+        }
+        
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    func alertConfirmation() {
+        let alert = UIAlertController(title: "Task Completed!", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        alert.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: { [self]_ in
+            
+            delegate?.handleReloadDataModal()
+            dismiss(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
 }
