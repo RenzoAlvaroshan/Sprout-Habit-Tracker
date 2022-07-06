@@ -64,7 +64,7 @@ class ActivityCellCardView: UIView {
 
     func configureUI() {
         backgroundColor = .white
-        layer.cornerRadius = 20
+//        layer.cornerRadius = 20
         
         addSubview(activityName)
         activityName.anchor(

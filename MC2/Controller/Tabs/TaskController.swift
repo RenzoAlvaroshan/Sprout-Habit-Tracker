@@ -195,16 +195,21 @@ class TaskController: UIViewController{
     
     func configureTableView() {
         view.addSubview(tableView)
-        self.tableView.rowHeight = 110
+        self.tableView.rowHeight = 100
         tableView.backgroundColor = .clear
 
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor, paddingTop: 95, width: view.frame.width - 20)
+        tableView.anchor(top: activityProgressView.bottomAnchor,bottom: view.bottomAnchor, paddingTop: 95, width: view.frame.width)
         tableView.centerX(inView: view)
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
+        tableView.layer.masksToBounds = true
+        tableView.layer.shadowColor = UIColor.arcadiaGreen.cgColor
+        tableView.layer.shadowOpacity = 0.2
+        tableView.layer.shadowRadius = 5
+        tableView.layer.shadowOffset = .init(width: 1, height: 1)
     }
     
     func alertOnTap() {
@@ -257,6 +262,7 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .white
         cell.selectionStyle = .none
         cell.clipsToBounds = false
+//        cell.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
         return cell
     }
     
@@ -278,7 +284,7 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     }
     //Tinggi footer
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 5
+        return 0
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

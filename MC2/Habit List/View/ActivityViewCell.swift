@@ -23,8 +23,8 @@ class ActivityViewCell: UITableViewCell {
         contentView.addSubview(cellCardView)
         cellCardView.setDimensions(height: 100, width: UIScreen.main.bounds.width - 40)
         cellCardView.centerX(inView: contentView)
-        cellCardView.anchor(top: contentView.topAnchor, paddingTop: 5)
-        cellCardView.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
+//        cellCardView.anchor(top: contentView.topAnchor, paddingTop: 5)
+//        cellCardView.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
     }
     
     required init?(coder: NSCoder) {
