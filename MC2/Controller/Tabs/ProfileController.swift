@@ -116,6 +116,20 @@ class ProfileController: UIViewController {
         return label
     }()
     
+    private lazy var ecoPedia: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.text = "Ecopedia"
+        return label
+    }()
+    
+    private lazy var ecopediaSubtitle: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 14)
+        label.text = "Enhance your eco-habits with Ecopedia !"
+        return label
+    }()
+    
     private let background: UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
@@ -184,6 +198,14 @@ class ProfileController: UIViewController {
         } catch {
             print("DEBUG: Failed to sign out")
         }
+    }
+    
+    @objc func handleStack5() {
+        let rootVC = EcopediaView()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.isNavigationBarHidden = true
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true)
     }
     
     //MARK: - Helper
@@ -258,6 +280,22 @@ class ProfileController: UIViewController {
         stack2.addGestureRecognizer(tap2)
         stack2.isUserInteractionEnabled = true
         
+        let stack5 = UIStackView(arrangedSubviews: [ecoPedia, ecopediaSubtitle])
+        stack5.axis = .vertical
+        stack5.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+        stack5.backgroundColor = .arcadiaGray
+        stack5.layer.cornerRadius = 16
+        
+        view.addSubview(stack5)
+        stack5.centerX(inView: view)
+        stack5.anchor(top: stack2.bottomAnchor, paddingTop: 16)
+        stack5.spacing = UIStackView.spacingUseSystem - 1
+        stack5.isLayoutMarginsRelativeArrangement = true
+        stack5.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
+        
+        let tap5 = UITapGestureRecognizer(target: self, action: #selector(handleStack5))
+        stack5.addGestureRecognizer(tap5)
+        stack5.isUserInteractionEnabled = true
         
 //        let stack3 = UIStackView(arrangedSubviews: [addGuardian, trackYourWhenAway])
 //        stack3.axis = .vertical
@@ -285,7 +323,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack4)
         stack4.centerX(inView: view)
-        stack4.anchor(top: stack2.bottomAnchor, paddingTop: 16)
+        stack4.anchor(top: stack5.bottomAnchor, paddingTop: 16)
         stack4.spacing = UIStackView.spacingUseSystem - 1
         stack4.isLayoutMarginsRelativeArrangement = true
         stack4.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
