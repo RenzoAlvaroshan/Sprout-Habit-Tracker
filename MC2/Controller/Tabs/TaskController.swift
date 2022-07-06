@@ -209,7 +209,7 @@ class TaskController: UIViewController{
         view.addSubview(tableView)
         self.tableView.rowHeight = 100
         tableView.backgroundColor = .clear
-
+        
         tableView.register(ActivityViewCell.self, forCellReuseIdentifier: "ActivityViewCell")
         tableView.dataSource = self
         tableView.delegate = self
@@ -289,19 +289,32 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
 //        }
     }
     
-    //Nambahin footer & bikin jd clear
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = .clear
         return headerView
     }
-    //Tinggi footer
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 0
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        print("Renzo")
+        if editingStyle == .delete {
+                    tableView.beginUpdates()
+            
+                    tableView.deleteRows(at: [indexPath], with: .left)
+                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
+                    activity?.remove(at: indexPath.section)
+            
+                    tableView.endUpdates()
+                }
     }
 }
 
