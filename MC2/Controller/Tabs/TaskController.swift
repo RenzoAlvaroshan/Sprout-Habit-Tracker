@@ -31,6 +31,7 @@ class TaskController: UIViewController{
     private let greetingsAndDate = GreetingsAndDate()
     private let taskProgressXPCircle = TaskProgressXPCircle()
     private let taskCircularXP = TaskCircularXPView()
+    private let doneDeleteModal = DoneDeleteModal()
     
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
@@ -159,6 +160,17 @@ class TaskController: UIViewController{
         }
     }
     
+    @objc func handleStack2() {
+
+        let rootVC = DoneDeleteModal()
+        let navVC = UINavigationController(rootViewController: rootVC)
+        navVC.modalPresentationStyle = .pageSheet
+        present(navVC, animated: true) {
+            navVC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
+        }
+        
+    }
+    
     //MARK: - Helpers
 
     func configureUI() {
@@ -271,9 +283,10 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         ref = indexPath.section
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if activity?[ref].isFinished == false {
-            self.present(alert, animated: true)
-        }
+        self.present(doneDeleteModal, animated: true)
+//        if activity?[ref].isFinished == false {
+//            self.present(alert, animated: true)
+//        }
     }
     
     //Nambahin footer & bikin jd clear
