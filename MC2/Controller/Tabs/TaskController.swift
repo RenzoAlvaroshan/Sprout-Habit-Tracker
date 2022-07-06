@@ -154,21 +154,11 @@ class TaskController: UIViewController{
             alert.addAction(action)
             
             self.present(alert, animated: true)
+            
         } else {
             controller.modalPresentationStyle = .popover
             present(controller, animated: true)
         }
-    }
-    
-    @objc func handleStack2() {
-
-        let rootVC = DoneDeleteModal()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.modalPresentationStyle = .pageSheet
-        present(navVC, animated: true) {
-            navVC.presentationController?.presentedView?.gestureRecognizers?[0].isEnabled = false
-        }
-        
     }
     
     //MARK: - Helpers
@@ -274,7 +264,6 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         cell.backgroundColor = .white
         cell.selectionStyle = .none
         cell.clipsToBounds = false
-//        cell.setupShadow(opacity: 0.2, radius: 5, offset: CGSize(width: 1, height: 1), color: .arcadiaGreen)
         return cell
     }
     
@@ -282,6 +271,9 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         ref = indexPath.section
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        doneDeleteModal.activityName.text = activity![ref].activityName
+        doneDeleteModal.categoryName.text = activity![ref].category
         
         self.present(doneDeleteModal, animated: true)
 //        if activity?[ref].isFinished == false {
@@ -299,22 +291,20 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         return 5
     }
     
-    
-    
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-                    tableView.beginUpdates()
+            tableView.beginUpdates()
             
-                    tableView.deleteRows(at: [indexPath], with: .left)
-                    tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
-                    activity?.remove(at: indexPath.section)
+            tableView.deleteRows(at: [indexPath], with: .left)
+            tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
+            activity?.remove(at: indexPath.section)
             
-                    tableView.endUpdates()
-                }
+            tableView.endUpdates()
+        }
     }
 }
 

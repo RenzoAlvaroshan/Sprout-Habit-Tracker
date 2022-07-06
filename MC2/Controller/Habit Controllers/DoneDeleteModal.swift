@@ -9,14 +9,10 @@ import UIKit
 import Firebase
 import SwiftUI
 
-private let reuseIdentifier = "SelectChildCVCell"
-
 class DoneDeleteModal: UIViewController {
     
     //MARK: - Properties
 
-    var child: [Child]?
-    
     let sceneDelegate = UIApplication.shared.connectedScenes.first
         
     private lazy var roundedRectangel: UIView = {
@@ -57,7 +53,7 @@ class DoneDeleteModal: UIViewController {
        return categoryName
    }()
     
-    private lazy var chooseChildButton: UIButton = {
+    private lazy var markAsDoneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Mark as done", for: .normal)
         button.isEnabled = false
@@ -66,11 +62,11 @@ class DoneDeleteModal: UIViewController {
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.white, for: .normal)
         button.setDimensions(height: 48, width: view.frame.width - 40)
-        button.addTarget(self, action: #selector(handleChooseChild), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleMarkAsDone), for: .touchUpInside)
         return button
     }()
     
-    private lazy var cancelChildButton: UIButton = {
+    private lazy var deleteTaskButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Delete task", for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
@@ -80,7 +76,7 @@ class DoneDeleteModal: UIViewController {
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 10
         button.setDimensions(height: 48, width: view.frame.width - 40)
-        button.addTarget(self, action: #selector(cancelButton), for: .touchUpInside)
+        button.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
         return button
     }()
     
@@ -101,25 +97,18 @@ class DoneDeleteModal: UIViewController {
         super.viewDidLoad()
         
         configureWhiteBG()
-        showLoader(true)
-        Task.init(operation: {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            let childData = try await Service.fetchAllChild(uid: uid)
-            self.child = childData
-            showLoader(false)
-            configureUI()
-        })
+        configureUI()
     }
 
     //MARK: - Selectors
-    @objc func handleChooseChild() {
+    @objc func handleMarkAsDone() {
         if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
         {
             scene.setToMain()
         }
     }
     
-    @objc func cancelButton() {
+    @objc func deleteTask() {
         self.dismiss(animated: true)
     }
     
@@ -143,7 +132,7 @@ class DoneDeleteModal: UIViewController {
         view.addSubview(categoryName)
         categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 0, paddingLeft: 20)
                 
-        let stack1 = UIStackView(arrangedSubviews: [chooseChildButton, cancelChildButton])
+        let stack1 = UIStackView(arrangedSubviews: [markAsDoneButton, deleteTaskButton])
         stack1.axis = .vertical
         stack1.distribution = .fillProportionally
         stack1.spacing = 10
@@ -155,3 +144,4 @@ class DoneDeleteModal: UIViewController {
     }
     
 }
+
