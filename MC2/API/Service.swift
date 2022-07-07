@@ -109,6 +109,26 @@ struct Service {
             }
         }
     }
+    
+    static func deleteActivityData (ref: Int, completion: @escaping(Error?) -> Void) {
+        
+        let childUID = UserDefaults.standard.string(forKey: "childCurrentUid")
+        
+        COLLECTION_CHILD.document(childUID!).collection("Activity").getDocuments { snapshot, error in
+            if snapshot != nil {
+                
+                guard let documentID = snapshot?.documents[ref].documentID else { return }
+                COLLECTION_CHILD.document(childUID!).collection("Activity").document(documentID).delete() { err in
+                    if let err = err {
+                        print("DEBUG: Error removing document: \(err)")
+                    } else {
+                        print("DEBUG: Document successfully removed!")
+                    }
+                }
+            }
+        }
+    }
+    
     // Reset all activity to False
     static func resetActivityState (completion: @escaping(Error?) -> Void) {
         

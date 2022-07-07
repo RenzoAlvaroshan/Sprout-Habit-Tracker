@@ -7,16 +7,18 @@
 
 import UIKit
 import Firebase
-import SwiftUI
 
-private let reuseIdentifier = "SelectChildCVCell"
+protocol DoneDeleteModalDelegate: AnyObject {
+    func handleReloadDataModal()
+}
 
 class DoneDeleteModal: UIViewController {
     
     //MARK: - Properties
-
-    var child: [Child]?
+    weak var delegate: DoneDeleteModalDelegate?
     
+    var ref: Int = 0
+
     let sceneDelegate = UIApplication.shared.connectedScenes.first
         
     private lazy var roundedRectangel: UIView = {
@@ -30,7 +32,6 @@ class DoneDeleteModal: UIViewController {
     
     var activityName: UILabel = {
         var activityName = UILabel()
-        activityName.text = "Turn of the sink while brushing your teeth"
         activityName.numberOfLines = 2
         activityName.lineBreakMode = NSLineBreakMode.byWordWrapping
         activityName.contentMode = .scaleToFill
@@ -50,27 +51,24 @@ class DoneDeleteModal: UIViewController {
        categoryName.numberOfLines = 0
        categoryName.font = UIFont.poppinsRegular(size: 14)
        categoryName.adjustsFontSizeToFitWidth = true
-       categoryName.text = "Water"
 
        categoryName.setDimensions(height: 30, width: 120)
        categoryName.textAlignment = NSTextAlignment.center
        return categoryName
    }()
     
-    private lazy var chooseChildButton: UIButton = {
+    var markAsDoneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Mark as done", for: .normal)
-        button.isEnabled = false
         button.backgroundColor = .arcadiaGreen
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.white, for: .normal)
-        button.setDimensions(height: 48, width: view.frame.width - 40)
-        button.addTarget(self, action: #selector(handleChooseChild), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleMarkAsDone), for: .touchUpInside)
         return button
     }()
     
-    private lazy var cancelChildButton: UIButton = {
+    var deleteTaskButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Delete task", for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
@@ -79,8 +77,8 @@ class DoneDeleteModal: UIViewController {
         button.layer.borderColor = UIColor.systemRed.cgColor
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 10
-        button.setDimensions(height: 48, width: view.frame.width - 40)
-        button.addTarget(self, action: #selector(cancelButton), for: .touchUpInside)
+        button.setDimensions(height: 48, width: UIScreen.main.bounds.width - 40)
+        button.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
         return button
     }()
     
@@ -101,26 +99,16 @@ class DoneDeleteModal: UIViewController {
         super.viewDidLoad()
         
         configureWhiteBG()
-        showLoader(true)
-        Task.init(operation: {
-            guard let uid = Auth.auth().currentUser?.uid else { return }
-            let childData = try await Service.fetchAllChild(uid: uid)
-            self.child = childData
-            showLoader(false)
-            configureUI()
-        })
+        configureUI()
     }
 
     //MARK: - Selectors
-    @objc func handleChooseChild() {
-        if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
-        {
-            scene.setToMain()
-        }
+    @objc func handleMarkAsDone() {
+        alertOnTap()
     }
     
-    @objc func cancelButton() {
-        self.dismiss(animated: true)
+    @objc func deleteTask() {
+        alertDelete()
     }
     
     //MARK: - Helpers
@@ -138,20 +126,72 @@ class DoneDeleteModal: UIViewController {
 
     func configureUI() {
         view.addSubview(activityName)
-        activityName.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor, paddingTop: 30, paddingLeft: 20)
+        activityName.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor,right: view.rightAnchor, paddingTop: 30, paddingLeft: 32, paddingRight: 32)
         
         view.addSubview(categoryName)
-        categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 0, paddingLeft: 20)
-                
-        let stack1 = UIStackView(arrangedSubviews: [chooseChildButton, cancelChildButton])
+        categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 0, paddingLeft: 32)
+        
+        let stack1 = UIStackView(arrangedSubviews: [markAsDoneButton, deleteTaskButton])
         stack1.axis = .vertical
         stack1.distribution = .fillProportionally
         stack1.spacing = 10
         
         view.addSubview(stack1)
-//        chooseChildButton.anchor(top: view.bottomAnchor, paddingTop: 100)
         stack1.centerX(inView: roundedRectangel)
-        stack1.anchor(top: categoryName.bottomAnchor, paddingTop: 60)
+        stack1.anchor(top: categoryName.bottomAnchor, paddingTop: 80)
     }
     
+    
+    func alertOnTap() {
+        let alert = UIAlertController(title: "Mark this task as done?", message: "Make sure your child implement the task correctly", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        let action = UIAlertAction(title: "Done", style: UIAlertAction.Style.default) { [self] _ in
+            print("DEBUG: \(ref)")
+            Service.updateActivityState(ref: self.ref)
+            { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
+            alertConfirmation()
+        }
+        
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    func alertConfirmation() {
+        let alert = UIAlertController(title: "Task Completed!", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        alert.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: { [self]_ in
+            
+            delegate?.handleReloadDataModal()
+            dismiss(animated: true)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func alertDelete() {
+        let alert = UIAlertController(title: "Delete this task?", message: "Are you sure you want to delete this task?", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        let action = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { [self] _ in
+            
+            // service delete disini
+            Service.deleteActivityData(ref: ref)
+            { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
+            delegate?.handleReloadDataModal()
+            dismiss(animated: true)
+        }
+        
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
 }
+
