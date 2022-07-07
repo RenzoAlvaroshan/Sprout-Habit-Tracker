@@ -81,11 +81,9 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                     let childUID = try await Service.fetchChildUID(uid:uid)
                     
                     if childUID.isEmpty {
-                        print("DEBUG: gaada anak nihhh")
                         self.navigationController?.pushViewController(AddChildControllerInitial(), animated: true)
                     } else {
                         if childUID.count == 1{
-                            print("DEBUG: jumlah anak ada: \(childUID.count)")
                             let currentChildUid = childUID[0]
                             let childData = try await Service.fetchChildData(childUid: currentChildUid)
                             
@@ -99,7 +97,6 @@ class LoginController: UIViewController, LoginCardViewDelegate {
                             self.showLoader(false)
                         }
                         else { // go to picker
-                            print("DEBUG: jumlah anak lebih dari 1, \(childUID.count)")
                             let rootVC = SelectChildAfterLoginVC()
                             let navVC = UINavigationController(rootViewController: rootVC)
                             navVC.modalPresentationStyle = .overFullScreen

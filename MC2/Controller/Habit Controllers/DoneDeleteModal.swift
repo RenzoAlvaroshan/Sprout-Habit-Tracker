@@ -57,19 +57,18 @@ class DoneDeleteModal: UIViewController {
        return categoryName
    }()
     
-    private lazy var markAsDoneButton: UIButton = {
+    var markAsDoneButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Mark as done", for: .normal)
         button.backgroundColor = .arcadiaGreen
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.white, for: .normal)
-        button.setDimensions(height: 48, width: view.frame.width - 40)
         button.addTarget(self, action: #selector(handleMarkAsDone), for: .touchUpInside)
         return button
     }()
     
-    private lazy var deleteTaskButton: UIButton = {
+    var deleteTaskButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Delete task", for: .normal)
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
@@ -78,7 +77,7 @@ class DoneDeleteModal: UIViewController {
         button.layer.borderColor = UIColor.systemRed.cgColor
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 10
-        button.setDimensions(height: 48, width: view.frame.width - 40)
+        button.setDimensions(height: 48, width: UIScreen.main.bounds.width - 40)
         button.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
         return button
     }()
@@ -105,12 +104,11 @@ class DoneDeleteModal: UIViewController {
 
     //MARK: - Selectors
     @objc func handleMarkAsDone() {
-        print("DEBUG: Tapped")
         alertOnTap()
     }
     
     @objc func deleteTask() {
-        self.dismiss(animated: true)
+        alertDelete()
     }
     
     //MARK: - Helpers
@@ -128,11 +126,11 @@ class DoneDeleteModal: UIViewController {
 
     func configureUI() {
         view.addSubview(activityName)
-        activityName.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor, paddingTop: 30, paddingLeft: 20)
+        activityName.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor,right: view.rightAnchor, paddingTop: 30, paddingLeft: 32, paddingRight: 32)
         
         view.addSubview(categoryName)
-        categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 0, paddingLeft: 20)
-                
+        categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 0, paddingLeft: 32)
+        
         let stack1 = UIStackView(arrangedSubviews: [markAsDoneButton, deleteTaskButton])
         stack1.axis = .vertical
         stack1.distribution = .fillProportionally
@@ -140,7 +138,7 @@ class DoneDeleteModal: UIViewController {
         
         view.addSubview(stack1)
         stack1.centerX(inView: roundedRectangel)
-        stack1.anchor(top: categoryName.bottomAnchor, paddingTop: 60)
+        stack1.anchor(top: categoryName.bottomAnchor, paddingTop: 80)
     }
     
     
@@ -175,5 +173,25 @@ class DoneDeleteModal: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func alertDelete() {
+        let alert = UIAlertController(title: "Delete this task?", message: "Are you sure you want to delete this task?", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        let action = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { [self] _ in
+            
+            // service delete disini
+            Service.deleteActivityData(ref: ref)
+            { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
+            delegate?.handleReloadDataModal()
+            dismiss(animated: true)
+        }
+        
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
 }
 

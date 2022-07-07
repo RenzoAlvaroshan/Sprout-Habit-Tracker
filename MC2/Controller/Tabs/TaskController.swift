@@ -110,8 +110,7 @@ class TaskController: UIViewController{
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor)
         configureUI()
-//        alertOnTap()
-//        alertConfirmation()
+
         Task.init {
             let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
@@ -235,17 +234,31 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         ref = indexPath.section
         tableView.deselectRow(at: indexPath, animated: true)
         
-        doneDeleteModal.activityName.text = activity![ref].activityName
-        doneDeleteModal.categoryName.text = activity![ref].category
-        print("DEBUG: \(self.ref)")
-        doneDeleteModal.ref = self.ref
+        controllerModal.activityName.text = activity![ref].activityName
+        controllerModal.categoryName.text = activity![ref].category
+        controllerModal.ref = self.ref
         
-        // nama & category salah, tapi bisa reload data
-        controllerModal.modalPresentationStyle = .popover
+        // change button color and tappable if already finished
+        if activity![ref].isFinished == false{
+            controllerModal.markAsDoneButton.isEnabled = true
+            controllerModal.markAsDoneButton.backgroundColor = .arcadiaGreen
+        } else{
+            controllerModal.markAsDoneButton.isEnabled = false
+            controllerModal.markAsDoneButton.backgroundColor = .systemGray3
+        }
+        
+        // change button color and tappable if already all finished
+        if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) && (activity!.count as Int) != 0
+        {
+            controllerModal.deleteTaskButton.isEnabled = false
+        }
+        
+        controllerModal.modalPresentationStyle = .pageSheet
+        if let sheet = controllerModal.sheetPresentationController
+        {
+            sheet.detents = [.medium()]
+        }
         present(controllerModal, animated: true)
-        
-        // Nama & Category bener bisa di passing
-//        self.present(doneDeleteModal, animated: true)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -266,9 +279,14 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             tableView.beginUpdates()
             
+            Service.deleteActivityData(ref: ref)
+            { error in
+                print("DEBUG: error is \(String(describing: error))")
+            }
             tableView.deleteRows(at: [indexPath], with: .left)
             tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
             activity?.remove(at: indexPath.section)
+            handleReloadDataModal()
             
             tableView.endUpdates()
         }
@@ -294,26 +312,29 @@ extension TaskController: AddHabitControllerDelegate {
 
 extension TaskController: DoneDeleteModalDelegate {
     func handleReloadDataModal() {
-        print("DEBUG: jalan nih delegatenya")
         let currentChildUid = UserDefaults.standard.string(forKey: "childCurrentUid")
-        
+
         Task.init {
             let activityArray = try await Service.fetchActivity(childUid: currentChildUid!)
             self.activity = activityArray
             let numberOfTask = activity!.count as Int
             let numberOfTaskCompleted = activity!.filter { $0.isFinished == true }.count
             rewardListSubTitle.text = "\(numberOfTaskCompleted)/\(numberOfTask) Task Completed"
-            configureTableView()
-            tableView.reloadData()
-        }
-        
-        if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
-            (activity!.count as Int) != 0 {
-            let experience = UserDefaults.standard.integer(forKey: "childDataExperience") + 30
-            Service.updateExperience(experience: experience) { error in
-                print("DEBUG: error is \(String(describing: error))")
+            
+            if activity!.filter({ $0.isFinished == true }).count == (activity!.count as Int) &&
+                (activity!.count as Int) != 0
+            {
+                print("DEBUG: Selesai semua")
+                
+                let experience = UserDefaults.standard.integer(forKey: "childDataExperience") + 30
+                Service.updateExperience(experience: experience)
+                { error in
+                    print("DEBUG: error is \(String(describing: error))")
+                }
+                UserDefaults.standard.set(experience, forKey: "childDataExperience")
             }
-            UserDefaults.standard.set(experience, forKey: "childDataExperience")
+            
+            configureTableView()
             if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
             {
                 scene.setToMain()
@@ -321,3 +342,7 @@ extension TaskController: DoneDeleteModalDelegate {
         }
     }
 }
+
+// tambah Exp
+
+

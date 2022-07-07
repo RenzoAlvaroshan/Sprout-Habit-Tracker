@@ -58,8 +58,6 @@ class MainController: UITabBarController, UIGestureRecognizerDelegate {
                     }
                     self.showLoader(false)
                 } else {
-                    print("DEBUG: \(Auth.auth().currentUser)")
-                    print("DEBUG: ada anak dan sudah login")
                     self.showLoader(false)
                     notification.requestAuthorization(options: [.alert, .sound, .badge]) { permissionGranted, error in
                         self.addNotification()
