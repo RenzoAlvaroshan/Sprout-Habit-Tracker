@@ -31,7 +31,7 @@ class RewardCellCardView: UIView {
     var checkLock: UIImageView = {
         var checkLock = UIImageView()
         checkLock.clipsToBounds = true
-        checkLock.tintColor = .systemGray4
+        checkLock.tintColor = .arcadiaGreen
         return checkLock
     }()
     

@@ -277,18 +277,30 @@ extension TaskController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            tableView.beginUpdates()
             
-            Service.deleteActivityData(ref: ref)
-            { error in
-                print("DEBUG: error is \(String(describing: error))")
+            let alert = UIAlertController(title: "Delete this task?", message: "Are you sure you want to delete this task?", preferredStyle: UIAlertController.Style.alert)
+            alert.view.tintColor = UIColor.arcadiaGreen
+            
+            let action = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { [self] _ in
+                
+                tableView.beginUpdates()
+                
+                Service.deleteActivityData(ref: ref)
+                { error in
+                    print("DEBUG: error is \(String(describing: error))")
+                }
+                tableView.deleteRows(at: [indexPath], with: .left)
+                tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
+                activity?.remove(at: indexPath.section)
+                handleReloadDataModal()
+                
+                tableView.endUpdates()
             }
-            tableView.deleteRows(at: [indexPath], with: .left)
-            tableView.deleteSections(IndexSet(integer: indexPath.section), with: .left)
-            activity?.remove(at: indexPath.section)
-            handleReloadDataModal()
             
-            tableView.endUpdates()
+            alert.addAction(action)
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+            
+            self.present(alert, animated: true)
         }
     }
 }

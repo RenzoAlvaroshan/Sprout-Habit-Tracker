@@ -35,9 +35,7 @@ class DoneDeleteModal: UIViewController {
         activityName.numberOfLines = 2
         activityName.lineBreakMode = NSLineBreakMode.byWordWrapping
         activityName.contentMode = .scaleToFill
-        activityName.font = UIFont.poppinsBold(size: 26)
-        activityName.setDimensions(height: 100, width: UIScreen.main.bounds.width - 40)
-//        activityName.adjustsFontSizeToFitWidth = true
+        activityName.font = UIFont.poppinsBold(size: 23)
         return activityName
     }()
     
@@ -64,6 +62,7 @@ class DoneDeleteModal: UIViewController {
         button.titleLabel?.font = UIFont.poppinsSemiBold(size: 15)
         button.layer.cornerRadius = 10
         button.setTitleColor(UIColor.white, for: .normal)
+        button.setDimensions(height: 50, width: UIScreen.main.bounds.width - 40)
         button.addTarget(self, action: #selector(handleMarkAsDone), for: .touchUpInside)
         return button
     }()
@@ -77,7 +76,7 @@ class DoneDeleteModal: UIViewController {
         button.layer.borderColor = UIColor.systemRed.cgColor
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 10
-        button.setDimensions(height: 48, width: UIScreen.main.bounds.width - 40)
+        button.setDimensions(height: 50, width: UIScreen.main.bounds.width - 40)
         button.addTarget(self, action: #selector(deleteTask), for: .touchUpInside)
         return button
     }()
@@ -87,7 +86,7 @@ class DoneDeleteModal: UIViewController {
         rect.setDimensions(height: 5, width: UIScreen.main.bounds.width / 4)
         rect.layer.cornerRadius = 2
 //        rect.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        rect.backgroundColor = .black
+        rect.backgroundColor = .systemGray4
         return rect
     }()
     
@@ -100,6 +99,8 @@ class DoneDeleteModal: UIViewController {
         
         configureWhiteBG()
         configureUI()
+        
+        print(activityName.text)
     }
 
     //MARK: - Selectors
@@ -121,15 +122,15 @@ class DoneDeleteModal: UIViewController {
         
         view.addSubview(blackBox)
         blackBox.centerX(inView: view)
-        blackBox.anchor(top: roundedRectangel.topAnchor, paddingTop: 10)
+        blackBox.anchor(top: roundedRectangel.topAnchor, paddingTop: 15)
     }
 
     func configureUI() {
         view.addSubview(activityName)
-        activityName.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor,right: view.rightAnchor, paddingTop: 30, paddingLeft: 32, paddingRight: 32)
+        activityName.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor,right: view.rightAnchor, paddingTop: 50, paddingLeft: 24, paddingRight: 20)
         
         view.addSubview(categoryName)
-        categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 0, paddingLeft: 32)
+        categoryName.anchor(top: activityName.bottomAnchor, left: view.leftAnchor, paddingTop: 10, paddingLeft: 24)
         
         let stack1 = UIStackView(arrangedSubviews: [markAsDoneButton, deleteTaskButton])
         stack1.axis = .vertical
@@ -138,7 +139,7 @@ class DoneDeleteModal: UIViewController {
         
         view.addSubview(stack1)
         stack1.centerX(inView: roundedRectangel)
-        stack1.anchor(top: categoryName.bottomAnchor, paddingTop: 80)
+        stack1.anchor(bottom: roundedRectangel.bottomAnchor, paddingBottom: 50)
     }
     
     
