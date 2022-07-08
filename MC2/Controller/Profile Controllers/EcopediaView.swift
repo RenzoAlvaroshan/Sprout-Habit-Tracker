@@ -30,37 +30,9 @@ class EcopediaView: UIViewController {
         return label
     }()
     
-    private let backImg: UIImageView = {
-        let iv = UIImageView()
-        iv.image = UIImage(systemName: "chevron.backward")
-        iv.contentMode = .scaleAspectFill
-        iv.tintColor = .white
-        iv.setDimensions(height: 18, width: 18)
-        return iv
-    }()
-    
-    let yourAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.poppinsMedium(size: 18)/*,
-        .underlineStyle: NSUnderlineStyle.single.rawValue */
-    ]
-    
-    private lazy var backButton: AppButton = {
-        
-        let attributeString = NSMutableAttributedString(
-            string: "Back",
-            attributes: yourAttributes
-        )
-        
-        let button = AppButton(type: .system)
-        button.setAttributedTitle(attributeString, for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(handleBackButton), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var roundedRectangel: UIView = {
         let rect = UIView()
-        rect.setDimensions(height: view.frame.height / 1.17, width: view.frame.width)
+        rect.setDimensions(height: view.frame.height / 1.2, width: view.frame.width)
         rect.layer.cornerRadius = 33
         rect.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         rect.backgroundColor = .white
@@ -149,7 +121,7 @@ class EcopediaView: UIViewController {
     
     private let background: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.image = UIImage(named: "BG")?.withRenderingMode(.alwaysOriginal)
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -183,27 +155,20 @@ class EcopediaView: UIViewController {
         background.centerY(inView: view)
         background.setDimensions(height: view.frame.height, width: view.frame.width)
         
-        view.addSubview(ecopedia)
-        ecopedia.anchor(top: view.topAnchor, paddingTop: 70)
-        ecopedia.centerX(inView: view)
-        
-        let stack00 = UIStackView(arrangedSubviews: [backImg, backButton])
-        stack00.axis = .horizontal
-        stack00.spacing = 5
-        
-        view.addSubview(stack00)
-        stack00.anchor(top:view.topAnchor, left: view.leftAnchor, paddingTop: 75, paddingLeft: 15)
-        
         view.addSubview(roundedRectangel)
         roundedRectangel.anchor(left: view.leftAnchor, bottom: view.bottomAnchor)
         
+        view.addSubview(ecopedia)
+        ecopedia.anchor(bottom: roundedRectangel.topAnchor, paddingBottom: 30)
+        ecopedia.centerX(inView: view)
+
         let stack0 = UIStackView(arrangedSubviews: [ecopediaTitle, ecopediaSubtitle])
         stack0.axis = .vertical
-        stack0.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+//        stack0.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
         
         view.addSubview(stack0)
         stack0.anchor(top: roundedRectangel.topAnchor, left: view.leftAnchor, paddingTop: 30, paddingLeft: 15)
-        stack0.spacing = 10
+        stack0.spacing = 0
         stack0.isLayoutMarginsRelativeArrangement = true
         stack0.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
         
@@ -233,7 +198,7 @@ class EcopediaView: UIViewController {
         
         view.addSubview(stack2)
         stack2.centerX(inView: view)
-        stack2.anchor(top: stack1.bottomAnchor, paddingTop: 16)
+        stack2.anchor(top: stack1.bottomAnchor, paddingTop: 12)
         stack2.spacing = UIStackView.spacingUseSystem - 1
         stack2.isLayoutMarginsRelativeArrangement = true
         stack2.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -251,7 +216,7 @@ class EcopediaView: UIViewController {
 
         view.addSubview(stack3)
         stack3.centerX(inView: view)
-        stack3.anchor(top: stack2.bottomAnchor, paddingTop: 16)
+        stack3.anchor(top: stack2.bottomAnchor, paddingTop: 12)
         stack3.spacing = UIStackView.spacingUseSystem - 1
         stack3.isLayoutMarginsRelativeArrangement = true
         stack3.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -269,7 +234,7 @@ class EcopediaView: UIViewController {
         
         view.addSubview(stack4)
         stack4.centerX(inView: view)
-        stack4.anchor(top: stack3.bottomAnchor, paddingTop: 16)
+        stack4.anchor(top: stack3.bottomAnchor, paddingTop: 12)
         stack4.spacing = UIStackView.spacingUseSystem - 1
         stack4.isLayoutMarginsRelativeArrangement = true
         stack4.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)

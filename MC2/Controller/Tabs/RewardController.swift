@@ -61,7 +61,7 @@ class RewardController: UIViewController{
     
     private let background: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.image = UIImage(named: "BG")?.withRenderingMode(.alwaysOriginal)
         iv.contentMode = .scaleAspectFill
         return iv
     }()

@@ -132,7 +132,7 @@ class ProfileController: UIViewController {
     
     private let background: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "TabBarBG")?.withRenderingMode(.alwaysOriginal)
+        iv.image = UIImage(named: "BG")?.withRenderingMode(.alwaysOriginal)
         iv.contentMode = .scaleAspectFill
         return iv
     }()
@@ -202,10 +202,9 @@ class ProfileController: UIViewController {
     
     @objc func handleStack5() {
         let rootVC = EcopediaView()
-        let navVC = UINavigationController(rootViewController: rootVC)
-        navVC.isNavigationBarHidden = true
-        navVC.modalPresentationStyle = .fullScreen
-        present(navVC, animated: true)
+//        let navVC = UINavigationController(rootViewController: rootVC)
+//        navVC.isNavigationBarHidden = false
+        navigationController?.pushViewController(rootVC, animated: true)
     }
     
     //MARK: - Helper
@@ -253,7 +252,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack1)
         stack1.centerX(inView: view)
-        stack1.anchor(top: stack.bottomAnchor, paddingTop: 16)
+        stack1.anchor(top: stack.bottomAnchor, paddingTop: 20)
         stack1.spacing = UIStackView.spacingUseSystem - 1
         stack1.isLayoutMarginsRelativeArrangement = true
         stack1.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -271,7 +270,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack2)
         stack2.centerX(inView: view)
-        stack2.anchor(top: stack1.bottomAnchor, paddingTop: 16)
+        stack2.anchor(top: stack1.bottomAnchor, paddingTop: 12)
         stack2.spacing = UIStackView.spacingUseSystem - 1
         stack2.isLayoutMarginsRelativeArrangement = true
         stack2.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -288,7 +287,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack5)
         stack5.centerX(inView: view)
-        stack5.anchor(top: stack2.bottomAnchor, paddingTop: 16)
+        stack5.anchor(top: stack2.bottomAnchor, paddingTop: 12)
         stack5.spacing = UIStackView.spacingUseSystem - 1
         stack5.isLayoutMarginsRelativeArrangement = true
         stack5.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -305,7 +304,7 @@ class ProfileController: UIViewController {
 //
 //        view.addSubview(stack3)
 //        stack3.centerX(inView: view)
-//        stack3.anchor(top: stack2.bottomAnchor, paddingTop: 16)
+//        stack3.anchor(top: stack2.bottomAnchor, paddingTop: 12)
 //        stack3.spacing = UIStackView.spacingUseSystem - 1
 //        stack3.isLayoutMarginsRelativeArrangement = true
 //        stack3.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
@@ -323,7 +322,7 @@ class ProfileController: UIViewController {
         
         view.addSubview(stack4)
         stack4.centerX(inView: view)
-        stack4.anchor(top: stack5.bottomAnchor, paddingTop: 16)
+        stack4.anchor(top: stack5.bottomAnchor, paddingTop: 12)
         stack4.spacing = UIStackView.spacingUseSystem - 1
         stack4.isLayoutMarginsRelativeArrangement = true
         stack4.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
