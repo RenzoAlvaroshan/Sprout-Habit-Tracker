@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseFirestore
 import UIKit
 
 class ProfileController: UIViewController {
@@ -69,63 +70,77 @@ class ProfileController: UIViewController {
     
     private lazy var addKids: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.font = UIFont.poppinsSemiBold(size: 15)
         label.text = "Add Kids"
         return label
     }()
     
     private lazy var addYourOtherKids: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsRegular(size: 14)
+        label.font = UIFont.poppinsRegular(size: 12)
         label.text = "Add your other kids"
         return label
     }()
     
     private lazy var changeProfile: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.font = UIFont.poppinsSemiBold(size: 15)
         label.text = "Change Profile"
         return label
     }()
     
     private lazy var trackYourOtherKids: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsRegular(size: 14)
+        label.font = UIFont.poppinsRegular(size: 12)
         label.text = "Track your other kids"
         return label
     }()
     
     private lazy var addGuardian: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.font = UIFont.poppinsSemiBold(size: 15)
         label.text = "Add Guardian"
         return label
     }()
     
     private lazy var trackYourWhenAway: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsRegular(size: 14)
+        label.font = UIFont.poppinsRegular(size: 12)
         label.text = "Track your kids when you are away"
+        return label
+    }()
+    
+    private lazy var deleteAccount: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsSemiBold(size: 15)
+        label.text = "Delete Account"
+        return label
+    }()
+    
+    private lazy var deleteAccountSub: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.poppinsRegular(size: 12)
+        label.text = "Delete your account and all data"
         return label
     }()
     
     private lazy var logOut: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.font = UIFont.poppinsSemiBold(size: 15)
         label.text = "Log Out"
         return label
     }()
     
     private lazy var ecoPedia: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsSemiBold(size: 18)
+        label.font = UIFont.poppinsSemiBold(size: 15)
         label.text = "Ecopedia"
         return label
     }()
     
     private lazy var ecopediaSubtitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont.poppinsRegular(size: 14)
+        label.font = UIFont.poppinsRegular(size: 12)
         label.text = "Enhance your eco-habits with Ecopedia !"
         return label
     }()
@@ -146,6 +161,41 @@ class ProfileController: UIViewController {
         
     
     //MARK: - Selectors
+    
+    @objc func toLoginPage() {
+        
+        do {
+            let user = Auth.auth().currentUser
+            let usid = user?.uid
+            
+            COLLECTION_USERS.document(usid!).delete() {error in
+                if let error = error {
+                    print("DEBUG: Error removing document: \(error)")
+                    return
+                }
+                print("DEBUG: Document successfuly deleted")
+            }
+
+            user?.delete() { error in
+                if let error = error {
+                    print("DEBUG: Error is \(error)")
+                    return
+                }
+                print("DEBUG: Account deleted")
+            }
+
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(0, forKey: "childRef")
+
+            try Auth.auth().signOut()
+            if let scene: SceneDelegate = (self.sceneDelegate?.delegate as? SceneDelegate)
+            {
+                scene.setToMain()
+            }
+        } catch {
+            print("Error")
+        }
+    }
     
     @objc func handleEditButton() {
         let rootVC = EditChildController()
@@ -184,6 +234,44 @@ class ProfileController: UIViewController {
         alert.addAction(action)
         self.present(alert, animated: true)
     }
+    @objc func handleDelete() {
+        
+        let alert = UIAlertController(title: "", message: "Are you sure want to delete this account?", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        let action = UIAlertAction(title: "Delete", style: UIAlertAction.Style.default) { [self] _ in
+            
+            do {
+                let user = Auth.auth().currentUser
+                let usid = user?.uid
+                let chid = COLLECTION_USERS.document(usid!)
+                                
+                chid.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        let dat = document.data()!["childId"]! as! [String]
+                        
+                        for i in dat {
+                            COLLECTION_CHILD.document(i).delete() {error in
+                                if let error = error {
+                                    print("DEBUG: Error removing document: \(error)")
+                                    return
+                                }
+                                print("DEBUG: Document successfuly deleted")
+                            }
+                            
+                        }
+                    }
+                }
+                
+            }
+            alertConfirmation()
+        }
+        
+        alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
     
     @objc func handleStack4() {
         do {
@@ -208,6 +296,19 @@ class ProfileController: UIViewController {
     }
     
     //MARK: - Helper
+    
+    func alertConfirmation() {
+        let alert = UIAlertController(title: "Account successfuly deleted", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.view.tintColor = UIColor.arcadiaGreen
+        
+        alert.addAction(UIAlertAction(title: "Got It!", style: UIAlertAction.Style.default, handler: { [self]_ in
+            
+            toLoginPage()
+            dismiss(animated: true)
+            
+        }))
+        present(alert, animated: true, completion: nil)
+    }
     
     func configure() {
         
@@ -246,9 +347,9 @@ class ProfileController: UIViewController {
         
         let stack1 = UIStackView(arrangedSubviews: [addKids, addYourOtherKids])
         stack1.axis = .vertical
-        stack1.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+        stack1.setDimensions(height: view.frame.height / 12.3, width: view.frame.width / 1.14)
         stack1.backgroundColor = .arcadiaGray
-        stack1.layer.cornerRadius = 16
+        stack1.layer.cornerRadius = 14
         
         view.addSubview(stack1)
         stack1.centerX(inView: view)
@@ -264,9 +365,9 @@ class ProfileController: UIViewController {
         
         let stack2 = UIStackView(arrangedSubviews: [changeProfile, trackYourOtherKids])
         stack2.axis = .vertical
-        stack2.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+        stack2.setDimensions(height: view.frame.height / 12.3, width: view.frame.width / 1.14)
         stack2.backgroundColor = .arcadiaGray
-        stack2.layer.cornerRadius = 16
+        stack2.layer.cornerRadius = 14
         
         view.addSubview(stack2)
         stack2.centerX(inView: view)
@@ -281,9 +382,9 @@ class ProfileController: UIViewController {
         
         let stack5 = UIStackView(arrangedSubviews: [ecoPedia, ecopediaSubtitle])
         stack5.axis = .vertical
-        stack5.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+        stack5.setDimensions(height: view.frame.height / 12.3, width: view.frame.width / 1.14)
         stack5.backgroundColor = .arcadiaGray
-        stack5.layer.cornerRadius = 16
+        stack5.layer.cornerRadius = 14
         
         view.addSubview(stack5)
         stack5.centerX(inView: view)
@@ -313,16 +414,32 @@ class ProfileController: UIViewController {
 //        stack3.addGestureRecognizer(tap3)
 //        stack3.isUserInteractionEnabled = true
         
+        let stack6 = UIStackView(arrangedSubviews: [deleteAccount, deleteAccountSub])
+        stack6.axis = .vertical
+        stack6.setDimensions(height: view.frame.height / 12.3, width: view.frame.width / 1.14)
+        stack6.backgroundColor = .arcadiaGray
+        stack6.layer.cornerRadius = 14
+        
+        view.addSubview(stack6)
+        stack6.centerX(inView: view)
+        stack6.anchor(top: stack5.bottomAnchor, paddingTop: 12)
+        stack6.spacing = UIStackView.spacingUseSystem - 1
+        stack6.isLayoutMarginsRelativeArrangement = true
+        stack6.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
+        
+        let tap6 = UITapGestureRecognizer(target: self, action: #selector(handleDelete))
+        stack6.addGestureRecognizer(tap6)
+        stack6.isUserInteractionEnabled = true
         
         let stack4 = UIStackView(arrangedSubviews: [logOut])
         stack4.axis = .vertical
-        stack4.setDimensions(height: view.frame.height / 10.3, width: view.frame.width / 1.14)
+        stack4.setDimensions(height: view.frame.height / 12.3, width: view.frame.width / 1.14)
         stack4.backgroundColor = .arcadiaGray
-        stack4.layer.cornerRadius = 16
+        stack4.layer.cornerRadius = 14
         
         view.addSubview(stack4)
         stack4.centerX(inView: view)
-        stack4.anchor(top: stack5.bottomAnchor, paddingTop: 12)
+        stack4.anchor(top: stack6.bottomAnchor, paddingTop: 12)
         stack4.spacing = UIStackView.spacingUseSystem - 1
         stack4.isLayoutMarginsRelativeArrangement = true
         stack4.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 0)
